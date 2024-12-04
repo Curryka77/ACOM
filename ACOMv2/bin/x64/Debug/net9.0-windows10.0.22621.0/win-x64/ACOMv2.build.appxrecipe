@@ -31,6 +31,9 @@
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMPlug\bin\Debug\net8.0-windows10.0.19041.0\ACOMPlug.pri">
       <PackagePath>ACOMPlug.pri</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ClassLibrary1\bin\Debug\net8.0-windows10.0.19041.0\ClassLibrary1.pri">
+      <PackagePath>ClassLibrary1.pri</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\TextControlBox-WinUI\TextControlBox\bin\Debug\net6.0-windows10.0.19041.0\TextControlBox.pri">
       <PackagePath>TextControlBox.pri</PackagePath>
     </AppxPackagedFile>
@@ -42,6 +45,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMPlug\bin\Debug\net8.0-windows10.0.19041.0\ACOMPlug.dll">
       <PackagePath>ACOMPlug.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ClassLibrary1\bin\Debug\net8.0-windows10.0.19041.0\ClassLibrary1.dll">
+      <PackagePath>ClassLibrary1.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\TextControlBox-WinUI\TextControlBox\bin\Debug\net6.0-windows10.0.19041.0\TextControlBox.dll">
       <PackagePath>TextControlBox.dll</PackagePath>
@@ -1702,6 +1708,15 @@
     <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-arm64\native\WebView2Loader.dll">
       <PackagePath>ACOMPlug\runtimes\win-arm64\native\WebView2Loader.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-x86\native\WebView2Loader.dll">
+      <PackagePath>ClassLibrary1\runtimes\win-x86\native\WebView2Loader.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-x64\native\WebView2Loader.dll">
+      <PackagePath>ClassLibrary1\runtimes\win-x64\native\WebView2Loader.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-arm64\native\WebView2Loader.dll">
+      <PackagePath>ClassLibrary1\runtimes\win-arm64\native\WebView2Loader.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\TextControlBox-WinUI\TextControlBox\obj\Debug\net6.0-windows10.0.19041.0\TextControlBox.xbf">
       <PackagePath>TextControlBox\TextControlBox.xbf</PackagePath>
     </AppxPackagedFile>
@@ -1714,8 +1729,8 @@
     <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-arm64\native\WebView2Loader.dll">
       <PackagePath>TextControlBox\runtimes\win-arm64\native\WebView2Loader.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\winuicommunity.contextmenuextensions\7.1.0\contentFiles\any\net8.0-windows10.0.19041\ContextMenuCustomHost.dll">
-      <PackagePath>ContextMenuCustomHost.dll</PackagePath>
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\uno.winui\5.2.132\lib\net8.0-windows10.0.19041.0\Uno.UI.Toolkit.pri">
+      <PackagePath>Uno.UI.Toolkit.pri</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\communitytoolkit.winui.animations\8.1.240916\lib\net8.0-windows10.0.22621\CommunityToolkit.WinUI.Animations.pri">
       <PackagePath>CommunityToolkit.WinUI.Animations.pri</PackagePath>
@@ -1812,6 +1827,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\winuicommunity.win2d\7.1.0\lib\net8.0-windows10.0.19041\WinUICommunity.Win2D.pri">
       <PackagePath>WinUICommunity.Win2D.pri</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\winuicommunity.contextmenuextensions\7.1.0\contentFiles\any\net8.0-windows10.0.19041\ContextMenuCustomHost.dll">
+      <PackagePath>ContextMenuCustomHost.dll</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

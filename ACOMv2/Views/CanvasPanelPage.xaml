@@ -6,7 +6,7 @@
     xmlns:local="using:ACOMv2.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:developerTools="using:CommunityToolkit.WinUI.DeveloperTools"
-    mc:Ignorable="d"
+    mc:Ignorable="d" xmlns:labs="using:CommunityToolkit.Labs.WinUI"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0">
@@ -26,10 +26,16 @@
                               VerticalStep="20" />-->
 
                 
-                <!--<labs:CanvasView MinHeight="400"
-                     VerticalAlignment="Stretch">
+                <labs:CanvasView MinHeight="400"
+                     VerticalAlignment="Stretch" Background="Red">
+                    <Border VerticalAlignment="Stretch" x:Name="Test_Border" MinWidth="64" MinHeight="64"  Margin="0,0,0,0" Background="Black" ManipulationMode="TranslateX,TranslateY" ManipulationDelta="Border_ManipulationDelta">
+                        <TextBlock Text="Hello, World!" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
 
-                </labs:CanvasView>-->
+                    <Border x:Name="Test_Border1" Width="64" Height="64"  Margin="0,0,0,0" Background="Black" ManipulationMode="TranslateX,TranslateY" ManipulationDelta="Border_ManipulationDelta">
+                        <TextBlock Text="Hello, World!" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </labs:CanvasView>
 
 
             </Grid>

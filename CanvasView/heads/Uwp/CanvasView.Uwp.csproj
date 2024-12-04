@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$([MSBuild]::GetPathOfFileAbove(Directory.Build.props))" Condition="Exists('$([MSBuild]::GetPathOfFileAbove(Directory.Build.props))')" />
+  
+  <PropertyGroup>
+    <IsDeployableHead>true</IsDeployableHead>
+    <IsUwp>true</IsUwp>
+    <HasWinUI>true</HasWinUI>
+    <WinUIMajorVersion>2</WinUIMajorVersion>
+    
+    <IsSingleExperimentHead>true</IsSingleExperimentHead>
+  </PropertyGroup>
+
+  <Import Project="$(ToolingDirectory)\MultiTarget\EnabledTargetFrameworks.props" />
+  <Import Project="$(ToolingDirectory)\MultiTarget\DefinedConstants.props" />
+  <Import Project="$(ToolingDirectory)\ProjectHeads\App.Head.Uwp.props" />
+
+  <PropertyGroup>
+    <RootNamespace>CanvasViewExperiment.Samples</RootNamespace>
+    <AssemblyName>CanvasViewExperiment.Samples.Uwp</AssemblyName>
+    <ProjectGuid>{2283A3DB-03C8-4912-817C-B42985EBFF3B}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Properties\Default.rd.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\*.csproj"/>
+    <ProjectReference Include="..\..\samples\*.csproj"/>
+  </ItemGroup>
+  
+  <!-- Must be imported after any shared projects in non-sdk style projects -->
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+</Project>

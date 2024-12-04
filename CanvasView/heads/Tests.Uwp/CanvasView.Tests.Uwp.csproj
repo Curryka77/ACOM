@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$([MSBuild]::GetPathOfFileAbove(Directory.Build.props))" Condition="Exists('$([MSBuild]::GetPathOfFileAbove(Directory.Build.props))')" />
+
+  <PropertyGroup>
+    <IsDeployableHead>true</IsDeployableHead>
+    <IsUwp>true</IsUwp>
+    <HasWinUI>true</HasWinUI>
+    <WinUIMajorVersion>2</WinUIMajorVersion>
+
+    <IsSingleExperimentHead>true</IsSingleExperimentHead>
+  </PropertyGroup>
+
+  <Import Project="$(ToolingDirectory)\MultiTarget\EnabledTargetFrameworks.props" />
+  <Import Project="$(ToolingDirectory)\MultiTarget\DefinedConstants.props" />
+  
+  <Import Project="$(ToolingDirectory)\ProjectHeads\Tests.Head.Uwp.props" />
+
+  <PropertyGroup>
+    <ProjectGuid>{6495C3CE-F145-47BD-B5F7-41B3B5C7B8F9}</ProjectGuid>
+    <RootNamespace>CanvasViewExperiment.Tests</RootNamespace>
+    <AssemblyName>CanvasViewExperiment.Tests.Uwp</AssemblyName>
+    <UnitTestPlatformVersion Condition="'$(UnitTestPlatformVersion)' == ''">$(VisualStudioVersion)</UnitTestPlatformVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Properties\Default.rd.xml" />
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+
+  <!-- Needed Unit Testing helper base classes -->
+  <Import Project="$(ToolingDirectory)\CommunityToolkit.Tests.Shared\CommunityToolkit.Tests.Shared.projitems" Label="Unit Testing Helpers" />
+
+  <!-- Include the unit test files themselves -->
+  <Import Project="..\..\tests\CanvasView.Tests.projitems" Label="Shared" />
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\*.csproj" />
+  </ItemGroup>
+
+  <!-- Must be imported after any shared projects in non-sdk style projects -->
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+</Project>

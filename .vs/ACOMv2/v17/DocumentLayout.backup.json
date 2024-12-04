@@ -3,20 +3,46 @@
   "WorkspaceRootPath": "C:\\Users\\80520\\source\\repos\\ACOM\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|c:\\users\\80520\\source\\repos\\acom\\acomv2\\views\\homelandingpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|solutionrelative:acomv2\\views\\homelandingpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|c:\\users\\80520\\source\\repos\\acom\\acomv2\\views\\canvaspanelpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|solutionrelative:acomv2\\views\\canvaspanelpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|c:\\users\\80520\\source\\repos\\acom\\acomv2\\views\\homelandingpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|solutionrelative:acomv2\\views\\homelandingpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|c:\\users\\80520\\source\\repos\\acom\\acomv2\\views\\canvaspanelpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|solutionrelative:acomv2\\views\\canvaspanelpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6350553A-512F-4611-961F-F6C7E914BCC0}|ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj|c:\\users\\80520\\source\\repos\\acom\\processerplug_waterfire\\processerplugwaterfire.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{6350553A-512F-4611-961F-F6C7E914BCC0}|ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj|solutionrelative:processerplug_waterfire\\processerplugwaterfire.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{B1B0DEFE-CD50-41CA-9C7C-35BE2570DC25}|ClassLibrary1\\ClassLibrary1.csproj|c:\\users\\80520\\source\\repos\\acom\\classlibrary1\\canvasview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1B0DEFE-CD50-41CA-9C7C-35BE2570DC25}|ClassLibrary1\\ClassLibrary1.csproj|solutionrelative:classlibrary1\\canvasview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\80520\\AppData\\Local\\Temp\\.vsdbgsrc\\7cd00389b077e49bdfa6ad7a1f8bff2a2f54e3cfc98693183ddf7ff237a04b14\\Windows_Foundation_Collections_IVector_1_object.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1B0DEFE-CD50-41CA-9C7C-35BE2570DC25}|ClassLibrary1\\ClassLibrary1.csproj|c:\\users\\80520\\source\\repos\\acom\\classlibrary1\\frameworkelementextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1B0DEFE-CD50-41CA-9C7C-35BE2570DC25}|ClassLibrary1\\ClassLibrary1.csproj|solutionrelative:classlibrary1\\frameworkelementextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E210F122-7B58-4895-B667-08140732BA00}|DataMuxerAutoOne\\DataMuxerPlugAutoOne.csproj|c:\\users\\80520\\source\\repos\\acom\\datamuxerautoone\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E210F122-7B58-4895-B667-08140732BA00}|DataMuxerAutoOne\\DataMuxerPlugAutoOne.csproj|solutionrelative:datamuxerautoone\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|c:\\users\\80520\\source\\repos\\acom\\acomv2\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|solutionrelative:acomv2\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|c:\\users\\80520\\source\\repos\\acom\\acomv2\\views\\homelandingpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|solutionrelative:acomv2\\views\\homelandingpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6350553A-512F-4611-961F-F6C7E914BCC0}|ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj|c:\\users\\80520\\source\\repos\\acom\\processerplug_waterfire\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6350553A-512F-4611-961F-F6C7E914BCC0}|ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj|solutionrelative:processerplug_waterfire\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\80520\\.nuget\\packages\\communitytoolkit.winui.helpers\\8.1.240916\\ReadMe.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1B0DEFE-CD50-41CA-9C7C-35BE2570DC25}|ClassLibrary1\\ClassLibrary1.csproj|c:\\users\\80520\\source\\repos\\acom\\classlibrary1\\classlibrary1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{B1B0DEFE-CD50-41CA-9C7C-35BE2570DC25}|ClassLibrary1\\ClassLibrary1.csproj|solutionrelative:classlibrary1\\classlibrary1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|c:\\users\\80520\\source\\repos\\acom\\acomv2\\models\\io_manage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,8 +57,12 @@
       "RelativeMoniker": "D:0:0:{80CA2ABF-98D3-4D25-80E2-7617A1E323B0}|ACOMPlug\\ACOMPlug.csproj|solutionrelative:acomplug\\plugbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|c:\\users\\80520\\source\\repos\\acom\\acomv2\\views\\canvaspanelpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|solutionrelative:acomv2\\views\\canvaspanelpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|c:\\users\\80520\\source\\repos\\acom\\acomv2\\views\\homelandingpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|solutionrelative:acomv2\\views\\homelandingpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6350553A-512F-4611-961F-F6C7E914BCC0}|ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj|c:\\users\\80520\\source\\repos\\acom\\processerplug_waterfire\\processerplugwaterfire.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{6350553A-512F-4611-961F-F6C7E914BCC0}|ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj|solutionrelative:processerplug_waterfire\\processerplugwaterfire.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\80520\\Documents\\GitHub\\Labs-Windows\\components\\CanvasView\\src\\CanvasView.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -40,10 +70,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\obj\\x86\\Debug\\net9.0-windows10.0.22621.0\\win-x86\\App.g.i.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ACOMv2\\obj\\x86\\Debug\\net9.0-windows10.0.22621.0\\win-x86\\App.g.i.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|c:\\users\\80520\\source\\repos\\acom\\acomv2\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|solutionrelative:acomv2\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|c:\\users\\80520\\source\\repos\\acom\\acomv2\\models\\processers\\common.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -91,10 +117,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|c:\\users\\80520\\source\\repos\\acom\\acomv2\\common\\appconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|solutionrelative:acomv2\\common\\appconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6350553A-512F-4611-961F-F6C7E914BCC0}|ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj|c:\\users\\80520\\source\\repos\\acom\\processerplug_waterfire\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6350553A-512F-4611-961F-F6C7E914BCC0}|ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj|solutionrelative:processerplug_waterfire\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -112,31 +134,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ProcesserPlug_WaterFire\\Class1.cs",
-              "RelativeDocumentMoniker": "ProcesserPlug_WaterFire\\Class1.cs",
-              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ProcesserPlug_WaterFire\\Class1.cs",
-              "RelativeToolTip": "ProcesserPlug_WaterFire\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAgAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "CanvasPanelPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Views\\CanvasPanelPage.xaml.cs",
+              "RelativeDocumentMoniker": "ACOMv2\\Views\\CanvasPanelPage.xaml.cs",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Views\\CanvasPanelPage.xaml.cs",
+              "RelativeToolTip": "ACOMv2\\Views\\CanvasPanelPage.xaml.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAACEAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T10:52:22.137Z"
+              "WhenOpened": "2024-12-04T10:34:04.68Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FrameworkElementExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ClassLibrary1\\FrameworkElementExtensions.cs",
+              "RelativeDocumentMoniker": "ClassLibrary1\\FrameworkElementExtensions.cs",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ClassLibrary1\\FrameworkElementExtensions.cs",
+              "RelativeToolTip": "ClassLibrary1\\FrameworkElementExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T09:40:14.954Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CanvasView.cs",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ClassLibrary1\\CanvasView.cs",
+              "RelativeDocumentMoniker": "ClassLibrary1\\CanvasView.cs",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ClassLibrary1\\CanvasView.cs",
+              "RelativeToolTip": "ClassLibrary1\\CanvasView.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAIwEQAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T09:11:13.117Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Plugs.cs",
-              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Models\\Processers\\Plugs.cs",
-              "RelativeDocumentMoniker": "ACOMv2\\Models\\Processers\\Plugs.cs",
-              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Models\\Processers\\Plugs.cs",
-              "RelativeToolTip": "ACOMv2\\Models\\Processers\\Plugs.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAjwBgAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T10:50:40.057Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\DataMuxerAutoOne\\Class1.cs",
               "RelativeDocumentMoniker": "DataMuxerAutoOne\\Class1.cs",
@@ -144,11 +181,12 @@
               "RelativeToolTip": "DataMuxerAutoOne\\Class1.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAswCIAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T06:51:14.773Z"
+              "WhenOpened": "2024-12-04T06:51:14.773Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 6,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\App.xaml.cs",
               "RelativeDocumentMoniker": "ACOMv2\\App.xaml.cs",
@@ -156,11 +194,12 @@
               "RelativeToolTip": "ACOMv2\\App.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T08:57:45.128Z"
+              "WhenOpened": "2024-12-03T08:57:45.128Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 21,
               "Title": "IXamlType.cs",
               "DocumentMoniker": "C:\\Users\\80520\\AppData\\Local\\Temp\\.vsdbgsrc\\9e90a6280c79142483800be659dd950d688de086a28347d63af46d484deece7b\\IXamlType.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\9e90a6280c79142483800be659dd950d688de086a28347d63af46d484deece7b\\IXamlType.cs",
@@ -168,11 +207,38 @@
               "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\9e90a6280c79142483800be659dd950d688de086a28347d63af46d484deece7b\\IXamlType.cs",
               "ViewState": "AgIAAD8AAAAAAAAAAAAAwE4AAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T11:34:53.373Z"
+              "WhenOpened": "2024-12-03T11:34:53.373Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
+              "Title": "CanvasPanelPage.xaml",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Views\\CanvasPanelPage.xaml",
+              "RelativeDocumentMoniker": "ACOMv2\\Views\\CanvasPanelPage.xaml",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Views\\CanvasPanelPage.xaml",
+              "RelativeToolTip": "ACOMv2\\Views\\CanvasPanelPage.xaml",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAuwB4AAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-04T03:43:00.334Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Windows_Foundation_Collections_IVector_1_object.cs",
+              "DocumentMoniker": "C:\\Users\\80520\\AppData\\Local\\Temp\\.vsdbgsrc\\7cd00389b077e49bdfa6ad7a1f8bff2a2f54e3cfc98693183ddf7ff237a04b14\\Windows_Foundation_Collections_IVector_1_object.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\7cd00389b077e49bdfa6ad7a1f8bff2a2f54e3cfc98693183ddf7ff237a04b14\\Windows_Foundation_Collections_IVector_1_object.cs",
+              "ToolTip": "C:\\Users\\80520\\AppData\\Local\\Temp\\.vsdbgsrc\\7cd00389b077e49bdfa6ad7a1f8bff2a2f54e3cfc98693183ddf7ff237a04b14\\Windows_Foundation_Collections_IVector_1_object.cs [\u53EA\u8BFB]",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\7cd00389b077e49bdfa6ad7a1f8bff2a2f54e3cfc98693183ddf7ff237a04b14\\Windows_Foundation_Collections_IVector_1_object.cs [\u53EA\u8BFB]",
+              "ViewState": "AgIAAFcAAAAAAAAAAAD4v2cAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T12:34:41.939Z",
+              "EditorCaption": " [\u53EA\u8BFB]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "PlugBase.cs",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlug\\PlugBase.cs",
               "RelativeDocumentMoniker": "ACOMPlug\\PlugBase.cs",
@@ -180,24 +246,77 @@
               "RelativeToolTip": "ACOMPlug\\PlugBase.cs",
               "ViewState": "AgIAABQAAAAAAAAAAAAuwEQAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T11:18:22.187Z"
+              "WhenOpened": "2024-12-03T11:18:22.187Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "HomeLandingPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Views\\HomeLandingPage.xaml.cs",
               "RelativeDocumentMoniker": "ACOMv2\\Views\\HomeLandingPage.xaml.cs",
-              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Views\\HomeLandingPage.xaml.cs \u2B24",
-              "RelativeToolTip": "ACOMv2\\Views\\HomeLandingPage.xaml.cs \u2B24",
-              "ViewState": "AgIAAAcCAAAAAAAAAAAAACICAAALAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Views\\HomeLandingPage.xaml.cs",
+              "RelativeToolTip": "ACOMv2\\Views\\HomeLandingPage.xaml.cs",
+              "ViewState": "AgIAAM8CAAAAAAAAAAAgwN0CAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-03T09:10:13.206Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Plugs.cs",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Models\\Processers\\Plugs.cs",
+              "RelativeDocumentMoniker": "ACOMv2\\Models\\Processers\\Plugs.cs",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Models\\Processers\\Plugs.cs",
+              "RelativeToolTip": "ACOMv2\\Models\\Processers\\Plugs.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAqwBgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T10:50:40.057Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ProcesserPlug_WaterFire\\Class1.cs",
+              "RelativeDocumentMoniker": "ProcesserPlug_WaterFire\\Class1.cs",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ProcesserPlug_WaterFire\\Class1.cs",
+              "RelativeToolTip": "ProcesserPlug_WaterFire\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T10:52:22.137Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ClassLibrary1",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ClassLibrary1\\ClassLibrary1.csproj",
+              "RelativeDocumentMoniker": "ClassLibrary1\\ClassLibrary1.csproj",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ClassLibrary1\\ClassLibrary1.csproj",
+              "RelativeToolTip": "ClassLibrary1\\ClassLibrary1.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-12-04T09:11:07.404Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 9,
+              "Title": "ReadMe.md",
+              "DocumentMoniker": "C:\\Users\\80520\\.nuget\\packages\\communitytoolkit.winui.helpers\\8.1.240916\\ReadMe.md",
+              "RelativeDocumentMoniker": "..\\..\\..\\.nuget\\packages\\communitytoolkit.winui.helpers\\8.1.240916\\ReadMe.md",
+              "ToolTip": "C:\\Users\\80520\\.nuget\\packages\\communitytoolkit.winui.helpers\\8.1.240916\\ReadMe.md [\u53EA\u8BFB]",
+              "RelativeToolTip": "..\\..\\..\\.nuget\\packages\\communitytoolkit.winui.helpers\\8.1.240916\\ReadMe.md [\u53EA\u8BFB]",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2024-12-04T09:16:55.823Z",
+              "EditorCaption": " [\u53EA\u8BFB]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
               "Title": "App.g.i.cs",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\obj\\x86\\Debug\\net9.0-windows10.0.22621.0\\win-x86\\App.g.i.cs",
               "RelativeDocumentMoniker": "ACOMv2\\obj\\x86\\Debug\\net9.0-windows10.0.22621.0\\win-x86\\App.g.i.cs",
@@ -205,23 +324,25 @@
               "RelativeToolTip": "ACOMv2\\obj\\x86\\Debug\\net9.0-windows10.0.22621.0\\win-x86\\App.g.i.cs",
               "ViewState": "AgIAADUAAAAAAAAAAAAAwEQAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T09:26:01.641Z"
+              "WhenOpened": "2024-12-03T09:26:01.641Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 11,
               "Title": "IO_Manage.cs",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Models\\IO_Manage.cs",
               "RelativeDocumentMoniker": "ACOMv2\\Models\\IO_Manage.cs",
               "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Models\\IO_Manage.cs",
               "RelativeToolTip": "ACOMv2\\Models\\IO_Manage.cs",
-              "ViewState": "AgIAAIYAAAAAAAAAAAAAAJQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADQBAAAAAAAAAADwv0wBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T09:01:25.696Z"
+              "WhenOpened": "2024-12-03T09:01:25.696Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 19,
               "Title": "CannelMassage.cs",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Common\\CannelMassage.cs",
               "RelativeDocumentMoniker": "ACOMv2\\Common\\CannelMassage.cs",
@@ -229,23 +350,12 @@
               "RelativeToolTip": "ACOMv2\\Common\\CannelMassage.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T09:07:03.872Z"
+              "WhenOpened": "2024-12-03T09:07:03.872Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CanvasPanelPage.xaml",
-              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Views\\CanvasPanelPage.xaml",
-              "RelativeDocumentMoniker": "ACOMv2\\Views\\CanvasPanelPage.xaml",
-              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Views\\CanvasPanelPage.xaml",
-              "RelativeToolTip": "ACOMv2\\Views\\CanvasPanelPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-04T03:43:00.334Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 14,
               "Title": "HomeLandingPage.xaml",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Views\\HomeLandingPage.xaml",
               "RelativeDocumentMoniker": "ACOMv2\\Views\\HomeLandingPage.xaml",
@@ -258,7 +368,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 15,
               "Title": "ProcesserPlugWaterFire.csproj",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj",
               "RelativeDocumentMoniker": "ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj",
@@ -266,11 +376,12 @@
               "RelativeToolTip": "ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-12-03T10:58:06.531Z"
+              "WhenOpened": "2024-12-03T10:58:06.531Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 16,
               "Title": "CanvasView.cs",
               "DocumentMoniker": "C:\\Users\\80520\\Documents\\GitHub\\Labs-Windows\\components\\CanvasView\\src\\CanvasView.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Documents\\GitHub\\Labs-Windows\\components\\CanvasView\\src\\CanvasView.cs",
@@ -278,11 +389,12 @@
               "RelativeToolTip": "..\\..\\..\\Documents\\GitHub\\Labs-Windows\\components\\CanvasView\\src\\CanvasView.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T03:56:53.048Z"
+              "WhenOpened": "2024-12-04T03:56:53.048Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 18,
               "Title": "Common.cs",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Models\\Processers\\Common.cs",
               "RelativeDocumentMoniker": "ACOMv2\\Models\\Processers\\Common.cs",
@@ -290,22 +402,24 @@
               "RelativeToolTip": "ACOMv2\\Models\\Processers\\Common.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAGUAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T09:05:17.939Z"
+              "WhenOpened": "2024-12-03T09:05:17.939Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 20,
               "Title": "ProcesserPlugWaterFire",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj",
               "RelativeDocumentMoniker": "ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj",
               "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj",
               "RelativeToolTip": "ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-12-03T11:48:55.701Z"
+              "WhenOpened": "2024-12-03T11:48:55.701Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 22,
               "Title": "HomeLandingViewModel.cs",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\ViewModels\\HomeLandingViewModel.cs",
               "RelativeDocumentMoniker": "ACOMv2\\ViewModels\\HomeLandingViewModel.cs",
@@ -313,11 +427,12 @@
               "RelativeToolTip": "ACOMv2\\ViewModels\\HomeLandingViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAE8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T09:09:16.88Z"
+              "WhenOpened": "2024-12-03T09:09:16.88Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 24,
               "Title": "ColorHelper.cs",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Common\\ColorHelper.cs",
               "RelativeDocumentMoniker": "ACOMv2\\Common\\ColorHelper.cs",
@@ -325,11 +440,12 @@
               "RelativeToolTip": "ACOMv2\\Common\\ColorHelper.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAD8AAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T09:12:28Z"
+              "WhenOpened": "2024-12-03T09:12:28Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 23,
               "Title": "HAL_Serial.cs",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Models\\Drivers\\HAL_Serial.cs",
               "RelativeDocumentMoniker": "ACOMv2\\Models\\Drivers\\HAL_Serial.cs",
@@ -337,11 +453,12 @@
               "RelativeToolTip": "ACOMv2\\Models\\Drivers\\HAL_Serial.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T09:35:14.675Z"
+              "WhenOpened": "2024-12-03T09:35:14.675Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 25,
               "Title": "Singleton.cs",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Common\\Singleton.cs",
               "RelativeDocumentMoniker": "ACOMv2\\Common\\Singleton.cs",
@@ -349,11 +466,12 @@
               "RelativeToolTip": "ACOMv2\\Common\\Singleton.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T09:02:13.961Z"
+              "WhenOpened": "2024-12-03T09:02:13.961Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 26,
               "Title": "LoggerSetup.cs",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Common\\LoggerSetup.cs",
               "RelativeDocumentMoniker": "ACOMv2\\Common\\LoggerSetup.cs",
@@ -361,11 +479,12 @@
               "RelativeToolTip": "ACOMv2\\Common\\LoggerSetup.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T09:00:39.628Z"
+              "WhenOpened": "2024-12-03T09:00:39.628Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 27,
               "Title": "Constants.cs",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Common\\Constants.cs",
               "RelativeDocumentMoniker": "ACOMv2\\Common\\Constants.cs",
@@ -373,11 +492,12 @@
               "RelativeToolTip": "ACOMv2\\Common\\Constants.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T09:00:36.511Z"
+              "WhenOpened": "2024-12-03T09:00:36.511Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 28,
               "Title": "AppHelper.cs",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Common\\AppHelper.cs",
               "RelativeDocumentMoniker": "ACOMv2\\Common\\AppHelper.cs",
@@ -385,11 +505,12 @@
               "RelativeToolTip": "ACOMv2\\Common\\AppHelper.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T09:00:34.844Z"
+              "WhenOpened": "2024-12-03T09:00:34.844Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 29,
               "Title": "AppConfig.cs",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Common\\AppConfig.cs",
               "RelativeDocumentMoniker": "ACOMv2\\Common\\AppConfig.cs",
@@ -397,7 +518,8 @@
               "RelativeToolTip": "ACOMv2\\Common\\AppConfig.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T09:00:33.946Z"
+              "WhenOpened": "2024-12-03T09:00:33.946Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -10,6 +10,7 @@
       "ACOMv2/1.0.0": {
         "dependencies": {
           "ACOMPlug": "1.0.0",
+          "ClassLibrary1": "1.0.0",
           "CommunityToolkit.Common": "8.3.2",
           "CommunityToolkit.HighPerformance": "8.3.2",
           "CommunityToolkit.Mvvm": "8.3.2",
@@ -2529,6 +2530,19 @@
           }
         }
       },
+      "ClassLibrary1/1.0.0": {
+        "dependencies": {
+          "CommunityToolkit.WinUI.Helpers": "8.1.240916",
+          "Microsoft.Windows.SDK.BuildTools": "10.0.26100.1742",
+          "Microsoft.WindowsAppSDK": "1.6.241114003"
+        },
+        "runtime": {
+          "ClassLibrary1.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "TextControlBox.WinUI.JuliusKirsch/1.0.0": {
         "dependencies": {
           "Collections.Pooled": "1.0.82",
@@ -3783,6 +3797,11 @@
       "hashPath": "winuicommunity.win2d.7.1.0.nupkg.sha512"
     },
     "ACOMPlug/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ClassLibrary1/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

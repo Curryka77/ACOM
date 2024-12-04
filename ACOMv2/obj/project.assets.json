@@ -2730,6 +2730,21 @@
           "bin/placeholder/ACOMPlug.dll": {}
         }
       },
+      "ClassLibrary1/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "CommunityToolkit.WinUI.Helpers": "8.1.240916",
+          "Microsoft.Windows.SDK.BuildTools": "10.0.26100.1742",
+          "Microsoft.WindowsAppSDK": "1.6.241114003"
+        },
+        "compile": {
+          "bin/placeholder/ClassLibrary1.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ClassLibrary1.dll": {}
+        }
+      },
       "TextControlBox.WinUI.JuliusKirsch/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -5544,6 +5559,21 @@
         },
         "runtime": {
           "bin/placeholder/ACOMPlug.dll": {}
+        }
+      },
+      "ClassLibrary1/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "CommunityToolkit.WinUI.Helpers": "8.1.240916",
+          "Microsoft.Windows.SDK.BuildTools": "10.0.26100.1742",
+          "Microsoft.WindowsAppSDK": "1.6.241114003"
+        },
+        "compile": {
+          "bin/placeholder/ClassLibrary1.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ClassLibrary1.dll": {}
         }
       },
       "TextControlBox.WinUI.JuliusKirsch/1.0.0": {
@@ -8362,6 +8392,21 @@
           "bin/placeholder/ACOMPlug.dll": {}
         }
       },
+      "ClassLibrary1/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "CommunityToolkit.WinUI.Helpers": "8.1.240916",
+          "Microsoft.Windows.SDK.BuildTools": "10.0.26100.1742",
+          "Microsoft.WindowsAppSDK": "1.6.241114003"
+        },
+        "compile": {
+          "bin/placeholder/ClassLibrary1.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ClassLibrary1.dll": {}
+        }
+      },
       "TextControlBox.WinUI.JuliusKirsch/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -11176,6 +11221,21 @@
         },
         "runtime": {
           "bin/placeholder/ACOMPlug.dll": {}
+        }
+      },
+      "ClassLibrary1/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "CommunityToolkit.WinUI.Helpers": "8.1.240916",
+          "Microsoft.Windows.SDK.BuildTools": "10.0.26100.1742",
+          "Microsoft.WindowsAppSDK": "1.6.241114003"
+        },
+        "compile": {
+          "bin/placeholder/ClassLibrary1.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ClassLibrary1.dll": {}
         }
       },
       "TextControlBox.WinUI.JuliusKirsch/1.0.0": {
@@ -17445,6 +17505,11 @@
       "path": "../ACOMPlug/ACOMPlug.csproj",
       "msbuildProject": "../ACOMPlug/ACOMPlug.csproj"
     },
+    "ClassLibrary1/1.0.0": {
+      "type": "project",
+      "path": "../ClassLibrary1/ClassLibrary1.csproj",
+      "msbuildProject": "../ClassLibrary1/ClassLibrary1.csproj"
+    },
     "TextControlBox.WinUI.JuliusKirsch/1.0.0": {
       "type": "project",
       "path": "../TextControlBox-WinUI/TextControlBox/TextControlBox.csproj",
@@ -17454,6 +17519,7 @@
   "projectFileDependencyGroups": {
     "net9.0-windows10.0.22621": [
       "ACOMPlug >= 1.0.0",
+      "ClassLibrary1 >= 1.0.0",
       "CommunityToolkit.Common >= 8.3.2",
       "CommunityToolkit.HighPerformance >= 8.3.2",
       "CommunityToolkit.Mvvm >= 8.3.2",
@@ -17536,6 +17602,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -17544,6 +17611,9 @@
           "projectReferences": {
             "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlug\\ACOMPlug.csproj": {
               "projectPath": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlug\\ACOMPlug.csproj"
+            },
+            "C:\\Users\\80520\\source\\repos\\ACOM\\ClassLibrary1\\ClassLibrary1.csproj": {
+              "projectPath": "C:\\Users\\80520\\source\\repos\\ACOM\\ClassLibrary1\\ClassLibrary1.csproj"
             },
             "C:\\Users\\80520\\source\\repos\\ACOM\\TextControlBox-WinUI\\TextControlBox\\TextControlBox.csproj": {
               "projectPath": "C:\\Users\\80520\\source\\repos\\ACOM\\TextControlBox-WinUI\\TextControlBox\\TextControlBox.csproj"
