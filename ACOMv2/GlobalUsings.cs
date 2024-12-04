@@ -1,0 +1,13 @@
+﻿global using ACOMv2.Common;
+global using ACOMv2.ViewModels;
+global using ACOMv2.Views;
+global using CommunityToolkit.Mvvm.ComponentModel;
+global using CommunityToolkit.Mvvm.Input;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.UI;
+global using Microsoft.UI.Xaml;
+global using Microsoft.UI.Xaml.Controls;
+global using Microsoft.UI.Xaml.Navigation;
+global using WinUICommunity;
+global using static ACOMv2.Common.AppHelper;
+global using static ACOMv2.Common.LoggerSetup;

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ACOMv2 (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "ACOMv2 (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

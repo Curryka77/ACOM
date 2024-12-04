@@ -8,9 +8,9 @@ permissions:
 
 env:
   # Configuring Project
-  PROJECT_PATH: YOUR_FOLDER/ACOM.csproj
-  APP_NAME: ACOM
-
+  PROJECT_PATH: YOUR_FOLDER/ACOMv2.csproj
+  APP_NAME: ACOMv2
+  
   # Check Tag
   CHECK_TAG_EXISTENCE_BEFORE_CREATING_TAG: false
   
@@ -24,7 +24,7 @@ env:
   PUBLISH_SELF_CONTAINED: false
   PUBLISH_SINGLE_FILE: false
   PUBLISH_READY_TO_RUN: false
-  PUBLISH_AOT: false # currently only Console App Supported
+  PUBLISH_AOT: false
   PUBLISH_TRIMMED: false
   PUBLISH_TRIM_MODE: partial # or full
 
@@ -43,7 +43,7 @@ jobs:
       IS_PRE_RELEASE: ${{ env.IS_PRE_RELEASE }}
     strategy:
       matrix:
-        platform: [x86, x64, ARM64] # Change platform if you want to build only a specific platform
+        platform: [x64, x86, ARM64] # Change platform if you want to build only a specific platform
 
     steps:
     - uses: actions/checkout@v4
@@ -52,7 +52,9 @@ jobs:
         
     - uses: actions/setup-dotnet@v4
       with:
-       dotnet-version: '8.0.x'
+       dotnet-version: | 
+         8.x.x
+         9.x.x
 
     # Add CommunityToolkit Labs and Main nuget sources
     - run: |
@@ -76,7 +78,7 @@ jobs:
       id: get-version
       with:
         proj-path: ${{ env.PROJECT_PATH }}
-
+        
     # Building with configured commands
     - run: |
         $runtimeIdentifier = "${{ matrix.platform }}"
