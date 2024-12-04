@@ -530,21 +530,21 @@ public sealed partial class HomeLandingPage : Page
 
         //Use a custom language:
         // 假设你的JSON文件名为"data.json"，位于与你的程序相同的目录下
-        string filePath = "C:\\Users\\80520\\source\\repos\\ACOM\\ACOM\\Properties\\HighLightSettinng.json";
-        string jsonContent = null;
-        // 检查文件是否存在
-        if (File.Exists(filePath))
-        {
-            // 读取文件内容到字符串
-            jsonContent = File.ReadAllText(filePath);
+        //string filePath = "C:\\Users\\80520\\source\\repos\\ACOM\\ACOM\\Properties\\HighLightSettinng.json";
+        //string jsonContent = null;
+        //// 检查文件是否存在
+        //if (File.Exists(filePath))
+        //{
+        //    // 读取文件内容到字符串
+        //    jsonContent = File.ReadAllText(filePath);
 
-            // 打印读取的内容
-            Console.WriteLine(jsonContent);
-        }
-        else
-        {
-            while (true) ;
-        }
+        //    // 打印读取的内容
+        //    Console.WriteLine(jsonContent);
+        //}
+        //else
+        //{
+        //    while (true) ;
+        //}
 
 
 

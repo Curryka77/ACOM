@@ -324,7 +324,7 @@ NOT_INIT:
             //开始监听
             watcher.Start();
 
-            Plugs.Init("C:\\Users\\80520\\Documents\\GitHub\\ACOMv2\\ProcesserPlug_WaterFire\\bin\\Debug\\net8.0-windows10.0.19041.0");
+            Plugs.Init("C:\\Users\\80520\\Documents\\GitHub\\ACOM\\ProcesserPlug_WaterFire\\bin\\Debug\\net8.0-windows10.0.19041.0");
 
 
 
