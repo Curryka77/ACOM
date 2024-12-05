@@ -21,8 +21,8 @@ public class CannelDataView : ObservableObject
     {
         get; private set;
     }
-    private double _Data;
-    public double Data
+    private string _Data;
+    public string Data
     {
         get => _Data;
         set => SetProperty(ref _Data, value);
@@ -53,7 +53,7 @@ public class CannelDataView : ObservableObject
         DataColor = new SolidColorBrush(Microsoft.UI.Colors.RoyalBlue);
         DataName = dataName;
         ID = id;
-        Data = data;
+        Data = data.ToString();
         var deleteCommand = new StandardUICommand(StandardUICommandKind.Stop);
         // deleteCommand.ExecuteRequested += DeleteCommand_ExecuteRequested;
         Command = deleteCommand;
@@ -65,7 +65,7 @@ public class CannelDataView : ObservableObject
         DataColor = new SolidColorBrush(color);
         DataName = dataName;
         ID = id;
-        Data = data;
+        Data = data.ToString();
         var deleteCommand = new StandardUICommand(StandardUICommandKind.Stop);
         // deleteCommand.ExecuteRequested += DeleteCommand_ExecuteRequested;
         Command = deleteCommand;

@@ -14,5 +14,6 @@ public partial class NavigationPageMappings
     public static Dictionary<string, Type> PageDictionary { get; } = new Dictionary<string, Type>
     {
         {"ACOMv2.Views.HomeLandingPage", typeof(ACOMv2.Views.HomeLandingPage)},
+        {"ACOMv2.Views.SettingsPage", typeof(ACOMv2.Views.SettingsPage)},
     };
 }

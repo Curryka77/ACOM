@@ -206,5 +206,10 @@ namespace ACOMv2.Views
 
             Debug.WriteLine(args.Item.ToString());
         }
+
+        private void rangeSelector_ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

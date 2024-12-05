@@ -1,4 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!--<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ACOMv2.Views">
+
+    <Style TargetType="local:BgLabelControl" >
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:BgLabelControl">
+                    <Grid Width="100" Height="100" Background="{TemplateBinding Background}">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Label}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>-->
 <Page x:ConnectionId='1'
     x:Class="ACOMv2.Views.CanvasPanelPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -45,7 +63,60 @@
 
                         <Grid Grid.Column="0" Grid.Row="0" MinHeight="16" MinWidth="16"
                               ManipulationMode="TranslateX,TranslateY" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                              Style="{ThemeResource GridCardPanel}" />
+                              Style="{ThemeResource GridCardPanel}" >
+                            <StackPanel>
+                                <Button Content="  按钮   " />
+
+                                <CheckBox Content="Two-state CheckBox" IsThreeState="True"/>
+
+                                <RadioButtons Header="Options:">
+                                    <RadioButton Content="Option 1"  />
+                                    <RadioButton Content="Option 2"  />
+                                    <RadioButton Content="Option 3" />
+                                </RadioButtons>
+
+                                <controls:RangeSelector x:ConnectionId='10' x:Name="rangeSelector"
+                                VerticalAlignment="Center"
+                                IsEnabled="True"
+                                Maximum="100"
+                                Minimum="0"
+                                RangeEnd="100"
+                                RangeStart="0"
+                                                                                                          
+                                />
+
+                                <Slider
+                                    AutomationProperties.Name="Slider with ticks"
+                                    TickFrequency="20"
+                                    TickPlacement="Outside"
+                                    SnapsTo="StepValues" />
+
+                                <ToggleSwitch AutomationProperties.Name="simple ToggleSwitch"/>
+                                <wuc:WaveProgressBar Value="35"/>
+                                <wuc:ProgressRing IsActive="True" />
+
+                                <controls:RadialGauge x:ConnectionId='11' x:Name="RadialGauge"
+                              Width="280"
+                              IsEnabled="True"
+                              IsInteractive="True"
+                              MaxAngle="150"
+                              Maximum="240"
+                              MinAngle="-150"
+                              Minimum="0"
+                              NeedleLength="60"
+                              NeedleWidth="4"
+                              ScalePadding="0"
+                              ScaleTickWidth="0"
+                              ScaleWidth="9"
+                              StepSize="1"
+                              TickLength="6"
+                              TickPadding="12"
+                              TickSpacing="17"
+                              TickWidth="2"
+                              ValueStringFormat="N0"
+                              Value="130" />
+                            </StackPanel>
+                        </Grid>
 
                         <controls:ContentSizer x:ConnectionId='8' 
                             Height="4"   Grid.Row="1"  
@@ -71,6 +142,7 @@
         </ScrollViewer>
 
         <wuc:GooeyButton x:ConnectionId='2' x:Name="gooeyButton"
+                         Margin="6 6 6 6"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
                                                  

@@ -15,6 +15,13 @@
           "Subtitle": "ACOMv2",
           "ImagePath": "ms-appx:///Assets/icon.png",
           "HideItem": true
+        },
+        {
+          "UniqueId": "ACOMv2.Views.SettingsPage",
+          "Title": "ACOMv2",
+          "Subtitle": "ACOMv2",
+          "ImagePath": "ms-appx:///Assets/icon.png",
+          "HideItem": true
         }
       ]
     }
