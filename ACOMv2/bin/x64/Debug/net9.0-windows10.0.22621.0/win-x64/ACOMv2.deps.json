@@ -2532,6 +2532,7 @@
       },
       "ClassLibrary1/1.0.0": {
         "dependencies": {
+          "CommunityToolkit.WinUI.Controls.Sizers": "8.1.240916",
           "CommunityToolkit.WinUI.Helpers": "8.1.240916",
           "Microsoft.Windows.SDK.BuildTools": "10.0.26100.1742",
           "Microsoft.WindowsAppSDK": "1.6.241114003"

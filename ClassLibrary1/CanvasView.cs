@@ -14,6 +14,14 @@ using Microsoft.UI;
 using System.Collections.Specialized;
 using Windows.Foundation.Collections;
 using System.Diagnostics;
+using Microsoft.UI.Windowing;
+using Windows.Foundation;
+using System.Windows.Input;
+using Windows.Devices.Input;
+using Windows.ApplicationModel.Appointments.AppointmentsProvider;
+using Microsoft.UI.Content;
+using CommunityToolkit;
+
 namespace CommunityToolkit.Labs.WinUI;
 
 /// <summary>
@@ -45,35 +53,48 @@ public partial class CanvasView : ItemsControl
         // TODO: Need to use XamlReader because of https://github.com/microsoft/microsoft-ui-xaml/issues/2898
         ItemsPanel = XamlReader.Load("<ItemsPanelTemplate xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"><Canvas/></ItemsPanelTemplate>") as ItemsPanelTemplate;
     }
-    protected override void OnApplyTemplate()
+
+   
+    // 假设ContentSizer是你的自定义控件，你需要确保它已经被定义
+    // 并且ManipulationDelta事件处理器也已经定义
+    private void ContentSizer_ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
     {
-        base.OnApplyTemplate();
-
-        // 为Canvas中的每个子控件添加边框
-        ItemCollection itemCollection = this.Items;
-        int cnt = itemCollection.Count;
-        for(int i = 0; i < cnt; i++)
-
-        {
-            Border border = new Border
-            {
-                BorderBrush = new SolidColorBrush(Colors.Black), // 边框颜色
-                BorderThickness = new Thickness(1), // 边框厚度
-                Padding = new Thickness(10), // 边框与内容之间的间距
-                Child = (UIElement)itemCollection[0] // 子控件作为Border的子元素
-            };
-            double left = Canvas.GetLeft((UIElement)itemCollection[0]);
-            double top = Canvas.GetTop((UIElement)itemCollection[0]);
-            // 替换原有的子控件为Border控件
-            this.Items.Remove(itemCollection[0]);
-            
-            Canvas.SetLeft(border, left);
-            Canvas.SetTop(border, top);
-            this.Items.Add(border);
-
-        }
-        Debug.WriteLine("w");
+        // 你的事件处理逻辑
     }
+
+    public void Add(UIElement element)
+    {
+
+    }
+    //protected override void OnApplyTemplate()
+    //{
+    //    base.OnApplyTemplate();
+
+    //    // 为Canvas中的每个子控件添加边框
+    //    ItemCollection itemCollection = this.Items;
+    //    int cnt = itemCollection.Count;
+    //    for(int i = 0; i < cnt; i++)
+
+    //    {
+    //        Border border = new Border
+    //        {
+    //            BorderBrush = new SolidColorBrush(Colors.Black), // 边框颜色
+    //            BorderThickness = new Thickness(1), // 边框厚度
+    //            Padding = new Thickness(10), // 边框与内容之间的间距
+    //            Child = (UIElement)itemCollection[0] // 子控件作为Border的子元素
+    //        };
+    //        double left = Canvas.GetLeft((UIElement)itemCollection[0]);
+    //        double top = Canvas.GetTop((UIElement)itemCollection[0]);
+    //        // 替换原有的子控件为Border控件
+    //        this.Items.Remove(itemCollection[0]);
+            
+    //        Canvas.SetLeft(border, left);
+    //        Canvas.SetTop(border, top);
+    //        this.Items.Add(border);
+
+    //    }
+    //    Debug.WriteLine("w");
+    //}
 
     protected override void PrepareContainerForItemOverride(DependencyObject element, object item)
 {
@@ -118,7 +139,7 @@ public partial class CanvasView : ItemsControl
 
             // We know that most likely these values have been bound to a data model object of some sort
             // Therefore, we need to use this helper to update the underlying model value of our bound property.
-            cp.Width = 128;
+            //cp.WidtControl.MousePositionh = 128;
             cp.SetBindingExpressionValue(Canvas.LeftProperty, Canvas.GetLeft(cp) + e.Delta.Translation.X);
             cp.SetBindingExpressionValue(Canvas.TopProperty, Canvas.GetTop(cp) + e.Delta.Translation.Y);
         }

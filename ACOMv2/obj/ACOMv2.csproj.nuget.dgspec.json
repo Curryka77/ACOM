@@ -529,6 +529,10 @@
         "net8.0-windows10.0.19041": {
           "targetAlias": "net8.0-windows10.0.19041.0",
           "dependencies": {
+            "CommunityToolkit.WinUI.Controls.Sizers": {
+              "target": "Package",
+              "version": "[8.1.240916, )"
+            },
             "CommunityToolkit.WinUI.Helpers": {
               "target": "Package",
               "version": "[8.1.240916, )"

@@ -6,39 +6,85 @@
     xmlns:local="using:ACOMv2.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:developerTools="using:CommunityToolkit.WinUI.DeveloperTools"
-    mc:Ignorable="d" xmlns:labs="using:CommunityToolkit.Labs.WinUI"
+    mc:Ignorable="d" xmlns:labs="using:CommunityToolkit.Labs.WinUI" xmlns:controls="using:CommunityToolkit.WinUI.Controls" xmlns:wuc="using:WinUICommunity"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0">
         <Grid.DataContext>
             ACOMv2.Models
         </Grid.DataContext>
+
         <!-- The same large TextBlock, wrapped in a ScrollViewer. -->
         <ScrollViewer MinHeight="200" MinWidth="200" 
-                  HorizontalAlignment="Stretch" 
-                  VerticalAlignment="Stretch"
+                 
               HorizontalScrollBarVisibility="Auto" 
               VerticalScrollBarVisibility="Auto">
-            <Grid >
+            <Grid  Height="1200" Width="1200" >
 
-                <!--<developerTools:AlignmentGrid HorizontalStep="20"
+                <developerTools:AlignmentGrid HorizontalStep="20"
                               Opacity="0.2"
-                              VerticalStep="20" />-->
+                              VerticalStep="20" />
 
                 
-                <labs:CanvasView MinHeight="400"
-                     VerticalAlignment="Stretch" Background="Red">
-                    <Border VerticalAlignment="Stretch" x:Name="Test_Border" MinWidth="64" MinHeight="64"  Margin="0,0,0,0" Background="Black" ManipulationMode="TranslateX,TranslateY" ManipulationDelta="Border_ManipulationDelta">
+                <labs:CanvasView MinHeight="400" x:Name="CanvasView1"
+                      Background="Red">
+                    <Border Canvas.Left="30" Canvas.Top="30"  VerticalAlignment="Stretch" x:Name="Test_Border" MinWidth="64" MinHeight="64"  Margin="0,0,0,0" Background="Black" ManipulationMode="TranslateX,TranslateY" ManipulationDelta="Border_ManipulationDelta">
                         <TextBlock Text="Hello, World!" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
 
-                    <Border x:Name="Test_Border1" Width="64" Height="64"  Margin="0,0,0,0" Background="Black" ManipulationMode="TranslateX,TranslateY" ManipulationDelta="Border_ManipulationDelta">
-                        <TextBlock Text="Hello, World!" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Border>
+                    <Grid Canvas.Left="90" Canvas.Top="90" x:Name="TestGrid" MinHeight="32" MinWidth="32" Style="{ThemeResource GridCardPanel}">
+
+                        <Grid.ColumnDefinitions>
+                             <ColumnDefinition  />
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                             <RowDefinition />
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Column="0" Grid.Row="0" MinHeight="16" MinWidth="16"
+                              ManipulationMode="TranslateX,TranslateY" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                              Style="{ThemeResource GridCardPanel}" />
+
+                        <controls:ContentSizer 
+                            Height="4"   Grid.Row="1"  
+                            VerticalAlignment="Bottom"
+                            Orientation="Horizontal"
+                            ManipulationDelta="ContentSizer_ManipulationDelta"
+                            TargetControl="{x:Bind  TestGrid}"
+                            Visibility="Visible" />
+
+                        <controls:ContentSizer 
+                            Width="4" Grid.Column="1"  
+                            HorizontalAlignment="Right"
+                            ManipulationDelta="ContentSizer_ManipulationDelta"
+                            TargetControl="{x:Bind  TestGrid}"
+                            Visibility="Visible" />
+                    </Grid>
+
+
                 </labs:CanvasView>
-
+                <Button x:Name="ttt" Width="64" Height="32"/>
 
             </Grid>
         </ScrollViewer>
+
+        <wuc:GooeyButton x:Name="gooeyButton"
+                         Margin="6 6 6 6"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Invoked="gooeyButton_Invoked"
+                    ItemInvoked="gooeyButton_ItemInvoked"
+                    ItemsSource="{x:Bind strings}">
+            <wuc:GooeyButton.Content>
+                <SymbolIcon Symbol="Add" />
+            </wuc:GooeyButton.Content>
+            <wuc:GooeyButton.ItemTemplate>
+                <DataTemplate>
+                    <SymbolIcon Symbol="{Binding}" />
+                </DataTemplate>
+            </wuc:GooeyButton.ItemTemplate>
+        </wuc:GooeyButton>
     </Grid>
 </Page>

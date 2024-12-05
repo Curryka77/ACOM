@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ACOMPlug")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e3a7dc9240774381a38a93c4f4b7d0ebc924bf44")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+accb7bb878f82b8246ee32b021bae1b8d4efb3ee")]
 [assembly: System.Reflection.AssemblyProductAttribute("ACOMPlug")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ACOMPlug")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
