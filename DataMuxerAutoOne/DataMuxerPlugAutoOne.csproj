@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
@@ -13,5 +13,8 @@
   <ItemGroup>
     <ProjectReference Include="..\ACOMPlug\ACOMPlug.csproj" />
   </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="if not exist &quot;$(ProjectDir)..\Plugs\DataMuxers&quot; mkdir &quot;$(ProjectDir)..\Plugs\DataMuxers&quot;&#xD;&#xA;xcopy &quot;$(TargetDir)$(TargetName).dll&quot; &quot;$(ProjectDir)..\Plugs\DataMuxers&quot; /Y&#xD;&#xA;&#xD;&#xA;if not exist &quot;$(ProjectDir)..\ACOMv2\Assets\Plugs\DataMuxers&quot; mkdir &quot;$(ProjectDir)..\ACOMv2\Assets\Plugs\DataMuxers&quot;&#xD;&#xA;xcopy &quot;$(TargetDir)$(TargetName).dll&quot; &quot;$(ProjectDir)..\ACOMv2\Assets\Plugs\DataMuxers&quot; /Y&#xD;&#xA;" />
+  </Target>
   
 </Project>

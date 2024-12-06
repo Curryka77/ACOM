@@ -15,5 +15,8 @@
   <ItemGroup>
     <ProjectReference Include="..\ACOMPlug\ACOMPlug.csproj" />
   </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="if not exist &quot;$(ProjectDir)..\Plugs\Processers&quot; mkdir &quot;$(ProjectDir)..\Plugs\Processers&quot;&#xD;&#xA;xcopy &quot;$(TargetDir)$(TargetName).dll&quot; &quot;$(ProjectDir)..\Plugs\Processers&quot; /Y&#xD;&#xA;&#xD;&#xA;if not exist &quot;$(ProjectDir)..\ACOMv2\Assets\Plugs\Processers&quot; mkdir &quot;$(ProjectDir)..\ACOMv2\Assets\Plugs\Processers&quot;&#xD;&#xA;xcopy &quot;$(TargetDir)$(TargetName).dll&quot; &quot;$(ProjectDir)..\ACOMv2\Assets\Plugs\Processers&quot; /Y&#xD;&#xA;" />
+  </Target>
   
 </Project>

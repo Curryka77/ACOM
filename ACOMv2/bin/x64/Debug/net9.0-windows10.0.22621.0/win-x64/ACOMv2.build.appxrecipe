@@ -103,6 +103,12 @@
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\Assets\NavViewMenu\AppData.json">
       <PackagePath>Assets\NavViewMenu\AppData.json</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\Assets\Plugs\DataMuxers\DataMuxerPlugAutoOne.dll">
+      <PackagePath>Assets\Plugs\DataMuxers\DataMuxerPlugAutoOne.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\Assets\Plugs\Processers\ProcesserPlugWaterFire.dll">
+      <PackagePath>Assets\Plugs\Processers\ProcesserPlugWaterFire.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\Assets\Store\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\Store\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>

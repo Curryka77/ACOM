@@ -37,6 +37,8 @@ namespace ACOM.Models
     using System.Management;
     using System.Timers;
     using ACOMPlug;
+    using Windows.System;
+    using WinUICommunity;
 
     public class ChannelProcesser
     {
@@ -44,6 +46,13 @@ namespace ACOM.Models
         Dictionary<string, ChannelMassage> dataMap = new Dictionary<string, ChannelMassage>();
         List<byte> tmpbytes = new List<byte>(128);
         bool receivedFrame = false;
+
+        static int unNameIndex = 0;
+
+
+
+       
+
         public ChannelProcesser()
         {
             
@@ -52,8 +61,7 @@ namespace ACOM.Models
         {
 
         }
-        string HelpMassage="'[Name],[Date1],[Data2],...\n'";
-
+ 
 
         //public bool Date_Search(string IsName)
         //{
@@ -151,17 +159,139 @@ namespace ACOM.Models
 
             return _data;
         }
+        protected static string IdentifyDataType(byte[] data, string Type = "Auto")
+        {
+            if (data == null || data.Length == 0)
+            {
+                Debug.WriteLine("Empty or null data");
+                return "Empty or null data";
+            }
+
+            // 尝试将byte数组转换为String，使用默认的ANSI编码
+            try
+            {
+                string ansiString = Encoding.Default.GetString(data);
+                // 如果转换成功，且没有抛出DecoderFallbackException异常，则可能是ANSI编码的字符串
+                Debug.WriteLine("ANSI encoded string");
+                return "str (ANSI encoding)";
+            }
+            catch (DecoderFallbackException)
+            {
+                // 如果转换失败，说明不是有效的ANSI编码
+                try
+                {
+                    string strGbk = Encoding.GetEncoding("GBK").GetString(data);
+                    return "GBK: " + strGbk;
+                }
+                catch (Exception)
+                {
+                    // 如果GBK转换也失败，返回错误信息
+                    //return "无法识别的编码";
+                }
+            }
+
+            // 根据字节长度判断基本数据类型
+            switch (data.Length)
+            {
+                case 1:
+                    Debug.WriteLine("byte or sbyte");
+                    return "byte or sbyte";
+                case 2:
+                    Debug.WriteLine("short or ushort");
+                    return "short or ushort";
+                case 4:
+                    Debug.WriteLine("int, uint, float, or ANSI encoded string (if length is 1)");
+                    return "int, uint, float, or ANSI encoded string (if length is 1)";
+                case 8:
+                    Debug.WriteLine("long, ulong, double");
+                    return "long, ulong, double";
+                default:
+                    break;
+            }
+
+            // 如果无法确定，返回其他
+            Debug.WriteLine("unknown");
+            return "unknown";
+        }
+        /// <summary>
+        /// 用于处理传入的数据,并且将数据解析为需要显示的内容
+        /// </summary>
+        /// <param name="massages"></param>
+        /// <returns></returns>
+        public List<ChannelViewData> Process(List<ChannelMassage> massages)
+        {
+            Debug.WriteLine("get msg cnt is"+massages.Count());
+            List < ChannelViewData > result = new List<ChannelViewData>();
+            for (int i = 0; i < massages.Count; i++)
+            {
+                var data = massages[i].rawChannelData;
+                var type = IdentifyDataType(data);
+                result.Add(new ChannelViewData { Name = massages[i].Name, ChannelData = System.Text.Encoding.UTF8.GetString(data) });
+
+            }
+            return result;
+
+        }
     }
 
 
-   
 
 
-    class IO_Manage: Singleton<IO_Manage>
+
+class IO_Manage: Singleton<IO_Manage>
     {
         public Vector<ChannelMassage> ChannelDatas;
         public HomeLandingPage page;
-        ChannelProcesser channelProcesser = new();
+        static ChannelProcesser channelProcesser = new();
+        static Dictionary<string, ChannelMassage> GlobChannelMassage = new Dictionary<string, ChannelMassage>();
+        static List<ChannelViewData> GlobChannelViewData = new();
+        public delegate void ReceivedCannelMsg(ref readonly Dictionary<string, ChannelMassage> dataMap);
+        public delegate void UpdateCannelViewMsg(ref readonly List<ChannelViewData> globChannelViewData);
+        // 基于上面的委托定义事件
+        public static event ReceivedCannelMsg receivedCannelMsg ;
+        public static event UpdateCannelViewMsg updateCannelViewMsg;
+
+
+
+        public static void UnionGlobChannelMassage(List<ChannelMassage> Data)
+        {
+            foreach (var pair in Data)
+            {
+                if (GlobChannelMassage.ContainsKey(pair.Name)) GlobChannelMassage[pair.Name] = pair;
+                else GlobChannelMassage.Add(pair.Name, pair);
+
+                // result.Add(pair.Key, pair.Value);
+            }
+            //触发钩子函数
+            if(receivedCannelMsg != null)
+                receivedCannelMsg(ref GlobChannelMassage);
+            UnionGlobChannelViewMassage(channelProcesser.Process(Data));//更新成通道数据
+        }
+
+        public static void UnionGlobChannelViewMassage(List<ChannelViewData> Data)
+        {
+            if (Data == null) return;   
+            for (int i = 0; i < GlobChannelViewData.Count; i++)
+            {
+                for (int j = 0; j < Data.Count; j++)
+                {
+                    if (GlobChannelViewData[i].Name == Data[j].Name)
+                    {
+                        GlobChannelViewData[i] = Data[j];
+                    }
+                    else
+                    {
+                        GlobChannelViewData.Add(Data[j]);
+                    }
+                }
+                //触发钩子函数
+            }
+            if (updateCannelViewMsg != null)
+                updateCannelViewMsg(ref GlobChannelViewData);
+            Debug.WriteLine("更新通道显示数据 "+ Data.Count +" ");
+        }
+
+
         private void Client_OnExceptionOccurs(object sender, STTech.BytesIO.Core.ExceptionOccursEventArgs e)
         {
             Print($"异常: {e.Exception.Message}");
@@ -177,7 +307,7 @@ namespace ACOM.Models
             BytesIO.Serial.SerialClient client = (BytesIO.Serial.SerialClient)sender;
             Print((DateTime.Now - client.LastMessageReceivedTime).Microseconds.ToString() );
             Print($"接收: {e.Data.ToHexCodeString()}({e.Data.EncodeToString()})");
-            channelProcesser.Process(new RawDataMassage(e.Data, DateTime.Now, RawDataMassage.DateSource.Serial, client.PortName));
+            UnionGlobChannelMassage(channelProcesser.Process(new RawDataMassage(e.Data, DateTime.Now, RawDataMassage.DateSource.Serial, client.PortName)));
             //channelProcesserMap[sender].Process(new RawDataMassage(e.Data, DateTime.Now, RawDataMassage.DateSource.Serial, client.PortName));
 
             charRecQueue.Enqueue(new RawDataMassage(e.Data,DateTime.Now,RawDataMassage.DateSource.Serial, client.PortName));
@@ -323,8 +453,7 @@ NOT_INIT:
             watcher.EventArrived += Watcher_EventArrived;
             //开始监听
             watcher.Start();
-
-            Plugs.Init("C:\\Users\\80520\\Documents\\GitHub\\ACOM\\ProcesserPlug_WaterFire\\bin\\Debug\\net8.0-windows10.0.19041.0");
+            Plugs.Init("C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Assets\\Plugs\\");
 
 
 

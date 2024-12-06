@@ -12,6 +12,7 @@ public class ChannelViewData
 {
     public string ChannelData;
     public string Name;
+    public string ExpendData;//扩展数据，用于隐藏部分的显示
     public DateTime DateTime;
 }
 public class ChannelMassage

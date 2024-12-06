@@ -503,9 +503,9 @@ public sealed partial class HomeLandingPage : Page
         ChangeCOM();
 
 
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 20; i++)
         {
-            dateSource.Add(new CannelDataView("data" + i.ToString(), i, i.ToString()));
+            dateSource.Add(new CannelDataView("data" + i.ToString(),   -1.2198256, i.ToString()));
             dateSource[i].DataColor.Color = ACOMv2.Common.ColorHelper.GenerateDistinctColor((i * 78) % 128);
         }
 

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProcesserPlugWaterFire")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+accb7bb878f82b8246ee32b021bae1b8d4efb3ee")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b95458dca6410df5571e3662b062212c94dddcb3")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProcesserPlugWaterFire")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProcesserPlugWaterFire")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

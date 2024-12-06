@@ -97,7 +97,7 @@ namespace ACOMv2.Views
             // 创建水平ContentSizer
             ContentSizer horizontalContentSizer = new ContentSizer()
             {
-                Height = 4,
+                Height = 2,
                 VerticalAlignment = VerticalAlignment.Bottom,
                 Orientation = Orientation.Horizontal,
                 TargetControl = elementGrid,
@@ -112,7 +112,7 @@ namespace ACOMv2.Views
             // 创建垂直ContentSizer
             ContentSizer verticalContentSizer = new ContentSizer()
             {
-                Width = 4,
+                Width = 2,
                 HorizontalAlignment = HorizontalAlignment.Right,
                 TargetControl = elementGrid,
                 Visibility = Visibility.Visible

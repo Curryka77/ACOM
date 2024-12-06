@@ -13,9 +13,49 @@
       
       mc:Ignorable="d">
     <Page.Resources>
+
+
+        <Style x:Key="iconStyle" TargetType="AppBarButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="AppBarButton">
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#FFA0A0A0"/>
+                                                <!-- 鼠标悬停时的背景颜色 -->
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#FF707070"/>
+                                                <!-- 鼠标按下时的背景颜色 -->
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" Background="Transparent" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Icon}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+
+
+
         <Flyout  x:Key="myColorPickerFlyout"   >
             <StackPanel  >
-                <ColorPicker x:ConnectionId='23' Name="myColorPicker"  AllowFocusOnInteraction="True"
+                <ColorPicker x:ConnectionId='26' Name="myColorPicker"  AllowFocusOnInteraction="True"
                                                                
                                                                                  
       ColorSpectrumShape="Ring"
@@ -27,7 +67,7 @@
       IsAlphaSliderVisible="False"
       IsAlphaTextInputVisible="True"
       Orientation="Vertical"  />
-                <TextBox x:ConnectionId='24'                                                              AllowFocusOnInteraction="True">
+                <TextBox x:ConnectionId='27'                                                              AllowFocusOnInteraction="True">
 
                 </TextBox>
             </StackPanel>
@@ -36,7 +76,7 @@
         <Flyout  x:Key="DataRenameFlyout"  >
             <StackPanel    >
                 <TextBlock Text="请输入新名字："/>
-                <TextBox x:ConnectionId='22'  Text="New name "  AllowFocusOnInteraction="True" MinWidth="128" Margin="8,6,0,0"                                    
+                <TextBox x:ConnectionId='25'  Text="New name "  AllowFocusOnInteraction="True" MinWidth="128" Margin="8,6,0,0"                                    
                                                                              >
                 </TextBox>
             </StackPanel>
@@ -58,29 +98,72 @@
 
 
         <DataTemplate x:Key="ContactListViewTemplate"                                          >
-            <Grid x:ConnectionId='17'                                                                                                           >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="4" />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="36"/>
 
-                </Grid.ColumnDefinitions>
-                <AppBarButton x:ConnectionId='18' x:Name="HoverButton" IsTabStop="False" HorizontalAlignment="Right" Visibility="Visible"
-                                              
-                       Width="36"                              
+                <!--<AppBarButton x:Name="HoverButton" IsTabStop="False" HorizontalAlignment="Right" Visibility="Visible"
+                             Tag="{x:Bind ID}"
+                       Width="36"    Click="HoverButton_Click" 
                          Grid.Column="3" Label="Button"  LabelPosition="Collapsed" Margin="0,0,0,0" >
                     <AppBarButton.Icon   >
                         <FontIcon Glyph="&#xE890;"/>
                     </AppBarButton.Icon  >
-                    <!--<FontIcon Glyph="&#xE769;" />-->
+                    --><!--<FontIcon Glyph="&#xE769;" />--><!--
                 </AppBarButton >
-                <Border x:ConnectionId='19' Grid.Column="0"                                              CornerRadius="1.4" Width="2.8" Height="16" Margin="-25,0,0,0"/>
-                <TextBlock x:ConnectionId='20' Grid.Column="1"                                                   
+                <Border Grid.Column="0" Background="{x:Bind DataColor, Mode=OneWay}" CornerRadius="1.4" Width="2.8" Height="16" Margin="-25,0,0,0"/>
+                <TextBlock Grid.Column="1" Text="{x:Bind DataName, Mode=OneWay}" x:Phase="1" 
                     HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,5" Padding="0,9,120,9"/>
-                <TextBlock x:ConnectionId='21' Grid.Column="2"                                               
-                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" Padding="0,9,120,9"/>
-            </Grid>
+                <TextBlock Grid.Column="2" Text="{x:Bind Data, Mode=OneWay}" x:Phase="1" 
+                    HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,5" Padding="0,9,120,9"/>-->
+            <Expander x:ConnectionId='17' BorderThickness="0"
+                    IsExpanded="False"
+                    ExpandDirection="Down"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                      Margin="-10 0 0 0"
+                     >
+                    <Expander.Header>
+                        <Grid x:ConnectionId='18'  Margin="0 0 -16 0"                                                                                                          >
+
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0" />
+                                <ColumnDefinition Width="24"/>
+                                <ColumnDefinition Width="1.25*"/>
+                                <ColumnDefinition Width="1.5*"/>
+
+                            </Grid.ColumnDefinitions>
+
+                            <AppBarButton x:ConnectionId='19' x:Name="HoverButton" IsTabStop="False" HorizontalAlignment="Left" Visibility="Visible"
+                                                    
+                                Width="12"                               
+                                Grid.Column="1" Label="Button"  LabelPosition="Collapsed" Margin="-4 1 0 0" >
+                                <AppBarButton.Icon >
+                                    <FontIcon Glyph="&#xE890;" />
+                                </AppBarButton.Icon  >
+                                <!--<FontIcon Glyph="&#xE769;" />-->
+                            </AppBarButton >
+
+                            <Border x:ConnectionId='20' Grid.Column="0"                                              CornerRadius="1.4" Width="2.8" Height="16" Margin="-30,0,0,0"/>
+                            <wuc:AutoScrollView IsPlaying="True" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 5 8 5" Padding="0">
+                                <TextBlock x:ConnectionId='23' Margin="4 0 0 0"                                                    />
+                            </wuc:AutoScrollView>
+
+
+                            <TextBlock x:ConnectionId='21' Grid.Column="3"                                               TextWrapping="Wrap"
+                                HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,5" />
+                            <wuc:Divider Margin="0 0 0 0" HorizontalAlignment="Right" MaxHeight="16" Orientation="Vertical" Grid.Column="1"  LineStroke="Black"  />
+                        <wuc:Divider x:ConnectionId='22' Margin="0 0 0 0" HorizontalAlignment="Right" MaxHeight="16" Orientation="Vertical" Grid.Column="2"                                                />
+
+                    </Grid>
+                    </Expander.Header>
+                <Expander.Content>
+                    <RichTextBlock x:Name="TextHighlightingRichTextBlock">
+                        <Paragraph>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                        </Paragraph>
+                    </RichTextBlock>
+                </Expander.Content>
+
+                </Expander>
         </DataTemplate>
 
         <DataTemplate x:Key="LinkDeviceListViewTemplate"                                    >
@@ -144,7 +227,7 @@
 
     </Page.Resources>
 
-    <wuc:AllLandingPage x:ConnectionId='25' x:Name="allLandingPage"
+    <wuc:AllLandingPage x:ConnectionId='35' x:Name="allLandingPage"
                         HeaderImage="{ThemeResource HeaderCover}"
                         HeaderOverlayImage="{ThemeResource HeaderCover}"
                                                                                    
@@ -152,7 +235,7 @@
                                                                                                            >
 
 
-        <Grid x:ConnectionId='26' x:Name="ContentArea" >
+        <Grid x:ConnectionId='36' x:Name="ContentArea" >
             <Grid.DataContext>
                 ACOM.Models
             </Grid.DataContext>
@@ -181,15 +264,15 @@
                         </Grid.RowDefinitions>
                         <Border Grid.Row="0" Background="red" Margin="0,10,0,4"/>
 
-                        <ListView x:ConnectionId='49' Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                          SelectionMode="Multiple" IsMultiSelectCheckBoxEnabled="False" IsRightTapEnabled="True"
-                     x:Name="ListView_LinkDevice"
-                    ItemTemplate="{StaticResource ContactListViewTemplate}"
-                                                     
-                    BorderThickness="1"
-                    MinWidth="120"
-                    MinHeight="250"
-                    />
+                        <ListView x:ConnectionId='59' Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                            SelectionMode="None" IsMultiSelectCheckBoxEnabled="False" IsRightTapEnabled="True"
+                            x:Name="ListView_LinkDevice"
+                            ItemTemplate="{StaticResource ContactListViewTemplate}"
+                                                             
+                            BorderThickness="0"
+                            MinWidth="120"
+                            MinHeight="250"
+                            />
 
                     </Grid>
                 </PivotItem>
@@ -198,7 +281,7 @@
                 </PivotItem>
 
                 <PivotItem Header="串口" MinWidth="160">
-                    <Grid x:ConnectionId='39' x:Name="link_Grid">
+                    <Grid x:ConnectionId='49' x:Name="link_Grid">
                         <Grid.RowDefinitions>
                             <RowDefinition MinHeight="100" Height="120"/>
                             <RowDefinition Height="*"/>
@@ -209,7 +292,7 @@
                         <Border Grid.Row="0" Background="red" Height="100"/>
                         <!--<Border Grid.Row="1" Background="black" Height="Auto"/>-->
                         <!-- To create this sample, add/change the following properties onto the code for the base example above: -->
-                        <ListView x:ConnectionId='40' Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                        <ListView x:ConnectionId='50' Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                           SelectionMode="Multiple" IsMultiSelectCheckBoxEnabled="False" IsRightTapEnabled="True"
 
                      x:Name="BaseExample"
@@ -231,7 +314,7 @@
 
                         </controls:Segmented>-->
 
-                        <TextBlock x:ConnectionId='41' Grid.Row="3" Text="USBdevice COM9" FontSize="10" x:Name="TextBlockCOM_Desc">
+                        <TextBlock x:ConnectionId='51' Grid.Row="3" Text="USBdevice COM9" FontSize="10" x:Name="TextBlockCOM_Desc">
 
                         </TextBlock>
                         <Grid Grid.Row="4" Margin="0 12 0 0 ">
@@ -259,12 +342,12 @@
                             <TextBlock Grid.Column="0" Grid.Row="4"  Text="停止位" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8 0 0 0"/>
                             <TextBlock Grid.Column="0" Grid.Row="5"  Text="流控"   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8 0 0 0"/>
 
-                            <ComboBox x:ConnectionId='42' x:Name="combox_COM" Grid.Column="1" Grid.Row="0" IsEditable="True"  Width="100"                                            
+                            <ComboBox x:ConnectionId='52' x:Name="combox_COM" Grid.Column="1" Grid.Row="0" IsEditable="True"  Width="100"                                            
                               HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 8 0"                                                       
                                                                                                                              >
                             </ComboBox>
 
-                            <ComboBox x:ConnectionId='43' x:Name="LinkSerial_Boundrate" Grid.Column="1" Grid.Row="1"                                                   
+                            <ComboBox x:ConnectionId='53' x:Name="LinkSerial_Boundrate" Grid.Column="1" Grid.Row="1"                                                   
                                       IsEditable="True"  Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 8 0" SelectedIndex="3">
                                 <x:String>2400</x:String>
                                 <x:String>4800</x:String>
@@ -275,31 +358,31 @@
                                 <x:String>1000000</x:String>
                                 <x:String>2000000</x:String>
                             </ComboBox>
-                            <ComboBox x:ConnectionId='44' x:Name="LinkSerial_DataLength" Grid.Column="1" Grid.Row="2"                                                   
+                            <ComboBox x:ConnectionId='54' x:Name="LinkSerial_DataLength" Grid.Column="1" Grid.Row="2"                                                   
                                       IsEditable="False"  Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 8 0" SelectedIndex="3">
                                 <x:Int32>5</x:Int32>
                                 <x:Int32>6</x:Int32>
                                 <x:Int32>7</x:Int32>
                                 <x:Int32>8</x:Int32>
                             </ComboBox>
-                            <ComboBox x:ConnectionId='45' x:Name="LinkSerial_CheckBit" Grid.Column="1" Grid.Row="3"                                                   
+                            <ComboBox x:ConnectionId='55' x:Name="LinkSerial_CheckBit" Grid.Column="1" Grid.Row="3"                                                   
                                       IsEditable="False"  Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 8 0" SelectedIndex="0">
                                 <x:String>无</x:String>
                                 <x:String>奇校验</x:String>
                                 <x:String>偶校验</x:String>
                             </ComboBox>
-                            <ComboBox x:ConnectionId='46' x:Name="LinkSerial_StopBit" Grid.Column="1" Grid.Row="4"                                                   
+                            <ComboBox x:ConnectionId='56' x:Name="LinkSerial_StopBit" Grid.Column="1" Grid.Row="4"                                                   
                                       IsEditable="False"  Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 8 0" SelectedIndex="0">
                                 <x:String>1</x:String>
                                 <x:String>1.5</x:String>
                                 <x:String>2</x:String>
                             </ComboBox>
-                            <ComboBox x:ConnectionId='47' x:Name="LinkSerial_StreamCtrl" Grid.Column="1" Grid.Row="5"                                                   
+                            <ComboBox x:ConnectionId='57' x:Name="LinkSerial_StreamCtrl" Grid.Column="1" Grid.Row="5"                                                   
                                       IsEditable="False"  Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 8 0" SelectedIndex="0">
                                 <x:String>CTS/RTS</x:String>
                                 <x:String>XON/XOFF</x:String>
                             </ComboBox>
-                            <ToggleButton x:ConnectionId='48' x:Name="ConnectButton" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="6"                             
+                            <ToggleButton x:ConnectionId='58' x:Name="ConnectButton" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="6"                             
                                     VerticalAlignment="Center" Margin="0 0 8 0"  HorizontalAlignment="Stretch" Content="连接">
                             </ToggleButton>
                             <AppBarSeparator Grid.Column="1" Grid.Row="0" Margin="-8 0 0 0" HorizontalAlignment ="Left"/>
@@ -333,14 +416,14 @@
 
 
                 <CommandBar Grid.Row="2" >
-                    <AppBarToggleButton x:ConnectionId='30' Icon="Shuffle" Label="Shuffle"                            />
-                    <AppBarToggleButton x:ConnectionId='31' Icon="RepeatAll" Label="Repeat"                           />
+                    <AppBarToggleButton x:ConnectionId='40' Icon="Shuffle" Label="Shuffle"                            />
+                    <AppBarToggleButton x:ConnectionId='41' Icon="RepeatAll" Label="Repeat"                           />
                     <AppBarSeparator/>
-                    <AppBarButton x:ConnectionId='32' Icon="Link" Label="Back"                           />
-                    <AppBarButton x:ConnectionId='33' Icon="PreviewLink" Label="Stop"                           />
-                    <AppBarToggleButton x:ConnectionId='34' Icon="Play" Label="Play"                                 ToolTipService.ToolTip="开始/暂停"/>
-                    <AppBarButton x:ConnectionId='35' Icon="Download" Label="down"                                 ToolTipService.ToolTip="到达最底部"/>
-                    <AppBarButton x:ConnectionId='36' Icon="Add" Label="add"                                ToolTipService.ToolTip="添加小部件">
+                    <AppBarButton x:ConnectionId='42' Icon="Link" Label="Back"                           />
+                    <AppBarButton x:ConnectionId='43' Icon="PreviewLink" Label="Stop"                           />
+                    <AppBarToggleButton x:ConnectionId='44' Icon="Play" Label="Play"                                 ToolTipService.ToolTip="开始/暂停"/>
+                    <AppBarButton x:ConnectionId='45' Icon="Download" Label="down"                                 ToolTipService.ToolTip="到达最底部"/>
+                    <AppBarButton x:ConnectionId='46' Icon="Add" Label="add"                                ToolTipService.ToolTip="添加小部件">
                         <AppBarButton.Flyout>
                             <Flyout>
                                 <ListView Height="160" Width="800" SelectionMode="Extended"
@@ -358,8 +441,8 @@
                     </AppBarButton>
 
                     <CommandBar.SecondaryCommands>
-                        <AppBarButton x:ConnectionId='37' Label="Like"                           />
-                        <AppBarButton x:ConnectionId='38' Label="Dislike"                           />
+                        <AppBarButton x:ConnectionId='47' Label="Like"                           />
+                        <AppBarButton x:ConnectionId='48' Label="Dislike"                           />
                     </CommandBar.SecondaryCommands>
 
                     <CommandBar.Content>
@@ -367,7 +450,7 @@
                     </CommandBar.Content>
                 </CommandBar>
 
-                <textcontrolbox:TextControlBox x:ConnectionId='27' ShowLineHighlighter="True" SyntaxHighlighting="True" 
+                <textcontrolbox:TextControlBox x:ConnectionId='37' ShowLineHighlighter="True" SyntaxHighlighting="True" 
                     x:Name="dialogTextBox" Grid.Row="2" Margin="0 40 0 40" IsReadonly="False"                                                   >
                 </textcontrolbox:TextControlBox>
 
@@ -377,7 +460,7 @@
                         <ColumnDefinition Width="38"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBox x:ConnectionId='29'    MaxHeight="80" x:Name="SendTextBox"
+                    <TextBox x:ConnectionId='39'    MaxHeight="80" x:Name="SendTextBox"
                                 Grid.Column="0"
                                 PlaceholderText="你想发送什么？"
                                 HorizontalAlignment="Stretch"
@@ -400,7 +483,7 @@
 
 
 
-                <TabView x:ConnectionId='28' Grid.Column="0" Grid.Row="0" 
+                <TabView x:ConnectionId='38' Grid.Column="0" Grid.Row="0" 
                                                             
                                                                
                                          
