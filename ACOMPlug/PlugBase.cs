@@ -63,7 +63,7 @@ public interface IPlugProcessBase : IDisposable
     PluginInfo GetPluginInformation();
 
     public List<ChannelMassage> Process(RawDataMassage data);
-
+    public RawDataMassage GetNopolicyData();
 }
 
 

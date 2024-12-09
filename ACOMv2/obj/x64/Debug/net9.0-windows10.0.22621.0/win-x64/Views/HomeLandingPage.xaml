@@ -12,9 +12,10 @@
       xmlns:view_models="using:ACOMv2.ViewModels"
       
       mc:Ignorable="d">
+    <Page.DataContext>
+        view_models:HomeLandingViewModel
+    </Page.DataContext>
     <Page.Resources>
-
-
         <Style x:Key="iconStyle" TargetType="AppBarButton">
             <Setter Property="Template">
                 <Setter.Value>
@@ -166,7 +167,7 @@
                 </Expander>
         </DataTemplate>
 
-        <DataTemplate x:Key="LinkDeviceListViewTemplate"                                    >
+        <DataTemplate x:Key="LinkDeviceListViewTemplate"                                          >
 
             <Grid x:ConnectionId='11'                                                                                          >
                 <Grid.ColumnDefinitions>
@@ -203,7 +204,7 @@
         </DataTemplate>
 
 
-        <DataTemplate x:Key="SmallPartsListViewTemplate"                                    >
+        <DataTemplate x:Key="SmallPartsListViewTemplate"                                          >
 
             <Grid x:ConnectionId='9'                                                                                          Width="120" Height="120">
                 <Border Width="120" Height="120"></Border>
@@ -268,7 +269,7 @@
                             SelectionMode="None" IsMultiSelectCheckBoxEnabled="False" IsRightTapEnabled="True"
                             x:Name="ListView_LinkDevice"
                             ItemTemplate="{StaticResource ContactListViewTemplate}"
-                                                             
+                                                                                   
                             BorderThickness="0"
                             MinWidth="120"
                             MinHeight="250"
@@ -297,7 +298,7 @@
 
                      x:Name="BaseExample"
                     ItemTemplate="{StaticResource LinkDeviceListViewTemplate}"
-                                                           
+                                                                     
 
                     BorderThickness="1"
                     MinWidth="120"
@@ -343,7 +344,7 @@
                             <TextBlock Grid.Column="0" Grid.Row="5"  Text="流控"   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8 0 0 0"/>
 
                             <ComboBox x:ConnectionId='52' x:Name="combox_COM" Grid.Column="1" Grid.Row="0" IsEditable="True"  Width="100"                                            
-                              HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 8 0"                                                       
+                              HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 8 0"                                                                 
                                                                                                                              >
                             </ComboBox>
 

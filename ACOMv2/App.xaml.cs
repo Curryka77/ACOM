@@ -43,7 +43,7 @@ public partial class App : Application
         services.AddTransient<AppUpdateSettingViewModel>();
         services.AddTransient<AboutUsSettingViewModel>();
         services.AddTransient<BreadCrumbBarViewModel>();
-        //services.AddTransient<HomeLandingViewModel>();
+        services.AddTransient<HomeLandingViewModel>();
 
         return services.BuildServiceProvider();
     }

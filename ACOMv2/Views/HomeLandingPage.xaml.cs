@@ -16,110 +16,7 @@ using System.Runtime.CompilerServices;
 using WinUICommunity;
 using System.Management;
 using static ACOMv2.ViewModels.HomeLandingViewModel;
-
-class SerialPortFindTool
-{
-    /// <summary>
-    /// 枚举win32 api
-    /// </summary>
-    private enum HardwareEnum
-    {
-        // 硬件
-        Win32_Processor, // CPU 处理器
-        Win32_PhysicalMemory, // 物理内存条
-        Win32_Keyboard, // 键盘
-        Win32_PointingDevice, // 点输入设备，包括鼠标。
-        Win32_FloppyDrive, // 软盘驱动器
-        Win32_DiskDrive, // 硬盘驱动器
-        Win32_CDROMDrive, // 光盘驱动器
-        Win32_BaseBoard, // 主板
-        Win32_BIOS, // BIOS 芯片
-        Win32_ParallelPort, // 并口
-        Win32_SerialPort, // 串口
-        Win32_SerialPortConfiguration, // 串口配置
-        Win32_SoundDevice, // 多媒体设置，一般指声卡。
-        Win32_SystemSlot, // 主板插槽 (ISA & PCI & AGP)
-        Win32_USBController, // USB 控制器
-        Win32_NetworkAdapter, // 网络适配器
-        Win32_NetworkAdapterConfiguration, // 网络适配器设置
-        Win32_Printer, // 打印机
-        Win32_PrinterConfiguration, // 打印机设置
-        Win32_PrintJob, // 打印机任务
-        Win32_TCPIPPrinterPort, // 打印机端口
-        Win32_POTSModem, // MODEM
-        Win32_POTSModemToSerialPort, // MODEM 端口
-        Win32_DesktopMonitor, // 显示器
-        Win32_DisplayConfiguration, // 显卡
-        Win32_DisplayControllerConfiguration, // 显卡设置
-        Win32_VideoController, // 显卡细节。
-        Win32_VideoSettings, // 显卡支持的显示模式。
-
-        // 操作系统
-        Win32_TimeZone, // 时区
-        Win32_SystemDriver, // 驱动程序
-        Win32_DiskPartition, // 磁盘分区
-        Win32_LogicalDisk, // 逻辑磁盘
-        Win32_LogicalDiskToPartition, // 逻辑磁盘所在分区及始末位置。
-        Win32_LogicalMemoryConfiguration, // 逻辑内存配置
-        Win32_PageFile, // 系统页文件信息
-        Win32_PageFileSetting, // 页文件设置
-        Win32_BootConfiguration, // 系统启动配置
-        Win32_ComputerSystem, // 计算机信息简要
-        Win32_OperatingSystem, // 操作系统信息
-        Win32_StartupCommand, // 系统自动启动程序
-        Win32_Service, // 系统安装的服务
-        Win32_Group, // 系统管理组
-        Win32_GroupUser, // 系统组帐号
-        Win32_UserAccount, // 用户帐号
-        Win32_Process, // 系统进程
-        Win32_Thread, // 系统线程
-        Win32_Share, // 共享
-        Win32_NetworkClient, // 已安装的网络客户端
-        Win32_NetworkProtocol, // 已安装的网络协议
-        Win32_PnPEntity,//all device
-    }
-    /// <summary>
-    /// WMI取硬件信息
-    /// </summary>
-    /// <param name="hardType"></param>
-    /// <param name="propKey"></param>
-    /// <returns></returns>
-    private static string[] MulGetHardwareInfo(HardwareEnum hardType, string propKey)
-    {
-        List<string> strs = new List<string>();
-        try
-        {
-            using (ManagementObjectSearcher searcher = new ManagementObjectSearcher("select * from " + hardType))
-            {
-                var hardInfos = searcher.Get();
-                foreach (var hardInfo in hardInfos)
-                {
-                    if (hardInfo.Properties[propKey].Value != null && hardInfo.Properties[propKey].Value.ToString().Contains("COM"))
-                    {
-                        strs.Add(hardInfo.Properties[propKey].Value.ToString());
-                    }
-
-                }
-                searcher.Dispose();
-            }
-
-            return strs.ToArray();
-        }
-        catch
-        {
-            return strs.ToArray();
-        }
-    }
-
-    /// <summary>
-    /// 串口信息
-    /// </summary>
-    /// <returns></returns>
-    public static string[] GetSerialPort()
-    {
-        return MulGetHardwareInfo(HardwareEnum.Win32_PnPEntity, "Name");
-    }
-}
+using CommunityToolkit.WinUI.Collections;
 
 
 
@@ -171,134 +68,7 @@ public class MainPage_Singleton : ObservableObject
         return uniqueInstance;
     }
 }
-public class LinkDeviceDates : ObservableObject
-{
-    private string _DeviceName;
-    private string _DeviceDesc = "NO desc";
-    private int _boundRate = 115200;
-    private int _dateBit = 8;
-    private string _checkBit = "N";
-    private string _stopBit = "1";
-    private string _streamCtrl = "XON/XOFF";
-    private string _overView = "NONE";
 
-    public string is_connect = "false";
-    private IO_Manage ioManage = IO_Manage.Instance;
-
-    public string ConnectState
-    {
-        get => is_connect;
-        set
-        {
-            SetProperty(ref is_connect, value);
-            if (is_connect == "true")
-            {
-                Connect();
-            }
-            else
-            {
-                DisConnect();
-            }
-        }
-    }
-    public void Connect()
-    {
-        Debug.WriteLine(_DeviceName + " " + "connecting...");
-        if (ioManage.Connect(_DeviceName) != null)
-        {
-            Debug.WriteLine(_DeviceName + " " + "connected");
-            is_connect = "true";
-        }
-    }
-    public void DisConnect()
-    {
-
-        ioManage.DisConnect(_DeviceName);
-        Debug.WriteLine(_DeviceName + "disconnect");
-        is_connect = "false";
-    }
-    public string DeviceName
-    {
-        get => _DeviceName;
-        set => SetProperty(ref _DeviceName, value);
-    }
-
-    public string DeviceDesc
-    {
-        get => _DeviceDesc;
-        set => SetProperty(ref _DeviceDesc, value);
-    }
-
-    public int BoundRate
-    {
-        get => (int)_boundRate;
-        set => SetProperty(ref _boundRate, value);
-    }
-
-    public int DateBit
-    {
-        get => (int)_dateBit;
-        set { SetProperty(ref _dateBit, value); Update(); }
-    }
-
-    public string CheckBit
-    {
-        get => (string)_checkBit;
-        set
-        {
-            SetProperty(ref _checkBit, value); Update();
-        }
-    }
-    public string StopBit
-    {
-        get => (string)_stopBit;
-        set
-        {
-            SetProperty(ref _stopBit, value); Update();
-        }
-    }
-    public string StreamCtrl
-    {
-        get => (string)_streamCtrl;
-        set
-        {
-            SetProperty(ref _streamCtrl, value); Update();
-        }
-    }
-
-    public string OverView
-    {
-        get => (string)_overView;
-        set => SetProperty(ref _overView, value);
-    }
-    public void Update()
-    {
-        OverView = _boundRate.ToString() + " " + _dateBit.ToString() + _checkBit.ToString() + _stopBit.ToString();
-    }
-    public LinkDeviceDates(string deviceName)
-    {
-        DeviceName = deviceName;
-        Update();
-    }
-
-    public LinkDeviceDates(string deviceName, string deviceDesc)
-    {
-        DeviceName = deviceName;
-        DeviceDesc = deviceDesc;
-        //DeviceDesc.Replace(deviceName,"");
-        Update();
-    }
-
-
-}
-public class SmallPartDates : ObservableObject
-{
-
-    public SmallPartDates()
-    {
-
-    }
-}
 
 
 public class ConsolString : INotifyPropertyChanged
@@ -335,16 +105,10 @@ public sealed partial class HomeLandingPage : Page
 
     ConsolString total_str = new("none");
 
-    //public string[] SerialPortsSource;
-    public ObservableCollection<CannelDataView> dateSource = new(); //数据颜色
-    public ObservableCollection<LinkDeviceDates> linkDeviceSource = new(); //连接设备
-    public ObservableCollection<string> SerialPortsSource = new(); //连接设备
+
 
     public MainPage_Singleton mainPage_Singleton = MainPage_Singleton.GetInstance();
 
-    ManagementEventWatcher USBInsert;
-    ManagementEventWatcher USBRemove;
-    string[] Ports = { "NULL" };
     string[] PortsDesc = { "NULL" };
 
 
@@ -371,162 +135,27 @@ public sealed partial class HomeLandingPage : Page
         //GC.Collect();
     }
 
-    /// <summary>
-    /// USB设备插入
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    public void USBInsert_EventArrived(object sender, EventArrivedEventArgs e)
-    {
-        Debug.WriteLine("Insert start");
-
-        string[] tempPorts = System.IO.Ports.SerialPort.GetPortNames();
-        if (tempPorts.Count() == Ports.Count())
-            return;
-        else
-            Ports = tempPorts;
-
-        PortsDesc = SerialPortFindTool.GetSerialPort();
-        ChangeCOM();
-
-        Debug.WriteLine("Insert  end");
-
-        //if (IsConnected)
-        //    return;
-
-        //if (blnDesireConnected && Open())
-        //    commExecuteInterface?.DeviceArrivaled();
-    }
-
-    /// <summary>
-    /// USB设备拔出
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    public void USBRemove_EventArrived(object sender, EventArrivedEventArgs e)
-    {
-        string[] tempPorts = System.IO.Ports.SerialPort.GetPortNames();
-        if (tempPorts.Count() == Ports.Count())
-            return;
-        else
-            Ports = tempPorts;
-        ChangeCOM();
-
-        //if (!IsConnected)
-        //    return;
-
-        //IsConnected = false;
-        //spUSB.Close();
-        //commExecuteInterface?.DeviceRemoved();
-    }
-    public void ChangeCOM()
-    {
-        Ports = System.IO.Ports.SerialPort.GetPortNames();
-        // 使用lambda表达式创建线程
-
-
-        DispatcherQueue.TryEnqueue(() =>
-        {
-            linkDeviceSource.Clear();
-            foreach (string port in Ports)
-            {
-                Debug.WriteLine(port);
-                foreach (string p in PortsDesc)
-                {
-                    if (p.Contains(port))
-                    {
-                        linkDeviceSource.Add(new LinkDeviceDates(port, p));
-                    }
-                }
-
-                //SerialPortsSource.Add(port);
-            }
-        });        //});
-        //thread1.Start();
-    }
-
+    public HomeLandingViewModel ViewModel { get; }
 
     public HomeLandingPage()
     {
         IO_Manage.Instance.page = this;
+        List<SerialDevice> serialDevices = new();
+        ViewModel = App.GetService<HomeLandingViewModel>();
 
-        // 使用lambda表达式创建线程
-        Thread thread = new Thread(() =>
-        {
-            Console.WriteLine("线程启动，执行任务。");
-            PortsDesc = SerialPortFindTool.GetSerialPort();
-            ChangeCOM();
-            //建立监听
-            ManagementScope scope = new ManagementScope("root\\CIMV2");
-            scope.Options.EnablePrivileges = true;
-            //建立插入监听
-            try
-            {
-                WqlEventQuery USBInsertQuery = new WqlEventQuery("__InstanceCreationEvent", "TargetInstance ISA 'Win32_PnPEntity'");
-                USBInsertQuery.WithinInterval = new TimeSpan(0, 0, 2);
-                USBInsert = new ManagementEventWatcher(scope, USBInsertQuery);
-                USBInsert.EventArrived += USBInsert_EventArrived;
-                USBInsert.Start();
-            }
-            catch (Exception)
-            {
-                if (USBInsert != null)
-                {
-                    USBInsert.Stop();
-                }
-                throw;
-            }
-            //建立拔出监听
-            try
-            {
-                WqlEventQuery USBRemoveQuery = new WqlEventQuery("__InstanceDeletionEvent", "TargetInstance ISA 'Win32_PnPEntity'");
-                USBRemoveQuery.WithinInterval = new TimeSpan(0, 0, 2);
-                USBRemove = new ManagementEventWatcher(scope, USBRemoveQuery);
-                USBRemove.EventArrived += USBRemove_EventArrived;
-                USBRemove.Start();
-            }
-            catch (Exception ex)
-            {
-                if (USBRemove != null)
-                {
-                    USBRemove.Stop();
-                }
-                throw ex;
-            }
-
-        });
-
-        // 启动线程
-        thread.Start();
-
-
-        ChangeCOM();
-
-
-        for (int i = 0; i < 20; i++)
-        {
-            dateSource.Add(new CannelDataView("data" + i.ToString(),   -1.2198256, i.ToString()));
-            dateSource[i].DataColor.Color = ACOMv2.Common.ColorHelper.GenerateDistinctColor((i * 78) % 128);
-        }
-
-
-        //// 获取所有可用的串口名称
-        //Ports = System.IO.Ports.SerialPort.GetPortNames();
-
-        //// 检查是否有可用的串口
-        //if (Ports.Length == 0)
-        //{
-        //    Debug.WriteLine("没有找到串口。");
-        //    return;
-        //}
-
-        //ViewModel = App.GetService<HomeLandingViewModel>();
         this.InitializeComponent();
+        IO_Manage.updateDevices += Instance_update;
+        //IO_Manage.Instance.updateSerialDevce();
+
+        //ListView_LinkDevice.ItemsSource = ViewModel.advancedCollectionView;
+
+        ViewModel.advancedCollectionView.SortDescriptions.Add(new SortDescription("DataName", SortDirection.Descending));
+        ViewModel.advancedCollectionView.Add(new CannelDataView("data", -0, "9"));
         //AppInfo = $"{App.Current.AppName} v{App.Current.AppVersion}";
 
 
         //Use a builtin language -> see list a bit higher
-        dialogTextBox.CodeLanguage = TextControlBox.GetCodeLanguageFromId(CodeLanguageId.CSharp);
+        //dialogTextBox.CodeLanguage = TextControlBox.GetCodeLanguageFromId(CodeLanguageId.CSharp);
 
         //Use a custom language:
         // 假设你的JSON文件名为"data.json"，位于与你的程序相同的目录下
@@ -557,17 +186,6 @@ public sealed partial class HomeLandingPage : Page
         //}
 
     }
-
-    //protected override void OnNavigatedTo(NavigationEventArgs e)
-    //{
-    //    base.OnNavigatedTo(e);
-    //    allLandingPage.GetData(ViewModel.JsonNavigationViewService.DataSource);
-    //    allLandingPage.OrderBy(i => i.Title);
-    //}
-
-
-
-
     private void TabView_Loaded(object sender, RoutedEventArgs e)
     {
         for (int i = 0; i < 1; i++)
@@ -621,7 +239,7 @@ public sealed partial class HomeLandingPage : Page
     {
         AppBarButton? button = sender as AppBarButton;
         Grid parent = button.FindParent<Grid>();
-        foreach (var item in dateSource)
+        foreach (var item in ViewModel.dateSource)
         {
             if (item.is_equal(parent.Tag as string) == true)
             {
@@ -727,14 +345,14 @@ public sealed partial class HomeLandingPage : Page
         if (textBox != null)
         {
             var str = textBox.Tag as string;
-            dateSource[Convert.ToInt32(str)].DataName = textBox.Text;
+            ViewModel.dateSource[Convert.ToInt32(str)].DataName = textBox.Text;
         }
     }
 
     private void myColorPicker_ColorChanged(ColorPicker sender, ColorChangedEventArgs args)
     {
         var str = sender.Tag as string;
-        dateSource[Convert.ToInt32(str)].DataColor.Color = sender.Color;
+        ViewModel.dateSource[Convert.ToInt32(str)].DataColor.Color = sender.Color;
         //dateSource[Convert.ToInt32(str)].DataColor = new SolidColorBrush(sender.Color);
     }
 
@@ -745,16 +363,28 @@ public sealed partial class HomeLandingPage : Page
     private void ComboBox_DropDownOpened(object sender, object e)
     {
         Debug.WriteLine("start to scanf serial");
-        string[] _SerialPortsSource = System.IO.Ports.SerialPort.GetPortNames();
-        SerialPortsSource.Clear();
-        foreach (string port in _SerialPortsSource)
-        {
-            Debug.WriteLine("serial com" + port);
-            SerialPortsSource.Add(port);
-        }
+        //string[] _SerialPortsSource = System.IO.Ports.SerialPort.GetPortNames();
+        //ViewModel.SerialPortsSource.Clear();
+        //foreach (string port in _SerialPortsSource)
+        //{
+        //    Debug.WriteLine("serial com" + port);
+        //    ViewModel.SerialPortsSource.Add(port);
+        //}
     }
 
-
+    private void Instance_update(List<SerialDevice> serialDevices)
+    {
+        DispatcherQueue.TryEnqueue(() =>
+        {
+            Debug.WriteLine("update serial1");
+            Debug.WriteLine("update serial2");
+            ViewModel.SerialPortsSource.Clear();
+            for (int i = 0; i < serialDevices.Count; ++i)
+            {
+                ViewModel.SerialPortsSource.Add(ViewModel.Devices[i].PortName);
+            }
+        });
+    }
     private void combox_COM_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         // 获取发送事件的 ComboBox
@@ -764,7 +394,7 @@ public sealed partial class HomeLandingPage : Page
         {
             if (comboBox.SelectedItem != null)
             {
-                foreach (LinkDeviceDates dev in linkDeviceSource)
+                foreach (LinkDeviceDates dev in ViewModel.linkDeviceSource)
                 {
                     if (dev.DeviceName.Equals(comboBox.SelectedItem.ToString()))
                     {
@@ -834,7 +464,7 @@ public sealed partial class HomeLandingPage : Page
             )
         {
             //if()
-            foreach (LinkDeviceDates dev in linkDeviceSource)
+            foreach (LinkDeviceDates dev in ViewModel.linkDeviceSource)
             {
                 if (dev.DeviceName.Equals(combox_COM.SelectedItem.ToString()))
                 {
@@ -875,7 +505,7 @@ public sealed partial class HomeLandingPage : Page
         {
             if (combox_COM.SelectedItem != null)
             {
-                foreach (LinkDeviceDates dev in linkDeviceSource)
+                foreach (LinkDeviceDates dev in ViewModel.linkDeviceSource)
                 {
                     if (dev.DeviceName.Equals(combox_COM.SelectedItem.ToString()))
                     {

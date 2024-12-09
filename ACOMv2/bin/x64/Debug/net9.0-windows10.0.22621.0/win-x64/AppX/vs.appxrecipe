@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-12-06T13:22:29.565</Modified>
+      <Modified>2024-12-09T11:58:15.106</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2024-12-06T13:07:39.018</Modified>
+      <Modified>2024-12-09T07:15:37.532</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMPlug\bin\Debug\net8.0-windows10.0.19041.0\ACOMPlug.pri">
       <PackagePath>ACOMPlug.pri</PackagePath>
@@ -56,23 +56,23 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\ACOMv2.dll">
       <PackagePath>ACOMv2.dll</PackagePath>
-      <Modified>2024-12-06T13:22:29.162</Modified>
+      <Modified>2024-12-09T11:58:14.424</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMPlug\bin\Debug\net8.0-windows10.0.19041.0\ACOMPlug.dll">
       <PackagePath>ACOMPlug.dll</PackagePath>
-      <Modified>2024-12-06T11:00:02.355</Modified>
+      <Modified>2024-12-08T12:18:04.549</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ClassLibrary1\bin\Debug\net8.0-windows10.0.19041.0\ClassLibrary1.dll">
       <PackagePath>ClassLibrary1.dll</PackagePath>
-      <Modified>2024-12-06T06:45:43.294</Modified>
+      <Modified>2024-12-08T12:19:31.553</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\TextControlBox-WinUI\TextControlBox\bin\Debug\net6.0-windows10.0.19041.0\TextControlBox.dll">
       <PackagePath>TextControlBox.dll</PackagePath>
-      <Modified>2024-12-06T06:45:44.005</Modified>
+      <Modified>2024-12-08T12:19:31.730</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\obj\x64\Debug\net9.0-windows10.0.22621.0\win-x64\apphost.exe">
       <PackagePath>ACOMv2.exe</PackagePath>
-      <Modified>2024-12-06T13:22:29.166</Modified>
+      <Modified>2024-12-09T11:58:14.461</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-x86\native\WebView2Loader.dll">
       <PackagePath>runtimes\win-x86\native\WebView2Loader.dll</PackagePath>
@@ -144,7 +144,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\Assets\Plugs\Processers\ProcesserPlugWaterFire.dll">
       <PackagePath>Assets\Plugs\Processers\ProcesserPlugWaterFire.dll</PackagePath>
-      <Modified>2024-12-06T11:14:33.820</Modified>
+      <Modified>2024-12-08T12:19:28.562</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\Assets\Store\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\Store\LockScreenLogo.scale-200.png</PackagePath>
@@ -2260,7 +2260,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\TextControlBox-WinUI\TextControlBox\bin\Debug\net6.0-windows10.0.19041.0\TextControlBox.xml">
       <PackagePath>TextControlBox.xml</PackagePath>
-      <Modified>2024-12-06T06:45:43.982</Modified>
+      <Modified>2024-12-08T12:19:31.701</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\obj\x64\Debug\net9.0-windows10.0.22621.0\win-x64\MsixContent\Microsoft.UI.pri">
       <PackagePath>Microsoft.UI.pri</PackagePath>

@@ -43,15 +43,23 @@ namespace ACOM.Models
     public class ChannelProcesser
     {
         //List<ChannelMassage> _data = new List<ChannelMassage>(8);
-        Dictionary<string, ChannelMassage> dataMap = new Dictionary<string, ChannelMassage>();
-        List<byte> tmpbytes = new List<byte>(128);
-        bool receivedFrame = false;
-
+ 
+        List<byte> tmpbytes = new List<byte>(4096);
+        List<byte[]> frameDatas = new();
         static int unNameIndex = 0;
+        Queue<RawDataMassage> noPloicyRawDataMassages = new Queue<RawDataMassage>(20);
+        public RawDataMassage GetNopolicyData()
+        {
+            if (noPloicyRawDataMassages.Count > 0)
+            {
+                return noPloicyRawDataMassages.Dequeue();
+            }
+            else
+            {
+                return null;
+            }
+        }
 
-
-
-       
 
         public ChannelProcesser()
         {
@@ -61,7 +69,36 @@ namespace ACOM.Models
         {
 
         }
- 
+
+
+        public static  void PrintProcessedData(List<ChannelMassage> data)
+        {
+            if (data == null)
+            {
+                Debug.WriteLine("No data\n");
+                return;
+            }
+            foreach (var item in data)
+            {
+                Debug.WriteLine($"Name: {item.Name}, Type: {item.Type}, DateTime: {item.DateTime}");
+                if (item.rawChannelData != null)
+                {
+                    Debug.WriteLine("Raw Data:");
+                    Debug.WriteLine("Char\tHex");
+                    for (int i = 0; i < item.rawChannelData.Length; i++)
+                    {
+                        char character = item.rawChannelData[i] >= 32 && item.rawChannelData[i] <= 126 ? (char)item.rawChannelData[i] : ' ';
+                        string hexValue = item.rawChannelData[i].ToString("X2");
+                        Debug.WriteLine($"{character}\t{hexValue}");
+                    }
+                }
+                else
+                {
+                    Debug.WriteLine("Raw Data: null");
+                }
+                Debug.WriteLine(" ");
+            }
+        }
 
         //public bool Date_Search(string IsName)
         //{
@@ -82,83 +119,51 @@ namespace ACOM.Models
         public List<ChannelMassage> Process(RawDataMassage data)
         {
             Debug.WriteLine("数据处理");
-            List<ChannelMassage> _data = new List<ChannelMassage>(8);
-            int cnt = 0;
-            int lastcnt = 0;
-            //Debug.WriteLine("1");
-            int i = 0;
-            while (cnt < data._data.Count())
+            foreach (byte b in data._data)
             {
-                
-                for (i = lastcnt; i < data._data.Count(); ++i)
+                tmpbytes.Add(b);
+                if (b == '\n')
                 {
-                    if (data._data[i] == '\n')
-                    {
-                        receivedFrame = true;
-                        break;
-                    }
-                }
-                cnt = i;
-                //Debug.WriteLine("cnt" + cnt.ToString());
-
-                //将长度为cnt的数据添加到缓冲区
-                tmpbytes.AddRange(data._data[lastcnt..cnt]);
-                lastcnt = cnt+1;
-                if (!receivedFrame)
-                {
-                    Debug.WriteLine("数据处理完毕");
-                    return _data;
-                }
-                receivedFrame = false;
-                List<byte[]> lists = ByteSplitter.Split(tmpbytes, new List<byte> { (byte)':' });
-                if (lists.Count > 2)
-                {
-                    //TODO:错误的格式，只取最后一个:分割的前面一段作为名字
-                }
-                else if (lists.Count == 2)
-                {
-                    //对其进行再次分包
-                    List<byte[]> NameLists = ByteSplitter.Split(lists[0], new List<byte> { (byte)',' });
-                    List<byte[]> dateLists = ByteSplitter.Split(lists[1], new List<byte> { (byte)',' });
-                    //获取两个List的较大值
-                    int count = NameLists.Count > dateLists.Count ? NameLists.Count : dateLists.Count;
-                    //创建count个ChannelMassage
-                    for (int j = 0; j < count; ++j)
-                    {
-                        byte[] Name = NameLists.ElementAtOrDefault(j) ?? ("Data" + j.ToString()).GetBytes();
-                        byte[] date = dateLists.ElementAtOrDefault(j) ?? ("No Data").GetBytes();
-                        try
-                        {
-                            // 尝试添加一个重复的键
-                            dataMap.Add(Name.EncodeToString(), new ChannelMassage { Name = Name.EncodeToString(), rawChannelData = date });
-                        }
-                        catch (ArgumentException e)
-                        {
-                            _ = e;
-                            dataMap[Name.EncodeToString()].rawChannelData = date;
-
-                        }
-                        Debug.WriteLine(date.EncodeToString());
-
-                    }
-                    Debug.WriteLine("数据分包完成");
-                    //清理数据
+                    frameDatas.Add(tmpbytes.ToArray());
                     tmpbytes.Clear();
-                    _data.AddRange(dataMap.Values.ToList());
-
                 }
-                else
-                {
-                    //count==1
-                    //说明是没有:的数据
-
-                }
-
-
             }
+            if (frameDatas.Count != 0)
+            {
+                List<ChannelMassage> frames = new List<ChannelMassage>(frameDatas.Count);
+                foreach (var frame in frameDatas)
+                {
+                    string frameString = Encoding.UTF8.GetString(frame);
+                    if (frameString.Contains(":"))
+                    {
+                        var parts = frameString.Split(':');
+                        var leftPart = string.Join(":", parts.Take(parts.Length - 1)).Split(',').ToList();
+                        var rightPart = parts.Last().Split(',').ToList();
 
-            return _data;
+                        for (int i = 0; i < Math.Max(leftPart.Count, rightPart.Count); i++)
+                        {
+                            ChannelMassage channelMassage = new ChannelMassage
+                            {
+                                rawChannelData = i < rightPart.Count ? Encoding.UTF8.GetBytes(rightPart[i]) : null,
+                                Name = i < leftPart.Count ? leftPart[i] : "AutoName" + unNameIndex++,
+                                Type = "Processed",
+                                DateTime = data._dateTime
+                            };
+                            frames.Add(channelMassage);
+                        }
+                    }
+                    else
+                    {
+                        noPloicyRawDataMassages.Enqueue(new RawDataMassage(frame, data._dateTime, data._dateSource));
+                    }
+                    unNameIndex = 0;
+                }
+                frameDatas.Clear();
+                return frames;
+            }
+            else return null;
         }
+
         protected static string IdentifyDataType(byte[] data, string Type = "Auto")
         {
             if (data == null || data.Length == 0)
@@ -235,26 +240,43 @@ namespace ACOM.Models
     }
 
 
+    public class SerialDevice
+    {
+        public string PortName;
+        public string FriendlyName;
+        public bool IsConnect;
+
+    }
 
 
-
-class IO_Manage: Singleton<IO_Manage>
+    class IO_Manage: Singleton<IO_Manage>
     {
         public Vector<ChannelMassage> ChannelDatas;
         public HomeLandingPage page;
         static ChannelProcesser channelProcesser = new();
         static Dictionary<string, ChannelMassage> GlobChannelMassage = new Dictionary<string, ChannelMassage>();
         static List<ChannelViewData> GlobChannelViewData = new();
-        public delegate void ReceivedCannelMsg(ref readonly Dictionary<string, ChannelMassage> dataMap);
-        public delegate void UpdateCannelViewMsg(ref readonly List<ChannelViewData> globChannelViewData);
+        public delegate void ReceivedCannelMsg( Dictionary<string, ChannelMassage> dataMap);
+        public delegate void UpdateCannelViewMsg(List<ChannelViewData> globChannelViewData);
+        public delegate void UpdateDevices(List<SerialDevice> serialDevices);
         // 基于上面的委托定义事件
         public static event ReceivedCannelMsg receivedCannelMsg ;
         public static event UpdateCannelViewMsg updateCannelViewMsg;
+        public static event UpdateDevices updateDevices ;
 
+        List<BytesIO.Serial.SerialClient> serialClients = new();
+        List<BytesIO.Tcp.TcpClient> tcpClients = new();
+        List<BytesIO.Kcp.KcpClient> kcpClients = new();
+        List<BytesIO.Udp.UdpClient> udpClients = new();
+        ConcurrentQueue<RawDataMassage> charRecQueue = new();
+        Dictionary<object, IPlugProcessBase> channelProcesserMap = new();
 
+        List<SerialDevice> serialDevices = new();
 
         public static void UnionGlobChannelMassage(List<ChannelMassage> Data)
         {
+            if (Data == null) return;
+            
             foreach (var pair in Data)
             {
                 if (GlobChannelMassage.ContainsKey(pair.Name)) GlobChannelMassage[pair.Name] = pair;
@@ -264,7 +286,9 @@ class IO_Manage: Singleton<IO_Manage>
             }
             //触发钩子函数
             if(receivedCannelMsg != null)
-                receivedCannelMsg(ref GlobChannelMassage);
+                receivedCannelMsg( GlobChannelMassage);
+            ChannelProcesser.PrintProcessedData(GlobChannelMassage.Values.ToList());
+
             UnionGlobChannelViewMassage(channelProcesser.Process(Data));//更新成通道数据
         }
 
@@ -287,7 +311,7 @@ class IO_Manage: Singleton<IO_Manage>
                 //触发钩子函数
             }
             if (updateCannelViewMsg != null)
-                updateCannelViewMsg(ref GlobChannelViewData);
+                updateCannelViewMsg(GlobChannelViewData);
             Debug.WriteLine("更新通道显示数据 "+ Data.Count +" ");
         }
 
@@ -331,13 +355,6 @@ class IO_Manage: Singleton<IO_Manage>
             IPlugProcessBase plug =  Plugs.CreateInstance("ProcesserPlugWaterFire");
             channelProcesserMap.Add(sender, plug);
         }
-
-        List<BytesIO.Serial.SerialClient>  serialClients = new();
-        List<BytesIO.Tcp.TcpClient> tcpClients= new();
-        List<BytesIO.Kcp.KcpClient> kcpClients= new();
-        List<BytesIO.Udp.UdpClient> udpClients = new();
-        ConcurrentQueue<RawDataMassage> charRecQueue=new();
-        Dictionary<object, IPlugProcessBase> channelProcesserMap = new();
 
 
 
@@ -425,23 +442,83 @@ NOT_INIT:
         {
             // 在这里执行您的逻辑
             IO_Manage.Instance.doing = 1;
+            IO_Manage.Instance.updateSerialDevce();
+        }
+
+        public void updateSerialDevce()
+        {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            // 更新串口设备列表和友好名称
+            serialDevices.Clear();
+            foreach (string portName in SerialPort.GetPortNames())
+            {
+                SerialDevice device = new SerialDevice
+                {
+                    PortName = portName,
+                    FriendlyName = GetFriendlyName(portName),
+                    IsConnect = false
+                };
+                serialDevices.Add(device);
+            }
+
+            stopwatch.Stop();
+            Debug.WriteLine($"Execution Time: {stopwatch.ElapsedMilliseconds} ms");
+            if (updateDevices != null)
+                updateDevices(serialDevices);
         }
         private void Watcher_EventArrived(object sender, EventArrivedEventArgs e)
         {
             if (doing == 1)
             {
                 doing = 0;
-                Print("update" + e.ToString() + sender.GetType().ToString());
+                //Print("update" + e.ToString() + sender.GetType().ToString());
                 System.Timers.Timer timer = new System.Timers.Timer();
-                timer.Interval = 100; // 设置时间间隔为1000毫秒（1秒）
+                timer.Interval = 30; // 设置时间间隔为100毫秒（0.1秒）
                 timer.Elapsed += new System.Timers.ElapsedEventHandler(OnTimerElapsed);
                 timer.AutoReset = false; // 设置定时器在触发一次后不自动重置
                 timer.Start();
             }
-// ...
+            else
+            {
+                return;
+            }
+            
+        }
 
+        private Dictionary<string, string> portFriendlyNameCache = new Dictionary<string, string>();
+
+        private string GetFriendlyName(string portName)
+        {
+
+
+            if (portFriendlyNameCache.ContainsKey(portName))
+            {
+                return portFriendlyNameCache[portName];
+            }
+            try
+            {
+                using (var searcher = new ManagementObjectSearcher($"SELECT * FROM Win32_PnPEntity WHERE Name LIKE '%({portName})%'"))
+                {
+                    foreach (var obj in searcher.Get())
+                    {
+                        string friendlyName = obj["Caption"].ToString();
+                        portFriendlyNameCache[portName] = friendlyName;
+                        return friendlyName;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error getting friendly name for {portName}: {ex.Message}");
+            }
+
+
+            return portName;
 
         }
+
         IO_Manage() {
 
 

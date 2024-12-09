@@ -12,9 +12,10 @@
       xmlns:view_models="using:ACOMv2.ViewModels"
       
       mc:Ignorable="d">
+    <Page.DataContext>
+        view_models:HomeLandingViewModel
+    </Page.DataContext>
     <Page.Resources>
-
-
         <Style x:Key="iconStyle" TargetType="AppBarButton">
             <Setter Property="Template">
                 <Setter.Value>
@@ -166,7 +167,7 @@
                 </Expander>
         </DataTemplate>
 
-        <DataTemplate x:Key="LinkDeviceListViewTemplate" x:DataType="views:LinkDeviceDates" >
+        <DataTemplate x:Key="LinkDeviceListViewTemplate" x:DataType="view_models:LinkDeviceDates" >
 
             <Grid  ContextRequested="DataList_ContextRequested" ContextCanceled="DataList_ContextCanceled" >
                 <Grid.ColumnDefinitions>
@@ -203,7 +204,7 @@
         </DataTemplate>
 
 
-        <DataTemplate x:Key="SmallPartsListViewTemplate" x:DataType="views:LinkDeviceDates" >
+        <DataTemplate x:Key="SmallPartsListViewTemplate" x:DataType="view_models:LinkDeviceDates" >
 
             <Grid  ContextRequested="DataList_ContextRequested" ContextCanceled="DataList_ContextCanceled" Width="120" Height="120">
                 <Border Width="120" Height="120"></Border>
@@ -268,7 +269,7 @@
                             SelectionMode="None" IsMultiSelectCheckBoxEnabled="False" IsRightTapEnabled="True"
                             x:Name="ListView_LinkDevice"
                             ItemTemplate="{StaticResource ContactListViewTemplate}"
-                            ItemsSource="{x:Bind dateSource}"
+                            ItemsSource="{x:Bind ViewModel.advancedCollectionView}"
                             BorderThickness="0"
                             MinWidth="120"
                             MinHeight="250"
@@ -297,7 +298,7 @@
 
                      x:Name="BaseExample"
                     ItemTemplate="{StaticResource LinkDeviceListViewTemplate}"
-                    ItemsSource="{x:Bind linkDeviceSource}"
+                    ItemsSource="{x:Bind ViewModel.linkDeviceSource}"
 
                     BorderThickness="1"
                     MinWidth="120"
@@ -343,7 +344,7 @@
                             <TextBlock Grid.Column="0" Grid.Row="5"  Text="流控"   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8 0 0 0"/>
 
                             <ComboBox x:Name="combox_COM" Grid.Column="1" Grid.Row="0" IsEditable="True"  Width="100" DropDownOpened="ComboBox_DropDownOpened"   
-                              HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 8 0" ItemsSource="{x:Bind SerialPortsSource , Mode=OneWay}"
+                              HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 8 0" ItemsSource="{x:Bind ViewModel.SerialPortsSource , Mode=TwoWay}"
                                       SelectionChanged="combox_COM_SelectionChanged" TextSubmitted="combox_COM_TextSubmitted">
                             </ComboBox>
 
