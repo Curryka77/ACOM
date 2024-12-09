@@ -150,7 +150,7 @@
 
 
                             <TextBlock x:ConnectionId='21' Grid.Column="3"                                               TextWrapping="Wrap"
-                                HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,5" />
+                                HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" />
                             <wuc:Divider Margin="0 0 0 0" HorizontalAlignment="Right" MaxHeight="16" Orientation="Vertical" Grid.Column="1"  LineStroke="Black"  />
                         <wuc:Divider x:ConnectionId='22' Margin="0 0 0 0" HorizontalAlignment="Right" MaxHeight="16" Orientation="Vertical" Grid.Column="2"                                                />
 

@@ -67,6 +67,19 @@ public class CannelDataView : ObservableObject
         Command = deleteCommand;
         is_View = true;
     }
+    public CannelDataView(string dataName, string data, string id)
+    {
+
+        //DataColor = new SolidColorBrush(Colors.Salmon);
+        DataColor = new SolidColorBrush(Microsoft.UI.Colors.RoyalBlue);
+        DataName = dataName;
+        ID = id;
+        Data = data;
+        var deleteCommand = new StandardUICommand(StandardUICommandKind.Stop);
+        // deleteCommand.ExecuteRequested += DeleteCommand_ExecuteRequested;
+        Command = deleteCommand;
+        is_View = true;
+    }
     public CannelDataView(string dataName, double data, string id, Windows.UI.Color color)
     {
         //DataColor = new SolidColorBrush(Colors.Salmon);
@@ -222,11 +235,11 @@ public partial class HomeLandingViewModel : ObservableObject
     {
         JsonNavigationViewService = jsonNavigationViewService;
         
-        for (int i = 0; i < 20; i++)
-        {
-            dateSource.Add(new CannelDataView("data" + i.ToString(), -1.2198256, i.ToString()));
-            dateSource[i].DataColor.Color = ACOMv2.Common.ColorHelper.GenerateDistinctColor((i * 78) % 128);
-        }
+        //for (int i = 0; i < 20; i++)
+        //{
+        //    dateSource.Add(new CannelDataView("data" + i.ToString(), -1.2198256, i.ToString()));
+        //    dateSource[i].DataColor.Color = ACOMv2.Common.ColorHelper.GenerateDistinctColor((i * 78) % 128);
+        //}
         advancedCollectionView = new AdvancedCollectionView(dateSource, true);
 
         // Let's filter out the integers
@@ -235,7 +248,7 @@ public partial class HomeLandingViewModel : ObservableObject
 
         // And sort ascending by the property "Name"
         advancedCollectionView.SortDescriptions.Add(new SortDescription("DataName", SortDirection.Descending));
-        //linkDeviceSource.Add(new LinkDeviceDates("COM1"));
+         //linkDeviceSource.Add(new LinkDeviceDates("COM1"));
 
     }
 

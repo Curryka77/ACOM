@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\80520\\source\\repos\\ACOM\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|c:\\users\\80520\\source\\repos\\acom\\acomv2\\views\\homelandingpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|solutionrelative:acomv2\\views\\homelandingpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|c:\\users\\80520\\source\\repos\\acom\\acomv2\\viewmodels\\homelandingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|solutionrelative:acomv2\\viewmodels\\homelandingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|c:\\users\\80520\\source\\repos\\acom\\acomv2\\models\\io_manage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|solutionrelative:acomv2\\models\\io_manage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|c:\\users\\80520\\source\\repos\\acom\\acomv2\\views\\homelandingpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|solutionrelative:acomv2\\views\\homelandingpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|c:\\users\\80520\\source\\repos\\acom\\acomv2\\views\\homelandingpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|solutionrelative:acomv2\\views\\homelandingpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|c:\\users\\80520\\source\\repos\\acom\\acomv2\\viewmodels\\homelandingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|solutionrelative:acomv2\\viewmodels\\homelandingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,52 +34,55 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "IO_Manage.cs",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Models\\IO_Manage.cs",
               "RelativeDocumentMoniker": "ACOMv2\\Models\\IO_Manage.cs",
               "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Models\\IO_Manage.cs",
               "RelativeToolTip": "ACOMv2\\Models\\IO_Manage.cs",
-              "ViewState": "AgIAAAkBAAAAAAAAAAAuwAYBAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAAwIEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-09T07:07:56.906Z"
+              "WhenOpened": "2024-12-09T07:07:56.906Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "HomeLandingPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Views\\HomeLandingPage.xaml.cs",
               "RelativeDocumentMoniker": "ACOMv2\\Views\\HomeLandingPage.xaml.cs",
               "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Views\\HomeLandingPage.xaml.cs",
               "RelativeToolTip": "ACOMv2\\Views\\HomeLandingPage.xaml.cs",
-              "ViewState": "AgIAAIcAAAAAAAAAAAAAAJMAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAJcBAAAAAAAAAAAuwKsBAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-09T06:28:12.545Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "HomeLandingPage.xaml",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Views\\HomeLandingPage.xaml",
               "RelativeDocumentMoniker": "ACOMv2\\Views\\HomeLandingPage.xaml",
-              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Views\\HomeLandingPage.xaml",
-              "RelativeToolTip": "ACOMv2\\Views\\HomeLandingPage.xaml",
-              "ViewState": "AgIAABIBAAAAAAAAAAAowCwBAABDAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Views\\HomeLandingPage.xaml \u2B24",
+              "RelativeToolTip": "ACOMv2\\Views\\HomeLandingPage.xaml \u2B24",
+              "ViewState": "AgIAAG4AAAAAAAAAAAAAAJgAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-09T06:28:08.229Z"
+              "WhenOpened": "2024-12-09T06:28:08.229Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "HomeLandingViewModel.cs",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\ViewModels\\HomeLandingViewModel.cs",
               "RelativeDocumentMoniker": "ACOMv2\\ViewModels\\HomeLandingViewModel.cs",
               "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\ViewModels\\HomeLandingViewModel.cs",
               "RelativeToolTip": "ACOMv2\\ViewModels\\HomeLandingViewModel.cs",
-              "ViewState": "AgIAAI8AAAAAAAAAAAAswOAAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAOUAAAAAAAAAAAAAwPoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-09T06:27:50.664Z"
+              "WhenOpened": "2024-12-09T06:27:50.664Z",
+              "EditorCaption": ""
             }
           ]
         }

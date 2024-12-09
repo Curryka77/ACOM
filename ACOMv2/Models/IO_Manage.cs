@@ -121,12 +121,16 @@ namespace ACOM.Models
             Debug.WriteLine("数据处理");
             foreach (byte b in data._data)
             {
-                tmpbytes.Add(b);
                 if (b == '\n')
                 {
                     frameDatas.Add(tmpbytes.ToArray());
                     tmpbytes.Clear();
                 }
+                else
+                {
+                    tmpbytes.Add(b);
+                }
+
             }
             if (frameDatas.Count != 0)
             {
@@ -251,26 +255,61 @@ namespace ACOM.Models
 
     class IO_Manage: Singleton<IO_Manage>
     {
-        public Vector<ChannelMassage> ChannelDatas;
+        //页面文件
         public HomeLandingPage page;
+
+
+
+        //public Vector<ChannelMassage> ChannelDatas;
+
+        /// <summary>
+        /// 测试用的解析代码
+        /// </summary>
         static ChannelProcesser channelProcesser = new();
+
+
+        /// <summary>
+        /// 全局通道数据和通道显示数据
+        /// </summary>
         static Dictionary<string, ChannelMassage> GlobChannelMassage = new Dictionary<string, ChannelMassage>();
         static List<ChannelViewData> GlobChannelViewData = new();
+
+
+
+        /// <summary>
+        /// 定义委托定义事件
+        /// </summary>
         public delegate void ReceivedCannelMsg( Dictionary<string, ChannelMassage> dataMap);
         public delegate void UpdateCannelViewMsg(List<ChannelViewData> globChannelViewData);
         public delegate void UpdateDevices(List<SerialDevice> serialDevices);
-        // 基于上面的委托定义事件
-        public static event ReceivedCannelMsg receivedCannelMsg ;
-        public static event UpdateCannelViewMsg updateCannelViewMsg;
-        public static event UpdateDevices updateDevices ;
+        public static event ReceivedCannelMsg receivedCannelMsg;//当接收到通道原始数据时触发
+        public static event UpdateCannelViewMsg updateCannelViewMsg;//当接收到通道处理显示数据时触发
+        public static event UpdateDevices updateDevices;//当外部设备变化触发
 
+
+        /**
+         * 定义已经连接的设备
+         */
         List<BytesIO.Serial.SerialClient> serialClients = new();
         List<BytesIO.Tcp.TcpClient> tcpClients = new();
         List<BytesIO.Kcp.KcpClient> kcpClients = new();
         List<BytesIO.Udp.UdpClient> udpClients = new();
+
+
+
+
         ConcurrentQueue<RawDataMassage> charRecQueue = new();
+
+        /// <summary>
+        /// 插件管理
+        /// </summary>
         Dictionary<object, IPlugProcessBase> channelProcesserMap = new();
 
+
+
+        /// <summary>
+        /// 已经存在的串口设备
+        /// </summary>
         List<SerialDevice> serialDevices = new();
 
         public static void UnionGlobChannelMassage(List<ChannelMassage> Data)
@@ -294,25 +333,28 @@ namespace ACOM.Models
 
         public static void UnionGlobChannelViewMassage(List<ChannelViewData> Data)
         {
-            if (Data == null) return;   
-            for (int i = 0; i < GlobChannelViewData.Count; i++)
+            if (Data == null) return;
+
+            foreach (var dataItem in Data)
             {
-                for (int j = 0; j < Data.Count; j++)
+                var existingItem = GlobChannelViewData.FirstOrDefault(item => item.Name == dataItem.Name);
+                if (existingItem != null)
                 {
-                    if (GlobChannelViewData[i].Name == Data[j].Name)
-                    {
-                        GlobChannelViewData[i] = Data[j];
-                    }
-                    else
-                    {
-                        GlobChannelViewData.Add(Data[j]);
-                    }
+                    // Replace existing item with new data
+                    existingItem.ChannelData = dataItem.ChannelData;
+                    existingItem.DateTime = dataItem.DateTime;
                 }
-                //触发钩子函数
+                else
+                {
+                    // Add new item to the collection
+                    GlobChannelViewData.Add(dataItem);
+                }
             }
+
             if (updateCannelViewMsg != null)
                 updateCannelViewMsg(GlobChannelViewData);
-            Debug.WriteLine("更新通道显示数据 "+ Data.Count +" ");
+
+            Debug.WriteLine("更新通道显示数据 " + Data.Count + " ");
         }
 
 
@@ -464,7 +506,8 @@ NOT_INIT:
             }
 
             stopwatch.Stop();
-            Debug.WriteLine($"Execution Time: {stopwatch.ElapsedMilliseconds} ms");
+            Debug.WriteLine($"updateSerialDevce execution time: {stopwatch.ElapsedMilliseconds} ms");
+
             if (updateDevices != null)
                 updateDevices(serialDevices);
         }
@@ -475,7 +518,7 @@ NOT_INIT:
                 doing = 0;
                 //Print("update" + e.ToString() + sender.GetType().ToString());
                 System.Timers.Timer timer = new System.Timers.Timer();
-                timer.Interval = 30; // 设置时间间隔为100毫秒（0.1秒）
+                timer.Interval = 100; // 设置时间间隔为100毫秒（0.1秒）
                 timer.Elapsed += new System.Timers.ElapsedEventHandler(OnTimerElapsed);
                 timer.AutoReset = false; // 设置定时器在触发一次后不自动重置
                 timer.Start();
@@ -489,23 +532,25 @@ NOT_INIT:
 
         private Dictionary<string, string> portFriendlyNameCache = new Dictionary<string, string>();
 
-        private string GetFriendlyName(string portName)
+        public string GetFriendlyName(string portName)
         {
-
-
             if (portFriendlyNameCache.ContainsKey(portName))
             {
                 return portFriendlyNameCache[portName];
             }
+
             try
             {
                 using (var searcher = new ManagementObjectSearcher($"SELECT * FROM Win32_PnPEntity WHERE Name LIKE '%({portName})%'"))
                 {
                     foreach (var obj in searcher.Get())
                     {
-                        string friendlyName = obj["Caption"].ToString();
-                        portFriendlyNameCache[portName] = friendlyName;
-                        return friendlyName;
+                        var name = obj["Name"]?.ToString();
+                        if (!string.IsNullOrEmpty(name))
+                        {
+                            portFriendlyNameCache[portName] = name;
+                            return name;
+                        }
                     }
                 }
             }
@@ -514,8 +559,7 @@ NOT_INIT:
                 Debug.WriteLine($"Error getting friendly name for {portName}: {ex.Message}");
             }
 
-
-            return portName;
+            return "error name";
 
         }
 

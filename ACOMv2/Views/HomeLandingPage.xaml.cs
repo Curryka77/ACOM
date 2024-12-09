@@ -17,6 +17,9 @@ using WinUICommunity;
 using System.Management;
 using static ACOMv2.ViewModels.HomeLandingViewModel;
 using CommunityToolkit.WinUI.Collections;
+using ACOMPlug;
+using static ACOM.Models.IO_Manage;
+using static ACOMPlug.RawDataMassage;
 
 
 
@@ -144,13 +147,19 @@ public sealed partial class HomeLandingPage : Page
         ViewModel = App.GetService<HomeLandingViewModel>();
 
         this.InitializeComponent();
+
+        //注册回调函数
         IO_Manage.updateDevices += Instance_update;
-        //IO_Manage.Instance.updateSerialDevce();
+        IO_Manage.updateCannelViewMsg += UpdateCannelViewMsg;
+
+
+        IO_Manage.Instance.updateSerialDevce();
 
         //ListView_LinkDevice.ItemsSource = ViewModel.advancedCollectionView;
 
         ViewModel.advancedCollectionView.SortDescriptions.Add(new SortDescription("DataName", SortDirection.Descending));
         ViewModel.advancedCollectionView.Add(new CannelDataView("data", -0, "9"));
+        ViewModel.dateSource.Add(new CannelDataView("data1", -0, "9"));
         //AppInfo = $"{App.Current.AppName} v{App.Current.AppVersion}";
 
 
@@ -378,13 +387,49 @@ public sealed partial class HomeLandingPage : Page
         {
             Debug.WriteLine("update serial1");
             Debug.WriteLine("update serial2");
-            ViewModel.SerialPortsSource.Clear();
-            for (int i = 0; i < serialDevices.Count; ++i)
+
+            foreach (var device in serialDevices)
             {
-                ViewModel.SerialPortsSource.Add(ViewModel.Devices[i].PortName);
+                if (!ViewModel.SerialPortsSource.Contains(device.PortName))
+                {
+                    ViewModel.SerialPortsSource.Add(device.PortName);
+                    ViewModel.linkDeviceSource.Add(new LinkDeviceDates(device.PortName, device.FriendlyName));
+                }
+            }
+
+            // Remove ports that are no longer available
+            for (int i = ViewModel.SerialPortsSource.Count - 1; i >= 0; i--)
+            {
+                if (!serialDevices.Any(d => d.PortName == ViewModel.SerialPortsSource[i]))
+                {
+                    ViewModel.SerialPortsSource.RemoveAt(i);
+                    ViewModel.linkDeviceSource.RemoveAt(i);
+                }
             }
         });
     }
+
+    private void UpdateCannelViewMsg(List<ChannelViewData> globChannelViewData)
+    {
+        DispatcherQueue.TryEnqueue(() =>
+        {
+            foreach (ChannelViewData it in globChannelViewData)
+            {
+                var existingItem = ViewModel.dateSource.FirstOrDefault(itt => itt.DataName == it.Name);
+                if (existingItem != null)
+                {
+                    existingItem.Data = it.ChannelData;
+                    // Update other properties as needed
+                }
+                else
+                {
+                    ViewModel.dateSource.Add(new CannelDataView(it.Name, it.ChannelData, "9"));
+                }
+            }
+        });
+    }
+
+
     private void combox_COM_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         // 获取发送事件的 ComboBox
@@ -435,22 +480,23 @@ public sealed partial class HomeLandingPage : Page
             //PortsDesc = SerialPortFindTool.GetSerialPort();
 
 
+            //IO_Manage.Instance.GetFriendlyName(selectedItem.ToString());
 
-            foreach (var port in PortsDesc)
-            {
-                Debug.WriteLine(port);
-                if (selectedItem != null)
-                {
-                    if (port.Contains(selectedItem.ToString()))
-                    {
-                        TextBlockCOM_Desc.Text = port;
-                        Console.WriteLine($"Changed selection to: {selectedItem}");
-                        return;
-                    }
-                }
-            }
-            // 执行相应操作
-            TextBlockCOM_Desc.Text = "没有这个COM口，请再次尝试";
+            //foreach (var port in PortsDesc)
+            //{
+            //    Debug.WriteLine(port);
+            //    if (selectedItem != null)
+            //    {
+            //        if (port.Contains(selectedItem.ToString()))
+            //        {
+            //            TextBlockCOM_Desc.Text = port;
+            //            Console.WriteLine($"Changed selection to: {selectedItem}");
+            //            return;
+            //        }
+            //    }
+            //}
+            // 执行相应操作,修改text,还有其他属性
+            TextBlockCOM_Desc.Text = IO_Manage.Instance.GetFriendlyName(selectedItem.ToString());
         }
     }
 
@@ -460,15 +506,19 @@ public sealed partial class HomeLandingPage : Page
         if (LinkSerial_Boundrate != null && LinkSerial_DataLength != null &&
             LinkSerial_StopBit != null && LinkSerial_StreamCtrl != null &&
             LinkSerial_Boundrate.SelectedValue != null && LinkSerial_DataLength.SelectedValue != null &&
-            LinkSerial_StopBit.SelectedValue != null && LinkSerial_StreamCtrl.SelectedValue != null
+            LinkSerial_StopBit.SelectedValue != null && LinkSerial_StreamCtrl.SelectedValue != null && combox_COM.SelectedItem != null
             )
         {
+            var portName = combox_COM.SelectedItem.ToString();
             //if()
             foreach (LinkDeviceDates dev in ViewModel.linkDeviceSource)
             {
-                if (dev.DeviceName.Equals(combox_COM.SelectedItem.ToString()))
+                if (dev.DeviceName.Equals(portName))
                 {
                     Debug.WriteLine(LinkSerial_Boundrate.SelectedValue.ToString());
+
+                    TextBlockCOM_Desc.Text = dev.DeviceDesc;
+
                     dev.BoundRate = Convert.ToInt32(LinkSerial_Boundrate.SelectedValue.ToString());
                     dev.DateBit = (int)LinkSerial_DataLength.SelectedValue;
                     dev.StopBit = (string)LinkSerial_StopBit.SelectedValue;
