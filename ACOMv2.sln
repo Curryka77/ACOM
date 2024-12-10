@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataMuxerPlugAutoOne", "Dat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{B1B0DEFE-CD50-41CA-9C7C-35BE2570DC25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WidgetPlugSlide", "WidgetPlugSlide\WidgetPlugSlide.csproj", "{B81EA393-BDD1-4FC7-BF1C-254EFF72695B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM64 = Debug|ARM64
@@ -110,6 +112,18 @@ Global
 		{B1B0DEFE-CD50-41CA-9C7C-35BE2570DC25}.Release|x64.Build.0 = Release|Any CPU
 		{B1B0DEFE-CD50-41CA-9C7C-35BE2570DC25}.Release|x86.ActiveCfg = Release|Any CPU
 		{B1B0DEFE-CD50-41CA-9C7C-35BE2570DC25}.Release|x86.Build.0 = Release|Any CPU
+		{B81EA393-BDD1-4FC7-BF1C-254EFF72695B}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{B81EA393-BDD1-4FC7-BF1C-254EFF72695B}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{B81EA393-BDD1-4FC7-BF1C-254EFF72695B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B81EA393-BDD1-4FC7-BF1C-254EFF72695B}.Debug|x64.Build.0 = Debug|Any CPU
+		{B81EA393-BDD1-4FC7-BF1C-254EFF72695B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B81EA393-BDD1-4FC7-BF1C-254EFF72695B}.Debug|x86.Build.0 = Debug|Any CPU
+		{B81EA393-BDD1-4FC7-BF1C-254EFF72695B}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{B81EA393-BDD1-4FC7-BF1C-254EFF72695B}.Release|ARM64.Build.0 = Release|Any CPU
+		{B81EA393-BDD1-4FC7-BF1C-254EFF72695B}.Release|x64.ActiveCfg = Release|Any CPU
+		{B81EA393-BDD1-4FC7-BF1C-254EFF72695B}.Release|x64.Build.0 = Release|Any CPU
+		{B81EA393-BDD1-4FC7-BF1C-254EFF72695B}.Release|x86.ActiveCfg = Release|Any CPU
+		{B81EA393-BDD1-4FC7-BF1C-254EFF72695B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

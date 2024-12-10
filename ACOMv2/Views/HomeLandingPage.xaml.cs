@@ -130,11 +130,22 @@ public sealed partial class HomeLandingPage : Page
 
     public void TextAddLine(string str)
     {
-        total_str.totalString += str;
-        //dialogTextBox.AddLine(dialogTextBox.CurrentLineIndex, str);
-        //dialogTextBox.SetLineText(dialogTextBox.CurrentLineIndex, str);
-        dialogTextBox.LoadText(total_str.totalString);
-        str = null;
+        DispatcherQueue.TryEnqueue(() =>
+        {
+            total_str.totalString += str;
+            //dialogTextBox.AddLine(dialogTextBox.CurrentLineIndex, str);
+            //dialogTextBox.SetLineText(dialogTextBox.CurrentLineIndex, str);
+            //dialogTextBox.ScrollBottomIntoView();
+
+            dialogTextBox.Text = total_str.totalString;
+            //dialogTextBox.LoadText(total_str.totalString);
+
+            str = null;
+            //scrollview1.ScrollTo(scrollview1.ActualHeight + scrollview1.VerticalOffset,0);
+
+            dialogTextBox.ScrollLineIntoView(dialogTextBox.NumberOfLines);
+        });
+        
         //GC.Collect();
     }
 
@@ -158,8 +169,8 @@ public sealed partial class HomeLandingPage : Page
         //ListView_LinkDevice.ItemsSource = ViewModel.advancedCollectionView;
 
         ViewModel.advancedCollectionView.SortDescriptions.Add(new SortDescription("DataName", SortDirection.Descending));
-        ViewModel.advancedCollectionView.Add(new CannelDataView("data", -0, "9"));
-        ViewModel.dateSource.Add(new CannelDataView("data1", -0, "9"));
+        //ViewModel.advancedCollectionView.Add(new CannelDataView("data", -0, "9"));
+        //ViewModel.dateSource.Add(new CannelDataView("data1", -0, "9"));
         //AppInfo = $"{App.Current.AppName} v{App.Current.AppVersion}";
 
 

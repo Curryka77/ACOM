@@ -26,7 +26,19 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:developerTools="using:CommunityToolkit.WinUI.DeveloperTools"
     mc:Ignorable="d" xmlns:labs="using:CommunityToolkit.Labs.WinUI" xmlns:controls="using:CommunityToolkit.WinUI.Controls" xmlns:wuc="using:WinUICommunity"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
 
+
+        <Flyout Placement="Right" x:Name="PartsCommandBarFlyout">
+            <StackPanel>
+                <TextBlock Text="Test"/>
+                <TextBlock Text="Test"/>
+            </StackPanel>
+        </Flyout>
+    </Page.Resources>
+
+        
+    
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0">
         <Grid.DataContext>
             ACOMv2.Models

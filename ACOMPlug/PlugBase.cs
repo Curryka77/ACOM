@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -75,3 +77,10 @@ public interface IPlugDataMuxBase : IDisposable
 
 }
 
+public interface IPlugWidgetBase : IDisposable
+{
+    PluginInfo GetPluginInformation();
+
+    void Parts_ContextRequested(UIElement sender, ContextRequestedEventArgs args);//用于呼出右键菜单
+    FrameworkElement Create();
+}

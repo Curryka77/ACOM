@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DataMuxerPlugAutoOne")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b95458dca6410df5571e3662b062212c94dddcb3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+86700d7c71efc4277a571789d4017e1a74869ccb")]
 [assembly: System.Reflection.AssemblyProductAttribute("DataMuxerPlugAutoOne")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DataMuxerPlugAutoOne")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

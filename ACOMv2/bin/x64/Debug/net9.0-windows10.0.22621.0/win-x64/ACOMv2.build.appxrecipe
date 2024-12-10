@@ -64,6 +64,9 @@
     <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-arm64\native\WebView2Loader.dll">
       <PackagePath>runtimes\win-arm64\native\WebView2Loader.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\uno.winui\5.2.132\lib\net7.0-windows10.0.19041.0\Uno.UI.Toolkit\Themes\Generic.xbf">
+      <PackagePath>Uno.UI.Toolkit/Themes\Generic.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\Assets\Cover\CoverDark.png">
       <PackagePath>Assets\Cover\CoverDark.png</PackagePath>
     </AppxPackagedFile>
@@ -1704,6 +1707,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\ACOMv2.deps.json">
       <PackagePath>ACOMv2.deps.json</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\uno.winui\5.2.132\lib\net7.0-windows10.0.19041.0\Uno.UI.Toolkit.dll">
+      <PackagePath>Uno.UI.Toolkit.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-x86\native\WebView2Loader.dll">
       <PackagePath>ACOMPlug\runtimes\win-x86\native\WebView2Loader.dll</PackagePath>

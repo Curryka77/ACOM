@@ -44,12 +44,33 @@ namespace ACOMv2.Views
 
     //}
 
-
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class CanvasPanelPage : Page
+    public class Part : partsBase
     {
+        Grid elementGrid;//记录元素的Grid
+        public Part(ref Grid elementGrid)
+        {
+            this.elementGrid = elementGrid;
+        }
+    }
+
+        /// <summary>
+        /// An empty page that can be used on its own or navigated to within a Frame.
+        /// </summary>
+        public sealed partial class CanvasPanelPage : Page
+    {
+        private void ShowMenu(UIElement sender, bool isTransient)
+        {
+            FlyoutShowOptions myOption = new FlyoutShowOptions();
+            myOption.ShowMode = isTransient ? FlyoutShowMode.Transient : FlyoutShowMode.Standard;
+            PartsCommandBarFlyout.ShowAt(sender, myOption);
+        }
+        private void Parts_ContextRequested(UIElement sender, ContextRequestedEventArgs args)
+        {
+            //Debug.WriteLine("test Parts_ContextRequested");
+            ShowMenu(sender, true);
+
+
+        }
 
         public FrameworkElement InitializeElementGrid(FrameworkElement element)
         {
@@ -62,6 +83,8 @@ namespace ACOMv2.Views
                 MinWidth = 32,
                 Style = (Style)Application.Current.Resources["GridCardPanel"]
             };
+            //创建组件
+            Part part = new(ref elementGrid);
 
             // 设置Canvas位置（在C#中，我们通常不设置Canvas.Left和Canvas.Top，因为它们是Canvas特有的属性，这里假设你想要将Grid放置在Canvas中）
             // 你需要一个Canvas作为父容器，然后添加Grid到其中，并设置位置
@@ -94,6 +117,7 @@ namespace ACOMv2.Views
             Grid.SetRow(innerGrid, 0);
             elementGrid.Children.Add(innerGrid);
             innerGrid.Children.Add(element);
+
             // 创建水平ContentSizer
             ContentSizer horizontalContentSizer = new ContentSizer()
             {
@@ -123,6 +147,10 @@ namespace ACOMv2.Views
             verticalContentSizer.ManipulationDelta += ContentSizer_ManipulationDelta;
 
             elementGrid.Children.Add(verticalContentSizer);
+
+            innerGrid.ContextRequested += Parts_ContextRequested;
+            element.ContextRequested += Parts_ContextRequested;
+
 
             // 将Grid添加到页面或其他父容器中
             return elementGrid; // 假设你是在Page中，并且将Grid设置为页面的内容

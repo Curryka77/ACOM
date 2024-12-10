@@ -26,7 +26,19 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:developerTools="using:CommunityToolkit.WinUI.DeveloperTools"
     mc:Ignorable="d" xmlns:labs="using:CommunityToolkit.Labs.WinUI" xmlns:controls="using:CommunityToolkit.WinUI.Controls" xmlns:wuc="using:WinUICommunity"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
 
+
+        <Flyout x:ConnectionId='2' Placement="Right" x:Name="PartsCommandBarFlyout">
+            <StackPanel>
+                <TextBlock Text="Test"/>
+                <TextBlock Text="Test"/>
+            </StackPanel>
+        </Flyout>
+    </Page.Resources>
+
+        
+    
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0">
         <Grid.DataContext>
             ACOMv2.Models
@@ -44,13 +56,13 @@
                               VerticalStep="20" />
 
                 
-                <labs:CanvasView x:ConnectionId='4' MinHeight="400" x:Name="CanvasView1"
+                <labs:CanvasView x:ConnectionId='5' MinHeight="400" x:Name="CanvasView1"
                       Background="Red">
-                    <Border x:ConnectionId='6' Canvas.Left="30" Canvas.Top="30"  VerticalAlignment="Stretch" x:Name="Test_Border" MinWidth="64" MinHeight="64"  Margin="0,0,0,0" Background="Black" ManipulationMode="TranslateX,TranslateY"                                             >
+                    <Border x:ConnectionId='7' Canvas.Left="30" Canvas.Top="30"  VerticalAlignment="Stretch" x:Name="Test_Border" MinWidth="64" MinHeight="64"  Margin="0,0,0,0" Background="Black" ManipulationMode="TranslateX,TranslateY"                                             >
                         <TextBlock Text="Hello, World!" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
 
-                    <Grid x:ConnectionId='7' Canvas.Left="90" Canvas.Top="90" x:Name="TestGrid" MinHeight="32" MinWidth="32" Style="{ThemeResource GridCardPanel}">
+                    <Grid x:ConnectionId='8' Canvas.Left="90" Canvas.Top="90" x:Name="TestGrid" MinHeight="32" MinWidth="32" Style="{ThemeResource GridCardPanel}">
 
                         <Grid.ColumnDefinitions>
                              <ColumnDefinition  />
@@ -75,7 +87,7 @@
                                     <RadioButton Content="Option 3" />
                                 </RadioButtons>
 
-                                <controls:RangeSelector x:ConnectionId='10' x:Name="rangeSelector"
+                                <controls:RangeSelector x:ConnectionId='11' x:Name="rangeSelector"
                                 VerticalAlignment="Center"
                                 IsEnabled="True"
                                 Maximum="100"
@@ -95,7 +107,7 @@
                                 <wuc:WaveProgressBar Value="35"/>
                                 <wuc:ProgressRing IsActive="True" />
 
-                                <controls:RadialGauge x:ConnectionId='11' x:Name="RadialGauge"
+                                <controls:RadialGauge x:ConnectionId='12' x:Name="RadialGauge"
                               Width="280"
                               IsEnabled="True"
                               IsInteractive="True"
@@ -118,7 +130,7 @@
                             </StackPanel>
                         </Grid>
 
-                        <controls:ContentSizer x:ConnectionId='8' 
+                        <controls:ContentSizer x:ConnectionId='9' 
                             Height="4"   Grid.Row="1"  
                             VerticalAlignment="Bottom"
                             Orientation="Horizontal"
@@ -126,7 +138,7 @@
                                                               
                             Visibility="Visible" />
 
-                        <controls:ContentSizer x:ConnectionId='9' 
+                        <controls:ContentSizer x:ConnectionId='10' 
                             Width="4" Grid.Column="1"  
                             HorizontalAlignment="Right"
                                                                               
@@ -136,12 +148,12 @@
 
 
                 </labs:CanvasView>
-                <Button x:ConnectionId='5' x:Name="ttt" Width="64" Height="32"/>
+                <Button x:ConnectionId='6' x:Name="ttt" Width="64" Height="32"/>
 
             </Grid>
         </ScrollViewer>
 
-        <wuc:GooeyButton x:ConnectionId='2' x:Name="gooeyButton"
+        <wuc:GooeyButton x:ConnectionId='3' x:Name="gooeyButton"
                          Margin="6 6 6 6"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"

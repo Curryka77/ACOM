@@ -16,38 +16,7 @@
         view_models:HomeLandingViewModel
     </Page.DataContext>
     <Page.Resources>
-        <Style x:Key="iconStyle" TargetType="AppBarButton">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="AppBarButton">
-                        <Grid>
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup x:Name="CommonStates">
-                                    <VisualState x:Name="Normal"/>
-                                    <VisualState x:Name="PointerOver">
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ContentPresenter">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#FFA0A0A0"/>
-                                                <!-- 鼠标悬停时的背景颜色 -->
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                    <VisualState x:Name="Pressed">
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ContentPresenter">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#FF707070"/>
-                                                <!-- 鼠标按下时的背景颜色 -->
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>
-                            <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" Background="Transparent" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Icon}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        
 
 
 
@@ -57,17 +26,17 @@
         <Flyout  x:Key="myColorPickerFlyout"   >
             <StackPanel  >
                 <ColorPicker Name="myColorPicker"  AllowFocusOnInteraction="True"
-                      ColorChanged="myColorPicker_ColorChanged"
-                       Tag="{x:Bind mainPage_Singleton.DataList_ID, Mode=OneWay}"
-      ColorSpectrumShape="Ring"
-      IsMoreButtonVisible="True"
-      IsColorSliderVisible="True"
-      IsColorChannelTextInputVisible="True"
-      IsHexInputVisible="True"
-      IsAlphaEnabled="True"
-      IsAlphaSliderVisible="False"
-      IsAlphaTextInputVisible="True"
-      Orientation="Vertical"  />
+                        ColorChanged="myColorPicker_ColorChanged"
+                        Tag="{x:Bind mainPage_Singleton.DataList_ID, Mode=OneWay}"
+                        ColorSpectrumShape="Ring"
+                        IsMoreButtonVisible="True"
+                        IsColorSliderVisible="True"
+                        IsColorChannelTextInputVisible="True"
+                        IsHexInputVisible="True"
+                        IsAlphaEnabled="True"
+                        IsAlphaSliderVisible="False"
+                        IsAlphaTextInputVisible="True"
+                        Orientation="Vertical"  />
                 <TextBox Text="{x:Bind myColorPicker.Color.ToString(), Mode=OneWay}"  AllowFocusOnInteraction="True">
 
                 </TextBox>
@@ -294,15 +263,13 @@
                         <!--<Border Grid.Row="1" Background="black" Height="Auto"/>-->
                         <!-- To create this sample, add/change the following properties onto the code for the base example above: -->
                         <ListView Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                          SelectionMode="Multiple" IsMultiSelectCheckBoxEnabled="False" IsRightTapEnabled="True"
-
-                     x:Name="BaseExample"
-                    ItemTemplate="{StaticResource LinkDeviceListViewTemplate}"
-                    ItemsSource="{x:Bind ViewModel.linkDeviceSource}"
-
-                    BorderThickness="1"
-                    MinWidth="120"
-                    />
+                            SelectionMode="Multiple" IsMultiSelectCheckBoxEnabled="False" IsRightTapEnabled="True"
+                            x:Name="BaseExample"
+                            ItemTemplate="{StaticResource LinkDeviceListViewTemplate}"
+                            ItemsSource="{x:Bind ViewModel.linkDeviceSource}"
+                            BorderThickness="1"
+                            MinWidth="120"
+                            />
                         <!--<controls:Segmented Grid.Row="2" Width="li"
                             SelectedIndex="0"
                             SelectionMode="Single">
@@ -450,10 +417,11 @@
                         <TextBlock Text="Now playing..." Margin="12,14"/>
                     </CommandBar.Content>
                 </CommandBar>
-
-                <textcontrolbox:TextControlBox ShowLineHighlighter="True" SyntaxHighlighting="True" 
-                    x:Name="dialogTextBox" Grid.Row="2" Margin="0 40 0 40" IsReadonly="False" Text="{x:Bind total_str.totalString,Mode=OneTime}">
+ 
+                <textcontrolbox:TextControlBox ShowLineHighlighter="True" SyntaxHighlighting="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                x:Name="dialogTextBox" Grid.Row="2" Margin="0 40 0 40" IsReadonly="False" Text="{x:Bind total_str.totalString,Mode=OneTime}">
                 </textcontrolbox:TextControlBox>
+ 
 
                 <Grid Grid.Row="3" MaxHeight="80" VerticalAlignment="Bottom" >
                     <Grid.ColumnDefinitions>

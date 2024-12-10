@@ -252,8 +252,6 @@ public partial class HomeLandingViewModel : ObservableObject
 
     }
 
-
-
     [RelayCommand]
     private void OnItemClick(RoutedEventArgs e)
     {
@@ -264,19 +262,5 @@ public partial class HomeLandingViewModel : ObservableObject
         //HomeLandingViewService.TextAddLine("wd");
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

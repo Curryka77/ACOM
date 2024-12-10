@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-12-09T13:54:39.618</Modified>
+      <Modified>2024-12-10T13:40:39.202</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2024-12-09T13:53:51.463</Modified>
+      <Modified>2024-12-10T11:33:06.145</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMPlug\bin\Debug\net8.0-windows10.0.19041.0\ACOMPlug.pri">
       <PackagePath>ACOMPlug.pri</PackagePath>
@@ -52,11 +52,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\ACOMv2.runtimeconfig.json">
       <PackagePath>ACOMv2.runtimeconfig.json</PackagePath>
-      <Modified>2024-12-05T12:49:09.476</Modified>
+      <Modified>2024-12-10T08:52:40.496</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\ACOMv2.dll">
       <PackagePath>ACOMv2.dll</PackagePath>
-      <Modified>2024-12-09T13:54:39.193</Modified>
+      <Modified>2024-12-10T13:40:38.174</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMPlug\bin\Debug\net8.0-windows10.0.19041.0\ACOMPlug.dll">
       <PackagePath>ACOMPlug.dll</PackagePath>
@@ -72,7 +72,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\obj\x64\Debug\net9.0-windows10.0.22621.0\win-x64\apphost.exe">
       <PackagePath>ACOMv2.exe</PackagePath>
-      <Modified>2024-12-09T13:54:39.197</Modified>
+      <Modified>2024-12-10T13:40:38.210</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-x86\native\WebView2Loader.dll">
       <PackagePath>runtimes\win-x86\native\WebView2Loader.dll</PackagePath>
@@ -2272,7 +2272,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\ACOMv2.deps.json">
       <PackagePath>ACOMv2.deps.json</PackagePath>
-      <Modified>2024-12-06T13:07:38.686</Modified>
+      <Modified>2024-12-10T11:33:05.814</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-x86\native\WebView2Loader.dll">
       <PackagePath>ACOMPlug\runtimes\win-x86\native\WebView2Loader.dll</PackagePath>

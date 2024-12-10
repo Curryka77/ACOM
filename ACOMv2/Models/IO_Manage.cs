@@ -37,6 +37,8 @@ namespace ACOM.Models
     using System.Management;
     using System.Timers;
     using ACOMPlug;
+    using CommunityToolkit.Mvvm.Messaging;
+    using CommunityToolkit.Mvvm.Messaging.Messages;
     using Windows.System;
     using WinUICommunity;
 
@@ -181,7 +183,7 @@ namespace ACOM.Models
             {
                 string ansiString = Encoding.Default.GetString(data);
                 // 如果转换成功，且没有抛出DecoderFallbackException异常，则可能是ANSI编码的字符串
-                Debug.WriteLine("ANSI encoded string");
+                //Debug.WriteLine("ANSI encoded string");
                 return "str (ANSI encoding)";
             }
             catch (DecoderFallbackException)
@@ -229,7 +231,7 @@ namespace ACOM.Models
         /// <returns></returns>
         public List<ChannelViewData> Process(List<ChannelMassage> massages)
         {
-            Debug.WriteLine("get msg cnt is"+massages.Count());
+           // Debug.WriteLine("get msg cnt is"+massages.Count());
             List < ChannelViewData > result = new List<ChannelViewData>();
             for (int i = 0; i < massages.Count; i++)
             {
@@ -312,6 +314,10 @@ namespace ACOM.Models
         /// </summary>
         List<SerialDevice> serialDevices = new();
 
+        /// <summary>
+        /// Union the glob channel massage.
+        /// </summary>
+        /// <param name="Data"></param>
         public static void UnionGlobChannelMassage(List<ChannelMassage> Data)
         {
             if (Data == null) return;
@@ -326,11 +332,16 @@ namespace ACOM.Models
             //触发钩子函数
             if(receivedCannelMsg != null)
                 receivedCannelMsg( GlobChannelMassage);
-            ChannelProcesser.PrintProcessedData(GlobChannelMassage.Values.ToList());
+
+            //Debug 显示使用
+            //ChannelProcesser.PrintProcessedData(GlobChannelMassage.Values.ToList());
 
             UnionGlobChannelViewMassage(channelProcesser.Process(Data));//更新成通道数据
         }
-
+        /// <summary>
+        /// Union the glob channel view massage.
+        /// </summary>
+        /// <param name="Data"></param>
         public static void UnionGlobChannelViewMassage(List<ChannelViewData> Data)
         {
             if (Data == null) return;
@@ -354,7 +365,7 @@ namespace ACOM.Models
             if (updateCannelViewMsg != null)
                 updateCannelViewMsg(GlobChannelViewData);
 
-            Debug.WriteLine("更新通道显示数据 " + Data.Count + " ");
+            //Debug.WriteLine("更新通道显示数据 " + Data.Count + " ");
         }
 
 
@@ -370,14 +381,17 @@ namespace ACOM.Models
 
         private void Client_OnDataReceived(object sender, STTech.BytesIO.Core.DataReceivedEventArgs e)
         {
-            BytesIO.Serial.SerialClient client = (BytesIO.Serial.SerialClient)sender;
-            Print((DateTime.Now - client.LastMessageReceivedTime).Microseconds.ToString() );
-            Print($"接收: {e.Data.ToHexCodeString()}({e.Data.EncodeToString()})");
-            UnionGlobChannelMassage(channelProcesser.Process(new RawDataMassage(e.Data, DateTime.Now, RawDataMassage.DateSource.Serial, client.PortName)));
-            //channelProcesserMap[sender].Process(new RawDataMassage(e.Data, DateTime.Now, RawDataMassage.DateSource.Serial, client.PortName));
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
 
-            charRecQueue.Enqueue(new RawDataMassage(e.Data,DateTime.Now,RawDataMassage.DateSource.Serial, client.PortName));
+            BytesIO.Serial.SerialClient client = (BytesIO.Serial.SerialClient)sender;
+            UnionGlobChannelMassage(channelProcesser.Process(new RawDataMassage(e.Data, DateTime.Now, RawDataMassage.DateSource.Serial, client.PortName)));
+            charRecQueue.Enqueue(new RawDataMassage(e.Data, DateTime.Now, RawDataMassage.DateSource.Serial, client.PortName));
             page.TextAddLine(e.Data.EncodeToString());
+            WeakReferenceMessenger.Default.Send(new ValueChangedMessage<List<ChannelViewData>>(GlobChannelViewData));
+
+            stopwatch.Stop();
+            Debug.WriteLine($"Client_OnDataReceived execution time: {stopwatch.ElapsedMilliseconds} ms");
         }
 
         private void Client_OnDisconnected(object sender, STTech.BytesIO.Core.DisconnectedEventArgs e)

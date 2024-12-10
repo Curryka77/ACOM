@@ -16,38 +16,7 @@
         view_models:HomeLandingViewModel
     </Page.DataContext>
     <Page.Resources>
-        <Style x:Key="iconStyle" TargetType="AppBarButton">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="AppBarButton">
-                        <Grid>
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup x:Name="CommonStates">
-                                    <VisualState x:Name="Normal"/>
-                                    <VisualState x:Name="PointerOver">
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ContentPresenter">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#FFA0A0A0"/>
-                                                <!-- 鼠标悬停时的背景颜色 -->
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                    <VisualState x:Name="Pressed">
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ContentPresenter">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#FF707070"/>
-                                                <!-- 鼠标按下时的背景颜色 -->
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>
-                            <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" Background="Transparent" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Icon}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        
 
 
 
@@ -57,17 +26,17 @@
         <Flyout  x:Key="myColorPickerFlyout"   >
             <StackPanel  >
                 <ColorPicker x:ConnectionId='26' Name="myColorPicker"  AllowFocusOnInteraction="True"
-                                                               
-                                                                                 
-      ColorSpectrumShape="Ring"
-      IsMoreButtonVisible="True"
-      IsColorSliderVisible="True"
-      IsColorChannelTextInputVisible="True"
-      IsHexInputVisible="True"
-      IsAlphaEnabled="True"
-      IsAlphaSliderVisible="False"
-      IsAlphaTextInputVisible="True"
-      Orientation="Vertical"  />
+                                                                 
+                                                                                  
+                        ColorSpectrumShape="Ring"
+                        IsMoreButtonVisible="True"
+                        IsColorSliderVisible="True"
+                        IsColorChannelTextInputVisible="True"
+                        IsHexInputVisible="True"
+                        IsAlphaEnabled="True"
+                        IsAlphaSliderVisible="False"
+                        IsAlphaTextInputVisible="True"
+                        Orientation="Vertical"  />
                 <TextBox x:ConnectionId='27'                                                              AllowFocusOnInteraction="True">
 
                 </TextBox>
@@ -228,7 +197,7 @@
 
     </Page.Resources>
 
-    <wuc:AllLandingPage x:ConnectionId='35' x:Name="allLandingPage"
+    <wuc:AllLandingPage x:ConnectionId='28' x:Name="allLandingPage"
                         HeaderImage="{ThemeResource HeaderCover}"
                         HeaderOverlayImage="{ThemeResource HeaderCover}"
                                                                                    
@@ -236,7 +205,7 @@
                                                                                                            >
 
 
-        <Grid x:ConnectionId='36' x:Name="ContentArea" >
+        <Grid x:ConnectionId='29' x:Name="ContentArea" >
             <Grid.DataContext>
                 ACOM.Models
             </Grid.DataContext>
@@ -265,7 +234,7 @@
                         </Grid.RowDefinitions>
                         <Border Grid.Row="0" Background="red" Margin="0,10,0,4"/>
 
-                        <ListView x:ConnectionId='59' Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                        <ListView x:ConnectionId='52' Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                             SelectionMode="None" IsMultiSelectCheckBoxEnabled="False" IsRightTapEnabled="True"
                             x:Name="ListView_LinkDevice"
                             ItemTemplate="{StaticResource ContactListViewTemplate}"
@@ -282,7 +251,7 @@
                 </PivotItem>
 
                 <PivotItem Header="串口" MinWidth="160">
-                    <Grid x:ConnectionId='49' x:Name="link_Grid">
+                    <Grid x:ConnectionId='42' x:Name="link_Grid">
                         <Grid.RowDefinitions>
                             <RowDefinition MinHeight="100" Height="120"/>
                             <RowDefinition Height="*"/>
@@ -293,16 +262,14 @@
                         <Border Grid.Row="0" Background="red" Height="100"/>
                         <!--<Border Grid.Row="1" Background="black" Height="Auto"/>-->
                         <!-- To create this sample, add/change the following properties onto the code for the base example above: -->
-                        <ListView x:ConnectionId='50' Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                          SelectionMode="Multiple" IsMultiSelectCheckBoxEnabled="False" IsRightTapEnabled="True"
-
-                     x:Name="BaseExample"
-                    ItemTemplate="{StaticResource LinkDeviceListViewTemplate}"
-                                                                     
-
-                    BorderThickness="1"
-                    MinWidth="120"
-                    />
+                        <ListView x:ConnectionId='43' Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                            SelectionMode="Multiple" IsMultiSelectCheckBoxEnabled="False" IsRightTapEnabled="True"
+                            x:Name="BaseExample"
+                            ItemTemplate="{StaticResource LinkDeviceListViewTemplate}"
+                                                                             
+                            BorderThickness="1"
+                            MinWidth="120"
+                            />
                         <!--<controls:Segmented Grid.Row="2" Width="li"
                             SelectedIndex="0"
                             SelectionMode="Single">
@@ -315,7 +282,7 @@
 
                         </controls:Segmented>-->
 
-                        <TextBlock x:ConnectionId='51' Grid.Row="3" Text="USBdevice COM9" FontSize="10" x:Name="TextBlockCOM_Desc">
+                        <TextBlock x:ConnectionId='44' Grid.Row="3" Text="USBdevice COM9" FontSize="10" x:Name="TextBlockCOM_Desc">
 
                         </TextBlock>
                         <Grid Grid.Row="4" Margin="0 12 0 0 ">
@@ -343,12 +310,12 @@
                             <TextBlock Grid.Column="0" Grid.Row="4"  Text="停止位" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8 0 0 0"/>
                             <TextBlock Grid.Column="0" Grid.Row="5"  Text="流控"   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8 0 0 0"/>
 
-                            <ComboBox x:ConnectionId='52' x:Name="combox_COM" Grid.Column="1" Grid.Row="0" IsEditable="True"  Width="100"                                            
+                            <ComboBox x:ConnectionId='45' x:Name="combox_COM" Grid.Column="1" Grid.Row="0" IsEditable="True"  Width="100"                                            
                               HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 8 0"                                                                 
                                                                                                                              >
                             </ComboBox>
 
-                            <ComboBox x:ConnectionId='53' x:Name="LinkSerial_Boundrate" Grid.Column="1" Grid.Row="1"                                                   
+                            <ComboBox x:ConnectionId='46' x:Name="LinkSerial_Boundrate" Grid.Column="1" Grid.Row="1"                                                   
                                       IsEditable="True"  Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 8 0" SelectedIndex="3">
                                 <x:String>2400</x:String>
                                 <x:String>4800</x:String>
@@ -359,31 +326,31 @@
                                 <x:String>1000000</x:String>
                                 <x:String>2000000</x:String>
                             </ComboBox>
-                            <ComboBox x:ConnectionId='54' x:Name="LinkSerial_DataLength" Grid.Column="1" Grid.Row="2"                                                   
+                            <ComboBox x:ConnectionId='47' x:Name="LinkSerial_DataLength" Grid.Column="1" Grid.Row="2"                                                   
                                       IsEditable="False"  Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 8 0" SelectedIndex="3">
                                 <x:Int32>5</x:Int32>
                                 <x:Int32>6</x:Int32>
                                 <x:Int32>7</x:Int32>
                                 <x:Int32>8</x:Int32>
                             </ComboBox>
-                            <ComboBox x:ConnectionId='55' x:Name="LinkSerial_CheckBit" Grid.Column="1" Grid.Row="3"                                                   
+                            <ComboBox x:ConnectionId='48' x:Name="LinkSerial_CheckBit" Grid.Column="1" Grid.Row="3"                                                   
                                       IsEditable="False"  Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 8 0" SelectedIndex="0">
                                 <x:String>无</x:String>
                                 <x:String>奇校验</x:String>
                                 <x:String>偶校验</x:String>
                             </ComboBox>
-                            <ComboBox x:ConnectionId='56' x:Name="LinkSerial_StopBit" Grid.Column="1" Grid.Row="4"                                                   
+                            <ComboBox x:ConnectionId='49' x:Name="LinkSerial_StopBit" Grid.Column="1" Grid.Row="4"                                                   
                                       IsEditable="False"  Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 8 0" SelectedIndex="0">
                                 <x:String>1</x:String>
                                 <x:String>1.5</x:String>
                                 <x:String>2</x:String>
                             </ComboBox>
-                            <ComboBox x:ConnectionId='57' x:Name="LinkSerial_StreamCtrl" Grid.Column="1" Grid.Row="5"                                                   
+                            <ComboBox x:ConnectionId='50' x:Name="LinkSerial_StreamCtrl" Grid.Column="1" Grid.Row="5"                                                   
                                       IsEditable="False"  Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 8 0" SelectedIndex="0">
                                 <x:String>CTS/RTS</x:String>
                                 <x:String>XON/XOFF</x:String>
                             </ComboBox>
-                            <ToggleButton x:ConnectionId='58' x:Name="ConnectButton" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="6"                             
+                            <ToggleButton x:ConnectionId='51' x:Name="ConnectButton" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="6"                             
                                     VerticalAlignment="Center" Margin="0 0 8 0"  HorizontalAlignment="Stretch" Content="连接">
                             </ToggleButton>
                             <AppBarSeparator Grid.Column="1" Grid.Row="0" Margin="-8 0 0 0" HorizontalAlignment ="Left"/>
@@ -417,14 +384,14 @@
 
 
                 <CommandBar Grid.Row="2" >
-                    <AppBarToggleButton x:ConnectionId='40' Icon="Shuffle" Label="Shuffle"                            />
-                    <AppBarToggleButton x:ConnectionId='41' Icon="RepeatAll" Label="Repeat"                           />
+                    <AppBarToggleButton x:ConnectionId='33' Icon="Shuffle" Label="Shuffle"                            />
+                    <AppBarToggleButton x:ConnectionId='34' Icon="RepeatAll" Label="Repeat"                           />
                     <AppBarSeparator/>
-                    <AppBarButton x:ConnectionId='42' Icon="Link" Label="Back"                           />
-                    <AppBarButton x:ConnectionId='43' Icon="PreviewLink" Label="Stop"                           />
-                    <AppBarToggleButton x:ConnectionId='44' Icon="Play" Label="Play"                                 ToolTipService.ToolTip="开始/暂停"/>
-                    <AppBarButton x:ConnectionId='45' Icon="Download" Label="down"                                 ToolTipService.ToolTip="到达最底部"/>
-                    <AppBarButton x:ConnectionId='46' Icon="Add" Label="add"                                ToolTipService.ToolTip="添加小部件">
+                    <AppBarButton x:ConnectionId='35' Icon="Link" Label="Back"                           />
+                    <AppBarButton x:ConnectionId='36' Icon="PreviewLink" Label="Stop"                           />
+                    <AppBarToggleButton x:ConnectionId='37' Icon="Play" Label="Play"                                 ToolTipService.ToolTip="开始/暂停"/>
+                    <AppBarButton x:ConnectionId='38' Icon="Download" Label="down"                                 ToolTipService.ToolTip="到达最底部"/>
+                    <AppBarButton x:ConnectionId='39' Icon="Add" Label="add"                                ToolTipService.ToolTip="添加小部件">
                         <AppBarButton.Flyout>
                             <Flyout>
                                 <ListView Height="160" Width="800" SelectionMode="Extended"
@@ -442,18 +409,19 @@
                     </AppBarButton>
 
                     <CommandBar.SecondaryCommands>
-                        <AppBarButton x:ConnectionId='47' Label="Like"                           />
-                        <AppBarButton x:ConnectionId='48' Label="Dislike"                           />
+                        <AppBarButton x:ConnectionId='40' Label="Like"                           />
+                        <AppBarButton x:ConnectionId='41' Label="Dislike"                           />
                     </CommandBar.SecondaryCommands>
 
                     <CommandBar.Content>
                         <TextBlock Text="Now playing..." Margin="12,14"/>
                     </CommandBar.Content>
                 </CommandBar>
-
-                <textcontrolbox:TextControlBox x:ConnectionId='37' ShowLineHighlighter="True" SyntaxHighlighting="True" 
-                    x:Name="dialogTextBox" Grid.Row="2" Margin="0 40 0 40" IsReadonly="False"                                                   >
+ 
+                <textcontrolbox:TextControlBox x:ConnectionId='30' ShowLineHighlighter="True" SyntaxHighlighting="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                x:Name="dialogTextBox" Grid.Row="2" Margin="0 40 0 40" IsReadonly="False"                                                   >
                 </textcontrolbox:TextControlBox>
+ 
 
                 <Grid Grid.Row="3" MaxHeight="80" VerticalAlignment="Bottom" >
                     <Grid.ColumnDefinitions>
@@ -461,7 +429,7 @@
                         <ColumnDefinition Width="38"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBox x:ConnectionId='39'    MaxHeight="80" x:Name="SendTextBox"
+                    <TextBox x:ConnectionId='32'    MaxHeight="80" x:Name="SendTextBox"
                                 Grid.Column="0"
                                 PlaceholderText="你想发送什么？"
                                 HorizontalAlignment="Stretch"
@@ -484,7 +452,7 @@
 
 
 
-                <TabView x:ConnectionId='38' Grid.Column="0" Grid.Row="0" 
+                <TabView x:ConnectionId='31' Grid.Column="0" Grid.Row="0" 
                                                             
                                                                
                                          

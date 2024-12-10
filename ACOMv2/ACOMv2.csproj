@@ -65,6 +65,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\新文件夹\**" />
+    <EmbeddedResource Remove="Models\新文件夹\**" />
+    <None Remove="Models\新文件夹\**" />
+    <Page Remove="Models\新文件夹\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Views\MainCanvasPage.xaml.cs" />
   </ItemGroup>
 
@@ -171,4 +178,8 @@
   <!-- Check if TextTransform.exe exists before running -->
   <Exec Command="if exist &quot;$(DevEnvDir)TextTransform.exe&quot; &quot;$(DevEnvDir)TextTransform.exe&quot; &quot;%(T4Template.FullPath)&quot;" Condition="Exists('$(DevEnvDir)TextTransform.exe')" />
 </Target>
+
+<ItemGroup>
+  <PRIResource Remove="Models\新文件夹\**" />
+</ItemGroup>
 </Project>
