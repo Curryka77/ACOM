@@ -363,3 +363,6 @@ MigrationBackup/
 FodyWeavers.xsd
 
 .vs
+.vs/*
+
+ACOMv2/obj/*
