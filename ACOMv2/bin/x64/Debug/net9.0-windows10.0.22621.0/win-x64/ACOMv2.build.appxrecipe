@@ -28,7 +28,7 @@
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMPlugin\bin\Debug\net7.0-windows10.0.19041.0\ACOMPlugin.pri">
+    <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMPlugin\bin\Debug\net8.0-windows10.0.19041.0\ACOMPlugin.pri">
       <PackagePath>ACOMPlugin.pri</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMPlug\bin\Debug\net8.0-windows10.0.19041.0\ACOMPlug.pri">
@@ -46,7 +46,7 @@
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\ACOMv2.dll">
       <PackagePath>ACOMv2.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMPlugin\bin\Debug\net7.0-windows10.0.19041.0\ACOMPlugin.dll">
+    <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMPlugin\bin\Debug\net8.0-windows10.0.19041.0\ACOMPlugin.dll">
       <PackagePath>ACOMPlugin.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMPlug\bin\Debug\net8.0-windows10.0.19041.0\ACOMPlug.dll">

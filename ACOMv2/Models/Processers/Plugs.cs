@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using ACOMPlug;
+using ACOMPlugin.Core;
+using DryIoc;
+using ShadowPluginLoader.WinUI;
 
 namespace ACOMv2.Models.Processers;
 
@@ -57,6 +60,7 @@ public class Plugs
     /// </summary>
     static public Dictionary<string, Type> IProcessersPlugins = new Dictionary<string, Type>();
     static public Dictionary<string, Type> IDataMuxersPlugins = new Dictionary<string, Type>();
+    static public Dictionary<string, ACOMPluginBase> WidgetPlugins = new Dictionary<string, ACOMPluginBase>();
 
     static public List<Type> WidgetsPlugins = new();
     /// <summary>
@@ -233,18 +237,62 @@ public class Plugs
             instance = null;
         }
     }
+    private static async Task InitPlug()
+    {
+        var loader = DiFactory.Services.Resolve<ACOMPluginLoader>();
+        //await loader.ImportFromZipAsync(@"C:\Users\80520\source\repos\ACOM\Packages");
 
+        //
+        string directoryPath = @"C:\Users\80520\source\repos\ACOM\Packages"; // 替换为你的文件夹路径
+
+        if (Directory.Exists(directoryPath))
+        {
+            int cnt = 0;
+            string[] subDirectories = Directory.GetDirectories(directoryPath);
+            foreach (string subDirectory in subDirectories)
+            {
+                Debug.WriteLine("进入目录 " + subDirectory);
+                await loader.ImportFromDirAsync(subDirectory);
+                Debug.WriteLine("加载到 " + loader.GetPlugins().Count().ToString() + " 个插件");
+                foreach (var plugin in loader.GetPlugins())
+                {
+                    cnt++;
+                    WidgetPlugins.Add(plugin.Id, plugin);
+                    Debug.WriteLine(plugin.Id);
+                    FrameworkElement element = plugin.Create();
+                }
+            }
+            Debug.WriteLine("一共加载插件个数 " + cnt.ToString());
+
+        }
+        else
+        {
+            Console.WriteLine("目录不存在");
+        }
+
+
+    }
     /// <summary>
     /// 初始化插件
     /// </summary>
-    static public void Init(string path)
+    static public async Task InitAsync(string path)
     {
 
         LoadProcesserPlug(path);
         LoadDataMuxPlug(path);
         LoadWidgetPlug(path);
+
+
+        await InitPlug();
+
         Debug.WriteLine(string.Format("==========【{0}】==========", "插件加载完成"));
         Debug.WriteLine(string.Format("==========【{0}】==========", "共加载插件{0}个"), IProcessersPlugins.Count+ IDataMuxersPlugins.Count + WidgetsPlugins.Count);
+
+
+
+
+
+
     }
 
     static public IPlugProcessBase CreateInstance(string PlugName)

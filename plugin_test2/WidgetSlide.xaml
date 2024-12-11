@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="WidgetPlug.Slide.WidgetSlide"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WidgetPlug.Slide"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Red" ManipulationMode="TranslateX,TranslateY">
+        <Button Content="Button"   HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ManipulationMode="TranslateX,TranslateY"/>
+    </Grid>
+</UserControl>

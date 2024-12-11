@@ -255,6 +255,9 @@ namespace ACOM.Models
     }
 
 
+
+
+
     class IO_Manage: Singleton<IO_Manage>
     {
         //页面文件
@@ -330,8 +333,7 @@ namespace ACOM.Models
                 // result.Add(pair.Key, pair.Value);
             }
             //触发钩子函数
-            if(receivedCannelMsg != null)
-                receivedCannelMsg( GlobChannelMassage);
+            receivedCannelMsg?.Invoke(GlobChannelMassage);
 
             //Debug 显示使用
             //ChannelProcesser.PrintProcessedData(GlobChannelMassage.Values.ToList());
@@ -588,7 +590,7 @@ NOT_INIT:
             watcher.EventArrived += Watcher_EventArrived;
             //开始监听
             watcher.Start();
-            Plugs.Init("C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Assets\\Plugs\\");
+            Plugs.InitAsync("C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Assets\\Plugs\\");
 
 
 

@@ -12,16 +12,19 @@ namespace ACOMv2.ViewModels
 {
     using CannelMassage = ValueChangedMessage<List<ChannelViewData>>;
 
-
-    public class partsBase
+  
+    public class Widget
     {
+         //这个类实现对于每个控件的右键菜单，数据绑定，命令绑定，并且自带一个线程
         CannelMassage massage;
         Queue<List<ChannelViewData>> frams;
         AutoResetEvent messageEvent;
         Thread processingThread;
+        public FrameworkElement widget_element;//存储小部件对象
 
-        public partsBase()
+        public Widget(ref FrameworkElement element)
         {
+            widget_element = element;
             massage = new CannelMassage(new List<ChannelViewData>());
             frams = new Queue<List<ChannelViewData>>();
             messageEvent = new AutoResetEvent(false);
@@ -38,8 +41,7 @@ namespace ACOMv2.ViewModels
             processingThread = new Thread(new ThreadStart(ProcessMessages));
             processingThread.Start();
         }
-
-        private void ProcessMessages()
+         private void ProcessMessages()
         {
             Debug.WriteLine($"线程ID: {Thread.CurrentThread.ManagedThreadId} - 开始准备处理消息");
             while (true)

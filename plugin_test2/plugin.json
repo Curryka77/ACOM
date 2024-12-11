@@ -1,7 +1,7 @@
 {
-  "DllName": "plugin_test2",
+  "DllName": "WidgetPlug.Slide",
   "Author": "kitUIN",
-  "Id": "ShadowExample.Plugin.Emoji",
+  "Id": "ACOMPlug.Widget.Slide",
   "Name": "emoji",
   "Version": "1.0.0.12",
   "Dependencies": []

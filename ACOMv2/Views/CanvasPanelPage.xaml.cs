@@ -24,6 +24,7 @@ using ACOMPlugin.Core;
 using DryIoc;
 using ACOM.Models;
 using ACOMPlug;
+using ACOMv2.Models.Processers;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
@@ -50,14 +51,14 @@ namespace ACOMv2.Views
 
     //}
 
-    public class Part : partsBase
-    {
-        Grid elementGrid;//记录元素的Grid
-        public Part(ref Grid elementGrid)
-        {
-            this.elementGrid = elementGrid;
-        }
-    }
+    //public class Part : Widget
+    //{
+    //    Grid elementGrid;//记录元素的Grid
+    //    public Part(ref Grid elementGrid)
+    //    {
+    //        this.elementGrid = elementGrid;
+    //    }
+    //}
 
         /// <summary>
         /// An empty page that can be used on its own or navigated to within a Frame.
@@ -90,7 +91,7 @@ namespace ACOMv2.Views
                 Style = (Style)Application.Current.Resources["GridCardPanel"]
             };
             //创建组件
-            Part part = new(ref elementGrid);
+            Widget part = new(ref element);
 
             // 设置Canvas位置（在C#中，我们通常不设置Canvas.Left和Canvas.Top，因为它们是Canvas特有的属性，这里假设你想要将Grid放置在Canvas中）
             // 你需要一个Canvas作为父容器，然后添加Grid到其中，并设置位置
@@ -109,20 +110,27 @@ namespace ACOMv2.Views
             elementGrid.RowDefinitions.Add(rowDef1);
             elementGrid.RowDefinitions.Add(rowDef2);
 
-            // 创建内部Grid
-            Grid innerGrid = new Grid()
-            {
-                MinHeight = 16,
-                MinWidth = 16,
-                ManipulationMode = ManipulationModes.TranslateX | ManipulationModes.TranslateY,
-                HorizontalAlignment = HorizontalAlignment.Stretch,
-                VerticalAlignment = VerticalAlignment.Stretch,
-                Style = (Style)Application.Current.Resources["GridCardPanel"]
-            };
-            Grid.SetColumn(innerGrid, 0);
-            Grid.SetRow(innerGrid, 0);
-            elementGrid.Children.Add(innerGrid);
-            innerGrid.Children.Add(element);
+            //// 创建内部Grid
+            //Grid innerGrid = new Grid()
+            //{
+            //    MinHeight = 16,
+            //    MinWidth = 16,
+            //    ManipulationMode = ManipulationModes.TranslateX | ManipulationModes.TranslateY,
+            //    HorizontalAlignment = HorizontalAlignment.Stretch,
+            //    VerticalAlignment = VerticalAlignment.Stretch,
+            //    Style = (Style)Application.Current.Resources["GridCardPanel"],
+            //    Background = new SolidColorBrush(Windows.UI.Color.FromArgb(255,255,0,0))
+            //};
+            //innerGrid.HorizontalAlignment = HorizontalAlignment.Stretch;
+            //innerGrid.VerticalAlignment = VerticalAlignment.Stretch;
+            //Grid.SetColumn(innerGrid, 0);
+            //Grid.SetRow(innerGrid, 0);
+            //elementGrid.Children.Add(innerGrid);
+            //innerGrid.Children.Add(element);
+
+            Grid.SetColumn(element, 0);
+            Grid.SetRow(element, 0);
+            elementGrid.Children.Add(element);
 
             // 创建水平ContentSizer
             ContentSizer horizontalContentSizer = new ContentSizer()
@@ -154,7 +162,7 @@ namespace ACOMv2.Views
 
             elementGrid.Children.Add(verticalContentSizer);
 
-            innerGrid.ContextRequested += Parts_ContextRequested;
+            //innerGrid.ContextRequested += Parts_ContextRequested;
             element.ContextRequested += Parts_ContextRequested;
 
 
@@ -172,24 +180,13 @@ namespace ACOMv2.Views
             };
             this.InitializeComponent();
 
-            CanvasView1.Items.Add(InitializeElementGrid(new Button() { Content = "Button1" }));
+             CanvasView1.Items.Add(InitializeElementGrid(Plugs.WidgetPlugins["ACOMPlug.Widget.Slide"].Create()));
 
-            //FrameworkElement element = InitializeElementGrid( (Activator.CreateInstance(Models.Processers.Plugs.WidgetsPlugins[0]) as IPlugWidgetBase).Create());
-            //CanvasView1.Items.Add( new Button() { Content = "Button1" });
-            Init();
 
+             //FrameworkElement element = InitializeElementGrid( (Activator.CreateInstance(Models.Processers.Plugs.WidgetsPlugins[0]) as IPlugWidgetBase).Create());
+             //CanvasView1.Items.Add( new Button() { Content = "Button1" });
         }
-        private async void Init()
-        {
-            var loader = DiFactory.Services.Resolve<ACOMPluginLoader>();
-            //await loader.ImportFromZipAsync(@"C:\Users\80520\source\repos\ACOM\Packages");
-            await loader.ImportFromDirAsync(@"C:\Users\80520\source\repos\ACOM\Packages\plugin_test2");
-            Debug.WriteLine("loaded plug"+ loader.GetPlugins().Count().ToString());
-            foreach (var plugin in loader.GetPlugins())
-            {
-                Debug.WriteLine(plugin.GetEmoji());
-            }
-        }
+
         private void Border_ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
         {
             //Debug.WriteLine("cesfec");

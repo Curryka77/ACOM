@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DryIoc;
+ using DryIoc;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml;
 using Serilog;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -12,8 +14,11 @@ using Serilog;
 using ShadowPluginLoader.MetaAttributes;
 using ShadowPluginLoader.WinUI;
 using ShadowPluginLoader.WinUI.Models;
+using Windows.Devices.SerialCommunication;
 
  namespace ACOMPlugin.Core;
+
+
 
 [ExportMeta]
 public class ACOMPluginMetaData : AbstractPluginMetaData
@@ -22,11 +27,37 @@ public class ACOMPluginMetaData : AbstractPluginMetaData
     public string Author { get; init; }
 }
 
+public class ChannelData
+{
+    public string CData;
+    public string Name;
+    public string ExpendData;//扩展数据，用于隐藏部分的显示
+    public DateTime DateTime;
+}
 public abstract class ACOMPluginBase : AbstractPlugin
 {
-     public abstract string GetEmoji();
-}
 
+     public abstract string GetEmoji();
+    public abstract FrameworkElement Create();
+
+    public abstract void UpdateData(List<ChannelData> newData);
+    /// <summary>
+    /// cmd 为 cmd_name;cmd_arg1;cmd_arg2
+    /// </summary>
+    /// <param name="cmd"></param>
+    public delegate void UpdateCommand(List<string[]> cmd);
+    public  event UpdateCommand updateCommand;//当外部设备变化触发
+    public ACOMPluginBase()
+    {
+
+    }
+
+     ~ACOMPluginBase()
+    {
+        updateCommand = null;
+    }
+}
+ 
 public class ACOMPluginLoader : AbstractPluginLoader<ACOMPluginMetaData, ACOMPluginBase>
 {
     protected override string PluginFolder { get; } = "ACOMPlugin";
@@ -39,4 +70,5 @@ public class ACOMPluginLoader : AbstractPluginLoader<ACOMPluginMetaData, ACOMPlu
     }
 
 }
+
 
