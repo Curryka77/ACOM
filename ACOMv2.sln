@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WidgetPlugSlide", "WidgetPlugSlide\WidgetPlugSlide.csproj", "{B81EA393-BDD1-4FC7-BF1C-254EFF72695B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACOMPlugin", "ACOMPlugin\ACOMPlugin.csproj", "{8F3E89EC-3F53-4372-86C7-F0F9997E615D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM64 = Debug|ARM64
@@ -124,6 +126,18 @@ Global
 		{B81EA393-BDD1-4FC7-BF1C-254EFF72695B}.Release|x64.Build.0 = Release|Any CPU
 		{B81EA393-BDD1-4FC7-BF1C-254EFF72695B}.Release|x86.ActiveCfg = Release|Any CPU
 		{B81EA393-BDD1-4FC7-BF1C-254EFF72695B}.Release|x86.Build.0 = Release|Any CPU
+		{8F3E89EC-3F53-4372-86C7-F0F9997E615D}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{8F3E89EC-3F53-4372-86C7-F0F9997E615D}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{8F3E89EC-3F53-4372-86C7-F0F9997E615D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8F3E89EC-3F53-4372-86C7-F0F9997E615D}.Debug|x64.Build.0 = Debug|Any CPU
+		{8F3E89EC-3F53-4372-86C7-F0F9997E615D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8F3E89EC-3F53-4372-86C7-F0F9997E615D}.Debug|x86.Build.0 = Debug|Any CPU
+		{8F3E89EC-3F53-4372-86C7-F0F9997E615D}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{8F3E89EC-3F53-4372-86C7-F0F9997E615D}.Release|ARM64.Build.0 = Release|Any CPU
+		{8F3E89EC-3F53-4372-86C7-F0F9997E615D}.Release|x64.ActiveCfg = Release|Any CPU
+		{8F3E89EC-3F53-4372-86C7-F0F9997E615D}.Release|x64.Build.0 = Release|Any CPU
+		{8F3E89EC-3F53-4372-86C7-F0F9997E615D}.Release|x86.ActiveCfg = Release|Any CPU
+		{8F3E89EC-3F53-4372-86C7-F0F9997E615D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

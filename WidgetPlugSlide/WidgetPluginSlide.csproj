@@ -5,10 +5,16 @@
     <RootNamespace>WidgetPlugSlide</RootNamespace>
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
     <UseWinUI>true</UseWinUI>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <!-- PluginMeta -->
+    <PluginMeta>
+      <!-- 使用上文的PackageId变量 -->
+      <Id>$(PackageId)</Id>
+      <Name>WidgetPlugSlide</Name>
+      <Version>$(Version)</Version>
+      <Authors>Dyyt587</Authors>
+    </PluginMeta>
   </PropertyGroup>
-  <ItemGroup>
-    <None Remove="widget.xaml" />
-  </ItemGroup>
   <ItemGroup>
     <Page Remove="widget.xaml" />
     <Page Remove="WidgetPlugSlide.xaml" />
@@ -24,7 +30,7 @@
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.241114003" />
     <PackageReference Include="WinUICommunity.Components" Version="7.1.0" />
     <PackageReference Include="WinUICommunity.ContextMenuExtensions" Version="7.1.0" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2662" />
   </ItemGroup>
+  
   
 </Project>
