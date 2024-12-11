@@ -1,10 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\33368\\Documents\\GitHub\\ACOM\\",
+  "WorkspaceRootPath": "C:\\Users\\80520\\source\\repos\\ACOM\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8F3E89EC-3F53-4372-86C7-F0F9997E615D}|ACOMPlugin\\ACOMPlugin.csproj|c:\\users\\33368\\documents\\github\\acom\\acomplugin\\acomplugin.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{DED56B5D-A996-4843-9115-5B03D7881A08}|WidgetPlugSlide\\WidgetPluginSlide.csproj|c:\\users\\80520\\source\\repos\\acom\\widgetplugslide\\widgetpluginslide.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{DED56B5D-A996-4843-9115-5B03D7881A08}|WidgetPlugSlide\\WidgetPluginSlide.csproj|solutionrelative:widgetplugslide\\widgetpluginslide.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DED56B5D-A996-4843-9115-5B03D7881A08}|WidgetPlugSlide\\WidgetPluginSlide.csproj|c:\\users\\80520\\source\\repos\\acom\\widgetplugslide\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DED56B5D-A996-4843-9115-5B03D7881A08}|WidgetPlugSlide\\WidgetPluginSlide.csproj|solutionrelative:widgetplugslide\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F3E89EC-3F53-4372-86C7-F0F9997E615D}|ACOMPlugin\\ACOMPlugin.csproj|c:\\users\\80520\\source\\repos\\acom\\acomplugin\\acomplugin.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{8F3E89EC-3F53-4372-86C7-F0F9997E615D}|ACOMPlugin\\ACOMPlugin.csproj|solutionrelative:acomplugin\\acomplugin.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F3E89EC-3F53-4372-86C7-F0F9997E615D}|ACOMPlugin\\ACOMPlugin.csproj|c:\\users\\80520\\source\\repos\\acom\\acomplugin\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F3E89EC-3F53-4372-86C7-F0F9997E615D}|ACOMPlugin\\ACOMPlugin.csproj|solutionrelative:acomplugin\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{80CA2ABF-98D3-4D25-80E2-7617A1E323B0}|ACOMPlug\\ACOMPlug.csproj|c:\\users\\80520\\source\\repos\\acom\\acomplug\\plugbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80CA2ABF-98D3-4D25-80E2-7617A1E323B0}|ACOMPlug\\ACOMPlug.csproj|solutionrelative:acomplug\\plugbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,10 +35,66 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ACOMPlugin",
-              "DocumentMoniker": "C:\\Users\\33368\\Documents\\GitHub\\ACOM\\ACOMPlugin\\ACOMPlugin.csproj",
+              "Title": "WidgetPluginSlide",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\WidgetPlugSlide\\WidgetPluginSlide.csproj",
+              "RelativeDocumentMoniker": "WidgetPlugSlide\\WidgetPluginSlide.csproj",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\WidgetPlugSlide\\WidgetPluginSlide.csproj \u2B24",
+              "RelativeToolTip": "WidgetPlugSlide\\WidgetPluginSlide.csproj \u2B24",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-12-11T03:31:34.057Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\WidgetPlugSlide\\Class1.cs",
+              "RelativeDocumentMoniker": "WidgetPlugSlide\\Class1.cs",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\WidgetPlugSlide\\Class1.cs",
+              "RelativeToolTip": "WidgetPlugSlide\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T03:31:44.965Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PlugBase.cs",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlug\\PlugBase.cs",
+              "RelativeDocumentMoniker": "ACOMPlug\\PlugBase.cs",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlug\\PlugBase.cs",
+              "RelativeToolTip": "ACOMPlug\\PlugBase.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T17:16:44.771Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlugin\\Class1.cs",
+              "RelativeDocumentMoniker": "ACOMPlugin\\Class1.cs",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlugin\\Class1.cs",
+              "RelativeToolTip": "ACOMPlugin\\Class1.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAABIwDsAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T17:12:20.971Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ACOMPlugin.csproj",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlugin\\ACOMPlugin.csproj",
               "RelativeDocumentMoniker": "ACOMPlugin\\ACOMPlugin.csproj",
-              "ToolTip": "C:\\Users\\33368\\Documents\\GitHub\\ACOM\\ACOMPlugin\\ACOMPlugin.csproj",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlugin\\ACOMPlugin.csproj",
               "RelativeToolTip": "ACOMPlugin\\ACOMPlugin.csproj",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAABMAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
