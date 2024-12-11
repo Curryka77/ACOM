@@ -514,6 +514,19 @@
           }
         }
       },
+      "DryIoc.dll/5.4.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/DryIoc.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/DryIoc.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "KcpSharp/0.8.8": {
         "type": "package",
         "compile": {
@@ -525,6 +538,19 @@
           "lib/net6.0/KcpSharp.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "kitUIN.CustomExtensions.WinUI/0.6.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Windows.SDK.BuildTools": "10.0.22621.755",
+          "Microsoft.WindowsAppSDK": "1.4.230822000"
+        },
+        "compile": {
+          "lib/net6.0-windows10.0.19041/CustomExtensions.WinUI.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0-windows10.0.19041/CustomExtensions.WinUI.dll": {}
         }
       },
       "Microsoft.Extensions.Configuration/9.0.0": {
@@ -1669,6 +1695,59 @@
           }
         }
       },
+      "ShadowPluginLoader.MetaAttributes/1.1.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/ShadowPluginLoader.MetaAttributes.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/ShadowPluginLoader.MetaAttributes.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "ShadowPluginLoader.SourceGenerator/1.3.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/ShadowPluginLoader.SourceGenerator.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ShadowPluginLoader.SourceGenerator.dll": {}
+        }
+      },
+      "ShadowPluginLoader.Tool/1.2.1": {
+        "type": "package",
+        "dependencies": {
+          "ShadowPluginLoader.MetaAttributes": "1.1.2"
+        },
+        "build": {
+          "buildTransitive/ShadowPluginLoader.Tool.targets": {}
+        }
+      },
+      "ShadowPluginLoader.WinUI/1.3.3": {
+        "type": "package",
+        "dependencies": {
+          "DryIoc.dll": "5.4.3",
+          "Microsoft.Windows.SDK.BuildTools": "10.0.22621.756",
+          "Microsoft.WindowsAppSDK": "1.5.241107002",
+          "Serilog": "4.1.0",
+          "ShadowPluginLoader.SourceGenerator": "1.3.2",
+          "ShadowPluginLoader.Tool": "1.2.1",
+          "kitUIN.CustomExtensions.WinUI": "0.6.3"
+        },
+        "compile": {
+          "lib/net6.0-windows10.0.19041/ShadowPluginLoader.WinUI.dll": {
+            "related": ".pri;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows10.0.19041/ShadowPluginLoader.WinUI.dll": {
+            "related": ".pri;.xml"
+          }
+        }
+      },
       "STTech.BytesIO.Core/2.14.6": {
         "type": "package",
         "dependencies": {
@@ -2730,6 +2809,21 @@
           "bin/placeholder/ACOMPlug.dll": {}
         }
       },
+      "ACOMPlugin.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "ShadowPluginLoader.MetaAttributes": "1.1.2",
+          "ShadowPluginLoader.Tool": "1.2.1",
+          "ShadowPluginLoader.WinUI": "1.3.3"
+        },
+        "compile": {
+          "bin/placeholder/ACOMPlugin.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ACOMPlugin.Core.dll": {}
+        }
+      },
       "ClassLibrary1/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -3277,6 +3371,19 @@
           }
         }
       },
+      "DryIoc.dll/5.4.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/DryIoc.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/DryIoc.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "KcpSharp/0.8.8": {
         "type": "package",
         "compile": {
@@ -3288,6 +3395,19 @@
           "lib/net6.0/KcpSharp.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "kitUIN.CustomExtensions.WinUI/0.6.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Windows.SDK.BuildTools": "10.0.22621.755",
+          "Microsoft.WindowsAppSDK": "1.4.230822000"
+        },
+        "compile": {
+          "lib/net6.0-windows10.0.19041/CustomExtensions.WinUI.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0-windows10.0.19041/CustomExtensions.WinUI.dll": {}
         }
       },
       "Microsoft.Extensions.Configuration/9.0.0": {
@@ -4517,6 +4637,59 @@
           }
         }
       },
+      "ShadowPluginLoader.MetaAttributes/1.1.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/ShadowPluginLoader.MetaAttributes.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/ShadowPluginLoader.MetaAttributes.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "ShadowPluginLoader.SourceGenerator/1.3.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/ShadowPluginLoader.SourceGenerator.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ShadowPluginLoader.SourceGenerator.dll": {}
+        }
+      },
+      "ShadowPluginLoader.Tool/1.2.1": {
+        "type": "package",
+        "dependencies": {
+          "ShadowPluginLoader.MetaAttributes": "1.1.2"
+        },
+        "build": {
+          "buildTransitive/ShadowPluginLoader.Tool.targets": {}
+        }
+      },
+      "ShadowPluginLoader.WinUI/1.3.3": {
+        "type": "package",
+        "dependencies": {
+          "DryIoc.dll": "5.4.3",
+          "Microsoft.Windows.SDK.BuildTools": "10.0.22621.756",
+          "Microsoft.WindowsAppSDK": "1.5.241107002",
+          "Serilog": "4.1.0",
+          "ShadowPluginLoader.SourceGenerator": "1.3.2",
+          "ShadowPluginLoader.Tool": "1.2.1",
+          "kitUIN.CustomExtensions.WinUI": "0.6.3"
+        },
+        "compile": {
+          "lib/net6.0-windows10.0.19041/ShadowPluginLoader.WinUI.dll": {
+            "related": ".pri;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows10.0.19041/ShadowPluginLoader.WinUI.dll": {
+            "related": ".pri;.xml"
+          }
+        }
+      },
       "STTech.BytesIO.Core/2.14.6": {
         "type": "package",
         "dependencies": {
@@ -5562,6 +5735,21 @@
           "bin/placeholder/ACOMPlug.dll": {}
         }
       },
+      "ACOMPlugin.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "ShadowPluginLoader.MetaAttributes": "1.1.2",
+          "ShadowPluginLoader.Tool": "1.2.1",
+          "ShadowPluginLoader.WinUI": "1.3.3"
+        },
+        "compile": {
+          "bin/placeholder/ACOMPlugin.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ACOMPlugin.Core.dll": {}
+        }
+      },
       "ClassLibrary1/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -6109,6 +6297,19 @@
           }
         }
       },
+      "DryIoc.dll/5.4.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/DryIoc.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/DryIoc.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "KcpSharp/0.8.8": {
         "type": "package",
         "compile": {
@@ -6120,6 +6321,19 @@
           "lib/net6.0/KcpSharp.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "kitUIN.CustomExtensions.WinUI/0.6.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Windows.SDK.BuildTools": "10.0.22621.755",
+          "Microsoft.WindowsAppSDK": "1.4.230822000"
+        },
+        "compile": {
+          "lib/net6.0-windows10.0.19041/CustomExtensions.WinUI.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0-windows10.0.19041/CustomExtensions.WinUI.dll": {}
         }
       },
       "Microsoft.Extensions.Configuration/9.0.0": {
@@ -7349,6 +7563,59 @@
           }
         }
       },
+      "ShadowPluginLoader.MetaAttributes/1.1.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/ShadowPluginLoader.MetaAttributes.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/ShadowPluginLoader.MetaAttributes.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "ShadowPluginLoader.SourceGenerator/1.3.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/ShadowPluginLoader.SourceGenerator.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ShadowPluginLoader.SourceGenerator.dll": {}
+        }
+      },
+      "ShadowPluginLoader.Tool/1.2.1": {
+        "type": "package",
+        "dependencies": {
+          "ShadowPluginLoader.MetaAttributes": "1.1.2"
+        },
+        "build": {
+          "buildTransitive/ShadowPluginLoader.Tool.targets": {}
+        }
+      },
+      "ShadowPluginLoader.WinUI/1.3.3": {
+        "type": "package",
+        "dependencies": {
+          "DryIoc.dll": "5.4.3",
+          "Microsoft.Windows.SDK.BuildTools": "10.0.22621.756",
+          "Microsoft.WindowsAppSDK": "1.5.241107002",
+          "Serilog": "4.1.0",
+          "ShadowPluginLoader.SourceGenerator": "1.3.2",
+          "ShadowPluginLoader.Tool": "1.2.1",
+          "kitUIN.CustomExtensions.WinUI": "0.6.3"
+        },
+        "compile": {
+          "lib/net6.0-windows10.0.19041/ShadowPluginLoader.WinUI.dll": {
+            "related": ".pri;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows10.0.19041/ShadowPluginLoader.WinUI.dll": {
+            "related": ".pri;.xml"
+          }
+        }
+      },
       "STTech.BytesIO.Core/2.14.6": {
         "type": "package",
         "dependencies": {
@@ -8394,6 +8661,21 @@
           "bin/placeholder/ACOMPlug.dll": {}
         }
       },
+      "ACOMPlugin.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "ShadowPluginLoader.MetaAttributes": "1.1.2",
+          "ShadowPluginLoader.Tool": "1.2.1",
+          "ShadowPluginLoader.WinUI": "1.3.3"
+        },
+        "compile": {
+          "bin/placeholder/ACOMPlugin.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ACOMPlugin.Core.dll": {}
+        }
+      },
       "ClassLibrary1/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -8941,6 +9223,19 @@
           }
         }
       },
+      "DryIoc.dll/5.4.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/DryIoc.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/DryIoc.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "KcpSharp/0.8.8": {
         "type": "package",
         "compile": {
@@ -8952,6 +9247,19 @@
           "lib/net6.0/KcpSharp.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "kitUIN.CustomExtensions.WinUI/0.6.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Windows.SDK.BuildTools": "10.0.22621.755",
+          "Microsoft.WindowsAppSDK": "1.4.230822000"
+        },
+        "compile": {
+          "lib/net6.0-windows10.0.19041/CustomExtensions.WinUI.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0-windows10.0.19041/CustomExtensions.WinUI.dll": {}
         }
       },
       "Microsoft.Extensions.Configuration/9.0.0": {
@@ -10181,6 +10489,59 @@
           }
         }
       },
+      "ShadowPluginLoader.MetaAttributes/1.1.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/ShadowPluginLoader.MetaAttributes.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/ShadowPluginLoader.MetaAttributes.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "ShadowPluginLoader.SourceGenerator/1.3.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/ShadowPluginLoader.SourceGenerator.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ShadowPluginLoader.SourceGenerator.dll": {}
+        }
+      },
+      "ShadowPluginLoader.Tool/1.2.1": {
+        "type": "package",
+        "dependencies": {
+          "ShadowPluginLoader.MetaAttributes": "1.1.2"
+        },
+        "build": {
+          "buildTransitive/ShadowPluginLoader.Tool.targets": {}
+        }
+      },
+      "ShadowPluginLoader.WinUI/1.3.3": {
+        "type": "package",
+        "dependencies": {
+          "DryIoc.dll": "5.4.3",
+          "Microsoft.Windows.SDK.BuildTools": "10.0.22621.756",
+          "Microsoft.WindowsAppSDK": "1.5.241107002",
+          "Serilog": "4.1.0",
+          "ShadowPluginLoader.SourceGenerator": "1.3.2",
+          "ShadowPluginLoader.Tool": "1.2.1",
+          "kitUIN.CustomExtensions.WinUI": "0.6.3"
+        },
+        "compile": {
+          "lib/net6.0-windows10.0.19041/ShadowPluginLoader.WinUI.dll": {
+            "related": ".pri;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows10.0.19041/ShadowPluginLoader.WinUI.dll": {
+            "related": ".pri;.xml"
+          }
+        }
+      },
       "STTech.BytesIO.Core/2.14.6": {
         "type": "package",
         "dependencies": {
@@ -11226,6 +11587,21 @@
           "bin/placeholder/ACOMPlug.dll": {}
         }
       },
+      "ACOMPlugin.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "ShadowPluginLoader.MetaAttributes": "1.1.2",
+          "ShadowPluginLoader.Tool": "1.2.1",
+          "ShadowPluginLoader.WinUI": "1.3.3"
+        },
+        "compile": {
+          "bin/placeholder/ACOMPlugin.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ACOMPlugin.Core.dll": {}
+        }
+      },
       "ClassLibrary1/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -12164,6 +12540,30 @@
         "lib/net8.0/CommunityToolkit.WinUI.Triggers.pdb"
       ]
     },
+    "DryIoc.dll/5.4.3": {
+      "sha512": "yhXOG3SOxeWYxBAWskNRDD8fzw5hriEawv4VN4WKaFHOuubiop4kxe2rkWTEyCnTgRVgxVUSQCDBBkZqwPm1iQ==",
+      "type": "package",
+      "path": "dryioc.dll/5.4.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "DryIoc.snk",
+        "LICENSE.txt",
+        "dryioc.dll.5.4.3.nupkg.sha512",
+        "dryioc.dll.nuspec",
+        "icon.png",
+        "lib/net45/DryIoc.dll",
+        "lib/net45/DryIoc.xml",
+        "lib/net6.0/DryIoc.dll",
+        "lib/net6.0/DryIoc.xml",
+        "lib/net7.0/DryIoc.dll",
+        "lib/net7.0/DryIoc.xml",
+        "lib/netstandard2.0/DryIoc.dll",
+        "lib/netstandard2.0/DryIoc.xml",
+        "lib/netstandard2.1/DryIoc.dll",
+        "lib/netstandard2.1/DryIoc.xml"
+      ]
+    },
     "KcpSharp/0.8.8": {
       "sha512": "+Ay9ookyb2IRY2Q5IgKHYS7aKaNabL6cNQVvg23HcNPt6HwCsVjC9BwpnAAekCsOi+631JqL23hH5Rjeregxbg==",
       "type": "package",
@@ -12177,6 +12577,18 @@
         "lib/net6.0/KcpSharp.xml",
         "lib/netstandard2.0/KcpSharp.dll",
         "lib/netstandard2.0/KcpSharp.xml"
+      ]
+    },
+    "kitUIN.CustomExtensions.WinUI/0.6.3": {
+      "sha512": "sK/k2w5K5dx4iUAlgWYWLgHiAT2eOxcIQRqybBJN1k6iZosVVRBJHp3QnzGIdNzlg4vw6ILiSYpqRG4Se6EO/w==",
+      "type": "package",
+      "path": "kituin.customextensions.winui/0.6.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "kituin.customextensions.winui.0.6.3.nupkg.sha512",
+        "kituin.customextensions.winui.nuspec",
+        "lib/net6.0-windows10.0.19041/CustomExtensions.WinUI.dll"
       ]
     },
     "Microsoft.Extensions.Configuration/9.0.0": {
@@ -14845,6 +15257,75 @@
         "serilog.sinks.file.nuspec"
       ]
     },
+    "ShadowPluginLoader.MetaAttributes/1.1.2": {
+      "sha512": "0NGz7ATiB4xtSJg7MdMCOQhIai2X8mWsWp8u7U6kt5PPA0vsXXKLQGiejupQhu00/TjLwvV2JcXtTcCHzrgO2w==",
+      "type": "package",
+      "path": "shadowpluginloader.metaattributes/1.1.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net6.0/ShadowPluginLoader.MetaAttributes.dll",
+        "lib/net6.0/ShadowPluginLoader.MetaAttributes.xml",
+        "shadowpluginloader.metaattributes.1.1.2.nupkg.sha512",
+        "shadowpluginloader.metaattributes.nuspec"
+      ]
+    },
+    "ShadowPluginLoader.SourceGenerator/1.3.2": {
+      "sha512": "80umn/7FcC8qLE9a3rG1Olw+Q/IIrAMgcSRha9QhL12fd+qMz1nL1KmKkrY68hLIszTvFcFowABD+S6F2D4FgQ==",
+      "type": "package",
+      "path": "shadowpluginloader.sourcegenerator/1.3.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "analyzers/dotnet/cs/Newtonsoft.Json.dll",
+        "analyzers/dotnet/cs/ShadowPluginLoader.SourceGenerator.dll",
+        "lib/netstandard2.0/ShadowPluginLoader.SourceGenerator.dll",
+        "shadowpluginloader.sourcegenerator.1.3.2.nupkg.sha512",
+        "shadowpluginloader.sourcegenerator.nuspec"
+      ]
+    },
+    "ShadowPluginLoader.Tool/1.2.1": {
+      "sha512": "JRLz6fprqX7lR1PxJFQQtFUqQJj7hX9jccY4DF5UxPTsd37a54lqx75BO+oYCGRV2WlM1abOo59KJ2yJ7yny9w==",
+      "type": "package",
+      "path": "shadowpluginloader.tool/1.2.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "build/Loader.Build.targets",
+        "build/Loaders.Build.props",
+        "build/Plugin.Build.exclude",
+        "build/Plugin.Build.props",
+        "build/Plugin.Build.targets",
+        "build/ShadowPluginLoader.MetaAttributes.dll",
+        "build/ShadowPluginLoader.Tool.deps.json",
+        "build/ShadowPluginLoader.Tool.dll",
+        "build/ShadowPluginLoader.Tool.runtimeconfig.json",
+        "build/ShadowPluginLoader.Tool.targets",
+        "build/Tool.Default.targets",
+        "build/Tools.Config.props",
+        "buildTransitive/ShadowPluginLoader.Tool.targets",
+        "shadowpluginloader.tool.1.2.1.nupkg.sha512",
+        "shadowpluginloader.tool.nuspec"
+      ]
+    },
+    "ShadowPluginLoader.WinUI/1.3.3": {
+      "sha512": "IE4TChjp/SGyTLBio0WgGTZBMjUZGbp9oKZFVXI0XTJYoLQx/GiwBKb4+FBXmiquL98swwde90XCXLad1qyg1w==",
+      "type": "package",
+      "path": "shadowpluginloader.winui/1.3.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net6.0-windows10.0.19041/ShadowPluginLoader.WinUI.dll",
+        "lib/net6.0-windows10.0.19041/ShadowPluginLoader.WinUI.pri",
+        "lib/net6.0-windows10.0.19041/ShadowPluginLoader.WinUI.xml",
+        "shadowpluginloader.winui.1.3.3.nupkg.sha512",
+        "shadowpluginloader.winui.nuspec"
+      ]
+    },
     "STTech.BytesIO.Core/2.14.6": {
       "sha512": "857ScFYFbp58EIofSiz1dCQMtkuGIUF3rG5Z/U3tvGCvqjztndBwEY4Zmnc0Dqkgeb9uLixETFiYiqrA5JEIsA==",
       "type": "package",
@@ -17509,6 +17990,11 @@
       "path": "../ACOMPlug/ACOMPlug.csproj",
       "msbuildProject": "../ACOMPlug/ACOMPlug.csproj"
     },
+    "ACOMPlugin.Core/1.0.0": {
+      "type": "project",
+      "path": "../ACOMPlugin/ACOMPlugin.csproj",
+      "msbuildProject": "../ACOMPlugin/ACOMPlugin.csproj"
+    },
     "ClassLibrary1/1.0.0": {
       "type": "project",
       "path": "../ClassLibrary1/ClassLibrary1.csproj",
@@ -17523,6 +18009,7 @@
   "projectFileDependencyGroups": {
     "net9.0-windows10.0.22621": [
       "ACOMPlug >= 1.0.0",
+      "ACOMPlugin.Core >= 1.0.0",
       "ClassLibrary1 >= 1.0.0",
       "CommunityToolkit.Common >= 8.3.2",
       "CommunityToolkit.HighPerformance >= 8.3.2",
@@ -17613,6 +18100,9 @@
         "net9.0-windows10.0.22621": {
           "targetAlias": "net9.0-windows10.0.22621.0",
           "projectReferences": {
+            "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlugin\\ACOMPlugin.csproj": {
+              "projectPath": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlugin\\ACOMPlugin.csproj"
+            },
             "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlug\\ACOMPlug.csproj": {
               "projectPath": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlug\\ACOMPlug.csproj"
             },

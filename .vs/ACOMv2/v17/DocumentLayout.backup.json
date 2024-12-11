@@ -3,24 +3,94 @@
   "WorkspaceRootPath": "C:\\Users\\80520\\source\\repos\\ACOM\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DED56B5D-A996-4843-9115-5B03D7881A08}|WidgetPlugSlide\\WidgetPluginSlide.csproj|c:\\users\\80520\\source\\repos\\acom\\widgetplugslide\\widgetpluginslide.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{DED56B5D-A996-4843-9115-5B03D7881A08}|WidgetPlugSlide\\WidgetPluginSlide.csproj|solutionrelative:widgetplugslide\\widgetpluginslide.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|c:\\users\\80520\\source\\repos\\acom\\acomv2\\views\\canvaspanelpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|solutionrelative:acomv2\\views\\canvaspanelpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DED56B5D-A996-4843-9115-5B03D7881A08}|WidgetPlugSlide\\WidgetPluginSlide.csproj|c:\\users\\80520\\source\\repos\\acom\\widgetplugslide\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DED56B5D-A996-4843-9115-5B03D7881A08}|WidgetPlugSlide\\WidgetPluginSlide.csproj|solutionrelative:widgetplugslide\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D40D70AC-5D24-444C-9209-F28698D594BF}|plugin_test2\\plugin_test2.csproj|c:\\users\\80520\\source\\repos\\acom\\plugin_test2\\plugin_test2.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{D40D70AC-5D24-444C-9209-F28698D594BF}|plugin_test2\\plugin_test2.csproj|solutionrelative:plugin_test2\\plugin_test2.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F3E89EC-3F53-4372-86C7-F0F9997E615D}|ACOMPlugin\\ACOMPlugin.csproj|c:\\users\\80520\\source\\repos\\acom\\acomplugin\\acomplugin.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{8F3E89EC-3F53-4372-86C7-F0F9997E615D}|ACOMPlugin\\ACOMPlugin.csproj|solutionrelative:acomplugin\\acomplugin.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{DED56B5D-A996-4843-9115-5B03D7881A08}|WidgetPlugSlide\\WidgetPluginSlide.csproj|c:\\users\\80520\\source\\repos\\acom\\widgetplugslide\\widgetpluginslide.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{DED56B5D-A996-4843-9115-5B03D7881A08}|WidgetPlugSlide\\WidgetPluginSlide.csproj|solutionrelative:widgetplugslide\\widgetpluginslide.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|c:\\users\\80520\\source\\repos\\acom\\acomv2\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|solutionrelative:acomv2\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\80520\\AppData\\Local\\Temp\\.vsdbgsrc\\d2f4667e43a4d11fef715f185cefd9ef4848ef28b89725d446faa91b9e5c805e\\AbstractPluginLoader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|c:\\users\\80520\\source\\repos\\acom\\acomv2\\acomv2.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|solutionrelative:acomv2\\acomv2.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6350553A-512F-4611-961F-F6C7E914BCC0}|ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj|c:\\users\\80520\\source\\repos\\acom\\processerplug_waterfire\\processerplugwaterfire.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{6350553A-512F-4611-961F-F6C7E914BCC0}|ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj|solutionrelative:processerplug_waterfire\\processerplugwaterfire.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFAB671C-615F-454B-AABA-93237A1446FF}|WidgetPlugSlide1\\WidgetPlugSlide.csproj|c:\\users\\80520\\source\\repos\\acom\\widgetplugslide1\\widgetplugslide.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFAB671C-615F-454B-AABA-93237A1446FF}|WidgetPlugSlide1\\WidgetPlugSlide.csproj|solutionrelative:widgetplugslide1\\widgetplugslide.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D40D70AC-5D24-444C-9209-F28698D594BF}|plugin_test2\\plugin_test2.csproj|c:\\users\\80520\\source\\repos\\acom\\plugin_test2\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D40D70AC-5D24-444C-9209-F28698D594BF}|plugin_test2\\plugin_test2.csproj|solutionrelative:plugin_test2\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D40D70AC-5D24-444C-9209-F28698D594BF}|plugin_test2\\plugin_test2.csproj|c:\\users\\80520\\source\\repos\\acom\\plugin_test2\\plugin_test2.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{D40D70AC-5D24-444C-9209-F28698D594BF}|plugin_test2\\plugin_test2.csproj|solutionrelative:plugin_test2\\plugin_test2.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|c:\\users\\80520\\source\\repos\\acom\\acomv2\\models\\processers\\plugs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{546DCE78-C78C-48F2-868B-C189A7117C80}|ACOMv2\\ACOMv2.csproj|solutionrelative:acomv2\\models\\processers\\plugs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6350553A-512F-4611-961F-F6C7E914BCC0}|ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj|c:\\users\\80520\\source\\repos\\acom\\processerplug_waterfire\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6350553A-512F-4611-961F-F6C7E914BCC0}|ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj|solutionrelative:processerplug_waterfire\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8F3E89EC-3F53-4372-86C7-F0F9997E615D}|ACOMPlugin\\ACOMPlugin.csproj|c:\\users\\80520\\source\\repos\\acom\\acomplugin\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F3E89EC-3F53-4372-86C7-F0F9997E615D}|ACOMPlugin\\ACOMPlugin.csproj|solutionrelative:acomplugin\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{8F3E89EC-3F53-4372-86C7-F0F9997E615D}|ACOMPlugin\\ACOMPlugin.csproj|c:\\users\\80520\\source\\repos\\acom\\acomplugin\\acomplugin.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{8F3E89EC-3F53-4372-86C7-F0F9997E615D}|ACOMPlugin\\ACOMPlugin.csproj|solutionrelative:acomplugin\\acomplugin.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F3E89EC-3F53-4372-86C7-F0F9997E615D}|ACOMPlugin\\ACOMPlugin.csproj|c:\\users\\80520\\source\\repos\\acom\\acomplugin\\acomplugin.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{8F3E89EC-3F53-4372-86C7-F0F9997E615D}|ACOMPlugin\\ACOMPlugin.csproj|solutionrelative:acomplugin\\acomplugin.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{354486D2-82C2-4CDC-AB2A-C728267F32D0}|Plugin_test1\\Plugin_test1.csproj|c:\\users\\80520\\source\\repos\\acom\\plugin_test1\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{354486D2-82C2-4CDC-AB2A-C728267F32D0}|Plugin_test1\\Plugin_test1.csproj|solutionrelative:plugin_test1\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D40D70AC-5D24-444C-9209-F28698D594BF}|plugin_test2\\plugin_test2.csproj|c:\\users\\80520\\source\\repos\\acom\\plugin_test2\\plugin.d.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{D40D70AC-5D24-444C-9209-F28698D594BF}|plugin_test2\\plugin_test2.csproj|solutionrelative:plugin_test2\\plugin.d.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{80CA2ABF-98D3-4D25-80E2-7617A1E323B0}|ACOMPlug\\ACOMPlug.csproj|c:\\users\\80520\\source\\repos\\acom\\acomplug\\plugbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{80CA2ABF-98D3-4D25-80E2-7617A1E323B0}|ACOMPlug\\ACOMPlug.csproj|solutionrelative:acomplug\\plugbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\80520\\Documents\\GitHub\\ShadowViewer\\ShadowViewer.Plugin.Local\\ShadowViewer.Plugin.Local\\LocalPlugin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\80520\\source\\repos\\ACOM\\plugin_test2\\obj\\plugin_test2.csproj.nuget.g.props||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:plugin_test2\\obj\\plugin_test2.csproj.nuget.g.props||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\80520\\source\\repos\\ACOM\\plugin_test2\\obj\\plugin_test2.csproj.nuget.g.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:plugin_test2\\obj\\plugin_test2.csproj.nuget.g.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\80520\\source\\repos\\ACOM\\plugin_test2\\obj\\Debug\\net8.0-windows10.0.19041.0\\plugin_test2.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:plugin_test2\\obj\\Debug\\net8.0-windows10.0.19041.0\\plugin_test2.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\obj\\x64\\Debug\\net9.0-windows10.0.22621.0\\win-x64\\App.g.i.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ACOMv2\\obj\\x64\\Debug\\net9.0-windows10.0.22621.0\\win-x64\\App.g.i.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,75 +100,305 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "WidgetPluginSlide",
-              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\WidgetPlugSlide\\WidgetPluginSlide.csproj",
-              "RelativeDocumentMoniker": "WidgetPlugSlide\\WidgetPluginSlide.csproj",
-              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\WidgetPlugSlide\\WidgetPluginSlide.csproj \u2B24",
-              "RelativeToolTip": "WidgetPlugSlide\\WidgetPluginSlide.csproj \u2B24",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-12-11T03:31:34.057Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\WidgetPlugSlide\\Class1.cs",
-              "RelativeDocumentMoniker": "WidgetPlugSlide\\Class1.cs",
-              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\WidgetPlugSlide\\Class1.cs",
-              "RelativeToolTip": "WidgetPlugSlide\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-11T03:31:44.965Z",
+              "DocumentIndex": 2,
+              "Title": "WidgetPluginSlide",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\WidgetPlugSlide\\WidgetPluginSlide.csproj",
+              "RelativeDocumentMoniker": "WidgetPlugSlide\\WidgetPluginSlide.csproj",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\WidgetPlugSlide\\WidgetPluginSlide.csproj",
+              "RelativeToolTip": "WidgetPlugSlide\\WidgetPluginSlide.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-12-11T12:45:46.761Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ACOMPlugin",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlugin\\ACOMPlugin.csproj",
+              "RelativeDocumentMoniker": "ACOMPlugin\\ACOMPlugin.csproj",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlugin\\ACOMPlugin.csproj",
+              "RelativeToolTip": "ACOMPlugin\\ACOMPlugin.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-12-11T12:09:08.842Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "PlugBase.cs",
-              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlug\\PlugBase.cs",
-              "RelativeDocumentMoniker": "ACOMPlug\\PlugBase.cs",
-              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlug\\PlugBase.cs",
-              "RelativeToolTip": "ACOMPlug\\PlugBase.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Title": "AbstractPluginLoader.cs",
+              "DocumentMoniker": "C:\\Users\\80520\\AppData\\Local\\Temp\\.vsdbgsrc\\d2f4667e43a4d11fef715f185cefd9ef4848ef28b89725d446faa91b9e5c805e\\AbstractPluginLoader.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\d2f4667e43a4d11fef715f185cefd9ef4848ef28b89725d446faa91b9e5c805e\\AbstractPluginLoader.cs",
+              "ToolTip": "C:\\Users\\80520\\AppData\\Local\\Temp\\.vsdbgsrc\\d2f4667e43a4d11fef715f185cefd9ef4848ef28b89725d446faa91b9e5c805e\\AbstractPluginLoader.cs",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\d2f4667e43a4d11fef715f185cefd9ef4848ef28b89725d446faa91b9e5c805e\\AbstractPluginLoader.cs",
+              "ViewState": "AgIAALwAAAAAAAAAAAAvwM0AAAACAAAAAQAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T17:16:44.771Z",
+              "WhenOpened": "2024-12-11T11:09:47.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CanvasPanelPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Views\\CanvasPanelPage.xaml.cs",
+              "RelativeDocumentMoniker": "ACOMv2\\Views\\CanvasPanelPage.xaml.cs",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Views\\CanvasPanelPage.xaml.cs \u2B24",
+              "RelativeToolTip": "ACOMv2\\Views\\CanvasPanelPage.xaml.cs \u2B24",
+              "ViewState": "AgIAAKgAAAAAAAAAAADwv7kAAABkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T11:07:16.953Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\App.xaml.cs",
+              "RelativeDocumentMoniker": "ACOMv2\\App.xaml.cs",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\App.xaml.cs",
+              "RelativeToolTip": "ACOMv2\\App.xaml.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAuwCwAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T12:20:02.9Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ACOMv2",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\ACOMv2.csproj",
+              "RelativeDocumentMoniker": "ACOMv2\\ACOMv2.csproj",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\ACOMv2.csproj",
+              "RelativeToolTip": "ACOMv2\\ACOMv2.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-12-11T12:34:28.765Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "plugin_test2",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\plugin_test2\\plugin_test2.csproj",
+              "RelativeDocumentMoniker": "plugin_test2\\plugin_test2.csproj",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\plugin_test2\\plugin_test2.csproj",
+              "RelativeToolTip": "plugin_test2\\plugin_test2.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-12-11T12:08:46.345Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "WidgetPlugSlide.cs",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\WidgetPlugSlide1\\WidgetPlugSlide.cs",
+              "RelativeDocumentMoniker": "WidgetPlugSlide1\\WidgetPlugSlide.cs",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\WidgetPlugSlide1\\WidgetPlugSlide.cs",
+              "RelativeToolTip": "WidgetPlugSlide1\\WidgetPlugSlide.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAswBEAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T12:26:43.234Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ProcesserPlugWaterFire",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj",
+              "RelativeDocumentMoniker": "ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj",
+              "RelativeToolTip": "ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-12-11T12:28:56.83Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ACOMPlugin",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlugin\\ACOMPlugin.csproj",
+              "RelativeDocumentMoniker": "ACOMPlugin\\ACOMPlugin.csproj",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlugin\\ACOMPlugin.csproj",
+              "RelativeToolTip": "ACOMPlugin\\ACOMPlugin.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-12-11T12:09:16.198Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\Plugin_test1\\Class1.cs",
+              "RelativeDocumentMoniker": "Plugin_test1\\Class1.cs",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\Plugin_test1\\Class1.cs",
+              "RelativeToolTip": "Plugin_test1\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T12:06:37.304Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "plugin_test2",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\plugin_test2\\plugin_test2.csproj",
+              "RelativeDocumentMoniker": "plugin_test2\\plugin_test2.csproj",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\plugin_test2\\plugin_test2.csproj",
+              "RelativeToolTip": "plugin_test2\\plugin_test2.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-12-11T11:59:50.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\plugin_test2\\Class1.cs",
+              "RelativeDocumentMoniker": "plugin_test2\\Class1.cs",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\plugin_test2\\Class1.cs",
+              "RelativeToolTip": "plugin_test2\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T11:28:20.091Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Plugs.cs",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Models\\Processers\\Plugs.cs",
+              "RelativeDocumentMoniker": "ACOMv2\\Models\\Processers\\Plugs.cs",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Models\\Processers\\Plugs.cs",
+              "RelativeToolTip": "ACOMv2\\Models\\Processers\\Plugs.cs",
+              "ViewState": "AgIAALAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T12:20:17.941Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ProcesserPlug_WaterFire\\Class1.cs",
+              "RelativeDocumentMoniker": "ProcesserPlug_WaterFire\\Class1.cs",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ProcesserPlug_WaterFire\\Class1.cs",
+              "RelativeToolTip": "ProcesserPlug_WaterFire\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T12:15:42.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "App.g.i.cs",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\obj\\x64\\Debug\\net9.0-windows10.0.22621.0\\win-x64\\App.g.i.cs",
+              "RelativeDocumentMoniker": "ACOMv2\\obj\\x64\\Debug\\net9.0-windows10.0.22621.0\\win-x64\\App.g.i.cs",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\obj\\x64\\Debug\\net9.0-windows10.0.22621.0\\win-x64\\App.g.i.cs",
+              "RelativeToolTip": "ACOMv2\\obj\\x64\\Debug\\net9.0-windows10.0.22621.0\\win-x64\\App.g.i.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAqwEQAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T11:18:05.688Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlugin\\Class1.cs",
               "RelativeDocumentMoniker": "ACOMPlugin\\Class1.cs",
               "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlugin\\Class1.cs",
               "RelativeToolTip": "ACOMPlugin\\Class1.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAABIwDsAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T17:12:20.971Z",
+              "WhenOpened": "2024-12-11T11:50:09.434Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ACOMPlugin.csproj",
-              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlugin\\ACOMPlugin.csproj",
-              "RelativeDocumentMoniker": "ACOMPlugin\\ACOMPlugin.csproj",
-              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlugin\\ACOMPlugin.csproj",
-              "RelativeToolTip": "ACOMPlugin\\ACOMPlugin.csproj",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABMAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-12-10T17:01:57.014Z",
+              "DocumentIndex": 21,
+              "Title": "plugin_test2.AssemblyInfo.cs",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\plugin_test2\\obj\\Debug\\net8.0-windows10.0.19041.0\\plugin_test2.AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "plugin_test2\\obj\\Debug\\net8.0-windows10.0.19041.0\\plugin_test2.AssemblyInfo.cs",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\plugin_test2\\obj\\Debug\\net8.0-windows10.0.19041.0\\plugin_test2.AssemblyInfo.cs",
+              "RelativeToolTip": "plugin_test2\\obj\\Debug\\net8.0-windows10.0.19041.0\\plugin_test2.AssemblyInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T11:26:27.827Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "plugin.d.json",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\plugin_test2\\plugin.d.json",
+              "RelativeDocumentMoniker": "plugin_test2\\plugin.d.json",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\plugin_test2\\plugin.d.json",
+              "RelativeToolTip": "plugin_test2\\plugin.d.json",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAwCUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-12-11T11:59:52.949Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "PlugBase.cs",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlug\\PlugBase.cs",
+              "RelativeDocumentMoniker": "ACOMPlug\\PlugBase.cs",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlug\\PlugBase.cs",
+              "RelativeToolTip": "ACOMPlug\\PlugBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T11:50:02.935Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "plugin_test2.csproj.nuget.g.targets",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\plugin_test2\\obj\\plugin_test2.csproj.nuget.g.targets",
+              "RelativeDocumentMoniker": "plugin_test2\\obj\\plugin_test2.csproj.nuget.g.targets",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\plugin_test2\\obj\\plugin_test2.csproj.nuget.g.targets",
+              "RelativeToolTip": "plugin_test2\\obj\\plugin_test2.csproj.nuget.g.targets",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2024-12-11T11:27:44.168Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "plugin_test2.csproj.nuget.g.props",
+              "DocumentMoniker": "C:\\Users\\80520\\source\\repos\\ACOM\\plugin_test2\\obj\\plugin_test2.csproj.nuget.g.props",
+              "RelativeDocumentMoniker": "plugin_test2\\obj\\plugin_test2.csproj.nuget.g.props",
+              "ToolTip": "C:\\Users\\80520\\source\\repos\\ACOM\\plugin_test2\\obj\\plugin_test2.csproj.nuget.g.props",
+              "RelativeToolTip": "plugin_test2\\obj\\plugin_test2.csproj.nuget.g.props",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2024-12-11T11:27:49.057Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "LocalPlugin.cs",
+              "DocumentMoniker": "C:\\Users\\80520\\Documents\\GitHub\\ShadowViewer\\ShadowViewer.Plugin.Local\\ShadowViewer.Plugin.Local\\LocalPlugin.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\Documents\\GitHub\\ShadowViewer\\ShadowViewer.Plugin.Local\\ShadowViewer.Plugin.Local\\LocalPlugin.cs",
+              "ToolTip": "C:\\Users\\80520\\Documents\\GitHub\\ShadowViewer\\ShadowViewer.Plugin.Local\\ShadowViewer.Plugin.Local\\LocalPlugin.cs",
+              "RelativeToolTip": "..\\..\\..\\Documents\\GitHub\\ShadowViewer\\ShadowViewer.Plugin.Local\\ShadowViewer.Plugin.Local\\LocalPlugin.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACAAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T11:29:34.102Z",
               "EditorCaption": ""
             }
           ]

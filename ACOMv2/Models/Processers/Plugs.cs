@@ -18,38 +18,38 @@ public class Plugs
     /// </summary>
     /// <param name="path">文件夹路径</param>
     /// <returns>符合条件的文件列表</returns>
-    public static List<string> GetPlugDllFiles(string path)
-    {
-        List<string> dllFiles = new List<string>();
-        string ProcessersPath = path + "Processers";
-        string DataMuxersPath = path + "DataMuxers";
-        GetPlugDllFilesRecursive(ProcessersPath, dllFiles);
-        GetPlugDllFilesRecursive(DataMuxersPath, dllFiles);
-        return dllFiles;
-    }
+    //public static List<string> GetPlugDllFiles(string path)
+    //{
+    //    List<string> dllFiles = new List<string>();
+    //    string ProcessersPath = path + "Processers";
+    //    string DataMuxersPath = path + "DataMuxers";
+    //    GetPlugDllFilesRecursive(ProcessersPath, dllFiles);
+    //    GetPlugDllFilesRecursive(DataMuxersPath, dllFiles);
+    //    return dllFiles;
+    //}
 
-    private static void GetPlugDllFilesRecursive(string path, List<string> dllFiles)
-    {
-        try
-        {
-            foreach (var file in Directory.GetFiles(path, "ProcesserPlug*.dll"))
-            {
-                dllFiles.Add(file);
-            }
-            foreach (var file in Directory.GetFiles(path, "DataMuxerPlug*.dll"))
-            {
-                dllFiles.Add(file);
-            }
-            foreach (var directory in Directory.GetDirectories(path))
-            {
-                GetPlugDllFilesRecursive(directory, dllFiles);
-            }
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine($"Error accessing {path}: {ex.Message}");
-        }
-    }
+    //private static void GetPlugDllFilesRecursive(string path, List<string> dllFiles)
+    //{
+    //    try
+    //    {
+    //        foreach (var file in Directory.GetFiles(path, "ProcesserPlug*.dll"))
+    //        {
+    //            dllFiles.Add(file);
+    //        }
+    //        foreach (var file in Directory.GetFiles(path, "DataMuxerPlug*.dll"))
+    //        {
+    //            dllFiles.Add(file);
+    //        }
+    //        foreach (var directory in Directory.GetDirectories(path))
+    //        {
+    //            GetPlugDllFilesRecursive(directory, dllFiles);
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        Debug.WriteLine($"Error accessing {path}: {ex.Message}");
+    //    }
+    //}
 
 
     /// <summary>
@@ -57,6 +57,8 @@ public class Plugs
     /// </summary>
     static public Dictionary<string, Type> IProcessersPlugins = new Dictionary<string, Type>();
     static public Dictionary<string, Type> IDataMuxersPlugins = new Dictionary<string, Type>();
+
+    static public List<Type> WidgetsPlugins = new();
     /// <summary>
     /// 当前拥有的插件信息
     /// </summary>
@@ -101,6 +103,10 @@ public class Plugs
             var classLibrayName = manifestModuleName.Remove(manifestModuleName.LastIndexOf("."), manifestModuleName.Length - manifestModuleName.LastIndexOf("."));
             Type type = asm.GetType("DataMuxerPlugAutoOne.DataMuxerPlugAutoOne");
             Debug.WriteLine("加载" + dllFiles[i]);
+            foreach (var item in asm.GetTypes())
+            {
+                Console.WriteLine(item.Name);
+            }
             if (!typeof(IPlugDataMuxBase).IsAssignableFrom(type))
             {
                 Debug.WriteLine("未继承插件接口");
@@ -112,7 +118,7 @@ public class Plugs
             Debug.WriteLine($"插件版本：{protocolInfo.Version}");
             Debug.WriteLine($"插件作者：{protocolInfo.Author}");
             Debug.WriteLine($"插件时间：{protocolInfo.LastTime}");
-            IProcessersPlugins.Add(protocolInfo.Name, type);
+            IDataMuxersPlugins.Add(protocolInfo.Name, type);
             IPluginInfos.Add(protocolInfo.Name, protocolInfo);
             instance.Dispose();
             instance = null;
@@ -150,6 +156,10 @@ public class Plugs
             var classLibrayName = manifestModuleName.Remove(manifestModuleName.LastIndexOf("."), manifestModuleName.Length - manifestModuleName.LastIndexOf("."));
             Type type = asm.GetType("ProcesserPlugWaterFire.ProcesserPlugWaterFire");
             Debug.WriteLine("加载" + dllFiles[i]);
+            foreach (var item in asm.GetTypes())
+            {
+                Console.WriteLine(item.Name);
+            }
             if (!typeof(IPlugProcessBase).IsAssignableFrom(type))
             {
                 Debug.WriteLine("未继承插件接口");
@@ -168,6 +178,62 @@ public class Plugs
         }
     }
 
+
+    static protected void LoadWidgetPlug(string _path)
+    {
+        List<string> dllFiles = new List<string>();
+        string path = _path + "Widgets";
+        try
+        {
+            foreach (var file in Directory.GetFiles(path, "WidgetPlug*.dll"))
+            {
+                dllFiles.Add(file);
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Error accessing {path}: {ex.Message}");
+        }
+        Debug.WriteLine("find accept Widget plug files:");
+
+        foreach (var item in dllFiles)
+        {
+            Debug.WriteLine(item);
+        }
+
+        for (int i = 0; i < dllFiles.Count(); i++)
+        {
+            var fileData = File.ReadAllBytes(dllFiles[i]);
+            Assembly asm = Assembly.Load(fileData);
+            var manifestModuleName = asm.ManifestModule.ScopeName;
+            var classLibrayName = manifestModuleName.Remove(manifestModuleName.LastIndexOf("."), manifestModuleName.Length - manifestModuleName.LastIndexOf("."));
+            Type type = asm.GetType("WidgetPlugSlide.WidgetPlugSlide");
+            Debug.WriteLine("加载" + dllFiles[i]);
+            foreach (var item in asm.GetTypes())
+            {
+                Console.WriteLine(item.Name);
+            }
+            if (!typeof(IPlugWidgetBase).IsAssignableFrom(type))
+            {
+                Debug.WriteLine("未继承插件接口");
+                continue;
+            }
+            var instance = Activator.CreateInstance(type) as IPlugWidgetBase;
+            var protocolInfo = instance.GetPluginInformation();
+            Debug.WriteLine($"插件名称：{protocolInfo.Name}");
+            Debug.WriteLine($"插件版本：{protocolInfo.Version}");
+            Debug.WriteLine($"插件作者：{protocolInfo.Author}");
+            Debug.WriteLine($"插件时间：{protocolInfo.LastTime}");
+
+            WidgetsPlugins.Add(type);
+            //IWidgetsPlugins.Add(protocolInfo.Name, type);
+            //IPluginInfos.Add(protocolInfo.Name, protocolInfo);
+            //instance.Dispose();
+            instance = null;
+        }
+    }
+
     /// <summary>
     /// 初始化插件
     /// </summary>
@@ -176,8 +242,9 @@ public class Plugs
 
         LoadProcesserPlug(path);
         LoadDataMuxPlug(path);
+        LoadWidgetPlug(path);
         Debug.WriteLine(string.Format("==========【{0}】==========", "插件加载完成"));
-        Debug.WriteLine(string.Format("==========【{0}】==========", "共加载插件{0}个"), IProcessersPlugins.Count+ IDataMuxersPlugins.Count);
+        Debug.WriteLine(string.Format("==========【{0}】==========", "共加载插件{0}个"), IProcessersPlugins.Count+ IDataMuxersPlugins.Count + WidgetsPlugins.Count);
     }
 
     static public IPlugProcessBase CreateInstance(string PlugName)

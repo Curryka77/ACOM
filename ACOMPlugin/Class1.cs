@@ -20,20 +20,16 @@ public class ACOMPluginMetaData : AbstractPluginMetaData
 {
     [Meta(Required = true, PropertyGroupName = "Author")]
     public string Author { get; init; }
-
-
-
 }
 
 public abstract class ACOMPluginBase : AbstractPlugin
 {
-    public abstract string GetEmoji();
+     public abstract string GetEmoji();
 }
 
 public class ACOMPluginLoader : AbstractPluginLoader<ACOMPluginMetaData, ACOMPluginBase>
 {
     protected override string PluginFolder { get; } = "ACOMPlugin";
-    public static Container Services { get; }
 
     public ACOMPluginLoader(ILogger logger) : base(logger)
     {
@@ -41,25 +37,6 @@ public class ACOMPluginLoader : AbstractPluginLoader<ACOMPluginMetaData, ACOMPlu
     public ACOMPluginLoader() : base()
     {
     }
-    public string GetEmoji()
-    {
-        return "test";
-    }
 
 }
-
-public static class DiFactory
-{
-    public static Container Services { get; }
-    static DiFactory()
-    {
-        Services = new Container(rules => rules.With(FactoryMethod.ConstructorWithResolvableArguments));
-        Services.Register(
-            Made.Of(() => Serilog.Log.ForContext(Arg.Index<Type>(0)), r => r.Parent.ImplementationType),
-            setup: Setup.With(condition: r => r.Parent.ImplementationType != null));
-        //AbstractPluginLoader<ACOMPluginMetaData, ACOMPluginBase>.Services(Services);
-        Services.Register<ACOMPluginLoader>(reuse: Reuse.Singleton);
-    }
-}
-
 

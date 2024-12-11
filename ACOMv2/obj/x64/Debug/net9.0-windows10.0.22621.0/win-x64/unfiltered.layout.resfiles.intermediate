@@ -15,6 +15,7 @@ Assets\icon.png
 Assets\NavViewMenu\AppData.json
 Assets\Plugs\DataMuxers\DataMuxerPlugAutoOne.dll
 Assets\Plugs\Processers\ProcesserPlugWaterFire.dll
+Assets\Plugs\Widgets\WidgetPlugSlide.dll
 Assets\Store\LockScreenLogo.scale-200.png
 Assets\Store\SplashScreen.scale-200.png
 Assets\Store\Square150x150Logo.scale-200.png

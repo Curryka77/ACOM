@@ -10,6 +10,7 @@
       "ACOMv2/1.0.0": {
         "dependencies": {
           "ACOMPlug": "1.0.0",
+          "ACOMPlugin.Core": "1.0.0",
           "ClassLibrary1": "1.0.0",
           "CommunityToolkit.Common": "8.3.2",
           "CommunityToolkit.HighPerformance": "8.3.2",
@@ -65,6 +66,7 @@
           "WinUICommunity.Win2D": "7.1.0",
           "Nucs.JsonSettings": "2.0.2",
           "Nucs.JsonSettings.Autosave": "2.0.2",
+          "ACOMPlugin": "1.0.0.0",
           "Microsoft.Web.WebView2.Core.Projection": "1.0.2651.64",
           "TextControlBox": "1.0.0.0",
           "runtimepack.Microsoft.NETCore.App.Runtime.win-x64": "9.0.0",
@@ -1177,11 +1179,31 @@
           }
         }
       },
+      "DryIoc.dll/5.4.3": {
+        "runtime": {
+          "lib/net7.0/DryIoc.dll": {
+            "assemblyVersion": "5.4.3.0",
+            "fileVersion": "5.4.3.0"
+          }
+        }
+      },
       "KcpSharp/0.8.8": {
         "runtime": {
           "lib/net6.0/KcpSharp.dll": {
             "assemblyVersion": "0.8.0.0",
             "fileVersion": "0.8.8.61343"
+          }
+        }
+      },
+      "kitUIN.CustomExtensions.WinUI/0.6.3": {
+        "dependencies": {
+          "Microsoft.Windows.SDK.BuildTools": "10.0.26100.1742",
+          "Microsoft.WindowsAppSDK": "1.6.241114003"
+        },
+        "runtime": {
+          "lib/net6.0-windows10.0.19041/CustomExtensions.WinUI.dll": {
+            "assemblyVersion": "0.6.3.0",
+            "fileVersion": "0.6.3.0"
           }
         }
       },
@@ -1874,6 +1896,44 @@
           }
         }
       },
+      "ShadowPluginLoader.MetaAttributes/1.1.2": {
+        "runtime": {
+          "lib/net6.0/ShadowPluginLoader.MetaAttributes.dll": {
+            "assemblyVersion": "1.1.2.0",
+            "fileVersion": "1.1.2.0"
+          }
+        }
+      },
+      "ShadowPluginLoader.SourceGenerator/1.3.2": {
+        "runtime": {
+          "lib/netstandard2.0/ShadowPluginLoader.SourceGenerator.dll": {
+            "assemblyVersion": "1.3.2.0",
+            "fileVersion": "1.3.2.0"
+          }
+        }
+      },
+      "ShadowPluginLoader.Tool/1.2.1": {
+        "dependencies": {
+          "ShadowPluginLoader.MetaAttributes": "1.1.2"
+        }
+      },
+      "ShadowPluginLoader.WinUI/1.3.3": {
+        "dependencies": {
+          "DryIoc.dll": "5.4.3",
+          "Microsoft.Windows.SDK.BuildTools": "10.0.26100.1742",
+          "Microsoft.WindowsAppSDK": "1.6.241114003",
+          "Serilog": "4.1.0",
+          "ShadowPluginLoader.SourceGenerator": "1.3.2",
+          "ShadowPluginLoader.Tool": "1.2.1",
+          "kitUIN.CustomExtensions.WinUI": "0.6.3"
+        },
+        "runtime": {
+          "lib/net6.0-windows10.0.19041/ShadowPluginLoader.WinUI.dll": {
+            "assemblyVersion": "1.3.3.0",
+            "fileVersion": "1.3.3.0"
+          }
+        }
+      },
       "STTech.BytesIO.Core/2.14.6": {
         "dependencies": {
           "STTech.CodePlus": "1.7.2",
@@ -2530,6 +2590,19 @@
           }
         }
       },
+      "ACOMPlugin.Core/1.0.0": {
+        "dependencies": {
+          "ShadowPluginLoader.MetaAttributes": "1.1.2",
+          "ShadowPluginLoader.Tool": "1.2.1",
+          "ShadowPluginLoader.WinUI": "1.3.3"
+        },
+        "runtime": {
+          "ACOMPlugin.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "ClassLibrary1/1.0.0": {
         "dependencies": {
           "CommunityToolkit.WinUI.Controls.Sizers": "8.1.240916",
@@ -2555,6 +2628,14 @@
         "runtime": {
           "TextControlBox.dll": {
             "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "ACOMPlugin/1.0.0.0": {
+        "runtime": {
+          "ACOMPlugin.dll": {
+            "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         }
@@ -2796,12 +2877,26 @@
       "path": "communitytoolkit.winui.triggers/8.1.240916",
       "hashPath": "communitytoolkit.winui.triggers.8.1.240916.nupkg.sha512"
     },
+    "DryIoc.dll/5.4.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yhXOG3SOxeWYxBAWskNRDD8fzw5hriEawv4VN4WKaFHOuubiop4kxe2rkWTEyCnTgRVgxVUSQCDBBkZqwPm1iQ==",
+      "path": "dryioc.dll/5.4.3",
+      "hashPath": "dryioc.dll.5.4.3.nupkg.sha512"
+    },
     "KcpSharp/0.8.8": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-+Ay9ookyb2IRY2Q5IgKHYS7aKaNabL6cNQVvg23HcNPt6HwCsVjC9BwpnAAekCsOi+631JqL23hH5Rjeregxbg==",
       "path": "kcpsharp/0.8.8",
       "hashPath": "kcpsharp.0.8.8.nupkg.sha512"
+    },
+    "kitUIN.CustomExtensions.WinUI/0.6.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sK/k2w5K5dx4iUAlgWYWLgHiAT2eOxcIQRqybBJN1k6iZosVVRBJHp3QnzGIdNzlg4vw6ILiSYpqRG4Se6EO/w==",
+      "path": "kituin.customextensions.winui/0.6.3",
+      "hashPath": "kituin.customextensions.winui.0.6.3.nupkg.sha512"
     },
     "Microsoft.Extensions.Configuration/9.0.0": {
       "type": "package",
@@ -3384,6 +3479,34 @@
       "path": "serilog.sinks.file/6.0.0",
       "hashPath": "serilog.sinks.file.6.0.0.nupkg.sha512"
     },
+    "ShadowPluginLoader.MetaAttributes/1.1.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0NGz7ATiB4xtSJg7MdMCOQhIai2X8mWsWp8u7U6kt5PPA0vsXXKLQGiejupQhu00/TjLwvV2JcXtTcCHzrgO2w==",
+      "path": "shadowpluginloader.metaattributes/1.1.2",
+      "hashPath": "shadowpluginloader.metaattributes.1.1.2.nupkg.sha512"
+    },
+    "ShadowPluginLoader.SourceGenerator/1.3.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-80umn/7FcC8qLE9a3rG1Olw+Q/IIrAMgcSRha9QhL12fd+qMz1nL1KmKkrY68hLIszTvFcFowABD+S6F2D4FgQ==",
+      "path": "shadowpluginloader.sourcegenerator/1.3.2",
+      "hashPath": "shadowpluginloader.sourcegenerator.1.3.2.nupkg.sha512"
+    },
+    "ShadowPluginLoader.Tool/1.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JRLz6fprqX7lR1PxJFQQtFUqQJj7hX9jccY4DF5UxPTsd37a54lqx75BO+oYCGRV2WlM1abOo59KJ2yJ7yny9w==",
+      "path": "shadowpluginloader.tool/1.2.1",
+      "hashPath": "shadowpluginloader.tool.1.2.1.nupkg.sha512"
+    },
+    "ShadowPluginLoader.WinUI/1.3.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IE4TChjp/SGyTLBio0WgGTZBMjUZGbp9oKZFVXI0XTJYoLQx/GiwBKb4+FBXmiquL98swwde90XCXLad1qyg1w==",
+      "path": "shadowpluginloader.winui/1.3.3",
+      "hashPath": "shadowpluginloader.winui.1.3.3.nupkg.sha512"
+    },
     "STTech.BytesIO.Core/2.14.6": {
       "type": "package",
       "serviceable": true,
@@ -3802,6 +3925,11 @@
       "serviceable": false,
       "sha512": ""
     },
+    "ACOMPlugin.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "ClassLibrary1/1.0.0": {
       "type": "project",
       "serviceable": false,
@@ -3809,6 +3937,11 @@
     },
     "TextControlBox.WinUI.JuliusKirsch/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ACOMPlugin/1.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     },

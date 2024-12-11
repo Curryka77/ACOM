@@ -1,4 +1,10 @@
-﻿namespace ACOMv2;
+﻿using System.Diagnostics;
+using ACOMPlugin.Core;
+using CustomExtensions.WinUI;
+using DryIoc;
+using DiFactory = ShadowPluginLoader.WinUI.DiFactory;
+
+namespace ACOMv2;
 
 public partial class App : Application
 {
@@ -17,12 +23,23 @@ public partial class App : Application
 
         return service;
     }
+    public async Task LoadMyExtensionAsync(string assemblyLoadPath)
+    {
+        // save off the handle so we can clean up our registration with the hosting process later if desired.
+        Debug.WriteLine("start load "+ assemblyLoadPath);
 
+        IExtensionAssembly asmHandle = await ApplicationExtensionHost.Current.LoadExtensionAsync(assemblyLoadPath);
+        Debug.WriteLine("loaded plugin "+ asmHandle.GetType().Name + " "+ asmHandle.GetType().FullName);
+    }
+    
     public App()
     {
         Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NCaF5cXmZCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWH5ceXRXRWhZUkN2W0I=");
         Services = ConfigureServices();
         this.InitializeComponent();
+        ApplicationExtensionHost.Initialize(this);
+        DiFactory.Services.Register<ACOMPluginLoader>(reuse: Reuse.Singleton);
+ 
     }
 
     private static IServiceProvider ConfigureServices()

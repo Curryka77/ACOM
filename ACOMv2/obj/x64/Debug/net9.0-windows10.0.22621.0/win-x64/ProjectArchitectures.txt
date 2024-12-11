@@ -1,5 +1,7 @@
 C:\Users\80520\source\repos\ACOM\ACOMPlug\ACOMPlug.csproj;neutral
 C:\Users\80520\source\repos\ACOM\ACOMPlug\ACOMPlug.csproj;neutral
+C:\Users\80520\source\repos\ACOM\ACOMPlugin\ACOMPlugin.csproj;neutral
+C:\Users\80520\source\repos\ACOM\ACOMPlugin\ACOMPlugin.csproj;neutral
 C:\Users\80520\source\repos\ACOM\ACOMv2\ACOMv2.csproj;x64
 C:\Users\80520\source\repos\ACOM\ClassLibrary1\ClassLibrary1.csproj;neutral
 C:\Users\80520\source\repos\ACOM\ClassLibrary1\ClassLibrary1.csproj;neutral

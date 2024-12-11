@@ -641,3 +641,11 @@ C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0
 C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\ClassLibrary1\runtimes\win-x86\native\WebView2Loader.dll
 C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\ClassLibrary1\runtimes\win-x64\native\WebView2Loader.dll
 C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\ClassLibrary1\runtimes\win-arm64\native\WebView2Loader.dll
+C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\DryIoc.dll
+C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\CustomExtensions.WinUI.dll
+C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\ShadowPluginLoader.MetaAttributes.dll
+C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\ShadowPluginLoader.SourceGenerator.dll
+C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\ShadowPluginLoader.WinUI.dll
+C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\ACOMPlugin.dll
+C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\ACOMPlugin.pdb
+C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\ACOMPlugin.pri

@@ -18,6 +18,12 @@ using Microsoft.UI.Input;
 using System.Reflection;
 using System.Collections.ObjectModel;
 using CommunityToolkit.WinUI.Controls;
+using ShadowPluginLoader.WinUI;
+using Windows.Devices.Enumeration;
+using ACOMPlugin.Core;
+using DryIoc;
+using ACOM.Models;
+using ACOMPlug;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
@@ -168,8 +174,22 @@ namespace ACOMv2.Views
 
             CanvasView1.Items.Add(InitializeElementGrid(new Button() { Content = "Button1" }));
 
-        }
+            //FrameworkElement element = InitializeElementGrid( (Activator.CreateInstance(Models.Processers.Plugs.WidgetsPlugins[0]) as IPlugWidgetBase).Create());
+            //CanvasView1.Items.Add( new Button() { Content = "Button1" });
+            Init();
 
+        }
+        private async void Init()
+        {
+            var loader = DiFactory.Services.Resolve<ACOMPluginLoader>();
+            //await loader.ImportFromZipAsync(@"C:\Users\80520\source\repos\ACOM\Packages");
+            await loader.ImportFromDirAsync(@"C:\Users\80520\source\repos\ACOM\Packages\plugin_test2");
+            Debug.WriteLine("loaded plug"+ loader.GetPlugins().Count().ToString());
+            foreach (var plugin in loader.GetPlugins())
+            {
+                Debug.WriteLine(plugin.GetEmoji());
+            }
+        }
         private void Border_ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
         {
             //Debug.WriteLine("cesfec");

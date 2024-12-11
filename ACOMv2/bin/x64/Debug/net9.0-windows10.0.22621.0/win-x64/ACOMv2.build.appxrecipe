@@ -28,6 +28,9 @@
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMPlugin\bin\Debug\net7.0-windows10.0.19041.0\ACOMPlugin.pri">
+      <PackagePath>ACOMPlugin.pri</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMPlug\bin\Debug\net8.0-windows10.0.19041.0\ACOMPlug.pri">
       <PackagePath>ACOMPlug.pri</PackagePath>
     </AppxPackagedFile>
@@ -42,6 +45,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\ACOMv2.dll">
       <PackagePath>ACOMv2.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMPlugin\bin\Debug\net7.0-windows10.0.19041.0\ACOMPlugin.dll">
+      <PackagePath>ACOMPlugin.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMPlug\bin\Debug\net8.0-windows10.0.19041.0\ACOMPlug.dll">
       <PackagePath>ACOMPlug.dll</PackagePath>
@@ -108,6 +114,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\Assets\Plugs\Processers\ProcesserPlugWaterFire.dll">
       <PackagePath>Assets\Plugs\Processers\ProcesserPlugWaterFire.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\Assets\Plugs\Widgets\WidgetPlugSlide.dll">
+      <PackagePath>Assets\Plugs\Widgets\WidgetPlugSlide.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\Assets\Store\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\Store\LockScreenLogo.scale-200.png</PackagePath>
@@ -1456,8 +1465,14 @@
     <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\communitytoolkit.winui.triggers\8.1.240916\lib\net8.0-windows10.0.22621\CommunityToolkit.WinUI.Triggers.dll">
       <PackagePath>CommunityToolkit.WinUI.Triggers.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\dryioc.dll\5.4.3\lib\net7.0\DryIoc.dll">
+      <PackagePath>DryIoc.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\kcpsharp\0.8.8\lib\net6.0\KcpSharp.dll">
       <PackagePath>KcpSharp.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\kituin.customextensions.winui\0.6.3\lib\net6.0-windows10.0.19041\CustomExtensions.WinUI.dll">
+      <PackagePath>CustomExtensions.WinUI.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\microsoft.extensions.configuration\9.0.0\lib\net9.0\Microsoft.Extensions.Configuration.dll">
       <PackagePath>Microsoft.Extensions.Configuration.dll</PackagePath>
@@ -1618,6 +1633,15 @@
     <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\serilog.sinks.file\6.0.0\lib\net8.0\Serilog.Sinks.File.dll">
       <PackagePath>Serilog.Sinks.File.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\shadowpluginloader.metaattributes\1.1.2\lib\net6.0\ShadowPluginLoader.MetaAttributes.dll">
+      <PackagePath>ShadowPluginLoader.MetaAttributes.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\shadowpluginloader.sourcegenerator\1.3.2\lib\netstandard2.0\ShadowPluginLoader.SourceGenerator.dll">
+      <PackagePath>ShadowPluginLoader.SourceGenerator.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\shadowpluginloader.winui\1.3.3\lib\net6.0-windows10.0.19041\ShadowPluginLoader.WinUI.dll">
+      <PackagePath>ShadowPluginLoader.WinUI.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\sttech.bytesio.core\2.14.6\lib\netstandard2.0\STTech.BytesIO.Core.dll">
       <PackagePath>STTech.BytesIO.Core.dll</PackagePath>
     </AppxPackagedFile>
@@ -1705,6 +1729,24 @@
     <AppxPackagedFile Include="C:\Users\80520\source\repos\ACOM\ACOMv2\bin\x64\Debug\net9.0-windows10.0.22621.0\win-x64\ACOMv2.deps.json">
       <PackagePath>ACOMv2.deps.json</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\microsoft.windowsappsdk\1.5.241107002\runtimes\win-arm64\native\Microsoft.WindowsAppRuntime.Bootstrap.dll">
+      <PackagePath>runtimes\win-arm64\native\Microsoft.WindowsAppRuntime.Bootstrap.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\microsoft.windowsappsdk\1.5.241107002\runtimes\win-x64\native\Microsoft.WindowsAppRuntime.Bootstrap.dll">
+      <PackagePath>runtimes\win-x64\native\Microsoft.WindowsAppRuntime.Bootstrap.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\microsoft.windowsappsdk\1.5.241107002\runtimes\win-x86\native\Microsoft.WindowsAppRuntime.Bootstrap.dll">
+      <PackagePath>runtimes\win-x86\native\Microsoft.WindowsAppRuntime.Bootstrap.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\microsoft.windowsappsdk\1.5.241107002\runtimes\win10-arm64\native\Microsoft.WindowsAppRuntime.Bootstrap.dll">
+      <PackagePath>runtimes\win10-arm64\native\Microsoft.WindowsAppRuntime.Bootstrap.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\microsoft.windowsappsdk\1.5.241107002\runtimes\win10-x64\native\Microsoft.WindowsAppRuntime.Bootstrap.dll">
+      <PackagePath>runtimes\win10-x64\native\Microsoft.WindowsAppRuntime.Bootstrap.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\microsoft.windowsappsdk\1.5.241107002\runtimes\win10-x86\native\Microsoft.WindowsAppRuntime.Bootstrap.dll">
+      <PackagePath>runtimes\win10-x86\native\Microsoft.WindowsAppRuntime.Bootstrap.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-x86\native\WebView2Loader.dll">
       <PackagePath>ACOMPlug\runtimes\win-x86\native\WebView2Loader.dll</PackagePath>
     </AppxPackagedFile>
@@ -1734,6 +1776,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\microsoft.web.webview2\1.0.2651.64\runtimes\win-arm64\native\WebView2Loader.dll">
       <PackagePath>TextControlBox\runtimes\win-arm64\native\WebView2Loader.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\shadowpluginloader.winui\1.3.3\lib\net6.0-windows10.0.19041\ShadowPluginLoader.WinUI.pri">
+      <PackagePath>ShadowPluginLoader.WinUI.pri</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\uno.winui\5.2.132\lib\net8.0-windows10.0.19041.0\Uno.UI.Toolkit.pri">
       <PackagePath>Uno.UI.Toolkit.pri</PackagePath>
