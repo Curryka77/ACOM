@@ -7,8 +7,53 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Red" ManipulationMode="TranslateX,TranslateY">
-        <Button Content="Button"   HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ManipulationMode="TranslateX,TranslateY"/>
+    <UserControl.Resources>
+        <Flyout Placement="Right" x:Name="PartsCommandBarFlyout">
+            <RelativePanel>
+                <TextBox x:Name="WidgetNameText" Header="控件名字" PlaceholderText="Name" />
+                <StackPanel Style="{ThemeResource StackPanelStyle}" Orientation="Vertical"  x:Name="OptionsStackPanel" RelativePanel.Below="WidgetNameText" >
+                    <TextBlock Text="绑定数据输入通道" FontSize="16" FontWeight="Bold"/>
+                    <CheckBox x:Name="OptionsAllCheckBox"  Content="所有通道" IsThreeState="True"
+                    Indeterminate="OptionsAllCheckBox_Indeterminate" Margin="8 0 0 0"/>
+                    <ScrollViewer Height="96" Margin="24 0 0 0" >
+                        <StackPanel>
+                            <CheckBox x:Name="Option1CheckBox" Content="Data0"    />
+                            <CheckBox x:Name="Option2CheckBox" Content="Data1"    IsChecked="True" />
+                            <CheckBox x:Name="Option3CheckBox" Content="Data2"    />
+                            <CheckBox x:Name="Option4CheckBox" Content="Data2"    />
+                            <CheckBox x:Name="Option5CheckBox" Content="Data2"    />
+                            <CheckBox x:Name="Option6CheckBox" Content="Data2"    />
+                            <CheckBox x:Name="Option7CheckBox" Content="Data2"    />
+                        </StackPanel>
+                    </ScrollViewer>
+                </StackPanel>
+                <StackPanel Style="{ThemeResource StackPanelStyle}" Orientation="Vertical" RelativePanel.RightOf="OptionsStackPanel" RelativePanel.Below="WidgetNameText">
+                    <TextBlock Text="绑定数据输出命令" FontSize="16" FontWeight="Bold"/>
+                    <CheckBox x:Name="OptionsAllCheckBox1"  Content="所有通道" IsThreeState="True" 
+                    Indeterminate="OptionsAllCheckBox1_Indeterminate" Margin="8 0 0 0 "/>
+                    <ScrollViewer Height="96" Margin="24 0 0 0">
+                        <StackPanel>
+                            <CheckBox x:Name="Option1CheckBox1" Content="Data0" />
+                            <CheckBox x:Name="Option2CheckBox1" Content="Data1" IsChecked="True" />
+                            <CheckBox x:Name="Option3CheckBox1" Content="Data2" />
+                            <CheckBox x:Name="Option4CheckBox1" Content="Data2" />
+                            <CheckBox x:Name="Option5CheckBox1" Content="Data2" />
+                            <CheckBox x:Name="Option6CheckBox1" Content="Data2" />
+                            <CheckBox x:Name="Option7CheckBox1" Content="Data2" />
+                        </StackPanel>
+                    </ScrollViewer>
+                </StackPanel>
+            </RelativePanel>
+        </Flyout>
+    </UserControl.Resources>
+    <Grid HorizontalAlignment="Stretch"   Background="Red" ManipulationMode="TranslateX,TranslateY" ContextRequested="Parts_ContextRequested">
+        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+            <TextBlock Text="Slide" FontSize="18" HorizontalAlignment="Center"/>
+            <Slider        MinWidth="32"
+                           AutomationProperties.Name="Slider with ticks"
+                           TickFrequency="20" Value="100"
+                           TickPlacement="Outside"  ManipulationDelta="Slider_ManipulationDelta"
+                           SnapsTo="StepValues" HorizontalAlignment="Stretch"  ManipulationMode="TranslateX,TranslateY"/>
+        </StackPanel>
     </Grid>
 </UserControl>

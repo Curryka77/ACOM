@@ -508,9 +508,13 @@
               "target": "Package",
               "version": "[6.0.0, )"
             },
+            "SmartThreadPool.dll": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
             "Syncfusion.Chart.WinUI": {
               "target": "Package",
-              "version": "[27.2.5, )"
+              "version": "[28.1.33, )"
             },
             "System.Management": {
               "target": "Package",

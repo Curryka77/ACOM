@@ -1748,6 +1748,15 @@
           }
         }
       },
+      "SmartThreadPool.dll/2.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/SmartThreadPool.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/SmartThreadPool.dll": {}
+        }
+      },
       "STTech.BytesIO.Core/2.14.6": {
         "type": "package",
         "dependencies": {
@@ -1864,12 +1873,12 @@
           }
         }
       },
-      "Syncfusion.Chart.WinUI/27.2.5": {
+      "Syncfusion.Chart.WinUI/28.1.33": {
         "type": "package",
         "dependencies": {
           "Microsoft.Windows.SDK.BuildTools": "10.0.22621.3233",
           "Microsoft.WindowsAppSDK": "1.5.240802000",
-          "Syncfusion.Core.WinUI": "27.2.5"
+          "Syncfusion.Core.WinUI": "28.1.33"
         },
         "compile": {
           "lib/net9.0-windows10.0/Syncfusion.Chart.WinUI.dll": {
@@ -1882,12 +1891,12 @@
           }
         }
       },
-      "Syncfusion.Core.WinUI/27.2.5": {
+      "Syncfusion.Core.WinUI/28.1.33": {
         "type": "package",
         "dependencies": {
           "Microsoft.Windows.SDK.BuildTools": "10.0.22621.3233",
           "Microsoft.WindowsAppSDK": "1.5.240802000",
-          "Syncfusion.Licensing": "27.2.5"
+          "Syncfusion.Licensing": "28.1.33"
         },
         "compile": {
           "lib/net9.0-windows10.0/Syncfusion.Core.WinUI.dll": {
@@ -1900,7 +1909,7 @@
           }
         }
       },
-      "Syncfusion.Licensing/27.2.5": {
+      "Syncfusion.Licensing/28.1.33": {
         "type": "package",
         "compile": {
           "lib/net9.0/Syncfusion.Licensing.dll": {}
@@ -4690,6 +4699,15 @@
           }
         }
       },
+      "SmartThreadPool.dll/2.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/SmartThreadPool.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/SmartThreadPool.dll": {}
+        }
+      },
       "STTech.BytesIO.Core/2.14.6": {
         "type": "package",
         "dependencies": {
@@ -4806,12 +4824,12 @@
           }
         }
       },
-      "Syncfusion.Chart.WinUI/27.2.5": {
+      "Syncfusion.Chart.WinUI/28.1.33": {
         "type": "package",
         "dependencies": {
           "Microsoft.Windows.SDK.BuildTools": "10.0.22621.3233",
           "Microsoft.WindowsAppSDK": "1.5.240802000",
-          "Syncfusion.Core.WinUI": "27.2.5"
+          "Syncfusion.Core.WinUI": "28.1.33"
         },
         "compile": {
           "lib/net9.0-windows10.0/Syncfusion.Chart.WinUI.dll": {
@@ -4824,12 +4842,12 @@
           }
         }
       },
-      "Syncfusion.Core.WinUI/27.2.5": {
+      "Syncfusion.Core.WinUI/28.1.33": {
         "type": "package",
         "dependencies": {
           "Microsoft.Windows.SDK.BuildTools": "10.0.22621.3233",
           "Microsoft.WindowsAppSDK": "1.5.240802000",
-          "Syncfusion.Licensing": "27.2.5"
+          "Syncfusion.Licensing": "28.1.33"
         },
         "compile": {
           "lib/net9.0-windows10.0/Syncfusion.Core.WinUI.dll": {
@@ -4842,7 +4860,7 @@
           }
         }
       },
-      "Syncfusion.Licensing/27.2.5": {
+      "Syncfusion.Licensing/28.1.33": {
         "type": "package",
         "compile": {
           "lib/net9.0/Syncfusion.Licensing.dll": {}
@@ -7616,6 +7634,15 @@
           }
         }
       },
+      "SmartThreadPool.dll/2.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/SmartThreadPool.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/SmartThreadPool.dll": {}
+        }
+      },
       "STTech.BytesIO.Core/2.14.6": {
         "type": "package",
         "dependencies": {
@@ -7732,12 +7759,12 @@
           }
         }
       },
-      "Syncfusion.Chart.WinUI/27.2.5": {
+      "Syncfusion.Chart.WinUI/28.1.33": {
         "type": "package",
         "dependencies": {
           "Microsoft.Windows.SDK.BuildTools": "10.0.22621.3233",
           "Microsoft.WindowsAppSDK": "1.5.240802000",
-          "Syncfusion.Core.WinUI": "27.2.5"
+          "Syncfusion.Core.WinUI": "28.1.33"
         },
         "compile": {
           "lib/net9.0-windows10.0/Syncfusion.Chart.WinUI.dll": {
@@ -7750,12 +7777,12 @@
           }
         }
       },
-      "Syncfusion.Core.WinUI/27.2.5": {
+      "Syncfusion.Core.WinUI/28.1.33": {
         "type": "package",
         "dependencies": {
           "Microsoft.Windows.SDK.BuildTools": "10.0.22621.3233",
           "Microsoft.WindowsAppSDK": "1.5.240802000",
-          "Syncfusion.Licensing": "27.2.5"
+          "Syncfusion.Licensing": "28.1.33"
         },
         "compile": {
           "lib/net9.0-windows10.0/Syncfusion.Core.WinUI.dll": {
@@ -7768,7 +7795,7 @@
           }
         }
       },
-      "Syncfusion.Licensing/27.2.5": {
+      "Syncfusion.Licensing/28.1.33": {
         "type": "package",
         "compile": {
           "lib/net9.0/Syncfusion.Licensing.dll": {}
@@ -10542,6 +10569,15 @@
           }
         }
       },
+      "SmartThreadPool.dll/2.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/SmartThreadPool.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/SmartThreadPool.dll": {}
+        }
+      },
       "STTech.BytesIO.Core/2.14.6": {
         "type": "package",
         "dependencies": {
@@ -10658,12 +10694,12 @@
           }
         }
       },
-      "Syncfusion.Chart.WinUI/27.2.5": {
+      "Syncfusion.Chart.WinUI/28.1.33": {
         "type": "package",
         "dependencies": {
           "Microsoft.Windows.SDK.BuildTools": "10.0.22621.3233",
           "Microsoft.WindowsAppSDK": "1.5.240802000",
-          "Syncfusion.Core.WinUI": "27.2.5"
+          "Syncfusion.Core.WinUI": "28.1.33"
         },
         "compile": {
           "lib/net9.0-windows10.0/Syncfusion.Chart.WinUI.dll": {
@@ -10676,12 +10712,12 @@
           }
         }
       },
-      "Syncfusion.Core.WinUI/27.2.5": {
+      "Syncfusion.Core.WinUI/28.1.33": {
         "type": "package",
         "dependencies": {
           "Microsoft.Windows.SDK.BuildTools": "10.0.22621.3233",
           "Microsoft.WindowsAppSDK": "1.5.240802000",
-          "Syncfusion.Licensing": "27.2.5"
+          "Syncfusion.Licensing": "28.1.33"
         },
         "compile": {
           "lib/net9.0-windows10.0/Syncfusion.Core.WinUI.dll": {
@@ -10694,7 +10730,7 @@
           }
         }
       },
-      "Syncfusion.Licensing/27.2.5": {
+      "Syncfusion.Licensing/28.1.33": {
         "type": "package",
         "compile": {
           "lib/net9.0/Syncfusion.Licensing.dll": {}
@@ -15326,6 +15362,24 @@
         "shadowpluginloader.winui.nuspec"
       ]
     },
+    "SmartThreadPool.dll/2.3.0": {
+      "sha512": "AN25ChojrNsOzQSc3XGnJn/ncKqhAYwsOgV0REnm3Ip4IFX76zoWmPWFot3GeizTt0GRf2c2YZbK7EnAgQbyIQ==",
+      "type": "package",
+      "path": "smartthreadpool.dll/2.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/SmartThreadPool.dll",
+        "lib/net45/SmartThreadPool.dll",
+        "lib/net46/SmartThreadPool.dll",
+        "lib/net5.0/SmartThreadPool.dll",
+        "lib/netcoreapp3.0/SmartThreadPool.dll",
+        "lib/netcoreapp3.1/SmartThreadPool.dll",
+        "lib/netstandard2.0/SmartThreadPool.dll",
+        "smartthreadpool.dll.2.3.0.nupkg.sha512",
+        "smartthreadpool.dll.nuspec"
+      ]
+    },
     "STTech.BytesIO.Core/2.14.6": {
       "sha512": "857ScFYFbp58EIofSiz1dCQMtkuGIUF3rG5Z/U3tvGCvqjztndBwEY4Zmnc0Dqkgeb9uLixETFiYiqrA5JEIsA==",
       "type": "package",
@@ -15440,10 +15494,10 @@
         "sttech.codeplus.nuspec"
       ]
     },
-    "Syncfusion.Chart.WinUI/27.2.5": {
-      "sha512": "mGXlcMi6Pzp/eN6hwbyA+YQZnM6qR5Z0ket/UFTARRqhgFdNNbLvc9GLeqIXKWV8RMQLgIwCWoPEQuUjBICQuQ==",
+    "Syncfusion.Chart.WinUI/28.1.33": {
+      "sha512": "+l//OAgMRN1mPPxyWJPCbwZ3SOkGtQk+J3ClojqSVac72XmdwNddB0pPArKynz7QM7MQu/Ubkn1SbpuOtiK4bQ==",
       "type": "package",
-      "path": "syncfusion.chart.winui/27.2.5",
+      "path": "syncfusion.chart.winui/28.1.33",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -15530,15 +15584,15 @@
         "lib/net9.0-windows10.0/Syncfusion.Chart.WinUI/Themes/generic.xbf",
         "lib/net9.0-windows10.0/Syncfusion.Chart.WinUI/Themes/themeresources.xaml",
         "lib/net9.0-windows10.0/Syncfusion.Chart.WinUI/Themes/themeresources.xbf",
-        "syncfusion.chart.winui.27.2.5.nupkg.sha512",
+        "syncfusion.chart.winui.28.1.33.nupkg.sha512",
         "syncfusion.chart.winui.nuspec",
         "syncfusion_logo.png"
       ]
     },
-    "Syncfusion.Core.WinUI/27.2.5": {
-      "sha512": "bFv964F/6+FF8vqyKzoSD08ari26rPw+4Nzhk8P9rtvTGHmfnLhEWUltQFqqLOpdGiKqXJE+HvllBnxLdnxLHw==",
+    "Syncfusion.Core.WinUI/28.1.33": {
+      "sha512": "Si5dwiKFaD4C8TiuMjaPIdw1Hr3JQdKjgW05M54vJBe1gCUe45qEK4uqb2ZZhitHfA/zh1y8ku9gwXEgr0V85A==",
       "type": "package",
-      "path": "syncfusion.core.winui/27.2.5",
+      "path": "syncfusion.core.winui/28.1.33",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -15601,15 +15655,15 @@
         "lib/net9.0-windows10.0/Syncfusion.Core.WinUI/Themes/shadowstyle.xbf",
         "lib/net9.0-windows10.0/Syncfusion.Core.WinUI/Themes/shimmer.xaml",
         "lib/net9.0-windows10.0/Syncfusion.Core.WinUI/Themes/shimmer.xbf",
-        "syncfusion.core.winui.27.2.5.nupkg.sha512",
+        "syncfusion.core.winui.28.1.33.nupkg.sha512",
         "syncfusion.core.winui.nuspec",
         "syncfusion_logo.png"
       ]
     },
-    "Syncfusion.Licensing/27.2.5": {
-      "sha512": "esz3QIcCfxz6PSNmsX7WQh+rdVOgalZCYOdM1naYUqxZWKhf4En7Ytd2w8e9HSfLgQ2HcAnuk4d0X3CBlRlevQ==",
+    "Syncfusion.Licensing/28.1.33": {
+      "sha512": "y7qeTcetesPWWmeLJQpo7SpFaQpDiMIyP8AOYxKoOchYDbar2/YAWKitc8CgFwwJjQmP7hgytA3MNA3vHnlmBg==",
       "type": "package",
-      "path": "syncfusion.licensing/27.2.5",
+      "path": "syncfusion.licensing/28.1.33",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -15618,8 +15672,6 @@
         "lib/MonoAndroid90/Syncfusion.Licensing.dll",
         "lib/Xamarin.Mac/Syncfusion.Licensing.dll",
         "lib/Xamarin.iOS10/Syncfusion.Licensing.dll",
-        "lib/net40/Syncfusion.Licensing.dll",
-        "lib/net45/Syncfusion.Licensing.dll",
         "lib/net462/Syncfusion.Licensing.dll",
         "lib/net6.0/Syncfusion.Licensing.dll",
         "lib/net7.0/Syncfusion.Licensing.dll",
@@ -15627,7 +15679,7 @@
         "lib/net9.0/Syncfusion.Licensing.dll",
         "lib/netstandard2.0/Syncfusion.Licensing.dll",
         "lib/uap10.0/Syncfusion.Licensing.dll",
-        "syncfusion.licensing.27.2.5.nupkg.sha512",
+        "syncfusion.licensing.28.1.33.nupkg.sha512",
         "syncfusion.licensing.nuspec",
         "syncfusion_logo.png"
       ]
@@ -18055,7 +18107,8 @@
       "Serilog.Sinks.Console >= 6.0.0",
       "Serilog.Sinks.Debug >= 3.0.0",
       "Serilog.Sinks.File >= 6.0.0",
-      "Syncfusion.Chart.WinUI >= 27.2.5",
+      "SmartThreadPool.dll >= 2.3.0",
+      "Syncfusion.Chart.WinUI >= 28.1.33",
       "System.Management >= 9.0.0",
       "TextControlBox.WinUI.JuliusKirsch >= 1.0.0",
       "WinUICommunity.Components >= 7.1.0",
@@ -18307,9 +18360,13 @@
             "target": "Package",
             "version": "[6.0.0, )"
           },
+          "SmartThreadPool.dll": {
+            "target": "Package",
+            "version": "[2.3.0, )"
+          },
           "Syncfusion.Chart.WinUI": {
             "target": "Package",
-            "version": "[27.2.5, )"
+            "version": "[28.1.33, )"
           },
           "System.Management": {
             "target": "Package",

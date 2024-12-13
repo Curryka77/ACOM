@@ -24,6 +24,11 @@ using Windows.Gaming.Preview.GamesEnumeration;
 using System.Text;
 using System.Runtime.CompilerServices;
 using ACOMv2.Models.Processers;
+
+using System;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.Net.Sockets;
 /**
  * 这个类用于管理IO输入输出
  * 
@@ -35,8 +40,10 @@ namespace ACOM.Models
 {
 
     using System.Management;
+    using System.Reflection;
     using System.Timers;
     using ACOMPlug;
+    using Amib.Threading;
     using CommunityToolkit.Mvvm.Messaging;
     using CommunityToolkit.Mvvm.Messaging.Messages;
     using Windows.System;
@@ -261,7 +268,22 @@ namespace ACOM.Models
     }
 
 
+    class IoDevice {
 
+        BytesClient client;
+        public string Name= "Unknown Name";
+        public IoDevice(BytesClient client)
+        {
+            this.client = client;
+            Name = client.ToString();
+        }
+        public IoDevice(BytesClient client, string Name)
+        {
+            this.client = client;
+            this.Name = Name;
+        }
+
+    }
 
 
     class IO_Manage: Singleton<IO_Manage>
@@ -269,6 +291,7 @@ namespace ACOM.Models
         //页面文件
         public HomeLandingPage page;
 
+        SmartThreadPool smartThreadPool = new SmartThreadPool();
 
 
         //public Vector<ChannelMassage> ChannelDatas;
@@ -293,20 +316,21 @@ namespace ACOM.Models
         public delegate void ReceivedCannelMsg( Dictionary<string, ChannelMassage> dataMap);
         public delegate void UpdateCannelViewMsg(List<ChannelViewData> globChannelViewData);
         public delegate void UpdateDevices(List<SerialDevice> serialDevices);
+        public delegate void ConnectLost(object sender, STTech.BytesIO.Core.DisconnectedEventArgs e);
         public static event ReceivedCannelMsg receivedCannelMsg;//当接收到通道原始数据时触发
         public static event UpdateCannelViewMsg updateCannelViewMsg;//当接收到通道处理显示数据时触发
         public static event UpdateDevices updateDevices;//当外部设备变化触发
+        public static event ConnectLost connectLost;//当外部设备变化触发
 
 
         /**
          * 定义已经连接的设备
          */
-        List<BytesIO.Serial.SerialClient> serialClients = new();
-        List<BytesIO.Tcp.TcpClient> tcpClients = new();
-        List<BytesIO.Kcp.KcpClient> kcpClients = new();
-        List<BytesIO.Udp.UdpClient> udpClients = new();
-
-
+        //List<BytesIO.Serial.SerialClient> serialClients = new();
+        //List<BytesIO.Tcp.TcpClient> tcpClients = new();
+        //List<BytesIO.Kcp.KcpClient> kcpClients = new();
+        //List<BytesIO.Udp.UdpClient> udpClients = new();
+ 
 
 
         ConcurrentQueue<RawDataMassage> charRecQueue = new();
@@ -317,6 +341,10 @@ namespace ACOM.Models
         Dictionary<object, IPlugProcessBase> channelProcesserMap = new();
 
 
+        static Dictionary<string, BytesIO.Serial.SerialClient> Dic_Serial = new();
+        static Dictionary<string, BytesIO.Tcp.TcpClient> Dic_Tcp = new();
+        static Dictionary<string, BytesIO.Kcp.KcpClient> Dic_Kcp = new();
+        static Dictionary<string, BytesIO.Udp.UdpClient> Dic_Udp = new();
 
         /// <summary>
         /// 已经存在的串口设备
@@ -386,26 +414,36 @@ namespace ACOM.Models
         {
             Print($"发送: {e.Data.ToHexCodeString()}({e.Data.EncodeToString()})");
         }
+        private void ProcessReceivedDataAsync(byte[] data, string portName)
+        {
 
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
+
+                _ = smartThreadPool.QueueWorkItem(() =>
+                {
+                    UnionGlobChannelMassage(channelProcesser.Process(new RawDataMassage(data, DateTime.Now, RawDataMassage.DateSource.Serial, portName)));
+                    charRecQueue.Enqueue(new RawDataMassage(data, DateTime.Now, RawDataMassage.DateSource.Serial, portName));
+                    page.TextAddLine(data.EncodeToString());
+                    WeakReferenceMessenger.Default.Send(new ValueChangedMessage<List<ChannelViewData>>(GlobChannelViewData));
+
+                    stopwatch.Stop();
+                    Debug.WriteLine($"Client_OnDataReceived execution time: {stopwatch.ElapsedMilliseconds} ms");
+                });
+
+        }
         private void Client_OnDataReceived(object sender, STTech.BytesIO.Core.DataReceivedEventArgs e)
         {
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-
             BytesIO.Serial.SerialClient client = (BytesIO.Serial.SerialClient)sender;
-            UnionGlobChannelMassage(channelProcesser.Process(new RawDataMassage(e.Data, DateTime.Now, RawDataMassage.DateSource.Serial, client.PortName)));
-            charRecQueue.Enqueue(new RawDataMassage(e.Data, DateTime.Now, RawDataMassage.DateSource.Serial, client.PortName));
-            page.TextAddLine(e.Data.EncodeToString());
-            WeakReferenceMessenger.Default.Send(new ValueChangedMessage<List<ChannelViewData>>(GlobChannelViewData));
 
-            stopwatch.Stop();
-            Debug.WriteLine($"Client_OnDataReceived execution time: {stopwatch.ElapsedMilliseconds} ms");
+            ProcessReceivedDataAsync(e.Data,client.PortName);
         }
 
         private void Client_OnDisconnected(object sender, STTech.BytesIO.Core.DisconnectedEventArgs e)
         {
             Print("断开连接");
             channelProcesserMap.Remove(sender);
+            connectLost?.Invoke(sender,e);
         }
 
         private void Client_OnConnectionFailed(object sender, STTech.BytesIO.Core.ConnectionFailedEventArgs e)
@@ -418,6 +456,8 @@ namespace ACOM.Models
             Print("连接成功");
             IPlugProcessBase plug =  Plugs.CreateInstance("ProcesserPlugWaterFire");
             channelProcesserMap.Add(sender, plug);
+
+
         }
 
 
@@ -433,7 +473,7 @@ namespace ACOM.Models
             Parity parity = Parity.None, StopBits stopBits = StopBits.One)
         {
             SerialClient __client;
-            foreach (BytesIO.Serial.SerialClient item in serialClients)
+            foreach (BytesIO.Serial.SerialClient item in Dic_Serial.Values)
             {
                 if (item.PortName == portName)
                 {
@@ -465,7 +505,12 @@ NOT_INIT:
             ConnectResult result = __client.Connect();
             if (result.IsSuccess || (result.ErrorCode == ConnectErrorCode.IsConnected))
             {
-                serialClients.Add(__client);
+                //serialClients.Add(__client);
+
+                Dic_Serial.Add(portName, __client);
+                //Thread t = new Thread(new ThreadStart(Work));
+                //t.Start();
+
             }
             else
             {
@@ -475,6 +520,8 @@ NOT_INIT:
             return __client;
         }
 
+
+
         public bool DisConnect(SerialClient client)
         {
             DisconnectResult result = client.Disconnect();
@@ -482,15 +529,18 @@ NOT_INIT:
         }
         public bool DisConnect(string portName)
         {
-            foreach (BytesIO.Serial.SerialClient item in serialClients)
+            try
             {
-               if(item.PortName == portName)
-                {
-                    DisconnectResult result = item.Disconnect();
-                    return result.IsSuccess;
-                }
+                Dic_Serial[portName].Disconnect();
+                Dic_Serial.Remove(portName);
+                return true;
             }
-            return false;
+            catch (Exception e)
+            {
+                _ = e;
+                return false;
+            }
+
 
         }
         private void Print(string msg)

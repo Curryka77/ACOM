@@ -1642,6 +1642,9 @@
     <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\shadowpluginloader.winui\1.3.3\lib\net6.0-windows10.0.19041\ShadowPluginLoader.WinUI.dll">
       <PackagePath>ShadowPluginLoader.WinUI.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\smartthreadpool.dll\2.3.0\lib\net5.0\SmartThreadPool.dll">
+      <PackagePath>SmartThreadPool.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\sttech.bytesio.core\2.14.6\lib\netstandard2.0\STTech.BytesIO.Core.dll">
       <PackagePath>STTech.BytesIO.Core.dll</PackagePath>
     </AppxPackagedFile>
@@ -1663,13 +1666,13 @@
     <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\sttech.codeplus\1.7.2\lib\netstandard2.0\STTech.CodePlus.dll">
       <PackagePath>STTech.CodePlus.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\syncfusion.chart.winui\27.2.5\lib\net9.0-windows10.0\Syncfusion.Chart.WinUI.dll">
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\syncfusion.chart.winui\28.1.33\lib\net9.0-windows10.0\Syncfusion.Chart.WinUI.dll">
       <PackagePath>Syncfusion.Chart.WinUI.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\syncfusion.core.winui\27.2.5\lib\net9.0-windows10.0\Syncfusion.Core.WinUI.dll">
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\syncfusion.core.winui\28.1.33\lib\net9.0-windows10.0\Syncfusion.Core.WinUI.dll">
       <PackagePath>Syncfusion.Core.WinUI.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\syncfusion.licensing\27.2.5\lib\net9.0\Syncfusion.Licensing.dll">
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\syncfusion.licensing\28.1.33\lib\net9.0\Syncfusion.Licensing.dll">
       <PackagePath>Syncfusion.Licensing.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\system.codedom\9.0.0\lib\net9.0\System.CodeDom.dll">
@@ -1861,10 +1864,10 @@
     <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\microsoft.xaml.behaviors.winui.managed\2.0.9\lib\net5.0-windows10.0.17763.0\Microsoft.Xaml.Interactivity.pri">
       <PackagePath>Microsoft.Xaml.Interactivity.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\syncfusion.chart.winui\27.2.5\lib\net9.0-windows10.0\Syncfusion.Chart.WinUI.pri">
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\syncfusion.chart.winui\28.1.33\lib\net9.0-windows10.0\Syncfusion.Chart.WinUI.pri">
       <PackagePath>Syncfusion.Chart.WinUI.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\syncfusion.core.winui\27.2.5\lib\net9.0-windows10.0\Syncfusion.Core.WinUI.pri">
+    <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\syncfusion.core.winui\28.1.33\lib\net9.0-windows10.0\Syncfusion.Core.WinUI.pri">
       <PackagePath>Syncfusion.Core.WinUI.pri</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\80520\.nuget\packages\winuicommunity.components\7.1.0\lib\net8.0-windows10.0.19041\WinUICommunity.Components.pri">

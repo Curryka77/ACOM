@@ -45,8 +45,8 @@ public abstract class ACOMPluginBase : AbstractPlugin
     /// cmd 为 cmd_name;cmd_arg1;cmd_arg2
     /// </summary>
     /// <param name="cmd"></param>
-    public delegate void UpdateCommand(List<string[]> cmd);
-    public  event UpdateCommand updateCommand;//当外部设备变化触发
+    public delegate void UpdateCommands(List<string[]> cmd);
+    public  event UpdateCommands UpdateCommand;//当外部设备变化触发
     public ACOMPluginBase()
     {
 
@@ -54,7 +54,7 @@ public abstract class ACOMPluginBase : AbstractPlugin
 
      ~ACOMPluginBase()
     {
-        updateCommand = null;
+        UpdateCommand = null;
     }
 }
  

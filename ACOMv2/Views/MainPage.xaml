@@ -40,10 +40,10 @@
             </wuc:TitleBar.Footer>
         </wuc:TitleBar>
 
-
+        
         <NavigationView x:Name="NavView"
                     Grid.Row="1" Grid.ColumnSpan="3"
-                    IsBackButtonVisible="Collapsed"
+                    IsBackButtonVisible="Collapsed" 
                     IsPaneToggleButtonVisible="False">
             <NavigationView.Header>
                 <wuc:BreadcrumbNavigator x:Name="JsonBreadCrumbNavigator" />
@@ -56,14 +56,13 @@
 
                 <controls:PropertySizer Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Left"
                             Binding="{x:Bind NavView.OpenPaneLength, Mode=TwoWay}"
-                            Maximum="440"
                             Minimum="52"  
                             Visibility="{x:Bind NavView.IsPaneOpen, Mode=OneWay}" />
                 <Frame x:Name="NavFrame" Grid.Column="1"
                 Navigated="NavFrame_Navigated" />
             </Grid>
-
         </NavigationView>
+
     </Grid>
 </Page>
 

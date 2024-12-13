@@ -18,7 +18,7 @@
       <Version>$(Version)</Version>
       <Author>kitUIN</Author>
     </PluginMeta>
-  </PropertyGroup>
+  </PropertyGroup> 
   <ItemGroup>
     <None Remove="WidgetSlide.xaml" />
   </ItemGroup>

@@ -65,19 +65,7 @@ namespace ACOMv2.Views
         /// </summary>
         public sealed partial class CanvasPanelPage : Page
     {
-        private void ShowMenu(UIElement sender, bool isTransient)
-        {
-            FlyoutShowOptions myOption = new FlyoutShowOptions();
-            myOption.ShowMode = isTransient ? FlyoutShowMode.Transient : FlyoutShowMode.Standard;
-            PartsCommandBarFlyout.ShowAt(sender, myOption);
-        }
-        private void Parts_ContextRequested(UIElement sender, ContextRequestedEventArgs args)
-        {
-            //Debug.WriteLine("test Parts_ContextRequested");
-            ShowMenu(sender, true);
 
-
-        }
 
         public FrameworkElement InitializeElementGrid(FrameworkElement element)
         {
@@ -162,10 +150,6 @@ namespace ACOMv2.Views
 
             elementGrid.Children.Add(verticalContentSizer);
 
-            //innerGrid.ContextRequested += Parts_ContextRequested;
-            element.ContextRequested += Parts_ContextRequested;
-
-
             // 将Grid添加到页面或其他父容器中
             return elementGrid; // 假设你是在Page中，并且将Grid设置为页面的内容
         }
@@ -215,46 +199,16 @@ namespace ACOMv2.Views
 
 
 
-        private void gooeyButton_Invoked(object sender, GooeyButton.GooeyButtonInvokedEventArgs args)
-        {
-            Debug.WriteLine("Invoked");
-        }
-
-        private void gooeyButton_ItemInvoked(object sender, GooeyButton.GooeyButtonItemInvokedEventArgs args)
-        {
-            if (args.Item is Symbol symbol)
-            {
-                if (symbol == Symbol.AddFriend)
-                {
-                    if (strings.Count == 3)
-                    {
-                        strings.Add(Symbol.Home);
-                        gooeyButton.Distance += 20;
-                    }
-                    else
-                    {
-                        strings.RemoveAt(3);
-                        gooeyButton.Distance -= 20;
-                    }
-                }
-                else if (symbol == Symbol.Forward)
-                {
-                    var pos = (int)gooeyButton.ItemsPosition + 1;
-                    if (pos == 4) pos = 0;
-                    gooeyButton.ItemsPosition = (GooeyButtonItemsPosition)pos;
-                }
-                else if (symbol == Symbol.Share)
-                {
-                    gooeyButton.Distance = rnd.Next(80, 300);
-                }
-            }
-
-            Debug.WriteLine(args.Item.ToString());
-        }
+       
 
         private void rangeSelector_ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void OptionsAllCheckBox_Indeterminate(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

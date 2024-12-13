@@ -9,7 +9,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:wuc="using:WinUICommunity"
       xmlns:textcontrolbox="using:TextControlBoxNS" xmlns:controls="using:CommunityToolkit.WinUI.Controls" xmlns:views="using:ACOMv2.Views"
-      xmlns:view_models="using:ACOMv2.ViewModels"
+      xmlns:view_models="using:ACOMv2.ViewModels" xmlns:chart="using:Syncfusion.UI.Xaml.Charts"
       
       mc:Ignorable="d">
     <Page.DataContext>
@@ -232,7 +232,16 @@
                             <RowDefinition MinHeight="60" Height="1*"/>
                             <RowDefinition Height="7.5*"/>
                         </Grid.RowDefinitions>
-                        <Border Grid.Row="0" Background="red" Margin="0,10,0,4"/>
+                        <!--<Border Grid.Row="0" Background="red" Margin="0,10,0,4"/>-->
+                        <chart:SfCartesianChart Grid.Row="0">
+                            <chart:SfCartesianChart.XAxes>
+                                <chart:CategoryAxis/>
+                            </chart:SfCartesianChart.XAxes>
+
+                            <chart:SfCartesianChart.YAxes>
+                                <chart:NumericalAxis FontSize="8"/>
+                            </chart:SfCartesianChart.YAxes>
+                        </chart:SfCartesianChart>
 
                         <ListView Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                             SelectionMode="None" IsMultiSelectCheckBoxEnabled="False" IsRightTapEnabled="True"

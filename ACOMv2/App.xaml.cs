@@ -34,7 +34,7 @@ public partial class App : Application
     
     public App()
     {
-        Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NCaF5cXmZCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWH5ceXRXRWhZUkN2W0I=");
+        Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzYyMDAwMkAzMjM4MmUzMDJlMzBseXZsekVaVS9pTk9BSTdLTWUxclkrdUwwRXNxVENQcTFmNEdHSlhvYzNZPQ==");
         Services = ConfigureServices();
         this.InitializeComponent();
         ApplicationExtensionHost.Initialize(this);

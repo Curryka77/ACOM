@@ -29,12 +29,7 @@
     <Page.Resources>
 
 
-        <Flyout Placement="Right" x:Name="PartsCommandBarFlyout">
-            <StackPanel>
-                <TextBlock Text="Test"/>
-                <TextBlock Text="Test"/>
-            </StackPanel>
-        </Flyout>
+        
     </Page.Resources>
 
         
@@ -153,7 +148,7 @@
             </Grid>
         </ScrollViewer>
 
-        <wuc:GooeyButton x:Name="gooeyButton"
+        <!--<wuc:GooeyButton x:Name="gooeyButton"
                          Margin="6 6 6 6"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
@@ -168,6 +163,8 @@
                     <SymbolIcon Symbol="{Binding}" />
                 </DataTemplate>
             </wuc:GooeyButton.ItemTemplate>
-        </wuc:GooeyButton>
-    </Grid>
-</Page>
+        </wuc:GooeyButton>-->
+
+        <Button      Margin="6 6 6 6" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+    </Grid>             
+</Page>                 

@@ -20,8 +20,35 @@ using CustomExtensions.WinUI;
 namespace WidgetPlug.Slide;
 public sealed partial class WidgetSlide : UserControl
 {
+    private void ShowMenu(UIElement sender, bool isTransient)
+    {
+        FlyoutShowOptions myOption = new FlyoutShowOptions();
+        myOption.ShowMode = isTransient ? FlyoutShowMode.Transient : FlyoutShowMode.Standard;
+        PartsCommandBarFlyout.ShowAt(sender, myOption);
+    }
+    private void Parts_ContextRequested(UIElement sender, ContextRequestedEventArgs args)
+    {
+        //Debug.WriteLine("test Parts_ContextRequested");
+        ShowMenu(sender, true);
+
+    }
     public WidgetSlide()
     {
         this.LoadComponent(ref _contentLoaded);
+    }
+
+    private void Slider_ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
+    {
+        e.Handled = true;
+    }
+
+    private void OptionsAllCheckBox1_Indeterminate(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void OptionsAllCheckBox_Indeterminate(object sender, RoutedEventArgs e)
+    {
+
     }
 }

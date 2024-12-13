@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "80+a1lkPJZg=",
+  "dgSpecHash": "/TXxjKX24IM=",
   "success": true,
   "projectFilePath": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\ACOMv2.csproj",
   "expectedPackageFiles": [
@@ -123,6 +123,7 @@
     "C:\\Users\\80520\\.nuget\\packages\\shadowpluginloader.sourcegenerator\\1.3.2\\shadowpluginloader.sourcegenerator.1.3.2.nupkg.sha512",
     "C:\\Users\\80520\\.nuget\\packages\\shadowpluginloader.tool\\1.2.1\\shadowpluginloader.tool.1.2.1.nupkg.sha512",
     "C:\\Users\\80520\\.nuget\\packages\\shadowpluginloader.winui\\1.3.3\\shadowpluginloader.winui.1.3.3.nupkg.sha512",
+    "C:\\Users\\80520\\.nuget\\packages\\smartthreadpool.dll\\2.3.0\\smartthreadpool.dll.2.3.0.nupkg.sha512",
     "C:\\Users\\80520\\.nuget\\packages\\sttech.bytesio.core\\2.14.6\\sttech.bytesio.core.2.14.6.nupkg.sha512",
     "C:\\Users\\80520\\.nuget\\packages\\sttech.bytesio.kcp\\2.14.6\\sttech.bytesio.kcp.2.14.6.nupkg.sha512",
     "C:\\Users\\80520\\.nuget\\packages\\sttech.bytesio.modbus\\2.14.6\\sttech.bytesio.modbus.2.14.6.nupkg.sha512",
@@ -130,9 +131,9 @@
     "C:\\Users\\80520\\.nuget\\packages\\sttech.bytesio.tcp\\2.14.6\\sttech.bytesio.tcp.2.14.6.nupkg.sha512",
     "C:\\Users\\80520\\.nuget\\packages\\sttech.bytesio.udp\\2.14.6\\sttech.bytesio.udp.2.14.6.nupkg.sha512",
     "C:\\Users\\80520\\.nuget\\packages\\sttech.codeplus\\1.7.2\\sttech.codeplus.1.7.2.nupkg.sha512",
-    "C:\\Users\\80520\\.nuget\\packages\\syncfusion.chart.winui\\27.2.5\\syncfusion.chart.winui.27.2.5.nupkg.sha512",
-    "C:\\Users\\80520\\.nuget\\packages\\syncfusion.core.winui\\27.2.5\\syncfusion.core.winui.27.2.5.nupkg.sha512",
-    "C:\\Users\\80520\\.nuget\\packages\\syncfusion.licensing\\27.2.5\\syncfusion.licensing.27.2.5.nupkg.sha512",
+    "C:\\Users\\80520\\.nuget\\packages\\syncfusion.chart.winui\\28.1.33\\syncfusion.chart.winui.28.1.33.nupkg.sha512",
+    "C:\\Users\\80520\\.nuget\\packages\\syncfusion.core.winui\\28.1.33\\syncfusion.core.winui.28.1.33.nupkg.sha512",
+    "C:\\Users\\80520\\.nuget\\packages\\syncfusion.licensing\\28.1.33\\syncfusion.licensing.28.1.33.nupkg.sha512",
     "C:\\Users\\80520\\.nuget\\packages\\system.buffers\\4.3.0\\system.buffers.4.3.0.nupkg.sha512",
     "C:\\Users\\80520\\.nuget\\packages\\system.codedom\\9.0.0\\system.codedom.9.0.0.nupkg.sha512",
     "C:\\Users\\80520\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
