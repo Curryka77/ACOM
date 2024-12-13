@@ -49,6 +49,7 @@ namespace ACOM.Models
         List<byte> tmpbytes = new List<byte>(4096);
         List<byte[]> frameDatas = new();
         static int unNameIndex = 0;
+        DateTime LastTime;
         Queue<RawDataMassage> noPloicyRawDataMassages = new Queue<RawDataMassage>(20);
         public RawDataMassage GetNopolicyData()
         {
@@ -83,6 +84,7 @@ namespace ACOM.Models
             foreach (var item in data)
             {
                 Debug.WriteLine($"Name: {item.Name}, Type: {item.Type}, DateTime: {item.DateTime}");
+
                 if (item.rawChannelData != null)
                 {
                     Debug.WriteLine("Raw Data:");
@@ -137,8 +139,11 @@ namespace ACOM.Models
             if (frameDatas.Count != 0)
             {
                 List<ChannelMassage> frames = new List<ChannelMassage>(frameDatas.Count);
+                var span = (DateTime.Now - LastTime)/ frameDatas.Count;
+                int j = frameDatas.Count;
                 foreach (var frame in frameDatas)
                 {
+                    j--;
                     string frameString = Encoding.UTF8.GetString(frame);
                     if (frameString.Contains(":"))
                     {
@@ -153,7 +158,7 @@ namespace ACOM.Models
                                 rawChannelData = i < rightPart.Count ? Encoding.UTF8.GetBytes(rightPart[i]) : null,
                                 Name = i < leftPart.Count ? leftPart[i] : "AutoName" + unNameIndex++,
                                 Type = "Processed",
-                                DateTime = data._dateTime
+                                DateTime = data._dateTime - span * j
                             };
                             frames.Add(channelMassage);
                         }
@@ -164,6 +169,7 @@ namespace ACOM.Models
                     }
                     unNameIndex = 0;
                 }
+                LastTime = DateTime.Now;
                 frameDatas.Clear();
                 return frames;
             }
