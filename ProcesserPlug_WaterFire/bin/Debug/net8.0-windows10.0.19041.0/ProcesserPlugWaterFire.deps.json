@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "ProcesserPlugWaterFire/1.0.0": {
         "dependencies": {
+          "ACOMCommmon": "1.0.0",
           "ACOMPlug": "1.0.0",
           "Microsoft.Windows.SDK.BuildTools": "10.0.26100.1742",
           "Microsoft.WindowsAppSDK": "1.6.241114003",
@@ -328,8 +329,21 @@
           }
         }
       },
+      "ACOMCommmon/1.0.0": {
+        "dependencies": {
+          "Microsoft.Windows.SDK.BuildTools": "10.0.26100.1742",
+          "Microsoft.WindowsAppSDK": "1.6.241114003"
+        },
+        "runtime": {
+          "ACOMCommmon.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "ACOMPlug/1.0.0": {
         "dependencies": {
+          "ACOMCommmon": "1.0.0",
           "Microsoft.Windows.SDK.BuildTools": "10.0.26100.1742",
           "Microsoft.WindowsAppSDK": "1.6.241114003"
         },
@@ -493,6 +507,11 @@
       "sha512": "sha512-u7EtXtDTO60vGM7C0A84A0eZKHqZSf904GopEjGve4Tly3GPyaJ9D7pOQR/xhW8z4rSHYKdgUbJEKGRtXRKjpQ==",
       "path": "xfrogcn.pluginfactory.abstractions/2.0.1",
       "hashPath": "xfrogcn.pluginfactory.abstractions.2.0.1.nupkg.sha512"
+    },
+    "ACOMCommmon/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "ACOMPlug/1.0.0": {
       "type": "project",

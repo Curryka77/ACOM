@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "i8vRS3somOI=",
+  "dgSpecHash": "zZj8L682lVQ=",
   "success": true,
   "projectFilePath": "C:\\Users\\80520\\source\\repos\\ACOM\\ProcesserPlug_WaterFire\\ProcesserPlugWaterFire.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\80520\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512",
     "C:\\Users\\80520\\.nuget\\packages\\microsoft.extensions.configuration\\5.0.0\\microsoft.extensions.configuration.5.0.0.nupkg.sha512",
     "C:\\Users\\80520\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\80520\\.nuget\\packages\\microsoft.extensions.configuration.binder\\5.0.0\\microsoft.extensions.configuration.binder.5.0.0.nupkg.sha512",

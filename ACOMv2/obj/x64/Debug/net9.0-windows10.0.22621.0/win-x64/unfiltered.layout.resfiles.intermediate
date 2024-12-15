@@ -2,6 +2,7 @@ runtimes\win-x64\native\WebView2Loader.dll
 ContextMenuCustomHost.dll
 Assets\Cover\CoverDark.png
 Assets\Cover\CoverLight.png
+Assets\encode.svg
 Assets\Fluent\backdrop.png
 Assets\Fluent\color.png
 Assets\Fluent\devMode.png

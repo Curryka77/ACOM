@@ -11,3 +11,4 @@ global using Microsoft.UI.Xaml.Navigation;
 global using WinUICommunity;
 global using static ACOMv2.Common.AppHelper;
 global using static ACOMv2.Common.LoggerSetup;
+global using ACOMCommmon;

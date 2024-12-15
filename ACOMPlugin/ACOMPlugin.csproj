@@ -26,4 +26,7 @@
     <PackageReference Include="ShadowPluginLoader.Tool" Version="1.2.1" />
     <PackageReference Include="ShadowPluginLoader.WinUI" Version="1.3.3" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ACOMCommmon\ACOMCommmon.csproj" />
+  </ItemGroup>
 </Project>

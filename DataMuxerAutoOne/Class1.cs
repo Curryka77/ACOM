@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ACOMCommmon;
 using ACOMPlug;
 using PluginInfo = ACOMPlug.PluginInfo;
 
@@ -92,7 +93,7 @@ public class DataMuxerPlugAutoOne : IPlugDataMuxBase
     /// </summary>
     /// <param name="massages"></param>
     /// <returns></returns>
-    public List<ChannelViewData> Process(List<ChannelMassage> massages)
+    public List<CannelData> Process(List<ChannelMassage> massages)
     {
         for(int i = 0; i < massages.Count; i++)
         {
@@ -102,4 +103,9 @@ public class DataMuxerPlugAutoOne : IPlugDataMuxBase
         return null;
 
     }
+
+    //public List<CannelData> Process(List<ChannelMassage> massages)
+    //{
+    //    throw new NotImplementedException();
+    //}
 }

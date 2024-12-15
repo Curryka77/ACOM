@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/TXxjKX24IM=",
+  "dgSpecHash": "pO4Tg5kustY=",
   "success": true,
   "projectFilePath": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\ACOMv2.csproj",
   "expectedPackageFiles": [
@@ -8,7 +8,7 @@
     "C:\\Users\\80520\\.nuget\\packages\\collections.pooled\\1.0.82\\collections.pooled.1.0.82.nupkg.sha512",
     "C:\\Users\\80520\\.nuget\\packages\\communitytoolkit.common\\8.3.2\\communitytoolkit.common.8.3.2.nupkg.sha512",
     "C:\\Users\\80520\\.nuget\\packages\\communitytoolkit.highperformance\\8.3.2\\communitytoolkit.highperformance.8.3.2.nupkg.sha512",
-    "C:\\Users\\80520\\.nuget\\packages\\communitytoolkit.mvvm\\8.3.2\\communitytoolkit.mvvm.8.3.2.nupkg.sha512",
+    "C:\\Users\\80520\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512",
     "C:\\Users\\80520\\.nuget\\packages\\communitytoolkit.winui.animations\\8.1.240916\\communitytoolkit.winui.animations.8.1.240916.nupkg.sha512",
     "C:\\Users\\80520\\.nuget\\packages\\communitytoolkit.winui.behaviors\\8.1.240916\\communitytoolkit.winui.behaviors.8.1.240916.nupkg.sha512",
     "C:\\Users\\80520\\.nuget\\packages\\communitytoolkit.winui.collections\\8.1.240916\\communitytoolkit.winui.collections.8.1.240916.nupkg.sha512",

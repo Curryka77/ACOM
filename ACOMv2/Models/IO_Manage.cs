@@ -38,16 +38,18 @@ using System.Net.Sockets;
  */
 namespace ACOM.Models
 {
-
+    using System.Drawing;
     using System.Management;
     using System.Reflection;
     using System.Timers;
+    using ACOMCommmon;
     using ACOMPlug;
     using Amib.Threading;
     using CommunityToolkit.Mvvm.Messaging;
     using CommunityToolkit.Mvvm.Messaging.Messages;
     using Windows.System;
     using WinUICommunity;
+    using static ACOM.Models.IO_Manage;
 
     public class ChannelProcesser
     {
@@ -242,15 +244,17 @@ namespace ACOM.Models
         /// </summary>
         /// <param name="massages"></param>
         /// <returns></returns>
-        public List<ChannelViewData> Process(List<ChannelMassage> massages)
+        public List<CannelData> Process(List<ChannelMassage> massages)
         {
            // Debug.WriteLine("get msg cnt is"+massages.Count());
-            List < ChannelViewData > result = new List<ChannelViewData>();
+            List < CannelData > result = new List<CannelData>();
             for (int i = 0; i < massages.Count; i++)
             {
                 var data = massages[i].rawChannelData;
                 var type = IdentifyDataType(data);
-                result.Add(new ChannelViewData { Name = massages[i].Name, ChannelData = System.Text.Encoding.UTF8.GetString(data) });
+
+                var tt = new CannelData(massages[i].Name, System.Text.Encoding.UTF8.GetString(data));
+                result.Add(tt);
 
             }
             return result;
@@ -286,13 +290,12 @@ namespace ACOM.Models
     }
 
 
-    class IO_Manage: Singleton<IO_Manage>
+    class IO_Manage : Singleton<IO_Manage>
     {
         //页面文件
         public HomeLandingPage page;
 
         SmartThreadPool smartThreadPool = new SmartThreadPool();
-
 
         //public Vector<ChannelMassage> ChannelDatas;
 
@@ -301,28 +304,26 @@ namespace ACOM.Models
         /// </summary>
         static ChannelProcesser channelProcesser = new();
 
-
         /// <summary>
         /// 全局通道数据和通道显示数据
         /// </summary>
         static Dictionary<string, ChannelMassage> GlobChannelMassage = new Dictionary<string, ChannelMassage>();
-        static List<ChannelViewData> GlobChannelViewData = new();
-
-
+        static List<CannelData> GlobChannelViewData = new();
 
         /// <summary>
         /// 定义委托定义事件
         /// </summary>
-        public delegate void ReceivedCannelMsg( Dictionary<string, ChannelMassage> dataMap);
-        public delegate void UpdateCannelViewMsg(List<ChannelViewData> globChannelViewData);
+        public delegate void ReceivedCannelMsg(Dictionary<string, ChannelMassage> dataMap);
+        public delegate void UpdateCannelViewMsg(List<CannelData> globChannelViewData);
         public delegate void UpdateDevices(List<SerialDevice> serialDevices);
         public delegate void ConnectLost(object sender, STTech.BytesIO.Core.DisconnectedEventArgs e);
+        public delegate void UpdateLoadStats(object sender,double load_s);
         public static event ReceivedCannelMsg receivedCannelMsg;//当接收到通道原始数据时触发
         public static event UpdateCannelViewMsg updateCannelViewMsg;//当接收到通道处理显示数据时触发
         public static event UpdateDevices updateDevices;//当外部设备变化触发
         public static event ConnectLost connectLost;//当外部设备变化触发
-
-
+        public static event UpdateLoadStats updateLoadStats;//当外部设备变化触发
+        
         /**
          * 定义已经连接的设备
          */
@@ -330,8 +331,6 @@ namespace ACOM.Models
         //List<BytesIO.Tcp.TcpClient> tcpClients = new();
         //List<BytesIO.Kcp.KcpClient> kcpClients = new();
         //List<BytesIO.Udp.UdpClient> udpClients = new();
- 
-
 
         ConcurrentQueue<RawDataMassage> charRecQueue = new();
 
@@ -339,7 +338,6 @@ namespace ACOM.Models
         /// 插件管理
         /// </summary>
         Dictionary<object, IPlugProcessBase> channelProcesserMap = new();
-
 
         static Dictionary<string, BytesIO.Serial.SerialClient> Dic_Serial = new();
         static Dictionary<string, BytesIO.Tcp.TcpClient> Dic_Tcp = new();
@@ -351,6 +349,11 @@ namespace ACOM.Models
         /// </summary>
         List<SerialDevice> serialDevices = new();
 
+        // 串口负载率统计
+        private Dictionary<string, long> serialLoadStats = new();
+        private Dictionary<string, List<Double>> serialLoad = new();
+        Stopwatch stopwatch1 = new Stopwatch();
+        private DateTime LastTime;
         /// <summary>
         /// Union the glob channel massage.
         /// </summary>
@@ -358,7 +361,7 @@ namespace ACOM.Models
         public static void UnionGlobChannelMassage(List<ChannelMassage> Data)
         {
             if (Data == null) return;
-            
+
             foreach (var pair in Data)
             {
                 if (GlobChannelMassage.ContainsKey(pair.Name)) GlobChannelMassage[pair.Name] = pair;
@@ -374,25 +377,27 @@ namespace ACOM.Models
 
             UnionGlobChannelViewMassage(channelProcesser.Process(Data));//更新成通道数据
         }
+
         /// <summary>
         /// Union the glob channel view massage.
         /// </summary>
         /// <param name="Data"></param>
-        public static void UnionGlobChannelViewMassage(List<ChannelViewData> Data)
+        public static void UnionGlobChannelViewMassage(List<CannelData> Data)
         {
             if (Data == null) return;
 
             foreach (var dataItem in Data)
             {
-                var existingItem = GlobChannelViewData.FirstOrDefault(item => item.Name == dataItem.Name);
+                var existingItem = GlobChannelViewData.FirstOrDefault(item => item.DataName == dataItem.DataName);
                 if (existingItem != null)
                 {
                     // Replace existing item with new data
-                    existingItem.ChannelData = dataItem.ChannelData;
+                    existingItem.Data = dataItem.Data;
                     existingItem.DateTime = dataItem.DateTime;
                 }
                 else
                 {
+                    dataItem.DataColor = ACOMCommmon.ColorHelper.AutoGetColor(GlobChannelViewData.Count);
                     // Add new item to the collection
                     GlobChannelViewData.Add(dataItem);
                 }
@@ -404,7 +409,6 @@ namespace ACOM.Models
             //Debug.WriteLine("更新通道显示数据 " + Data.Count + " ");
         }
 
-
         private void Client_OnExceptionOccurs(object sender, STTech.BytesIO.Core.ExceptionOccursEventArgs e)
         {
             Print($"异常: {e.Exception.Message}");
@@ -414,36 +418,49 @@ namespace ACOM.Models
         {
             Print($"发送: {e.Data.ToHexCodeString()}({e.Data.EncodeToString()})");
         }
+
         private void ProcessReceivedDataAsync(byte[] data, string portName)
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
 
-                Stopwatch stopwatch = new Stopwatch();
-                stopwatch.Start();
+            _ = smartThreadPool.QueueWorkItem(() =>
+            {
+                var tt = channelProcesser.Process(new RawDataMassage(data, DateTime.Now, RawDataMassage.DateSource.Serial, portName));
+                UnionGlobChannelMassage(tt);
+                Debug.WriteLine("ProcessReceivedDataAsync");
+                charRecQueue.Enqueue(new RawDataMassage(data, DateTime.Now, RawDataMassage.DateSource.Serial, portName));
+                page.TextAddLine(data.EncodeToString());
+                WeakReferenceMessenger.Default.Send(new ValueChangedMessage<List<CannelData>>(GlobChannelViewData));
 
-                _ = smartThreadPool.QueueWorkItem(() =>
+                stopwatch.Stop();
+                Debug.WriteLine($"Client_OnDataReceived execution time: {stopwatch.ElapsedMilliseconds} ms");
+                serialLoadStats[portName] += data.Length;
+
+                if ((DateTime.Now - LastTime).TotalMilliseconds > 1000)
                 {
-                    UnionGlobChannelMassage(channelProcesser.Process(new RawDataMassage(data, DateTime.Now, RawDataMassage.DateSource.Serial, portName)));
-                    charRecQueue.Enqueue(new RawDataMassage(data, DateTime.Now, RawDataMassage.DateSource.Serial, portName));
-                    page.TextAddLine(data.EncodeToString());
-                    WeakReferenceMessenger.Default.Send(new ValueChangedMessage<List<ChannelViewData>>(GlobChannelViewData));
+                    stopwatch1.Stop();
+                    LastTime = DateTime.Now;
 
-                    stopwatch.Stop();
-                    Debug.WriteLine($"Client_OnDataReceived execution time: {stopwatch.ElapsedMilliseconds} ms");
-                });
-
+                    updateLoadStats?.Invoke(portName, serialLoadStats[portName]);
+                    serialLoadStats[portName] = 0;
+                    stopwatch1.Start();
+                }
+            });
         }
+
         private void Client_OnDataReceived(object sender, STTech.BytesIO.Core.DataReceivedEventArgs e)
         {
             BytesIO.Serial.SerialClient client = (BytesIO.Serial.SerialClient)sender;
 
-            ProcessReceivedDataAsync(e.Data,client.PortName);
+            ProcessReceivedDataAsync(e.Data, client.PortName);
         }
 
         private void Client_OnDisconnected(object sender, STTech.BytesIO.Core.DisconnectedEventArgs e)
         {
             Print("断开连接");
             channelProcesserMap.Remove(sender);
-            connectLost?.Invoke(sender,e);
+            connectLost?.Invoke(sender, e);
         }
 
         private void Client_OnConnectionFailed(object sender, STTech.BytesIO.Core.ConnectionFailedEventArgs e)
@@ -454,22 +471,13 @@ namespace ACOM.Models
         private void Client_OnConnectedSuccessfully(object sender, STTech.BytesIO.Core.ConnectedSuccessfullyEventArgs e)
         {
             Print("连接成功");
-            IPlugProcessBase plug =  Plugs.CreateInstance("ProcesserPlugWaterFire");
+            IPlugProcessBase plug = Plugs.CreateInstance("ProcesserPlugWaterFire");
             channelProcesserMap.Add(sender, plug);
-
-
+            serialLoadStats.Add(((BytesIO.Serial.SerialClient)sender).PortName, 0);
+            serialLoad.Add(((BytesIO.Serial.SerialClient)sender).PortName, new());
         }
 
-
-
-
-
-
-
-
-
-
-        public SerialClient Connect(string portName,int baudRate=115200,int dataBits=8,
+        public SerialClient Connect(string portName, int baudRate = 115200, int dataBits = 8,
             Parity parity = Parity.None, StopBits stopBits = StopBits.One)
         {
             SerialClient __client;
@@ -481,7 +489,7 @@ namespace ACOM.Models
                     goto NOT_INIT;
                 }
             }
-             __client = new SerialClient();
+            __client = new SerialClient();
             // 监听连接成功事件
             __client.OnConnectedSuccessfully += Client_OnConnectedSuccessfully;
             // 监听连接失败事件
@@ -495,7 +503,7 @@ namespace ACOM.Models
             // 监听发生异常事件
             __client.OnExceptionOccurs += Client_OnExceptionOccurs;
 
-NOT_INIT:
+        NOT_INIT:
             __client.PortName = portName;
             __client.BaudRate = baudRate;
             __client.DataBits = dataBits;
@@ -514,19 +522,17 @@ NOT_INIT:
             }
             else
             {
-
                 __client = null;
             }
             return __client;
         }
-
-
 
         public bool DisConnect(SerialClient client)
         {
             DisconnectResult result = client.Disconnect();
             return result.IsSuccess;
         }
+
         public bool DisConnect(string portName)
         {
             try
@@ -540,9 +546,8 @@ NOT_INIT:
                 _ = e;
                 return false;
             }
-
-
         }
+
         private void Print(string msg)
         {
             Debug.WriteLine(msg);
@@ -551,6 +556,7 @@ NOT_INIT:
             //    tbRecv.AppendText($"[{DateTime.Now.ToLongTimeString()}] {msg}\r\n");
             //}));
         }
+
         public int doing = 1;
         private static void OnTimerElapsed(object sender, ElapsedEventArgs e)
         {
@@ -583,6 +589,7 @@ NOT_INIT:
             if (updateDevices != null)
                 updateDevices(serialDevices);
         }
+
         private void Watcher_EventArrived(object sender, EventArrivedEventArgs e)
         {
             if (doing == 1)
@@ -599,7 +606,6 @@ NOT_INIT:
             {
                 return;
             }
-            
         }
 
         private Dictionary<string, string> portFriendlyNameCache = new Dictionary<string, string>();
@@ -632,12 +638,12 @@ NOT_INIT:
             }
 
             return "error name";
-
         }
 
-        IO_Manage() {
+ 
 
-
+        IO_Manage()
+        {
             ManagementEventWatcher watcher;
 
             //创建ManagmentEventWatcher 对象
@@ -646,15 +652,9 @@ NOT_INIT:
             watcher.EventArrived += Watcher_EventArrived;
             //开始监听
             watcher.Start();
-            Plugs.InitAsync("C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Assets\\Plugs\\");
-
-
-
-
-
-
-
+            _ = Plugs.InitAsync("C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Assets\\Plugs\\");
         }
+
         ~IO_Manage() { }
     }
 

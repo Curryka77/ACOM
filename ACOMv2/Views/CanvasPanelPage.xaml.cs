@@ -98,24 +98,6 @@ namespace ACOMv2.Views
             elementGrid.RowDefinitions.Add(rowDef1);
             elementGrid.RowDefinitions.Add(rowDef2);
 
-            //// 创建内部Grid
-            //Grid innerGrid = new Grid()
-            //{
-            //    MinHeight = 16,
-            //    MinWidth = 16,
-            //    ManipulationMode = ManipulationModes.TranslateX | ManipulationModes.TranslateY,
-            //    HorizontalAlignment = HorizontalAlignment.Stretch,
-            //    VerticalAlignment = VerticalAlignment.Stretch,
-            //    Style = (Style)Application.Current.Resources["GridCardPanel"],
-            //    Background = new SolidColorBrush(Windows.UI.Color.FromArgb(255,255,0,0))
-            //};
-            //innerGrid.HorizontalAlignment = HorizontalAlignment.Stretch;
-            //innerGrid.VerticalAlignment = VerticalAlignment.Stretch;
-            //Grid.SetColumn(innerGrid, 0);
-            //Grid.SetRow(innerGrid, 0);
-            //elementGrid.Children.Add(innerGrid);
-            //innerGrid.Children.Add(element);
-
             Grid.SetColumn(element, 0);
             Grid.SetRow(element, 0);
             elementGrid.Children.Add(element);
@@ -153,6 +135,18 @@ namespace ACOMv2.Views
             // 将Grid添加到页面或其他父容器中
             return elementGrid; // 假设你是在Page中，并且将Grid设置为页面的内容
         }
+        public void CreateWidget(ACOMPluginBase WidgetPlug)
+        {
+            if (WidgetPlug == null) return;
+            WidgetPlug.UpdateCommand += UpdateWidgetCommend;
+            IO_Manage.updateCannelViewMsg += WidgetPlug.UpdateData;
+            CanvasView1.Items.Add(InitializeElementGrid(WidgetPlug.Create()));
+        }
+
+        private void UpdateWidgetCommend(object sender, List<string[]> cmd)
+        {
+            throw new NotImplementedException();
+        }
 
         public CanvasPanelPage()
         {
@@ -163,8 +157,7 @@ namespace ACOMv2.Views
                 Symbol.Share
             };
             this.InitializeComponent();
-
-             CanvasView1.Items.Add(InitializeElementGrid(Plugs.WidgetPlugins["ACOMPlug.Widget.Slide"].Create()));
+            CreateWidget(Plugs.WidgetPlugins["ACOMPlug.Widget.Slide"]);
 
 
              //FrameworkElement element = InitializeElementGrid( (Activator.CreateInstance(Models.Processers.Plugs.WidgetsPlugins[0]) as IPlugWidgetBase).Create());

@@ -13,6 +13,7 @@
     <PackageReference Include="Xfrogcn.PluginFactory.Abstractions" Version="2.0.1" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ACOMCommmon\ACOMCommmon.csproj" />
     <ProjectReference Include="..\ACOMPlug\ACOMPlug.csproj" />
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">

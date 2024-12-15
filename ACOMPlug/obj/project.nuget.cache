@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "1bEGKP1sdqw=",
+  "dgSpecHash": "l7Nz96j3NhU=",
   "success": true,
   "projectFilePath": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlug\\ACOMPlug.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\80520\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512",
     "C:\\Users\\80520\\.nuget\\packages\\microsoft.web.webview2\\1.0.2651.64\\microsoft.web.webview2.1.0.2651.64.nupkg.sha512",
     "C:\\Users\\80520\\.nuget\\packages\\microsoft.windows.sdk.buildtools\\10.0.26100.1742\\microsoft.windows.sdk.buildtools.10.0.26100.1742.nupkg.sha512",
     "C:\\Users\\80520\\.nuget\\packages\\microsoft.windowsappsdk\\1.6.241114003\\microsoft.windowsappsdk.1.6.241114003.nupkg.sha512",

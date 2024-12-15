@@ -10,93 +10,19 @@ using ACOM.Models;
 using System.Diagnostics;
 using System.Collections.ObjectModel;
 using CommunityToolkit.WinUI.Collections;
-using static ACOMPlug.RawDataMassage;
-using Microsoft.UI.Dispatching;
+ using Microsoft.UI.Dispatching;
 using Windows.Devices.SerialCommunication;
 using SerialDevice = ACOM.Models.SerialDevice;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.Collections;
+using static ACOMCommmon.RawDataMassage;
+using Microsoft.VisualBasic;
+using static ACOM.Models.IO_Manage;
 
 namespace ACOMv2.ViewModels;
-
-public class CannelDataView : ObservableObject
-{
-    private string _DataName;
-    public string DataName
-    {
-        get => _DataName;
-        set => SetProperty(ref _DataName, value);
-    }
-    public string ID
-    {
-        get; private set;
-    }
-    private string _Data;
-    public string Data
-    {
-        get => _Data;
-        set => SetProperty(ref _Data, value);
-    }
-    private SolidColorBrush _DataColor;
-    public SolidColorBrush DataColor
-    {
-        get => _DataColor;
-        set
-        {
-            SetProperty(ref _DataColor, value);
-
-        }
-    }
-    public bool is_View
-    {
-        get; set;
-    }
-    public ICommand Command
-    {
-        get; set;
-    }
-
-    public CannelDataView(string dataName, double data, string id)
-    {
-
-        //DataColor = new SolidColorBrush(Colors.Salmon);
-        DataColor = new SolidColorBrush(Microsoft.UI.Colors.RoyalBlue);
-        DataName = dataName;
-        ID = id;
-        Data = data.ToString();
-        var deleteCommand = new StandardUICommand(StandardUICommandKind.Stop);
-        // deleteCommand.ExecuteRequested += DeleteCommand_ExecuteRequested;
-        Command = deleteCommand;
-        is_View = true;
-    }
-    public CannelDataView(string dataName, string data, string id)
-    {
-
-        //DataColor = new SolidColorBrush(Colors.Salmon);
-        DataColor = new SolidColorBrush(Microsoft.UI.Colors.RoyalBlue);
-        DataName = dataName;
-        ID = id;
-        Data = data;
-        var deleteCommand = new StandardUICommand(StandardUICommandKind.Stop);
-        // deleteCommand.ExecuteRequested += DeleteCommand_ExecuteRequested;
-        Command = deleteCommand;
-        is_View = true;
-    }
-    public CannelDataView(string dataName, double data, string id, Windows.UI.Color color)
-    {
-        //DataColor = new SolidColorBrush(Colors.Salmon);
-        DataColor = new SolidColorBrush(color);
-        DataName = dataName;
-        ID = id;
-        Data = data.ToString();
-        var deleteCommand = new StandardUICommand(StandardUICommandKind.Stop);
-        // deleteCommand.ExecuteRequested += DeleteCommand_ExecuteRequested;
-        Command = deleteCommand;
-        is_View = true;
-    }
-    public bool is_equal(string id)
-    {
-        return ID == id;
-    }
-}
 
 public class LinkDeviceDates : ObservableObject
 {
@@ -219,36 +145,67 @@ public class LinkDeviceDates : ObservableObject
 
 }
 
+
+public class LoadStat : ObservableObject
+{
+    double _load;
+    public double Load
+    {
+        get => _load;
+        set => SetProperty(ref _load, value);
+    }
+    DateTime time;
+    public DateTime Time
+    {
+        get => time;
+        set => SetProperty(ref time, value);
+    }
+    string _StrTime;
+    public string StrTime
+    {
+        get => _StrTime;
+        set => SetProperty(ref _StrTime, value);
+    }
+}
+
 public partial class HomeLandingViewModel : ObservableObject
 {
     public IJsonNavigationViewService JsonNavigationViewService;
-    public CannelDataView dataListDatas;
+    public CannelData dataListDatas;
 
-    public ObservableCollection<CannelDataView> dateSource = new(); //数据颜色
+    public ObservableCollection<CannelData> dateSource = new(); //数据颜色
+
+    public ObservableCollection<LoadStat> loadStatSource = new(); //数据负载率
+
     public ObservableCollection<LinkDeviceDates> linkDeviceSource = new(); //连接设备
     public ObservableCollection<string> SerialPortsSource = new(); //连接设备
     public AdvancedCollectionView advancedCollectionView ;
     public List<ACOM.Models.SerialDevice> Devices= new();// = serialDevices;
 
 
+
     public HomeLandingViewModel(IJsonNavigationViewService jsonNavigationViewService)
     {
         JsonNavigationViewService = jsonNavigationViewService;
-        
+
         //for (int i = 0; i < 20; i++)
         //{
-        //    dateSource.Add(new CannelDataView("data" + i.ToString(), -1.2198256, i.ToString()));
+        //    dateSource.Add(new CannelData("data" + i.ToString(), -1.2198256, i.ToString()));
         //    dateSource[i].DataColor.Color = ACOMv2.Common.ColorHelper.GenerateDistinctColor((i * 78) % 128);
         //}
+        dateSource.EnableSyncWithDictionary(x => ((CannelData)x).DataName);
         advancedCollectionView = new AdvancedCollectionView(dateSource, true);
-
         // Let's filter out the integers
         int nul;
-        advancedCollectionView.Filter = x => !int.TryParse(((CannelDataView)x).DataName, out nul);
+        advancedCollectionView.Filter = x => !int.TryParse(((CannelData)x).DataName, out nul);
+
+        
 
         // And sort ascending by the property "Name"
         advancedCollectionView.SortDescriptions.Add(new SortDescription("DataName", SortDirection.Descending));
-         //linkDeviceSource.Add(new LinkDeviceDates("COM1"));
+        //linkDeviceSource.Add(new LinkDeviceDates("COM1"));
+
+
 
     }
 
@@ -264,3 +221,107 @@ public partial class HomeLandingViewModel : ObservableObject
     }
 
 }
+
+public static class ObservableCollectionExtensions
+{
+    private static Dictionary<object, object> _syncedDictionaries = new();
+
+    public static void EnableSyncWithDictionary<T>(
+       this ObservableCollection<T> collection,
+       Func<T, object> keySelector,
+       bool autoSync = true)
+    {
+        if (collection == null)
+            throw new ArgumentNullException(nameof(collection));
+        if (keySelector == null)
+            throw new ArgumentNullException(nameof(keySelector));
+
+        //Type type = typeof(T);
+
+        //if (!_syncedDictionaries.ContainsKey(type))
+        //{
+        //    _syncedDictionaries[type] = new Dictionary<object, object>();
+        //}
+
+        foreach (var item in collection)
+        {
+            var key = keySelector(item);
+            //_syncedDictionaries[type][key] = item;
+            _syncedDictionaries.Add(key, item);
+        }
+
+        if (autoSync)
+        {
+            collection.CollectionChanged += (sender, e) =>
+            {
+                switch (e.Action)
+                {
+                    case NotifyCollectionChangedAction.Add:
+                        foreach (T item in e.NewItems)
+                        {
+                            var key = keySelector(item);
+                            //_syncedDictionaries.Add(key, item);
+                            _syncedDictionaries.Add(key, item);
+                        }
+                        break;
+                    case NotifyCollectionChangedAction.Remove:
+                        foreach (T item in e.OldItems)
+                        {
+                            var key = keySelector(item);
+                            _syncedDictionaries.Remove(key);
+                        }
+                        break;
+                    case NotifyCollectionChangedAction.Replace:
+                        foreach (T oldItem in e.OldItems)
+                        {
+                            var oldKey = keySelector(oldItem);
+                            _syncedDictionaries.Remove(oldKey);
+                        }
+                        foreach (T newItem in e.NewItems)
+                        {
+                            var newKey = keySelector(newItem);
+                            _syncedDictionaries[newKey] = newItem;
+                        }
+                        break;
+                    case NotifyCollectionChangedAction.Move:
+                        // No action needed for move
+                        break;
+                    case NotifyCollectionChangedAction.Reset:
+                        _syncedDictionaries.Clear();
+                        foreach (var item in collection)
+                        {
+                            var key = keySelector(item);
+                            _syncedDictionaries[key] = item;
+                        }
+                        break;
+                }
+            };
+        }
+    }
+
+    public static void DisableSyncWithDictionary<T>(
+        this ObservableCollection<T> collection)
+    {
+        collection.CollectionChanged -= (sender, e) =>
+        {
+            // Handle the collection changed event
+        };
+        // Clear the dictionary for the type
+        //_syncedDictionaries.Remove(typeof(T));
+        _syncedDictionaries.Clear();
+    }
+    public static T FindByProperty<T>(
+        this ObservableCollection<T> collection,
+        object key,
+        Func<T, object> keySelector)
+    {
+
+        if (_syncedDictionaries.TryGetValue(key, out var value))
+        {
+            return (T)value;
+        }
+        return default(T);
+
+    }
+}
+

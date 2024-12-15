@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Page x:Class="ACOMv2.Views.HomeLandingPage"
+<Page x:Class="ACOMv2.Views.HomeLandingPage" x:Name="homeLandingPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -9,25 +9,17 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:wuc="using:WinUICommunity"
       xmlns:textcontrolbox="using:TextControlBoxNS" xmlns:controls="using:CommunityToolkit.WinUI.Controls" xmlns:views="using:ACOMv2.Views"
-      xmlns:view_models="using:ACOMv2.ViewModels" xmlns:chart="using:Syncfusion.UI.Xaml.Charts"
-      
-      mc:Ignorable="d">
+      xmlns:view_models="using:ACOMv2.ViewModels" xmlns:chart="using:Syncfusion.UI.Xaml.Charts" xmlns:common="using:ACOMCommmon"
+      mc:Ignorable="d" xmlns:ui="using:CommunityToolkit.WinUI" xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
     <Page.DataContext>
         view_models:HomeLandingViewModel
     </Page.DataContext>
     <Page.Resources>
-        
-
-
-
-
-
 
         <Flyout  x:Key="myColorPickerFlyout"   >
             <StackPanel  >
                 <ColorPicker Name="myColorPicker"  AllowFocusOnInteraction="True"
                         ColorChanged="myColorPicker_ColorChanged"
-                        Tag="{x:Bind mainPage_Singleton.DataList_ID, Mode=OneWay}"
                         ColorSpectrumShape="Ring"
                         IsMoreButtonVisible="True"
                         IsColorSliderVisible="True"
@@ -47,7 +39,7 @@
             <StackPanel    >
                 <TextBlock Text="请输入新名字："/>
                 <TextBox  Text="New name "  AllowFocusOnInteraction="True" MinWidth="128" Margin="8,6,0,0" TextChanged="TextBox_TextChanged"  
-                   Tag="{x:Bind mainPage_Singleton.DataList_ID, Mode=OneWay}">
+                   >
                 </TextBox>
             </StackPanel>
         </Flyout>
@@ -65,9 +57,7 @@
 
         </MenuFlyout>
 
-
-
-        <DataTemplate x:Key="ContactListViewTemplate" x:DataType="view_models:CannelDataView"  >
+        <DataTemplate x:Key="ContactListViewTemplate" x:DataType="common:CannelData"  >
 
                 <!--<AppBarButton x:Name="HoverButton" IsTabStop="False" HorizontalAlignment="Right" Visibility="Visible"
                              Tag="{x:Bind ID}"
@@ -91,7 +81,10 @@
                       Margin="-10 0 0 0"
                      >
                     <Expander.Header>
-                        <Grid  Margin="0 0 -16 0" ContextRequested="DataList_ContextRequested" ContextCanceled="DataList_ContextCanceled" Tag="{x:Bind ID}">
+                    <Grid  Margin="0 0 -16 0"
+                           ContextRequested="DataList_ContextRequested"
+                           ContextCanceled="DataList_ContextCanceled"
+                           Tag="{x:Bind DataName, Mode=OneWay}">
 
 
                             <Grid.ColumnDefinitions>
@@ -103,7 +96,7 @@
                             </Grid.ColumnDefinitions>
 
                             <AppBarButton x:Name="HoverButton" IsTabStop="False" HorizontalAlignment="Left" Visibility="Visible"
-                                Tag="{x:Bind ID}"   
+                                Tag="{x:Bind DataName, Mode=OneWay}"   
                                 Width="12"     Click="HoverButton_Click" 
                                 Grid.Column="1" Label="Button"  LabelPosition="Collapsed" Margin="-4 1 0 0" >
                                 <AppBarButton.Icon >
@@ -112,16 +105,22 @@
                                 <!--<FontIcon Glyph="&#xE769;" />-->
                             </AppBarButton >
 
-                            <Border Grid.Column="0" Background="{x:Bind DataColor, Mode=OneWay}" CornerRadius="1.4" Width="2.8" Height="16" Margin="-30,0,0,0"/>
-                            <wuc:AutoScrollView IsPlaying="True" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 5 8 5" Padding="0">
+                            <Border Grid.Column="0" Background="{x:Bind DataColor, Mode=OneWay}"
+                                    CornerRadius="1.4" Width="2.8" Height="16" Margin="-30,0,0,0"/>
+                            <wuc:AutoScrollView IsPlaying="True" Grid.Column="2" HorizontalAlignment="Left"
+                                                VerticalAlignment="Center" Margin="0 5 8 5" Padding="0">
                                 <TextBlock Margin="4 0 0 0" Text="{x:Bind DataName, Mode=OneWay}" x:Phase="1"  />
                             </wuc:AutoScrollView>
 
 
                             <TextBlock Grid.Column="3" Text="{x:Bind Data, Mode=OneWay}" x:Phase="1" TextWrapping="Wrap"
                                 HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,5" />
-                            <wuc:Divider Margin="0 0 0 0" HorizontalAlignment="Right" MaxHeight="16" Orientation="Vertical" Grid.Column="1"  LineStroke="Black"  />
-                        <wuc:Divider Margin="0 0 0 0" HorizontalAlignment="Right" MaxHeight="16" Orientation="Vertical" Grid.Column="2"  LineStroke="{x:Bind DataColor, Mode=OneWay}"  />
+                            <wuc:Divider Margin="0 0 0 0" HorizontalAlignment="Right"
+                                         MaxHeight="16" Orientation="Vertical"
+                                         Grid.Column="1"  LineStroke="Black"  />
+                        <wuc:Divider Margin="0 0 0 0" HorizontalAlignment="Right"
+                                     MaxHeight="16" Orientation="Vertical" Grid.Column="2"
+                                     LineStroke="{x:Bind DataColor, Mode=OneWay}"  />
 
                     </Grid>
                     </Expander.Header>
@@ -172,14 +171,12 @@
             </Grid>
         </DataTemplate>
 
-
         <DataTemplate x:Key="SmallPartsListViewTemplate" x:DataType="view_models:LinkDeviceDates" >
 
             <Grid  ContextRequested="DataList_ContextRequested" ContextCanceled="DataList_ContextCanceled" Width="120" Height="120">
                 <Border Width="120" Height="120"></Border>
             </Grid>
         </DataTemplate>
-
 
         <CommandBarFlyout Placement="Right" x:Name="CommandBarFlyout1">
             <!--\-->
@@ -212,7 +209,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="6.18*"/>
                 <ColumnDefinition Width="6"/>
-                <ColumnDefinition Width="1.22*" MinWidth="160"/>
+                <ColumnDefinition Width="1.7*" MinWidth="160"/>
             </Grid.ColumnDefinitions>
             <controls:GridSplitter Grid.Column="1"   
                            Width="6"
@@ -241,6 +238,13 @@
                             <chart:SfCartesianChart.YAxes>
                                 <chart:NumericalAxis FontSize="8"/>
                             </chart:SfCartesianChart.YAxes>
+
+
+                            <chart:ColumnSeries ItemsSource="{x:Bind ViewModel.loadStatSource,Mode=TwoWay}"
+                                 YBindingPath="Load" XBindingPath="StrTime" EnableTooltip="True">
+                            </chart:ColumnSeries>
+
+                            
                         </chart:SfCartesianChart>
 
                         <ListView Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
@@ -375,24 +379,170 @@
 
             <!--结束右边部分-->
             <!--开始中间部分-->
-            <Grid Grid.Column="0">
+            <Grid Grid.Column="0" x:Name="Mid_Grid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="4*"/>
-                    <RowDefinition Height="6"/>
-                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="12"/>
+                    <RowDefinition Height="1.5*"/>
                 </Grid.RowDefinitions>
                 <!--<Border Background="red" Grid.Row="0"/>
         <Border Background="red" Grid.Row="2"/>-->
-                <controls:GridSplitter Grid.Row="1"   
-                           Height="6" Margin="0,0,2,0"
+
+
+
+                <controls:GridSplitter Grid.Row="1"   BorderThickness="1" BackgroundSizing="OuterBorderEdge"
+                           Height="10" Margin="0,0,2,0"
                             HorizontalAlignment="Stretch">
-                    <controls:GridSplitter.RenderTransform>
-                        <TranslateTransform Y="-2" />
-                    </controls:GridSplitter.RenderTransform>
+ 
                 </controls:GridSplitter>
 
+                <Border Margin="4,0,2,-2" Grid.Row="1" Height="2"   HorizontalAlignment="Stretch" VerticalAlignment="Center"  Background="Gray"   Opacity="0.5" />
+                <!--<wuc:Divider Grid.Row="1" VerticalAlignment="Bottom"  Margin="0 0 6 0"
+                             
+                    LineStrokeThickness="2"  />-->
 
-                <CommandBar Grid.Row="2" >
+                <!--工具栏-->
+                <controls:TabbedCommandBar Grid.Row="2" Margin="0 -6 6 0" >
+                    <controls:TabbedCommandBar.AutoSuggestBox>
+                        <AutoSuggestBox AutomationProperties.Name="Search"
+                                QueryIcon="Find" />
+                    </controls:TabbedCommandBar.AutoSuggestBox>
+                    <controls:TabbedCommandBar.PaneFooter>
+                        <CommandBar Background="Transparent"
+                            DefaultLabelPosition="Right">
+                            <AppBarButton Icon="{ui:FontIcon Glyph=&#xE72D;}"
+                                  Label="Share" />
+                            <AppBarButton Icon="{ui:FontIcon Glyph=&#xE8BD;}"
+                                  Label="Comments" />
+                        </CommandBar>
+                    </controls:TabbedCommandBar.PaneFooter>
+                    <controls:TabbedCommandBar.MenuItems>
+                        <controls:TabbedCommandBarItem Header="开始">
+                            <AppBarButton  Label="UTF-8" ToolTipService.ToolTip="字符编码格式,目前支持UTF-8,GBK">
+                                <!--<ImageIcon Source="ms-appx:///Assets/encode.svg" />-->
+                                <AppBarButton.Icon>
+                                    <BitmapIcon UriSource="ms-appx:///Assets/encode.png"/>
+                                </AppBarButton.Icon>
+                            </AppBarButton>
+  
+                            <!--  TO DO: Enable when ColorPicker is merged  -->
+                            <!--<AppBarElementContainer>
+                        <controls:ColorPickerButton SelectedColor="{ThemeResource Brand-Color}"/>
+                    </AppBarElementContainer>-->
+
+                            <AppBarElementContainer>
+                                <ComboBox MinWidth="175" SelectedIndex="0" >
+                                    <ComboBoxItem Content="COM1(通讯端口)" />
+                                    <ComboBoxItem Content="COM2(蓝牙端口)" />
+                                    <ComboBoxItem Content="COM3(蓝牙端口)" />
+                                    <ComboBoxItem Content="COM24(CH340)" />
+                                </ComboBox>
+                            </AppBarElementContainer>
+                            <AppBarSeparator />
+
+                            <AppBarElementContainer >
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="发送次数" Margin="2 0 4 0"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <ComboBox MinWidth="105" SelectedIndex="0" IsEditable="True">
+                                        <ComboBoxItem Content="1" />
+                                        <ComboBoxItem Content="10" />
+                                        <ComboBoxItem Content="100" />
+                                        <ComboBoxItem Content="无限" />
+                                    </ComboBox>
+                                </StackPanel>
+                            </AppBarElementContainer>
+                            <AppBarElementContainer >
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="发送延时" Margin="2 0 4 0"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <ComboBox MinWidth="105" SelectedIndex="0" IsEditable="True">
+                                        <ComboBoxItem Content="1ms" />
+                                        <ComboBoxItem Content="10ms" />
+                                        <ComboBoxItem Content="100ms" />
+                                        <ComboBoxItem Content="1000ms" />
+                                    </ComboBox>
+                                </StackPanel>
+                            </AppBarElementContainer>
+                            <AppBarToggleButton Icon="{ui:FontIcon Glyph=&#xECC5;}"
+                                        Label="ReSend"
+                            />
+                            <AppBarSeparator />
+                            <AppBarButton Icon="Delete" Label="清空">
+                                <!--<ImageIcon Source="ms-appx:///Assets/encode.svg" />-->
+    
+                            </AppBarButton>
+
+                        </controls:TabbedCommandBarItem>
+                        
+                        <controls:TabbedCommandBarItem Header="小部件">
+                            <AppBarButton Icon="Pictures"
+                                  Label="Pictures">
+                                <AppBarButton.Flyout>
+                                    <MenuFlyout Placement="BottomEdgeAlignedLeft">
+                                        <MenuFlyoutItem Icon="{ui:FontIcon Glyph=&#xEC4E;}"
+                                                Text="This device" />
+                                        <MenuFlyoutItem Icon="{ui:FontIcon Glyph=&#xE721;}"
+                                                Text="Stock images" />
+                                        <MenuFlyoutItem Icon="{ui:FontIcon Glyph=&#xE774;}"
+                                                Text="Online pictures" />
+                                    </MenuFlyout>
+                                </AppBarButton.Flyout>
+                            </AppBarButton>
+                            <AppBarButton Icon="{ui:FontIcon Glyph=&#xF156;}"
+                                  Label="Shapes" />
+                            <AppBarButton Icon="{ui:FontIcon Glyph=&#xED58;}"
+                                  Label="Icons" />
+                            <AppBarButton Icon="{ui:FontIcon Glyph=&#xF158;}"
+                                  Label="3D Models" />
+                            <AppBarSeparator />
+                            <AppBarButton Icon="{ui:FontIcon Glyph=&#xECAA;}"
+                                  Label="Add-ins" />
+                            <controls:TabbedCommandBarItem.SecondaryCommands>
+                                <AppBarButton Icon="{ui:FontIcon Glyph=&#xE710;}"
+                                      Label="New item" />
+                            </controls:TabbedCommandBarItem.SecondaryCommands>
+                        </controls:TabbedCommandBarItem>
+                        <controls:TabbedCommandBarItem x:Name="PictureFormat"
+                                               Header="Picture Format"
+                                               IsContextual="True"
+                                               Visibility="Collapsed">
+                            <AppBarButton Icon="{ui:FontIcon Glyph=&#xE706;}"
+                                  Label="Remove background" />
+                            <AppBarButton Icon="{ui:FontIcon Glyph=&#xF4A5;}"
+                                  Label="Picture effects" />
+                            <AppBarButton Icon="{ui:FontIcon Glyph=&#xE7AD;}"
+                                  Label="Rotate" />
+                            <AppBarElementContainer>
+                                <muxc:SplitButton>
+                                    <StackPanel Orientation="Horizontal"
+                                        Spacing="12">
+                                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}"
+                                          FontSize="16"
+                                          Glyph="&#xE7A8;" />
+                                        <TextBlock FontSize="12"
+                                           Text="Crop" />
+                                    </StackPanel>
+                                    <muxc:SplitButton.Flyout>
+                                        <MenuFlyout>
+                                            <MenuFlyoutItem Icon="{ui:FontIcon Glyph=&#xE7A8;}"
+                                                    Text="Crop" />
+                                            <MenuFlyoutItem Icon="{ui:FontIcon Glyph=&#xF407;}"
+                                                    Text="Crop to Shape" />
+                                            <MenuFlyoutItem Text="Aspect Ratio" />
+                                            <MenuFlyoutSeparator />
+                                            <MenuFlyoutItem Text="Fill" />
+                                            <MenuFlyoutItem Text="Fit" />
+                                        </MenuFlyout>
+                                    </muxc:SplitButton.Flyout>
+                                </muxc:SplitButton>
+                            </AppBarElementContainer>
+                        </controls:TabbedCommandBarItem>
+                    </controls:TabbedCommandBar.MenuItems>
+                </controls:TabbedCommandBar>
+
+                <!--<CommandBar Grid.Row="2" >
+                    
                     <AppBarToggleButton Icon="Shuffle" Label="Shuffle" Click="AppBarButton_Click" />
                     <AppBarToggleButton Icon="RepeatAll" Label="Repeat" Click="AppBarButton_Click"/>
                     <AppBarSeparator/>
@@ -416,7 +566,7 @@
                             </Flyout>
                         </AppBarButton.Flyout>
                     </AppBarButton>
-
+                    
                     <CommandBar.SecondaryCommands>
                         <AppBarButton Label="Like" Click="AppBarButton_Click"/>
                         <AppBarButton Label="Dislike" Click="AppBarButton_Click"/>
@@ -425,14 +575,14 @@
                     <CommandBar.Content>
                         <TextBlock Text="Now playing..." Margin="12,14"/>
                     </CommandBar.Content>
-                </CommandBar>
+                </CommandBar>-->
  
                 <textcontrolbox:TextControlBox ShowLineHighlighter="True" SyntaxHighlighting="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                x:Name="dialogTextBox" Grid.Row="2" Margin="0 40 0 40" IsReadonly="False" Text="{x:Bind total_str.totalString,Mode=OneTime}">
+                x:Name="dialogTextBox" Grid.Row="3" Margin="0 88 6 40" IsReadonly="False" Text="{x:Bind total_str.totalString,Mode=OneTime}">
                 </textcontrolbox:TextControlBox>
  
 
-                <Grid Grid.Row="3" MaxHeight="80" VerticalAlignment="Bottom" >
+                <Grid Grid.Row="4" MaxHeight="80" VerticalAlignment="Bottom" Margin="0 0 6 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="38"/>
@@ -447,7 +597,7 @@
                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
                                 IsSpellCheckEnabled="True"
                                 TextWrapping="Wrap"
-                                Margin="6 0 0 0">
+                                Margin="0 0 0 0">
                     </TextBox>
                     <Button Grid.Column="1" VerticalAlignment="Bottom"
                             Width="38" Height="32" HorizontalAlignment="Right">
@@ -465,7 +615,7 @@
                  AddTabButtonClick="TabView_AddButtonClick" 
                  TabCloseRequested="TabView_TabCloseRequested" 
                  Loaded="TabView_Loaded" 
-                 Margin="0,0,10,3"
+                 Margin="0,0,10,3" 
                          
                  />
             </Grid>

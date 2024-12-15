@@ -15,6 +15,7 @@ using ShadowPluginLoader.MetaAttributes;
 using ShadowPluginLoader.WinUI;
 using ShadowPluginLoader.WinUI.Models;
 using Windows.Devices.SerialCommunication;
+using ACOMCommmon;
 
  namespace ACOMPlugin.Core;
 
@@ -27,25 +28,25 @@ public class ACOMPluginMetaData : AbstractPluginMetaData
     public string Author { get; init; }
 }
 
-public class ChannelData
-{
-    public string CData;
-    public string Name;
-    public string ExpendData;//扩展数据，用于隐藏部分的显示
-    public DateTime DateTime;
-}
+//public class ChannelData
+//{
+//    public string CData;
+//    public string Name;
+//    public string ExpendData;//扩展数据，用于隐藏部分的显示
+//    public DateTime DateTime;
+//}
 public abstract class ACOMPluginBase : AbstractPlugin
 {
 
      public abstract string GetEmoji();
     public abstract FrameworkElement Create();
 
-    public abstract void UpdateData(List<ChannelData> newData);
+    public abstract void UpdateData(List<CannelData> newData);
     /// <summary>
     /// cmd 为 cmd_name;cmd_arg1;cmd_arg2
     /// </summary>
     /// <param name="cmd"></param>
-    public delegate void UpdateCommands(List<string[]> cmd);
+    public delegate void UpdateCommands(object sender ,List<string[]> cmd);
     public  event UpdateCommands UpdateCommand;//当外部设备变化触发
     public ACOMPluginBase()
     {

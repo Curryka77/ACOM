@@ -4,20 +4,21 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ACOMCommmon;
 using ACOMPlug;
 using CommunityToolkit.Mvvm.Messaging;
 using CommunityToolkit.Mvvm.Messaging.Messages;
 
 namespace ACOMv2.ViewModels
 {
-    using CannelMassage = ValueChangedMessage<List<ChannelViewData>>;
+    using CannelMassage = ValueChangedMessage<List<CannelData>>;
 
   
     public class Widget
     {
          //这个类实现对于每个控件的右键菜单，数据绑定，命令绑定，并且自带一个线程
         CannelMassage massage;
-        Queue<List<ChannelViewData>> frams;
+        Queue<List<CannelData>> frams;
         AutoResetEvent messageEvent;
         Thread processingThread;
         public FrameworkElement widget_element;//存储小部件对象
@@ -25,8 +26,8 @@ namespace ACOMv2.ViewModels
         public Widget(ref FrameworkElement element)
         {
             widget_element = element;
-            massage = new CannelMassage(new List<ChannelViewData>());
-            frams = new Queue<List<ChannelViewData>>();
+            massage = new CannelMassage(new List<CannelData>());
+            frams = new Queue<List<CannelData>>();
             messageEvent = new AutoResetEvent(false);
 
             WeakReferenceMessenger.Default.Register<CannelMassage>(

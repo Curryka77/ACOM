@@ -2,6 +2,22 @@
   "version": 3,
   "targets": {
     "net8.0-windows10.0.19041": {
+      "CommunityToolkit.Mvvm/8.4.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/CommunityToolkit.Mvvm.targets": {}
+        }
+      },
       "Microsoft.Web.WebView2/1.0.2651.64": {
         "type": "package",
         "build": {
@@ -150,10 +166,26 @@
           }
         }
       },
+      "ACOMCommmon/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "CommunityToolkit.Mvvm": "8.4.0",
+          "Microsoft.Windows.SDK.BuildTools": "10.0.26100.1742",
+          "Microsoft.WindowsAppSDK": "1.6.241114003"
+        },
+        "compile": {
+          "bin/placeholder/ACOMCommmon.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ACOMCommmon.dll": {}
+        }
+      },
       "ACOMPlug/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "ACOMCommmon": "1.0.0",
           "Microsoft.Windows.SDK.BuildTools": "10.0.26100.1742",
           "Microsoft.WindowsAppSDK": "1.6.241114003"
         },
@@ -166,6 +198,22 @@
       }
     },
     "net8.0-windows10.0.19041/win-arm64": {
+      "CommunityToolkit.Mvvm/8.4.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/CommunityToolkit.Mvvm.targets": {}
+        }
+      },
       "Microsoft.Web.WebView2/1.0.2651.64": {
         "type": "package",
         "native": {
@@ -292,10 +340,26 @@
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
       },
+      "ACOMCommmon/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "CommunityToolkit.Mvvm": "8.4.0",
+          "Microsoft.Windows.SDK.BuildTools": "10.0.26100.1742",
+          "Microsoft.WindowsAppSDK": "1.6.241114003"
+        },
+        "compile": {
+          "bin/placeholder/ACOMCommmon.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ACOMCommmon.dll": {}
+        }
+      },
       "ACOMPlug/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "ACOMCommmon": "1.0.0",
           "Microsoft.Windows.SDK.BuildTools": "10.0.26100.1742",
           "Microsoft.WindowsAppSDK": "1.6.241114003"
         },
@@ -308,6 +372,22 @@
       }
     },
     "net8.0-windows10.0.19041/win-x64": {
+      "CommunityToolkit.Mvvm/8.4.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/CommunityToolkit.Mvvm.targets": {}
+        }
+      },
       "Microsoft.Web.WebView2/1.0.2651.64": {
         "type": "package",
         "native": {
@@ -434,10 +514,26 @@
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
       },
+      "ACOMCommmon/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "CommunityToolkit.Mvvm": "8.4.0",
+          "Microsoft.Windows.SDK.BuildTools": "10.0.26100.1742",
+          "Microsoft.WindowsAppSDK": "1.6.241114003"
+        },
+        "compile": {
+          "bin/placeholder/ACOMCommmon.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ACOMCommmon.dll": {}
+        }
+      },
       "ACOMPlug/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "ACOMCommmon": "1.0.0",
           "Microsoft.Windows.SDK.BuildTools": "10.0.26100.1742",
           "Microsoft.WindowsAppSDK": "1.6.241114003"
         },
@@ -450,6 +546,22 @@
       }
     },
     "net8.0-windows10.0.19041/win-x86": {
+      "CommunityToolkit.Mvvm/8.4.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/CommunityToolkit.Mvvm.targets": {}
+        }
+      },
       "Microsoft.Web.WebView2/1.0.2651.64": {
         "type": "package",
         "native": {
@@ -576,10 +688,26 @@
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
       },
+      "ACOMCommmon/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "CommunityToolkit.Mvvm": "8.4.0",
+          "Microsoft.Windows.SDK.BuildTools": "10.0.26100.1742",
+          "Microsoft.WindowsAppSDK": "1.6.241114003"
+        },
+        "compile": {
+          "bin/placeholder/ACOMCommmon.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ACOMCommmon.dll": {}
+        }
+      },
       "ACOMPlug/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "ACOMCommmon": "1.0.0",
           "Microsoft.Windows.SDK.BuildTools": "10.0.26100.1742",
           "Microsoft.WindowsAppSDK": "1.6.241114003"
         },
@@ -593,6 +721,48 @@
     }
   },
   "libraries": {
+    "CommunityToolkit.Mvvm/8.4.0": {
+      "sha512": "tqVU8yc/ADO9oiTRyTnwhFN68hCwvkliMierptWOudIAvWY1mWCh5VFh+guwHJmpMwfg0J0rY+yyd5Oy7ty9Uw==",
+      "type": "package",
+      "path": "communitytoolkit.mvvm/8.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "License.md",
+        "ThirdPartyNotices.txt",
+        "analyzers/dotnet/roslyn4.0/cs/CommunityToolkit.Mvvm.CodeFixers.dll",
+        "analyzers/dotnet/roslyn4.0/cs/CommunityToolkit.Mvvm.SourceGenerators.dll",
+        "analyzers/dotnet/roslyn4.12/cs/CommunityToolkit.Mvvm.CodeFixers.dll",
+        "analyzers/dotnet/roslyn4.12/cs/CommunityToolkit.Mvvm.SourceGenerators.dll",
+        "analyzers/dotnet/roslyn4.3/cs/CommunityToolkit.Mvvm.CodeFixers.dll",
+        "analyzers/dotnet/roslyn4.3/cs/CommunityToolkit.Mvvm.SourceGenerators.dll",
+        "build/CommunityToolkit.Mvvm.FeatureSwitches.targets",
+        "build/CommunityToolkit.Mvvm.SourceGenerators.targets",
+        "build/CommunityToolkit.Mvvm.Windows.targets",
+        "build/CommunityToolkit.Mvvm.WindowsSdk.targets",
+        "build/CommunityToolkit.Mvvm.targets",
+        "buildTransitive/CommunityToolkit.Mvvm.FeatureSwitches.targets",
+        "buildTransitive/CommunityToolkit.Mvvm.SourceGenerators.targets",
+        "buildTransitive/CommunityToolkit.Mvvm.Windows.targets",
+        "buildTransitive/CommunityToolkit.Mvvm.WindowsSdk.targets",
+        "buildTransitive/CommunityToolkit.Mvvm.targets",
+        "communitytoolkit.mvvm.8.4.0.nupkg.sha512",
+        "communitytoolkit.mvvm.nuspec",
+        "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.dll",
+        "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.pdb",
+        "lib/net8.0-windows10.0.17763/CommunityToolkit.Mvvm.xml",
+        "lib/net8.0/CommunityToolkit.Mvvm.dll",
+        "lib/net8.0/CommunityToolkit.Mvvm.pdb",
+        "lib/net8.0/CommunityToolkit.Mvvm.xml",
+        "lib/netstandard2.0/CommunityToolkit.Mvvm.dll",
+        "lib/netstandard2.0/CommunityToolkit.Mvvm.pdb",
+        "lib/netstandard2.0/CommunityToolkit.Mvvm.xml",
+        "lib/netstandard2.1/CommunityToolkit.Mvvm.dll",
+        "lib/netstandard2.1/CommunityToolkit.Mvvm.pdb",
+        "lib/netstandard2.1/CommunityToolkit.Mvvm.xml"
+      ]
+    },
     "Microsoft.Web.WebView2/1.0.2651.64": {
       "sha512": "f5sc/vcAoTCTEW7Nqzp4galAuTRguZViw8ksn+Nx2uskEBPm0/ubzy6gVjvXS/P96jLS89C8T9I0hPc417xpNg==",
       "type": "package",
@@ -1336,6 +1506,11 @@
         "tools/x86/GenXbf.dll"
       ]
     },
+    "ACOMCommmon/1.0.0": {
+      "type": "project",
+      "path": "../ACOMCommmon/ACOMCommmon.csproj",
+      "msbuildProject": "../ACOMCommmon/ACOMCommmon.csproj"
+    },
     "ACOMPlug/1.0.0": {
       "type": "project",
       "path": "../ACOMPlug/ACOMPlug.csproj",
@@ -1344,6 +1519,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0-windows10.0.19041": [
+      "ACOMCommmon >= 1.0.0",
       "ACOMPlug >= 1.0.0",
       "Microsoft.Windows.SDK.BuildTools >= 10.0.26100.1742",
       "Microsoft.WindowsAppSDK >= 1.6.241114003"
@@ -1382,6 +1558,9 @@
         "net8.0-windows10.0.19041": {
           "targetAlias": "net8.0-windows10.0.19041.0",
           "projectReferences": {
+            "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMCommmon\\ACOMCommmon.csproj": {
+              "projectPath": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMCommmon\\ACOMCommmon.csproj"
+            },
             "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlug\\ACOMPlug.csproj": {
               "projectPath": "C:\\Users\\80520\\source\\repos\\ACOM\\ACOMPlug\\ACOMPlug.csproj"
             }

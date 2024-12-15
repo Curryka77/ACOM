@@ -87,3 +87,10 @@ C:\Users\80520\source\repos\ACOM\DataMuxerAutoOne\obj\Debug\net8.0-windows10.0.1
 C:\Users\80520\source\repos\ACOM\DataMuxerAutoOne\obj\Debug\net8.0-windows10.0.19041.0\qualifiers.txt
 C:\Users\80520\source\repos\ACOM\DataMuxerAutoOne\obj\Debug\net8.0-windows10.0.19041.0\qualifiers.txt.intermediate
 C:\Users\80520\source\repos\ACOM\DataMuxerAutoOne\obj\Debug\net8.0-windows10.0.19041.0\MultipleQualifiersPerDimensionFound.txt
+C:\Users\80520\source\repos\ACOM\DataMuxerAutoOne\bin\Debug\net8.0-windows10.0.19041.0\ACOMCommmon\runtimes\win-arm64\native\WebView2Loader.dll
+C:\Users\80520\source\repos\ACOM\DataMuxerAutoOne\bin\Debug\net8.0-windows10.0.19041.0\ACOMCommmon\runtimes\win-x64\native\WebView2Loader.dll
+C:\Users\80520\source\repos\ACOM\DataMuxerAutoOne\bin\Debug\net8.0-windows10.0.19041.0\ACOMCommmon\runtimes\win-x86\native\WebView2Loader.dll
+C:\Users\80520\source\repos\ACOM\DataMuxerAutoOne\bin\Debug\net8.0-windows10.0.19041.0\ACOMCommmon.dll
+C:\Users\80520\source\repos\ACOM\DataMuxerAutoOne\bin\Debug\net8.0-windows10.0.19041.0\ACOMCommmon.pdb
+C:\Users\80520\source\repos\ACOM\DataMuxerAutoOne\bin\Debug\net8.0-windows10.0.19041.0\ACOMCommmon.pri
+C:\Users\80520\source\repos\ACOM\DataMuxerAutoOne\obj\Debug\net8.0-windows10.0.19041.0\ACOMCommmon.pri.xml

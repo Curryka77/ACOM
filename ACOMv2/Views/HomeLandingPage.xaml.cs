@@ -19,58 +19,11 @@ using static ACOMv2.ViewModels.HomeLandingViewModel;
 using CommunityToolkit.WinUI.Collections;
 using ACOMPlug;
 using static ACOM.Models.IO_Manage;
-using static ACOMPlug.RawDataMassage;
 
 
 
 
 
-
-/// <summary>
-/// 单例模式的实现
-/// </summary>
-public class MainPage_Singleton : ObservableObject
-{
-    // 定义一个静态变量来保存类的实例
-    private static MainPage_Singleton? uniqueInstance;
-    //public IO_Manage ioManage;
-    // 定义一个标识确保线程同步
-    private static readonly object locker = new();
-
-    string _DataList_ID;
-    public string DataList_ID
-    {
-        get => _DataList_ID;
-        set => SetProperty(ref _DataList_ID, value);
-    }
-    public bool Is_up = false;//appbar
-    // 定义私有构造函数，使外界不能创建该类实例
-    private MainPage_Singleton()
-    {
-        DataList_ID = string.Empty;
-    }
-
-    /// <summary>
-    /// 定义公有方法提供一个全局访问点,同时你也可以定义公有属性来提供全局访问点
-    /// </summary>
-    /// <returns></returns>
-    public static MainPage_Singleton GetInstance()
-    {
-        // 当第一个线程运行到这里时，此时会对locker对象 "加锁"，
-        // 当第二个线程运行该方法时，首先检测到locker对象为"加锁"状态，该线程就会挂起等待第一个线程解锁
-        // lock语句运行完之后（即线程运行完之后）会对该对象"解锁"
-        // 双重锁定只需要一句判断就可以了
-        if (uniqueInstance == null)
-        {
-            lock (locker)
-            {
-                // 如果类的实例不存在则创建，否则直接返回
-                uniqueInstance ??= new MainPage_Singleton();
-            }
-        }
-        return uniqueInstance;
-    }
-}
 
 
 
@@ -108,9 +61,11 @@ public sealed partial class HomeLandingPage : Page
 
     ConsolString total_str = new("none");
 
+    public  string ContentRequestItemName = "string.Empty";
+    public bool Is_up = false;//appbar
 
 
-    public MainPage_Singleton mainPage_Singleton = MainPage_Singleton.GetInstance();
+    // public MainPage_Singleton mainPage_Singleton = MainPage_Singleton.GetInstance();
 
     string[] PortsDesc = { "NULL" };
 
@@ -151,26 +106,84 @@ public sealed partial class HomeLandingPage : Page
 
     public HomeLandingViewModel ViewModel { get; }
 
+
+    private void Instance_update(List<SerialDevice> serialDevices)
+    {
+        DispatcherQueue.TryEnqueue(() =>
+        {
+            Debug.WriteLine("update serial1");
+            Debug.WriteLine("update serial2");
+
+            foreach (var device in serialDevices)
+            {
+                if (!ViewModel.SerialPortsSource.Contains(device.PortName))
+                {
+                    ViewModel.SerialPortsSource.Add(device.PortName);
+                    ViewModel.linkDeviceSource.Add(new LinkDeviceDates(device.PortName, device.FriendlyName));
+                }
+            }
+
+            // Remove ports that are no longer available
+            for (int i = ViewModel.SerialPortsSource.Count - 1; i >= 0; i--)
+            {
+                if (!serialDevices.Any(d => d.PortName == ViewModel.SerialPortsSource[i]))
+                {
+                    ViewModel.SerialPortsSource.RemoveAt(i);
+                    ViewModel.linkDeviceSource.RemoveAt(i);
+                }
+            }
+        });
+    }
+
+    private void UpdateCannelViewMsg(List<CannelData> globChannelViewData)
+    {
+        DispatcherQueue.TryEnqueue(() =>
+        {
+            foreach (CannelData it in globChannelViewData)
+            {
+                var existingItem = ViewModel.dateSource.FirstOrDefault(itt => itt.DataName == it.DataName);
+                if (existingItem != null)
+                {
+                    existingItem.Data = it.Data;
+                     // Update other properties as needed
+                }
+                else
+                {
+                    ViewModel.dateSource.Add(new CannelData(it.DataName, it.Data));
+                    ViewModel.dateSource.Last().DataColor = ACOMCommmon.ColorHelper.AutoGetColor(ViewModel.dateSource.Count);
+                }
+            }
+        });
+    }
+
     public HomeLandingPage()
     {
         IO_Manage.Instance.page = this;
         List<SerialDevice> serialDevices = new();
         ViewModel = App.GetService<HomeLandingViewModel>();
+ 
+        IO_Manage.updateLoadStats += IO_Manage_updateLoadStats;
+
 
         this.InitializeComponent();
+
+
+
+
+
+
+
+        ViewModel.advancedCollectionView.SortDescriptions.Add(new SortDescription("DataName", SortDirection.Descending));
 
         //注册回调函数
         IO_Manage.updateDevices += Instance_update;
         IO_Manage.updateCannelViewMsg += UpdateCannelViewMsg;
-
-
         IO_Manage.Instance.updateSerialDevce();
 
         //ListView_LinkDevice.ItemsSource = ViewModel.advancedCollectionView;
 
-        ViewModel.advancedCollectionView.SortDescriptions.Add(new SortDescription("DataName", SortDirection.Descending));
-        //ViewModel.advancedCollectionView.Add(new CannelDataView("data", -0, "9"));
-        //ViewModel.dateSource.Add(new CannelDataView("data1", -0, "9"));
+        //ViewModel.advancedCollectionView.Add(new CannelData("data", -0, "9"));
+        //ViewModel.dateSource.Add(new CannelData("data1", -0, "9"));
         //AppInfo = $"{App.Current.AppName} v{App.Current.AppVersion}";
 
 
@@ -206,6 +219,22 @@ public sealed partial class HomeLandingPage : Page
         //}
 
     }
+
+    private const int MaxLoadStatSourceSize = 100;
+    private  int cnt = 0;
+    private void IO_Manage_updateLoadStats(object sender, double load_s)
+    {
+        DispatcherQueue.TryEnqueue(() =>
+        {
+            if (ViewModel.loadStatSource.Count >= MaxLoadStatSourceSize)
+            {
+                ViewModel.loadStatSource.RemoveAt(0);
+            }
+            cnt+=1;
+            ViewModel.loadStatSource.Add(new LoadStat() { Load = load_s, Time = DateTime.Now, StrTime = cnt.ToString() });
+        });
+    }
+
     private void TabView_Loaded(object sender, RoutedEventArgs e)
     {
         for (int i = 0; i < 1; i++)
@@ -261,7 +290,7 @@ public sealed partial class HomeLandingPage : Page
         Grid parent = button.FindParent<Grid>();
         foreach (var item in ViewModel.dateSource)
         {
-            if (item.is_equal(parent.Tag as string) == true)
+            if (item.DataName == parent.Tag as string)
             {
                 if (button != null)
                 {
@@ -287,7 +316,7 @@ public sealed partial class HomeLandingPage : Page
         }
     }
 
-    private void ShowMenu(UIElement sender, bool isTransient)
+    private void ShowMenu(UIElement sender, bool isTransient, object Tag)
     {
         FlyoutShowOptions myOption = new FlyoutShowOptions();
         myOption.ShowMode = isTransient ? FlyoutShowMode.Transient : FlyoutShowMode.Standard;
@@ -299,8 +328,10 @@ public sealed partial class HomeLandingPage : Page
         Grid grid = sender as Grid;
         if (grid != null)
         {
-            mainPage_Singleton.DataList_ID = grid.Tag as string;
-            ShowMenu(sender, true);
+            //mainPage_Singleton.ContentRequestItemName = grid.Tag as string;
+            ContentRequestItemName = grid.Tag as string;
+            Debug.WriteLine(ContentRequestItemName);
+            ShowMenu(sender, true,grid.Tag);
         }
     }
 
@@ -341,19 +372,19 @@ public sealed partial class HomeLandingPage : Page
         if (barbutton != null)
         {
 
-            if (mainPage_Singleton.Is_up == true)
+            if (Is_up == true)
             {
                 FontIcon icon = new FontIcon();
                 icon.Glyph = "\uE896";
                 barbutton.Icon = icon;
-                mainPage_Singleton.Is_up = false;
+                Is_up = false;
             }
             else
             {
                 FontIcon icon = new FontIcon();
                 icon.Glyph = "\uE898";
                 barbutton.Icon = icon;
-                mainPage_Singleton.Is_up = true;
+                Is_up = true;
             }
         }
     }
@@ -361,19 +392,19 @@ public sealed partial class HomeLandingPage : Page
     {
         var textBox = sender as TextBox;
         //textBox.Background = new SolidColorBrush(Colors.RoyalBlue);
-        // string str = mainPage_Singleton.DataList_ID.ToString();
+        // string str = mainPage_Singleton.ContentRequestItemName.ToString();
         if (textBox != null)
         {
-            var str = textBox.Tag as string;
-            ViewModel.dateSource[Convert.ToInt32(str)].DataName = textBox.Text;
+            //var str = textBox.Tag as string;
+            ViewModel.dateSource.FindByProperty(ContentRequestItemName, item => item.DataName).DataName = textBox.Text;
+
+            //ViewModel.dateSource[Convert.ToInt32(str)].DataName = textBox.Text;
         }
     }
 
     private void myColorPicker_ColorChanged(ColorPicker sender, ColorChangedEventArgs args)
     {
-        var str = sender.Tag as string;
-        ViewModel.dateSource[Convert.ToInt32(str)].DataColor.Color = sender.Color;
-        //dateSource[Convert.ToInt32(str)].DataColor = new SolidColorBrush(sender.Color);
+        ViewModel.dateSource.FindByProperty(ContentRequestItemName, item => item.DataName).DataColor = ColorHelper.GetHexFromColor(sender.Color);
     }
 
     private void AppBarButton_Click_ADD(object sender, RoutedEventArgs e)
@@ -391,55 +422,6 @@ public sealed partial class HomeLandingPage : Page
         //    ViewModel.SerialPortsSource.Add(port);
         //}
     }
-
-    private void Instance_update(List<SerialDevice> serialDevices)
-    {
-        DispatcherQueue.TryEnqueue(() =>
-        {
-            Debug.WriteLine("update serial1");
-            Debug.WriteLine("update serial2");
-
-            foreach (var device in serialDevices)
-            {
-                if (!ViewModel.SerialPortsSource.Contains(device.PortName))
-                {
-                    ViewModel.SerialPortsSource.Add(device.PortName);
-                    ViewModel.linkDeviceSource.Add(new LinkDeviceDates(device.PortName, device.FriendlyName));
-                }
-            }
-
-            // Remove ports that are no longer available
-            for (int i = ViewModel.SerialPortsSource.Count - 1; i >= 0; i--)
-            {
-                if (!serialDevices.Any(d => d.PortName == ViewModel.SerialPortsSource[i]))
-                {
-                    ViewModel.SerialPortsSource.RemoveAt(i);
-                    ViewModel.linkDeviceSource.RemoveAt(i);
-                }
-            }
-        });
-    }
-
-    private void UpdateCannelViewMsg(List<ChannelViewData> globChannelViewData)
-    {
-        DispatcherQueue.TryEnqueue(() =>
-        {
-            foreach (ChannelViewData it in globChannelViewData)
-            {
-                var existingItem = ViewModel.dateSource.FirstOrDefault(itt => itt.DataName == it.Name);
-                if (existingItem != null)
-                {
-                    existingItem.Data = it.ChannelData;
-                    // Update other properties as needed
-                }
-                else
-                {
-                    ViewModel.dateSource.Add(new CannelDataView(it.Name, it.ChannelData, "9"));
-                }
-            }
-        });
-    }
-
 
     private void combox_COM_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
@@ -605,19 +587,19 @@ public sealed partial class HomeLandingPage : Page
         if (barbutton != null)
         {
             string is_connect = barbutton.Tag as string;
-            if (mainPage_Singleton.Is_up == true)
+            if (Is_up == true)
             {
                 FontIcon icon = new FontIcon();
                 icon.Glyph = "\uE896";
                 barbutton.Icon = icon;
-                mainPage_Singleton.Is_up = false;
+                Is_up = false;
             }
             else
             {
                 FontIcon icon = new FontIcon();
                 icon.Glyph = "\uE898";
                 barbutton.Icon = icon;
-                mainPage_Singleton.Is_up = true;
+                Is_up = true;
             }
         }
     }

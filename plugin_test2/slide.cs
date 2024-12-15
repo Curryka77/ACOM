@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
- 
+using ACOMCommmon;
+
+
 
 //using System.Collections.Generic;
 //using System.Linq;
@@ -44,7 +46,7 @@ public partial class Slide : ACOMPluginBase
         {
             return "Happy";
         }
-        //public void UpdateData(List<ChannelViewData> newData)
+        //public void UpdateData(List<CannelData> newData)
         //{
 
         //}
@@ -59,7 +61,7 @@ public partial class Slide : ACOMPluginBase
             return base.ToString();
         }
 
-        public override void UpdateData(List<ChannelData> newData)
+        public override void UpdateData(List<CannelData> newData)
         {
              
         }

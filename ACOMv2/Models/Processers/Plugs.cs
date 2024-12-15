@@ -278,9 +278,9 @@ public class Plugs
     static public async Task InitAsync(string path)
     {
 
-        LoadProcesserPlug(path);
-        LoadDataMuxPlug(path);
-        LoadWidgetPlug(path);
+        //LoadProcesserPlug(path);
+        //LoadDataMuxPlug(path);
+        //LoadWidgetPlug(path);
 
 
         await InitPlug();

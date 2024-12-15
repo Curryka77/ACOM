@@ -40,8 +40,8 @@
             </wuc:TitleBar.Footer>
         </wuc:TitleBar>
 
-        
-        <NavigationView x:Name="NavView"
+
+        <NavigationView x:Name="NavView" 
                     Grid.Row="1" Grid.ColumnSpan="3"
                     IsBackButtonVisible="Collapsed" 
                     IsPaneToggleButtonVisible="False">

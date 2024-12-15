@@ -99,7 +99,7 @@
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Common" Version="8.3.2" />
     <PackageReference Include="CommunityToolkit.HighPerformance" Version="8.3.2" />
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="CommunityToolkit.WinUI.Animations" Version="8.1.240916" />
     <PackageReference Include="CommunityToolkit.WinUI.Behaviors" Version="8.1.240916" />
     <PackageReference Include="CommunityToolkit.WinUI.Collections" Version="8.1.240916" />
@@ -153,6 +153,7 @@
     <PackageReference Include="WinUICommunity.Win2D" Version="7.1.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ACOMCommmon\ACOMCommmon.csproj" />
     <ProjectReference Include="..\ACOMPlugin\ACOMPlugin.csproj" />
     <ProjectReference Include="..\ACOMPlug\ACOMPlug.csproj" />
     <ProjectReference Include="..\ClassLibrary1\ClassLibrary1.csproj" />
@@ -183,5 +184,9 @@
 
 <ItemGroup>
   <PRIResource Remove="Models\新文件夹\**" />
+</ItemGroup>
+
+<ItemGroup>
+  <Content Remove="Assets\encode.png" />
 </ItemGroup>
 </Project>
