@@ -367,3 +367,4 @@ FodyWeavers.xsd
 
 ACOMv2/obj/*
 /.vs/ACOMv2
+*.pdb
