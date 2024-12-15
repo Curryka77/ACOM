@@ -19,7 +19,7 @@ using static ACOMv2.ViewModels.HomeLandingViewModel;
 using CommunityToolkit.WinUI.Collections;
 using ACOMPlug;
 using static ACOM.Models.IO_Manage;
-
+using ACOMv2.Common;
 
 
 
@@ -119,7 +119,7 @@ public sealed partial class HomeLandingPage : Page
                 if (!ViewModel.SerialPortsSource.Contains(device.PortName))
                 {
                     ViewModel.SerialPortsSource.Add(device.PortName);
-                    ViewModel.linkDeviceSource.Add(new LinkDeviceDates(device.PortName, device.FriendlyName));
+                    ViewModel.serialDevices.Add(new SerialDevices(device.PortName, device.FriendlyName));
                 }
             }
 
@@ -129,7 +129,7 @@ public sealed partial class HomeLandingPage : Page
                 if (!serialDevices.Any(d => d.PortName == ViewModel.SerialPortsSource[i]))
                 {
                     ViewModel.SerialPortsSource.RemoveAt(i);
-                    ViewModel.linkDeviceSource.RemoveAt(i);
+                    ViewModel.serialDevices.RemoveAt(i);
                 }
             }
         });
@@ -188,7 +188,7 @@ public sealed partial class HomeLandingPage : Page
 
 
         //Use a builtin language -> see list a bit higher
-        //dialogTextBox.CodeLanguage = TextControlBox.GetCodeLanguageFromId(CodeLanguageId.CSharp);
+        dialogTextBox.CodeLanguage = TextControlBox.GetCodeLanguageFromId(CodeLanguageId.CSharp);
 
         //Use a custom language:
         // 假设你的JSON文件名为"data.json"，位于与你的程序相同的目录下
@@ -432,14 +432,24 @@ public sealed partial class HomeLandingPage : Page
         {
             if (comboBox.SelectedItem != null)
             {
-                foreach (LinkDeviceDates dev in ViewModel.linkDeviceSource)
+                foreach (SerialDevices dev in ViewModel.serialDevices)
                 {
                     if (dev.DeviceName.Equals(comboBox.SelectedItem.ToString()))
                     {
                         LinkSerial_Boundrate.SelectedValue = dev.BoundRate.ToString();
-                        LinkSerial_DataLength.SelectedValue = dev.DateBit;
+                        LinkSerial_DataLength.SelectedValue = dev.DateBit.ToString();
                         LinkSerial_StopBit.SelectedValue = dev.StopBit;
                         LinkSerial_StreamCtrl.SelectedValue = dev.StreamCtrl;
+                        if (dev.ConnectState)
+                        {
+                            ConnectButton.IsChecked = true;
+
+                        }
+                        else
+                        {
+                            ConnectButton.IsChecked = false;
+
+                        }
                     }
                 }
             }
@@ -470,32 +480,13 @@ public sealed partial class HomeLandingPage : Page
         {
             // 获取当前选中项
             var selectedItem = comboBox.SelectedItem;
-            //PortsDesc = SerialPortFindTool.GetSerialPort();
-
-
-            //IO_Manage.Instance.GetFriendlyName(selectedItem.ToString());
-
-            //foreach (var port in PortsDesc)
-            //{
-            //    Debug.WriteLine(port);
-            //    if (selectedItem != null)
-            //    {
-            //        if (port.Contains(selectedItem.ToString()))
-            //        {
-            //            TextBlockCOM_Desc.Text = port;
-            //            Console.WriteLine($"Changed selection to: {selectedItem}");
-            //            return;
-            //        }
-            //    }
-            //}
-            // 执行相应操作,修改text,还有其他属性
             TextBlockCOM_Desc.Text = IO_Manage.Instance.GetFriendlyName(selectedItem.ToString());
         }
     }
 
-    private void LinkSerial_COM_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void ConfingSerialDeviceChanged(object sender, SelectionChangedEventArgs e)
     {
-        Debug.Write("dei");
+
         if (LinkSerial_Boundrate != null && LinkSerial_DataLength != null &&
             LinkSerial_StopBit != null && LinkSerial_StreamCtrl != null &&
             LinkSerial_Boundrate.SelectedValue != null && LinkSerial_DataLength.SelectedValue != null &&
@@ -504,7 +495,7 @@ public sealed partial class HomeLandingPage : Page
         {
             var portName = combox_COM.SelectedItem.ToString();
             //if()
-            foreach (LinkDeviceDates dev in ViewModel.linkDeviceSource)
+            foreach (SerialDevices dev in ViewModel.serialDevices)
             {
                 if (dev.DeviceName.Equals(portName))
                 {
@@ -513,7 +504,7 @@ public sealed partial class HomeLandingPage : Page
                     TextBlockCOM_Desc.Text = dev.DeviceDesc;
 
                     dev.BoundRate = Convert.ToInt32(LinkSerial_Boundrate.SelectedValue.ToString());
-                    dev.DateBit = (int)LinkSerial_DataLength.SelectedValue;
+                    dev.DateBit = Convert.ToInt32(LinkSerial_DataLength.SelectedValue);
                     dev.StopBit = (string)LinkSerial_StopBit.SelectedValue;
                     dev.StreamCtrl = (string)LinkSerial_StreamCtrl.SelectedValue;
                     if (LinkSerial_CheckBit.SelectedIndex == 0)
@@ -537,30 +528,60 @@ public sealed partial class HomeLandingPage : Page
         }
 
     }
+    private void LinkButton_Click(object sender, RoutedEventArgs e)
+    {
+        AppBarButton button = sender as AppBarButton;
+        var barbutton = sender as AppBarButton;
 
+        if (barbutton != null)
+        {
+            string DeviceName = barbutton.Tag as string;
+            foreach (SerialDevices dev in ViewModel.serialDevices)
+            {
+                if (dev.DeviceName.Equals(DeviceName))
+                {
+                    if (dev.ConnectState)
+                    {
+                        dev.DisConnect();
+                        ConnectButton.IsChecked = false;
+
+                        return;
+                    }
+                    else
+                    {
+                        //TODO BUG 应该有重复的项目导致会有异常
+                        dev.Connect();
+                        ConnectButton.IsChecked = true; 
+                        return;
+                    }
+                }
+            }
+        }
+    }
     private void ConnectButton_Click(object sender, RoutedEventArgs e)
     {
         if (LinkSerial_Boundrate != null && LinkSerial_DataLength != null &&
             LinkSerial_StopBit != null && LinkSerial_StreamCtrl != null &&
             LinkSerial_Boundrate.SelectedValue != null && LinkSerial_DataLength.SelectedValue != null &&
-            LinkSerial_StopBit.SelectedValue != null && LinkSerial_StreamCtrl.SelectedValue != null
-            )
+            LinkSerial_StopBit.SelectedValue != null && LinkSerial_StreamCtrl.SelectedValue != null)
         {
             if (combox_COM.SelectedItem != null)
             {
-                foreach (LinkDeviceDates dev in ViewModel.linkDeviceSource)
+                foreach (SerialDevices dev in ViewModel.serialDevices)
                 {
                     if (dev.DeviceName.Equals(combox_COM.SelectedItem.ToString()))
                     {
-                        if (ConnectButton.IsChecked == false)
+                        if (dev.ConnectState)
                         {
                             dev.DisConnect();
+                            ConnectButton.IsChecked = false;
                             return;
                         }
                         else
                         {
                             //TODO BUG 应该有重复的项目导致会有异常
                             dev.Connect();
+                            ConnectButton.IsChecked = true;
                             return;
                         }
                     }
@@ -579,29 +600,54 @@ public sealed partial class HomeLandingPage : Page
 
     }
 
-    private void LinkButton_Click(object sender, RoutedEventArgs e)
+    
+    private void SendButton_Click(object sender, RoutedEventArgs e)
     {
-        AppBarButton button = sender as AppBarButton;
-        var barbutton = sender as AppBarButton;
-
-        if (barbutton != null)
+        if (LineEnding.Equals("\\r\\n"))
         {
-            string is_connect = barbutton.Tag as string;
-            if (Is_up == true)
-            {
-                FontIcon icon = new FontIcon();
-                icon.Glyph = "\uE896";
-                barbutton.Icon = icon;
-                Is_up = false;
-            }
-            else
-            {
-                FontIcon icon = new FontIcon();
-                icon.Glyph = "\uE898";
-                barbutton.Icon = icon;
-                Is_up = true;
-            }
+ 
+            dialogTextBox.SetText(dialogTextBox.Text + SendTextBox.Text+"\r\n");
+
+
         }
+        else if (LineEnding.Equals("\\n"))
+        {
+            dialogTextBox.SetText(dialogTextBox.Text + SendTextBox.Text + "\n");
+        }
+        else
+        {
+            dialogTextBox.SetText(dialogTextBox.Text + SendTextBox.Text);
+
+        }
+        dialogTextBox.ScrollPageDown();
+    }
+
+    string LineEnding = "\\r\\n";
+
+    private void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+    {
+        dialogTextBox.Text = string.Empty;
+        dialogTextBox.DeleteLine(1);
+    }
+
+    private void LineEndingButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (LineEnding.Equals("无"))
+        {
+            LineEnding = "\\r\\n";
+        }
+        else if (LineEnding.Equals("\\r\\n"))
+        {
+            LineEnding = "\\n";
+
+        }
+        else if (LineEnding.Equals("\\n"))
+        {
+            LineEnding = "无";
+        }
+
+        LineEndingTextBlock.Text = LineEnding;
+
     }
 }
 

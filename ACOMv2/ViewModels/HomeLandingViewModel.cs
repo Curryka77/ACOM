@@ -24,7 +24,7 @@ using static ACOM.Models.IO_Manage;
 
 namespace ACOMv2.ViewModels;
 
-public class LinkDeviceDates : ObservableObject
+public class SerialDevices  : ObservableObject
 {
     private string _DeviceName;
     private string _DeviceDesc = "NO desc";
@@ -35,40 +35,36 @@ public class LinkDeviceDates : ObservableObject
     private string _streamCtrl = "XON/XOFF";
     private string _overView = "NONE";
 
-    public string is_connect = "false";
+    private bool is_connect = false;
+
+    private IconElement icon  = new SymbolIcon(Symbol.Play);
     private IO_Manage ioManage = IO_Manage.Instance;
 
-    public string ConnectState
+    public bool ConnectState
     {
         get => is_connect;
         set
         {
             SetProperty(ref is_connect, value);
-            if (is_connect == "true")
-            {
-                Connect();
-            }
-            else
-            {
-                DisConnect();
-            }
         }
     }
     public void Connect()
     {
-        Debug.WriteLine(_DeviceName + " " + "connecting...");
+        Debug.WriteLine(_DeviceName + " connecting...");
         if (ioManage.Connect(_DeviceName) != null)
         {
-            Debug.WriteLine(_DeviceName + " " + "connected");
-            is_connect = "true";
+            Debug.WriteLine(_DeviceName  + " connected");
+            is_connect = true;
+            Icon = new SymbolIcon(Symbol.Pause);
+
         }
     }
     public void DisConnect()
     {
-
+        Debug.WriteLine(_DeviceName + " disconnect...");
         ioManage.DisConnect(_DeviceName);
-        Debug.WriteLine(_DeviceName + "disconnect");
-        is_connect = "false";
+        is_connect = false;
+        Icon = new SymbolIcon(Symbol.Play);
     }
     public string DeviceName
     {
@@ -93,7 +89,13 @@ public class LinkDeviceDates : ObservableObject
         get => (int)_dateBit;
         set { SetProperty(ref _dateBit, value); Update(); }
     }
+    public IconElement Icon
+    {
+        get => icon;
+        set { SetProperty(ref icon, value); Update();
 
+        }
+    }
     public string CheckBit
     {
         get => (string)_checkBit;
@@ -127,14 +129,15 @@ public class LinkDeviceDates : ObservableObject
     public void Update()
     {
         OverView = _boundRate.ToString() + " " + _dateBit.ToString() + _checkBit.ToString() + _stopBit.ToString();
+
     }
-    public LinkDeviceDates(string deviceName)
+    public SerialDevices(string deviceName)
     {
         DeviceName = deviceName;
         Update();
     }
 
-    public LinkDeviceDates(string deviceName, string deviceDesc)
+    public SerialDevices(string deviceName, string deviceDesc)
     {
         DeviceName = deviceName;
         DeviceDesc = deviceDesc;
@@ -142,6 +145,10 @@ public class LinkDeviceDates : ObservableObject
         Update();
     }
 
+    public   string getDeviceName(SerialDevices device)
+    {
+        return device.DeviceName;
+    }
 
 }
 
@@ -177,8 +184,11 @@ public partial class HomeLandingViewModel : ObservableObject
 
     public ObservableCollection<LoadStat> loadStatSource = new(); //数据负载率
 
-    public ObservableCollection<LinkDeviceDates> linkDeviceSource = new(); //连接设备
+    public ObservableCollection<SerialDevices> serialDevices = new(); //可以连接的串口设备
     public ObservableCollection<string> SerialPortsSource = new(); //连接设备
+    public int ConfigingSerialDeviceIndex = 0; //正在配置的串口设备
+
+
     public AdvancedCollectionView advancedCollectionView ;
     public List<ACOM.Models.SerialDevice> Devices= new();// = serialDevices;
 
@@ -203,7 +213,7 @@ public partial class HomeLandingViewModel : ObservableObject
 
         // And sort ascending by the property "Name"
         advancedCollectionView.SortDescriptions.Add(new SortDescription("DataName", SortDirection.Descending));
-        //linkDeviceSource.Add(new LinkDeviceDates("COM1"));
+        //serialDevices.Add(new SerialDevices("COM1"));
 
 
 
