@@ -10,6 +10,16 @@
 *.userosscache
 *.sln.docstates
 
+
+.vs
+.vs/*
+
+ACOMv2/obj/*
+/.vs/ACOMv2
+*.pdb
+/ACOMv2/bin
+
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -362,10 +372,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-.vs
-.vs/*
 
-ACOMv2/obj/*
-/.vs/ACOMv2
-*.pdb
-/ACOMv2/bin
