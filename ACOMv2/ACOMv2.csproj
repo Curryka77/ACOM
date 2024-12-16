@@ -179,7 +179,7 @@
   </ItemGroup>
 
   <!-- Check if TextTransform.exe exists before running -->
-  <Exec Command="if exist &quot;$(DevEnvDir)TextTransform.exe&quot; &quot;$(DevEnvDir)TextTransform.exe&quot; &quot;%(T4Template.FullPath)&quot;" Condition="Exists('$(DevEnvDir)TextTransform.exe')" />
+  <!--<Exec Command="if exist &quot;$(DevEnvDir)TextTransform.exe&quot; &quot;$(DevEnvDir)TextTransform.exe&quot; &quot;%(T4Template.FullPath)&quot;" Condition="Exists('$(DevEnvDir)TextTransform.exe')" />-->
 </Target>
 
 <ItemGroup>

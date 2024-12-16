@@ -8,12 +8,15 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using ACOMPlug;
 using ACOMPlugin.Core;
+using ACOMv2.Common;
 using DryIoc;
 using ShadowPluginLoader.WinUI;
+using STTech.BytesIO.Core;
+using Windows.System;
 
 namespace ACOMv2.Models.Processers;
 
-public class Plugs
+public class Plugs 
 {
 
     /// <summary>
@@ -62,7 +65,6 @@ public class Plugs
     static public Dictionary<string, Type> IDataMuxersPlugins = new Dictionary<string, Type>();
     static public Dictionary<string, ACOMPluginBase> WidgetPlugins = new Dictionary<string, ACOMPluginBase>();
 
-    static public List<Type> WidgetsPlugins = new();
     /// <summary>
     /// 当前拥有的插件信息
     /// </summary>
@@ -182,68 +184,14 @@ public class Plugs
         }
     }
 
-
-    static protected void LoadWidgetPlug(string _path)
-    {
-        List<string> dllFiles = new List<string>();
-        string path = _path + "Widgets";
-        try
-        {
-            foreach (var file in Directory.GetFiles(path, "WidgetPlug*.dll"))
-            {
-                dllFiles.Add(file);
-            }
-
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine($"Error accessing {path}: {ex.Message}");
-        }
-        Debug.WriteLine("find accept Widget plug files:");
-
-        foreach (var item in dllFiles)
-        {
-            Debug.WriteLine(item);
-        }
-
-        for (int i = 0; i < dllFiles.Count(); i++)
-        {
-            var fileData = File.ReadAllBytes(dllFiles[i]);
-            Assembly asm = Assembly.Load(fileData);
-            var manifestModuleName = asm.ManifestModule.ScopeName;
-            var classLibrayName = manifestModuleName.Remove(manifestModuleName.LastIndexOf("."), manifestModuleName.Length - manifestModuleName.LastIndexOf("."));
-            Type type = asm.GetType("WidgetPlugSlide.WidgetPlugSlide");
-            Debug.WriteLine("加载" + dllFiles[i]);
-            foreach (var item in asm.GetTypes())
-            {
-                Console.WriteLine(item.Name);
-            }
-            if (!typeof(IPlugWidgetBase).IsAssignableFrom(type))
-            {
-                Debug.WriteLine("未继承插件接口");
-                continue;
-            }
-            var instance = Activator.CreateInstance(type) as IPlugWidgetBase;
-            var protocolInfo = instance.GetPluginInformation();
-            Debug.WriteLine($"插件名称：{protocolInfo.Name}");
-            Debug.WriteLine($"插件版本：{protocolInfo.Version}");
-            Debug.WriteLine($"插件作者：{protocolInfo.Author}");
-            Debug.WriteLine($"插件时间：{protocolInfo.LastTime}");
-
-            WidgetsPlugins.Add(type);
-            //IWidgetsPlugins.Add(protocolInfo.Name, type);
-            //IPluginInfos.Add(protocolInfo.Name, protocolInfo);
-            //instance.Dispose();
-            instance = null;
-        }
-    }
     private static async Task InitPlug()
     {
         var loader = DiFactory.Services.Resolve<ACOMPluginLoader>();
         //await loader.ImportFromZipAsync(@"C:\Users\80520\source\repos\ACOM\Packages");
 
         //
-        string directoryPath = @"C:\Users\80520\source\repos\ACOM\Packages"; // 替换为你的文件夹路径
+        //string directoryPath = @"C:\Users\80520\source\repos\ACOM\Packages"; // 替换为你的文件夹路径
+        string directoryPath = @"C:\Users\80520\source\repos\ACOM\plugin_test2\bin\Debug"; // 替换为你的文件夹路径
 
         if (Directory.Exists(directoryPath))
         {
@@ -253,6 +201,8 @@ public class Plugs
             {
                 Debug.WriteLine("进入目录 " + subDirectory);
                 await loader.ImportFromDirAsync(subDirectory);
+
+
                 Debug.WriteLine("加载到 " + loader.GetPlugins().Count().ToString() + " 个插件");
                 foreach (var plugin in loader.GetPlugins())
                 {
@@ -262,6 +212,8 @@ public class Plugs
                     FrameworkElement element = plugin.Create();
                 }
             }
+            await loader.ImportFromZipAsync(directoryPath);
+            Debug.WriteLine("加载到 " + loader.GetPlugins().Count().ToString() + " 个插件");
             Debug.WriteLine("一共加载插件个数 " + cnt.ToString());
 
         }
@@ -286,7 +238,7 @@ public class Plugs
         await InitPlug();
 
         Debug.WriteLine(string.Format("==========【{0}】==========", "插件加载完成"));
-        Debug.WriteLine(string.Format("==========【{0}】==========", "共加载插件{0}个"), IProcessersPlugins.Count+ IDataMuxersPlugins.Count + WidgetsPlugins.Count);
+        Debug.WriteLine(string.Format("==========【{0}】==========", "共加载插件{0}个"), IProcessersPlugins.Count+ IDataMuxersPlugins.Count + WidgetPlugins.Count);
 
 
 
@@ -307,7 +259,6 @@ public class Plugs
             return null;
         }
     }
-
 
 
 }

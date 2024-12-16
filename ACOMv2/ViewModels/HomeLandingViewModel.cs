@@ -210,6 +210,13 @@ public partial class HomeLandingViewModel : ObservableObject
     public List<ACOM.Models.SerialDevice> Devices= new();// = serialDevices;
 
 
+    public List<Page> CanvasPages = new();
+
+    public void GetPlugFromLable(string lable)
+    {
+        //var item = new DataItem(Guid.NewGuid().ToString(), lable, typeof(HomeLandingViewModel).FullName, new object());
+        //JsonNavigationViewService.NavigateTo(item.UniqueId + item.Parameter?.ToString(), item);
+    }
 
     public HomeLandingViewModel(IJsonNavigationViewService jsonNavigationViewService)
     {

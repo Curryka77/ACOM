@@ -25,7 +25,8 @@ using DryIoc;
 using ACOM.Models;
 using ACOMPlug;
 using ACOMv2.Models.Processers;
-// To learn more about WinUI, the WinUI project structure,
+using static ACOMPlugin.Core.ACOMPluginBase;
+ // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace ACOMv2.Views
@@ -67,24 +68,47 @@ namespace ACOMv2.Views
     {
 
 
-        public FrameworkElement InitializeElementGrid(FrameworkElement element)
+        public FrameworkElement InitializeElementGrid(FrameworkElement element,double initWidth=180,double initHeight=50,double offset=30)
         {
 
             // 创建Grid
             Grid elementGrid = new Grid()
             {
                 Name = element.Name + "Grid",
-                MinHeight = 32,
-                MinWidth = 32,
+                MinHeight = initHeight,
+                MinWidth = initWidth,
                 Style = (Style)Application.Current.Resources["GridCardPanel"]
             };
             //创建组件
             Widget part = new(ref element);
 
-            // 设置Canvas位置（在C#中，我们通常不设置Canvas.Left和Canvas.Top，因为它们是Canvas特有的属性，这里假设你想要将Grid放置在Canvas中）
+            double newX = 30;
+            double newY = 30;
+             // 设置Canvas位置（在C#中，我们通常不设置Canvas.Left和Canvas.Top，因为它们是Canvas特有的属性，这里假设你想要将Grid放置在Canvas中）
             // 你需要一个Canvas作为父容器，然后添加Grid到其中，并设置位置
-            Canvas.SetLeft(elementGrid, 90);
-            Canvas.SetTop(elementGrid, 90);
+            AGAIN:
+            // 遍历Canvas中的所有子控件
+            foreach (var child in CanvasView1.Items)
+            {
+                // 获取子控件的位置
+                double childLeft = Canvas.GetLeft((UIElement)child);
+                double childTop = Canvas.GetTop((UIElement)child);
+
+                // 检查新控件的位置是否与现有控件重叠
+                if (childLeft == newX && childTop == newY)
+                {
+                    // 如果重叠，调整新控件的位置
+                    newX += offset; // 向下偏移
+                    newY += offset; // 向下偏移
+                    goto AGAIN; // 退出循环，因为我们只需要检查第一个重叠的控件
+                }
+            }
+
+            // 设置新控件的位置
+            Canvas.SetLeft(elementGrid, newX);
+            Canvas.SetTop(elementGrid, newY);
+
+ 
 
             // 定义列
             ColumnDefinition columnDef1 = new ColumnDefinition();
@@ -131,16 +155,78 @@ namespace ACOMv2.Views
             verticalContentSizer.ManipulationDelta += ContentSizer_ManipulationDelta;
 
             elementGrid.Children.Add(verticalContentSizer);
-
+             elementGrid.KeyDown += KeyControl;
             // 将Grid添加到页面或其他父容器中
             return elementGrid; // 假设你是在Page中，并且将Grid设置为页面的内容
         }
+
+        private void KeyControl(object sender, KeyRoutedEventArgs e)
+        {
+            // 检查按下的键是否是Delete键
+            if (e.Key == Windows.System.VirtualKey.Delete)
+            {
+                CanvasView1.Items.Remove(sender);
+            }
+        }
+
         public void CreateWidget(ACOMPluginBase WidgetPlug)
         {
             if (WidgetPlug == null) return;
             WidgetPlug.UpdateCommand += UpdateWidgetCommend;
+            WidgetPlug.SystemCommand += SystemCommand;
             IO_Manage.updateCannelViewMsg += WidgetPlug.UpdateData;
             CanvasView1.Items.Add(InitializeElementGrid(WidgetPlug.Create()));
+        }
+
+        private void SystemCommand(object sender, List<SystemCommandEnum> cmd)
+        {
+            foreach (var command in cmd)
+            {
+                switch (command)
+                {
+                    case SystemCommandEnum.Delete:
+                        // 执行删除操作
+                        DeleteOperation(sender);
+                        break;
+                    case SystemCommandEnum.Copy:
+                        // 执行复制操作
+                        CopyOperation(sender);
+                        break;
+                    case SystemCommandEnum.Paste:
+                        // 执行粘贴操作
+                        PasteOperation(sender);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+
+        private void DeleteOperation(object sender)
+        {
+            // 删除操作的具体实现
+            // 获取发送事件的按钮
+ 
+            // 检查按钮是否非空，并且它有一个父容器
+            if (sender != null && VisualTreeHelper.GetParent(sender as FrameworkElement) != null)
+            {
+                var parent = VisualTreeHelper.GetParent(sender as FrameworkElement) as Grid;
+                if(parent != null)
+                {
+                    CanvasView1.Items.Remove(parent);
+
+                }
+            }
+        }
+
+        private void CopyOperation(object sender)
+        {
+            // 复制操作的具体实现
+        }
+
+        private void PasteOperation(object sender)
+        {
+            // 粘贴操作的具体实现
         }
 
         private void UpdateWidgetCommend(object sender, List<string[]> cmd)
@@ -150,6 +236,16 @@ namespace ACOMv2.Views
 
         public CanvasPanelPage()
         {
+            ViewModel = App.GetService<HomeLandingViewModel>();
+
+            this.Loaded += (sender, e) =>
+            {
+                ViewModel.CanvasPages.Add(this);
+            };
+            this.Unloaded += (sender, e) =>
+            {
+                ViewModel.CanvasPages.Remove(this);
+            };
             strings = new ObservableCollection<Symbol>
             {
                 Symbol.AddFriend,
@@ -158,10 +254,12 @@ namespace ACOMv2.Views
             };
             this.InitializeComponent();
             CreateWidget(Plugs.WidgetPlugins["ACOMPlug.Widget.Slide"]);
+            CreateWidget(Plugs.WidgetPlugins["ACOMPlug.Widget.Slide"]);
 
 
-             //FrameworkElement element = InitializeElementGrid( (Activator.CreateInstance(Models.Processers.Plugs.WidgetsPlugins[0]) as IPlugWidgetBase).Create());
-             //CanvasView1.Items.Add( new Button() { Content = "Button1" });
+
+            //FrameworkElement element = InitializeElementGrid( (Activator.CreateInstance(Models.Processers.Plugs.WidgetsPlugins[0]) as IPlugWidgetBase).Create());
+            //CanvasView1.Items.Add( new Button() { Content = "Button1" });
         }
 
         private void Border_ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
@@ -187,6 +285,8 @@ namespace ACOMv2.Views
 
 
         private readonly Random rnd = new();
+        private HomeLandingViewModel ViewModel;
+
         private ObservableCollection<Symbol> strings { get; }
 
 

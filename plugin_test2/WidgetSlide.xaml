@@ -8,9 +8,26 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <UserControl.Resources>
+
+
+        
+
+
+
+
+
+
+
+
+
         <Flyout Placement="Right" x:Name="PartsCommandBarFlyout">
             <RelativePanel>
-                <TextBox x:Name="WidgetNameText" Header="控件名字" PlaceholderText="Name" />
+                <TextBox x:Name="WidgetNameText" Header="控件名字" FontSize="16" FontWeight="Bold" PlaceholderText="Name"  Width="240"/>
+
+                <Button x:Name="WidgetDeleteButton" Content="删除控件" RelativePanel.RightOf="WidgetNameText"
+                        RelativePanel.AlignRightWith="Pannel1" Click="WidgetDeleteButton_Click"
+                         RelativePanel.AlignBottomWith="WidgetNameText" 
+                        HorizontalAlignment="Stretch"  VerticalAlignment="Top"   />
                 <StackPanel Style="{ThemeResource StackPanelStyle}" Orientation="Vertical"  x:Name="OptionsStackPanel" RelativePanel.Below="WidgetNameText" >
                     <TextBlock Text="绑定数据输入通道" FontSize="16" FontWeight="Bold"/>
                     <CheckBox x:Name="OptionsAllCheckBox"  Content="所有通道" IsThreeState="True"
@@ -27,7 +44,8 @@
                         </StackPanel>
                     </ScrollViewer>
                 </StackPanel>
-                <StackPanel Style="{ThemeResource StackPanelStyle}" Orientation="Vertical" RelativePanel.RightOf="OptionsStackPanel" RelativePanel.Below="WidgetNameText">
+                <StackPanel Style="{ThemeResource StackPanelStyle}" Orientation="Vertical" x:Name="Pannel1"
+                            RelativePanel.RightOf="OptionsStackPanel" RelativePanel.Below="WidgetNameText">
                     <TextBlock Text="绑定数据输出命令" FontSize="16" FontWeight="Bold"/>
                     <CheckBox x:Name="OptionsAllCheckBox1"  Content="所有通道" IsThreeState="True" 
                     Indeterminate="OptionsAllCheckBox1_Indeterminate" Margin="8 0 0 0 "/>
@@ -46,7 +64,7 @@
             </RelativePanel>
         </Flyout>
     </UserControl.Resources>
-    <Grid HorizontalAlignment="Stretch"   Background="Red" ManipulationMode="TranslateX,TranslateY" ContextRequested="Parts_ContextRequested">
+    <Grid HorizontalAlignment="Stretch"   Background="Transparent" ManipulationMode="TranslateX,TranslateY" ContextRequested="Parts_ContextRequested">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
             <TextBlock Text="Slide" FontSize="18" HorizontalAlignment="Center"/>
             <Slider        MinWidth="32"

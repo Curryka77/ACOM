@@ -26,9 +26,7 @@ using System.Runtime.CompilerServices;
 using ACOMv2.Models.Processers;
 
 using System;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
-using System.Net.Sockets;
 /**
  * 这个类用于管理IO输入输出
  * 
@@ -297,6 +295,7 @@ namespace ACOM.Models
 
         SmartThreadPool smartThreadPool = new SmartThreadPool();
 
+        Queue<byte[]> bytes = new();
         //public Vector<ChannelMassage> ChannelDatas;
 
         /// <summary>
@@ -423,19 +422,19 @@ namespace ACOM.Models
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-
+            bytes.Enqueue(data);
             _ = smartThreadPool.QueueWorkItem(() =>
             {
-                var tt = channelProcesser.Process(new RawDataMassage(data, DateTime.Now, RawDataMassage.DateSource.Serial, portName));
+                byte[] d = bytes.Dequeue();
+                var tt = channelProcesser.Process(new RawDataMassage(d, DateTime.Now, RawDataMassage.DateSource.Serial, portName));
                 UnionGlobChannelMassage(tt);
                 Debug.WriteLine("ProcessReceivedDataAsync");
-                charRecQueue.Enqueue(new RawDataMassage(data, DateTime.Now, RawDataMassage.DateSource.Serial, portName));
-                page.TextAddLine(data.EncodeToString());
+                charRecQueue.Enqueue(new RawDataMassage(d, DateTime.Now, RawDataMassage.DateSource.Serial, portName));
+                page.TextAddLine(d.EncodeToString());
                 WeakReferenceMessenger.Default.Send(new ValueChangedMessage<List<CannelData>>(GlobChannelViewData));
 
-                stopwatch.Stop();
-                Debug.WriteLine($"Client_OnDataReceived execution time: {stopwatch.ElapsedMilliseconds} ms");
-                serialLoadStats[portName] += data.Length;
+
+                serialLoadStats[portName] += d.Length;
 
                 if ((DateTime.Now - LastTime).TotalMilliseconds > 1000)
                 {
@@ -447,6 +446,9 @@ namespace ACOM.Models
                     stopwatch1.Start();
                 }
             });
+            stopwatch.Stop();
+            Debug.WriteLine($"Client_OnDataReceived execution time: {stopwatch.Elapsed.TotalNanoseconds} us");
+
         }
 
         private void Client_OnDataReceived(object sender, STTech.BytesIO.Core.DataReceivedEventArgs e)
@@ -493,7 +495,7 @@ namespace ACOM.Models
                 }
             }
             __client = new SerialClient();
-            __client.ReceiveBufferSize = 4096 * 16;
+            __client.ReceiveBufferSize = 1024 * 1024;
             // 监听连接成功事件
             __client.OnConnectedSuccessfully += Client_OnConnectedSuccessfully;
             // 监听连接失败事件
@@ -654,6 +656,13 @@ namespace ACOM.Models
             watcher = new ManagementEventWatcher("SELECT *FROM Win32_DeviceChangeEvent WHERE EventType = 2 or EventType = 3 ");
             //添加设备变化事件处理程序
             watcher.EventArrived += Watcher_EventArrived;
+
+
+            smartThreadPool.MaxQueueLength = 128;
+            smartThreadPool.MinThreads = 8;
+            smartThreadPool.MaxThreads = 32;
+
+
             //开始监听
             watcher.Start();
             _ = Plugs.InitAsync("C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Assets\\Plugs\\");

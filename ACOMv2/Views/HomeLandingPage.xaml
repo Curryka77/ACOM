@@ -396,7 +396,7 @@
                     LineStrokeThickness="2"  />-->
 
                 <!--工具栏-->
-                <controls:TabbedCommandBar Grid.Row="2" Margin="0 -6 6 0" >
+                <controls:TabbedCommandBar Grid.Row="2" Margin="0 -6 6 0" KeyDown="TabbedCommandBar_KeyDown">
                     <controls:TabbedCommandBar.AutoSuggestBox>
                         <AutoSuggestBox AutomationProperties.Name="Search"
                                 QueryIcon="Find" />
@@ -471,7 +471,7 @@
                         
                         <controls:TabbedCommandBarItem Header="小部件">
                             <AppBarButton Icon="Pictures"
-                                  Label="Pictures">
+                                  Label="图表">
                                 <AppBarButton.Flyout>
                                     <MenuFlyout Placement="BottomEdgeAlignedLeft">
                                         <MenuFlyoutItem Icon="{ui:FontIcon Glyph=&#xEC4E;}"
@@ -484,14 +484,15 @@
                                 </AppBarButton.Flyout>
                             </AppBarButton>
                             <AppBarButton Icon="{ui:FontIcon Glyph=&#xF156;}"
-                                  Label="Shapes" />
-                            <AppBarButton Icon="{ui:FontIcon Glyph=&#xED58;}"
-                                  Label="Icons" />
+                                  Label="按钮" />
+                            <AppBarButton Icon="{ui:FontIcon Glyph=&#xED58;}" Click="AppBarButton_Click_WidgetCreate"
+                                          Tag="ACOMPlug.Widget.Slide"
+                                  Label="滑块" />
                             <AppBarButton Icon="{ui:FontIcon Glyph=&#xF158;}"
-                                  Label="3D Models" />
+                                  Label="开关" />
                             <AppBarSeparator />
                             <AppBarButton Icon="{ui:FontIcon Glyph=&#xECAA;}"
-                                  Label="Add-ins" />
+                                  Label="选项条目" />
                             <controls:TabbedCommandBarItem.SecondaryCommands>
                                 <AppBarButton Icon="{ui:FontIcon Glyph=&#xE710;}"
                                       Label="New item" />
@@ -507,7 +508,7 @@
                                   Label="Picture effects" />
                             <AppBarButton Icon="{ui:FontIcon Glyph=&#xE7AD;}"
                                   Label="Rotate" />
-                            <AppBarElementContainer>
+                            <!--<AppBarElementContainer>
                                 <muxc:SplitButton>
                                     <StackPanel Orientation="Horizontal"
                                         Spacing="12">
@@ -530,7 +531,7 @@
                                         </MenuFlyout>
                                     </muxc:SplitButton.Flyout>
                                 </muxc:SplitButton>
-                            </AppBarElementContainer>
+                            </AppBarElementContainer>-->
                         </controls:TabbedCommandBarItem>
                     </controls:TabbedCommandBar.MenuItems>
                 </controls:TabbedCommandBar>
@@ -611,7 +612,7 @@
 
 
 
-                <TabView Grid.Column="0" Grid.Row="0" 
+                <TabView Grid.Column="0" Grid.Row="0"  x:Name="TabView1"
                  AddTabButtonClick="TabView_AddButtonClick" 
                  TabCloseRequested="TabView_TabCloseRequested" 
                  Loaded="TabView_Loaded" 

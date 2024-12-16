@@ -10,6 +10,7 @@ using ACOMCommmon;
 //using System.Threading.Tasks;
 using ACOMPlugin.Core;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using ShadowPluginLoader.MetaAttributes;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -26,16 +27,32 @@ namespace WidgetPlug.Slide
 [AutoPluginMeta]
 public partial class Slide : ACOMPluginBase
 {
+        IconSourceElement icon = new IconSourceElement();
         WidgetSlide widget;
         public override string DisplayName => throw new NotImplementedException();
 
         public override IEnumerable<string> ResourceDictionaries => base.ResourceDictionaries;
 
+        public Slide()
+        {
+            icon.IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Comment };
+           /// OnSystemCommand(new List<SystemCommandEnum>() { SystemCommandEnum.Delete });
+        }
         public override FrameworkElement Create()
         {
             widget = new WidgetSlide();
+            widget.slide = this;
             return widget;
         }
+
+        //public void  onSystemCommand(object sender, List<SystemCommandEnum> cmd)
+        //{
+        //    base.OnSystemCommand(sender, cmd);
+        //}
+        //public void onUpdateCommand(object sender, List<string[]> cmd)
+        //{
+        //    base.OnUpdateCommand(sender, cmd);
+        //}
 
         public override bool Equals(object obj)
         {
@@ -54,6 +71,21 @@ public partial class Slide : ACOMPluginBase
         public override int GetHashCode()
         {
             return base.GetHashCode();
+        }
+
+        public override IconSourceElement GetIcon()
+        {
+             return icon;
+        }
+
+        public override string GetLabel()
+        {
+            return "滑块";
+        }
+
+        public override string GetTag()
+        {
+            return "Slide";
         }
 
         public override string ToString()

@@ -16,6 +16,7 @@ using ShadowPluginLoader.WinUI;
 using ShadowPluginLoader.WinUI.Models;
 using Windows.Devices.SerialCommunication;
 using ACOMCommmon;
+using Microsoft.UI.Xaml.Controls;
 
  namespace ACOMPlugin.Core;
 
@@ -28,17 +29,19 @@ public class ACOMPluginMetaData : AbstractPluginMetaData
     public string Author { get; init; }
 }
 
-//public class ChannelData
-//{
-//    public string CData;
-//    public string Name;
-//    public string ExpendData;//扩展数据，用于隐藏部分的显示
-//    public DateTime DateTime;
-//}
+public enum SystemCommandEnum 
+{
+    Delete,
+    Copy,
+    Paste,
+}
 public abstract class ACOMPluginBase : AbstractPlugin
 {
 
-     public abstract string GetEmoji();
+    public abstract string GetEmoji();
+    public abstract IconSourceElement GetIcon();
+    public abstract string GetLabel();
+    public abstract string GetTag();
     public abstract FrameworkElement Create();
 
     public abstract void UpdateData(List<CannelData> newData);
@@ -46,16 +49,27 @@ public abstract class ACOMPluginBase : AbstractPlugin
     /// cmd 为 cmd_name;cmd_arg1;cmd_arg2
     /// </summary>
     /// <param name="cmd"></param>
-    public delegate void UpdateCommands(object sender ,List<string[]> cmd);
-    public  event UpdateCommands UpdateCommand;//当外部设备变化触发
+    public delegate void UpdateCommands(object sender, List<string[]> cmd);
+    public delegate void SystemCommands(object sender, List<SystemCommandEnum> cmd);
+    public event UpdateCommands UpdateCommand;//当外部设备变化触发
+    public event SystemCommands SystemCommand;//当外部设备变化触发
     public ACOMPluginBase()
     {
 
     }
+    public void OnUpdateCommand(object sender, List<string[]> cmd)
+    {
+        UpdateCommand?.Invoke(sender, cmd);
+    }
 
-     ~ACOMPluginBase()
+    public void OnSystemCommand(object sender, List<SystemCommandEnum> cmd)
+    {
+        SystemCommand?.Invoke(sender, cmd);
+    }
+    ~ACOMPluginBase()
     {
         UpdateCommand = null;
+        SystemCommand = null;
     }
 }
  

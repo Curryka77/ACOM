@@ -20,12 +20,8 @@ using CommunityToolkit.WinUI.Collections;
 using ACOMPlug;
 using static ACOM.Models.IO_Manage;
 using ACOMv2.Common;
-
-
-
-
-
-
+using ACOMPlugin.Core;
+using ACOMv2.Models.Processers;
 
 public class ConsolString : INotifyPropertyChanged
 {
@@ -287,7 +283,7 @@ public sealed partial class HomeLandingPage : Page
                 frame.Navigate(typeof(CanvasPanelPage));
                 break;
         }
-
+        CanvasPanelPage canvasPanelPage = frame.Content as CanvasPanelPage;
         newItem.Content = frame;
 
         return newItem;
@@ -350,53 +346,11 @@ public sealed partial class HomeLandingPage : Page
         // Focus will not move to the menu
         // ShowMenu(sender, true);
     }
-
-    //private void AppBarButton_Click_Play(object sender, RoutedEventArgs e)
-    //{
-    //    var barbutton = sender as AppBarToggleButton;
-
-    //    if (barbutton != null)
-    //    {
-    //        if (barbutton.IsChecked == true)
-    //        {
-    //            FontIcon icon = new FontIcon();
-    //            icon.Glyph = "\uE769";
-    //            barbutton.Icon = icon;
-    //        }
-    //        else
-    //        {
-    //            FontIcon icon = new FontIcon();
-    //            icon.Glyph = "\uE768";
-    //            barbutton.Icon = icon;
-    //        }
-    //    }
-    //}
+ 
     private void AppBarButton_Click(object sender, RoutedEventArgs e)
     {
     }
-    //private void AppBarButton_Click_Down(object sender, RoutedEventArgs e)
-    //{
-    //    var barbutton = sender as AppBarButton;
-
-    //    if (barbutton != null)
-    //    {
-
-    //        if (Is_up == true)
-    //        {
-    //            FontIcon icon = new FontIcon();
-    //            icon.Glyph = "\uE896";
-    //            barbutton.Icon = icon;
-    //            Is_up = false;
-    //        }
-    //        else
-    //        {
-    //            FontIcon icon = new FontIcon();
-    //            icon.Glyph = "\uE898";
-    //            barbutton.Icon = icon;
-    //            Is_up = true;
-    //        }
-    //    }
-    //}
+ 
     private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
         var textBox = sender as TextBox;
@@ -636,6 +590,7 @@ public sealed partial class HomeLandingPage : Page
     private void AppBarButton_Click_1(object sender, RoutedEventArgs e)
     {
         dialogTextBox.Text = string.Empty;
+        total_str.totalString = string.Empty;
         dialogTextBox.DeleteLine(1);
     }
 
@@ -656,6 +611,39 @@ public sealed partial class HomeLandingPage : Page
         }
 
         LineEndingTextBlock.Text = LineEnding;
+
+    }
+
+    public T ConvertTabViewItemToPage<T>(object obj)
+    {
+        var ttt = obj as TabViewItem;
+        var tt = ttt.Content as Frame;
+         return (T)tt.Content;
+    }
+    private void AppBarButton_Click_WidgetCreate(object sender, RoutedEventArgs e)
+    {
+        var button = sender as AppBarButton;
+        if (button != null)
+        {
+            //var ttt = TabView1.SelectedItem as TabViewItem;
+            //var tt = ttt.Content as Frame;
+            //var t = tt.Content as CanvasPanelPage;
+           var page =  ConvertTabViewItemToPage< CanvasPanelPage>(TabView1.SelectedItem);
+            ACOMPluginBase plug;
+            Plugs.WidgetPlugins.TryGetValue(button.Tag as string,out plug);
+            if(plug != null)
+            {
+                page.CreateWidget(plug);
+            }
+            else
+            {
+                Debug.WriteLine("Widget "+ (button.Tag as string) + " not found");
+            }
+          }
+    }
+
+    private void TabbedCommandBar_KeyDown(object sender, KeyRoutedEventArgs e)
+    {
 
     }
 }

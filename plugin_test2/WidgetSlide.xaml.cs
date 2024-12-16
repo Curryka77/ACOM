@@ -13,6 +13,9 @@ using Microsoft.UI.Xaml.Navigation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using CustomExtensions.WinUI;
+using Microsoft.UI;
+using Windows.Devices.Input;
+using ACOMPlugin.Core;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -20,6 +23,7 @@ using CustomExtensions.WinUI;
 namespace WidgetPlug.Slide;
 public sealed partial class WidgetSlide : UserControl
 {
+    public Slide slide;
     private void ShowMenu(UIElement sender, bool isTransient)
     {
         FlyoutShowOptions myOption = new FlyoutShowOptions();
@@ -51,4 +55,12 @@ public sealed partial class WidgetSlide : UserControl
     {
 
     }
+
+    private void WidgetDeleteButton_Click(object sender, RoutedEventArgs e)
+    {
+        List<SystemCommandEnum> cmd = new List<SystemCommandEnum>();
+        cmd.Add(SystemCommandEnum.Delete);
+        slide.OnSystemCommand(this, cmd);
+    }
+
 }

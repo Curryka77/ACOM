@@ -39,7 +39,6 @@
     </Page>
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if not exist &quot;$(ProjectDir)..\Packages\$(ProjectName)&quot; mkdir &quot;$(ProjectDir)..\Packages\$(ProjectName)&quot;&#xD;&#xA;xcopy /e &quot;$(TargetDir)&quot; &quot;$(ProjectDir)..\Packages\$(ProjectName)&quot; /Y " />
   </Target>
   
 </Project>
