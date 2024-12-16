@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,38 @@ internal class SerialDeviceHelper
     public static string ConvertCheckBitToFriendlyName(string str)
     {
         return null;
+    }
+    public static Parity ConvertToParity(string str)
+    {
+        if (str.Equals(checkBit[0]))
+        {
+            return Parity.None;
+        }
+        else if (str.Equals(checkBit[1]))
+        {
+            return Parity.Odd;
+        }
+        else if (str.Equals(checkBit[2]))
+        {
+            return Parity.Even;
+        }
+        else return Parity.None;
+    }
+    public static StopBits ConvertToStopBit(string str)
+    {
+        if (str.Equals(stopBit[0]))
+        {
+            return StopBits.One;
+        }
+        else if (str.Equals(stopBit[1]))
+        {
+            return StopBits.OnePointFive;
+        }
+        else if (str.Equals(stopBit[2]))
+        {
+            return StopBits.Two;
+        }
+        else return StopBits.One;
     }
     readonly private static List<string> checkBit = new()
     {

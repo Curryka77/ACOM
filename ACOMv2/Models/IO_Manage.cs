@@ -471,8 +471,11 @@ namespace ACOM.Models
         private void Client_OnConnectedSuccessfully(object sender, STTech.BytesIO.Core.ConnectedSuccessfullyEventArgs e)
         {
             Print("连接成功");
-            IPlugProcessBase plug = Plugs.CreateInstance("ProcesserPlugWaterFire");
-            channelProcesserMap.Add(sender, plug);
+            //IPlugProcessBase plug = Plugs.CreateInstance("ProcesserPlugWaterFire");
+            //if(plug != null)
+            //{
+            //    channelProcesserMap.Add(sender, plug);
+            //}
             serialLoadStats.Add(((BytesIO.Serial.SerialClient)sender).PortName, 0);
             serialLoad.Add(((BytesIO.Serial.SerialClient)sender).PortName, new());
         }
@@ -490,6 +493,7 @@ namespace ACOM.Models
                 }
             }
             __client = new SerialClient();
+            __client.ReceiveBufferSize = 4096 * 16;
             // 监听连接成功事件
             __client.OnConnectedSuccessfully += Client_OnConnectedSuccessfully;
             // 监听连接失败事件

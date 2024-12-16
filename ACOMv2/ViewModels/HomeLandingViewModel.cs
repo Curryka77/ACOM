@@ -48,23 +48,40 @@ public class SerialDevices  : ObservableObject
             SetProperty(ref is_connect, value);
         }
     }
-    public void Connect()
+    public bool Connect()
     {
         Debug.WriteLine(_DeviceName + " connecting...");
-        if (ioManage.Connect(_DeviceName) != null)
+        if (ioManage.Connect(_DeviceName,_boundRate,_dateBit,
+            SerialDeviceHelper.ConvertToParity(_checkBit), SerialDeviceHelper.ConvertToStopBit(_stopBit)) != null)
         {
             Debug.WriteLine(_DeviceName  + " connected");
             is_connect = true;
             Icon = new SymbolIcon(Symbol.Pause);
+            return true;
+
+        }
+        else
+        {
+            //TODO : 完成错误日志输出，和其他提示
+            return false;
 
         }
     }
-    public void DisConnect()
+    public bool DisConnect()
     {
         Debug.WriteLine(_DeviceName + " disconnect...");
-        ioManage.DisConnect(_DeviceName);
-        is_connect = false;
-        Icon = new SymbolIcon(Symbol.Play);
+        if (ioManage.DisConnect(_DeviceName)==true)
+        {
+            is_connect = false;
+            Icon = new SymbolIcon(Symbol.Play);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+
     }
     public string DeviceName
     {

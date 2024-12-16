@@ -109,30 +109,39 @@ public sealed partial class HomeLandingPage : Page
 
     private void Instance_update(List<SerialDevice> serialDevices)
     {
-        DispatcherQueue.TryEnqueue(() =>
+        try
         {
-            Debug.WriteLine("update serial1");
-            Debug.WriteLine("update serial2");
-
-            foreach (var device in serialDevices)
+            DispatcherQueue.TryEnqueue(() =>
             {
-                if (!ViewModel.SerialPortsSource.Contains(device.PortName))
-                {
-                    ViewModel.SerialPortsSource.Add(device.PortName);
-                    ViewModel.serialDevices.Add(new SerialDevices(device.PortName, device.FriendlyName));
-                }
-            }
+                Debug.WriteLine("update serial1");
+                Debug.WriteLine("update serial2");
 
-            // Remove ports that are no longer available
-            for (int i = ViewModel.SerialPortsSource.Count - 1; i >= 0; i--)
-            {
-                if (!serialDevices.Any(d => d.PortName == ViewModel.SerialPortsSource[i]))
+                foreach (var device in serialDevices)
                 {
-                    ViewModel.SerialPortsSource.RemoveAt(i);
-                    ViewModel.serialDevices.RemoveAt(i);
+                    if (!ViewModel.SerialPortsSource.Contains(device.PortName))
+                    {
+                        ViewModel.SerialPortsSource.Add(device.PortName);
+                        ViewModel.serialDevices.Add(new SerialDevices(device.PortName, device.FriendlyName));
+                    }
                 }
-            }
-        });
+
+                // Remove ports that are no longer available
+                for (int i = ViewModel.SerialPortsSource.Count - 1; i >= 0; i--)
+                {
+                    if (!serialDevices.Any(d => d.PortName == ViewModel.SerialPortsSource[i]))
+                    {
+                        ViewModel.SerialPortsSource.RemoveAt(i);
+                        ViewModel.serialDevices.RemoveAt(i);
+                    }
+                }
+            });
+
+        }
+        catch (Exception e)
+        {
+            Debug.WriteLine("Instance_update DispatcherQueue error " + e.Message);
+        }
+        
     }
 
     private void UpdateCannelViewMsg(List<CannelData> globChannelViewData)
@@ -342,52 +351,52 @@ public sealed partial class HomeLandingPage : Page
         // ShowMenu(sender, true);
     }
 
-    private void AppBarButton_Click_Play(object sender, RoutedEventArgs e)
-    {
-        var barbutton = sender as AppBarToggleButton;
+    //private void AppBarButton_Click_Play(object sender, RoutedEventArgs e)
+    //{
+    //    var barbutton = sender as AppBarToggleButton;
 
-        if (barbutton != null)
-        {
-            if (barbutton.IsChecked == true)
-            {
-                FontIcon icon = new FontIcon();
-                icon.Glyph = "\uE769";
-                barbutton.Icon = icon;
-            }
-            else
-            {
-                FontIcon icon = new FontIcon();
-                icon.Glyph = "\uE768";
-                barbutton.Icon = icon;
-            }
-        }
-    }
+    //    if (barbutton != null)
+    //    {
+    //        if (barbutton.IsChecked == true)
+    //        {
+    //            FontIcon icon = new FontIcon();
+    //            icon.Glyph = "\uE769";
+    //            barbutton.Icon = icon;
+    //        }
+    //        else
+    //        {
+    //            FontIcon icon = new FontIcon();
+    //            icon.Glyph = "\uE768";
+    //            barbutton.Icon = icon;
+    //        }
+    //    }
+    //}
     private void AppBarButton_Click(object sender, RoutedEventArgs e)
     {
     }
-    private void AppBarButton_Click_Down(object sender, RoutedEventArgs e)
-    {
-        var barbutton = sender as AppBarButton;
+    //private void AppBarButton_Click_Down(object sender, RoutedEventArgs e)
+    //{
+    //    var barbutton = sender as AppBarButton;
 
-        if (barbutton != null)
-        {
+    //    if (barbutton != null)
+    //    {
 
-            if (Is_up == true)
-            {
-                FontIcon icon = new FontIcon();
-                icon.Glyph = "\uE896";
-                barbutton.Icon = icon;
-                Is_up = false;
-            }
-            else
-            {
-                FontIcon icon = new FontIcon();
-                icon.Glyph = "\uE898";
-                barbutton.Icon = icon;
-                Is_up = true;
-            }
-        }
-    }
+    //        if (Is_up == true)
+    //        {
+    //            FontIcon icon = new FontIcon();
+    //            icon.Glyph = "\uE896";
+    //            barbutton.Icon = icon;
+    //            Is_up = false;
+    //        }
+    //        else
+    //        {
+    //            FontIcon icon = new FontIcon();
+    //            icon.Glyph = "\uE898";
+    //            barbutton.Icon = icon;
+    //            Is_up = true;
+    //        }
+    //    }
+    //}
     private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
         var textBox = sender as TextBox;
