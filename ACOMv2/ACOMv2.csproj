@@ -182,9 +182,9 @@
   <!--<Exec Command="if exist &quot;$(DevEnvDir)TextTransform.exe&quot; &quot;$(DevEnvDir)TextTransform.exe&quot; &quot;%(T4Template.FullPath)&quot;" Condition="Exists('$(DevEnvDir)TextTransform.exe')" />-->
 </Target>
 
-<ItemGroup>
-  <PRIResource Remove="Models\新文件夹\**" />
-</ItemGroup>
+<!--<ItemGroup>
+  <PRIResource Remove="Models\Persistence\**" />
+</ItemGroup>-->
 
 <ItemGroup>
   <Content Remove="Assets\encode.png" />

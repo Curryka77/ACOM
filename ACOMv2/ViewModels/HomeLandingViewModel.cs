@@ -21,6 +21,7 @@ using System.Collections;
 using static ACOMCommmon.RawDataMassage;
 using Microsoft.VisualBasic;
 using static ACOM.Models.IO_Manage;
+using ACOMv2.Persistence;
 
 namespace ACOMv2.ViewModels;
 
@@ -203,6 +204,8 @@ public partial class HomeLandingViewModel : ObservableObject
 
     public ObservableCollection<SerialDevices> serialDevices = new(); //可以连接的串口设备
     public ObservableCollection<string> SerialPortsSource = new(); //连接设备
+    public ObservableCollection<string> SerialPortsFriendlyLinkedSource = new(); //连接设备
+    public int SelectedLinkedSendSerialIndex = 0; 
     public int ConfigingSerialDeviceIndex = 0; //正在配置的串口设备
 
 
@@ -253,6 +256,11 @@ public partial class HomeLandingViewModel : ObservableObject
         //HomeLandingViewService.TextAddLine("wd");
 
     }
+    public void Send(byte[] bytes)
+    {
+        SelectedLinkedSendSerialIndex = SelectedLinkedSendSerialIndex > SerialPortsFriendlyLinkedSource.Count ? SerialPortsFriendlyLinkedSource.Count : SelectedLinkedSendSerialIndex;
+        IO_Manage.Instance.SerialSend(SerialPortsFriendlyLinkedSource[SelectedLinkedSendSerialIndex], bytes);
+     }
 
 }
 

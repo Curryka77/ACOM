@@ -42,6 +42,7 @@ namespace ACOM.Models
     using System.Timers;
     using ACOMCommmon;
     using ACOMPlug;
+    using ACOMv2.Persistence;
     using Amib.Threading;
     using CommunityToolkit.Mvvm.Messaging;
     using CommunityToolkit.Mvvm.Messaging.Messages;
@@ -293,6 +294,10 @@ namespace ACOM.Models
         //页面文件
         public HomeLandingPage page;
 
+
+
+        public PersistenceManager persistence = PersistenceManager.Instance;
+
         SmartThreadPool smartThreadPool = new SmartThreadPool();
 
         Queue<byte[]> bytes = new();
@@ -331,7 +336,7 @@ namespace ACOM.Models
         //List<BytesIO.Kcp.KcpClient> kcpClients = new();
         //List<BytesIO.Udp.UdpClient> udpClients = new();
 
-        ConcurrentQueue<RawDataMassage> charRecQueue = new();
+        ConcurrentQueue<RawDataMassage> rawdataQueue = new();
 
         /// <summary>
         /// 插件管理
@@ -357,7 +362,7 @@ namespace ACOM.Models
         /// Union the glob channel massage.
         /// </summary>
         /// <param name="Data"></param>
-        public static void UnionGlobChannelMassage(List<ChannelMassage> Data)
+        private static void UnionGlobChannelMassage(List<ChannelMassage> Data)
         {
             if (Data == null) return;
 
@@ -381,7 +386,7 @@ namespace ACOM.Models
         /// Union the glob channel view massage.
         /// </summary>
         /// <param name="Data"></param>
-        public static void UnionGlobChannelViewMassage(List<CannelData> Data)
+        private static void UnionGlobChannelViewMassage(List<CannelData> Data)
         {
             if (Data == null) return;
 
@@ -428,12 +433,13 @@ namespace ACOM.Models
                 byte[] d = bytes.Dequeue();
                 var tt = channelProcesser.Process(new RawDataMassage(d, DateTime.Now, RawDataMassage.DateSource.Serial, portName));
                 UnionGlobChannelMassage(tt);
+
                 Debug.WriteLine("ProcessReceivedDataAsync");
-                charRecQueue.Enqueue(new RawDataMassage(d, DateTime.Now, RawDataMassage.DateSource.Serial, portName));
+                rawdataQueue.Enqueue(new RawDataMassage(d, DateTime.Now, RawDataMassage.DateSource.Serial, portName));
                 page.TextAddLine(d.EncodeToString());
                 WeakReferenceMessenger.Default.Send(new ValueChangedMessage<List<CannelData>>(GlobChannelViewData));
 
-
+                _ = persistence.SaveReceivedDataToFileAsync(this, d);
                 serialLoadStats[portName] += d.Length;
 
                 if ((DateTime.Now - LastTime).TotalMilliseconds > 1000)
@@ -564,13 +570,7 @@ namespace ACOM.Models
         }
 
         public int doing = 1;
-        private static void OnTimerElapsed(object sender, ElapsedEventArgs e)
-        {
-            // 在这里执行您的逻辑
-            IO_Manage.Instance.doing = 1;
-            IO_Manage.Instance.updateSerialDevce();
-        }
-
+ 
         public void updateSerialDevce()
         {
             Stopwatch stopwatch = new Stopwatch();
@@ -604,7 +604,10 @@ namespace ACOM.Models
                 //Print("update" + e.ToString() + sender.GetType().ToString());
                 System.Timers.Timer timer = new System.Timers.Timer();
                 timer.Interval = 100; // 设置时间间隔为100毫秒（0.1秒）
-                timer.Elapsed += new System.Timers.ElapsedEventHandler(OnTimerElapsed);
+                timer.Elapsed += new System.Timers.ElapsedEventHandler(((sender ,e) => {
+                    IO_Manage.Instance.doing = 1;
+                    IO_Manage.Instance.updateSerialDevce();
+                }));
                 timer.AutoReset = false; // 设置定时器在触发一次后不自动重置
                 timer.Start();
             }
@@ -668,6 +671,20 @@ namespace ACOM.Models
             _ = Plugs.InitAsync("C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Assets\\Plugs\\");
         }
 
+
+        public  void SerialSend(string portName, byte[] bytes)
+        {
+            if (Dic_Serial.TryGetValue(portName, out var client))
+            {
+                client.Send(bytes);
+                _=persistence.SaveSendDataToFileAsync(client, bytes);
+
+            }
+            else
+            {
+                Debug.WriteLine($"Port {portName} not found.");
+            }
+        }
         ~IO_Manage() { }
     }
 

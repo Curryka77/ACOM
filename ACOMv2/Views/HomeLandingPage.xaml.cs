@@ -22,6 +22,7 @@ using static ACOM.Models.IO_Manage;
 using ACOMv2.Common;
 using ACOMPlugin.Core;
 using ACOMv2.Models.Processers;
+using System.Text;
 
 public class ConsolString : INotifyPropertyChanged
 {
@@ -171,11 +172,6 @@ public sealed partial class HomeLandingPage : Page
 
 
         this.InitializeComponent();
-
-
-
-
-
 
 
         ViewModel.advancedCollectionView.SortDescriptions.Add(new SortDescription("DataName", SortDirection.Descending));
@@ -491,6 +487,9 @@ public sealed partial class HomeLandingPage : Page
         }
 
     }
+
+
+
     private void LinkButton_Click(object sender, RoutedEventArgs e)
     {
         AppBarButton button = sender as AppBarButton;
@@ -505,17 +504,33 @@ public sealed partial class HomeLandingPage : Page
                 {
                     if (dev.ConnectState)
                     {
-                        dev.DisConnect();
-                        ConnectButton.IsChecked = false;
+                        if(dev.DisConnect())
+                        {
+                            ConnectButton.IsChecked = false;
+                            ViewModel.SerialPortsFriendlyLinkedSource.Remove(dev.DeviceName);
+
+                        }
+                        else
+                        {
+                            Logger.Error("disconnect"+ DeviceName+" error ");
+                        }
 
                         return;
                     }
                     else
                     {
                         //TODO BUG 应该有重复的项目导致会有异常
-                        dev.Connect();
-                        ConnectButton.IsChecked = true; 
-                        return;
+                        if (dev.Connect())
+                        {
+                            ConnectButton.IsChecked = true;
+                            ViewModel.SerialPortsFriendlyLinkedSource.Add(dev.DeviceName);
+
+                        }
+                        else
+                        {
+                            Logger.Error("connect" + DeviceName + " error ");
+                        }
+                         return;
                     }
                 }
             }
@@ -536,15 +551,31 @@ public sealed partial class HomeLandingPage : Page
                     {
                         if (dev.ConnectState)
                         {
-                            dev.DisConnect();
-                            ConnectButton.IsChecked = false;
+                            if (dev.DisConnect())
+                            {
+                                ConnectButton.IsChecked = false;
+                                ViewModel.SerialPortsFriendlyLinkedSource.Remove(dev.DeviceName);
+
+                            }
+                            else
+                            {
+                                Logger.Error("disconnect" + dev.DeviceName + " error ");
+                            }
+
                             return;
                         }
                         else
                         {
                             //TODO BUG 应该有重复的项目导致会有异常
-                            dev.Connect();
-                            ConnectButton.IsChecked = true;
+                            if (dev.Connect())
+                            {
+                                ConnectButton.IsChecked = true;
+                                ViewModel.SerialPortsFriendlyLinkedSource.Add(dev.DeviceName);
+                            }
+                            else
+                            {
+                                Logger.Error("connect" + dev.DeviceName + " error ");
+                            }
                             return;
                         }
                     }
@@ -563,25 +594,35 @@ public sealed partial class HomeLandingPage : Page
 
     }
 
-    
+    public static byte[] ToByteArray(string str, Encoding encoding = null)
+    {
+        if (str == null)
+        {
+            throw new ArgumentNullException(nameof(str));
+        }
+
+        encoding ??= Encoding.UTF8; // 默认使用 UTF-8 编码
+        return encoding.GetBytes(str);
+    }
+
     private void SendButton_Click(object sender, RoutedEventArgs e)
     {
+        string str;
         if (LineEnding.Equals("\\r\\n"))
         {
- 
-            dialogTextBox.SetText(dialogTextBox.Text + SendTextBox.Text+"\r\n");
-
-
+            str = SendTextBox.Text + "\r\n";
         }
         else if (LineEnding.Equals("\\n"))
         {
-            dialogTextBox.SetText(dialogTextBox.Text + SendTextBox.Text + "\n");
+            str =  SendTextBox.Text + "\n";
         }
         else
         {
-            dialogTextBox.SetText(dialogTextBox.Text + SendTextBox.Text);
-
+            str = SendTextBox.Text;
         }
+
+        dialogTextBox.SetText(dialogTextBox.Text + str);
+        ViewModel.Send(ToByteArray(str));
         dialogTextBox.ScrollPageDown();
     }
 

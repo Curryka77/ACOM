@@ -425,11 +425,12 @@
                     </AppBarElementContainer>-->
 
                             <AppBarElementContainer>
-                                <ComboBox MinWidth="175" SelectedIndex="0" >
-                                    <ComboBoxItem Content="COM1(通讯端口)" />
+                                <ComboBox MinWidth="175" ItemsSource="{x:Bind ViewModel.SerialPortsFriendlyLinkedSource,Mode=OneWay}"
+                                          SelectedIndex="{x:Bind ViewModel.SelectedLinkedSendSerialIndex,Mode=TwoWay}">
+                                    <!--<ComboBoxItem Content="COM1(通讯端口)" />
                                     <ComboBoxItem Content="COM2(蓝牙端口)" />
                                     <ComboBoxItem Content="COM3(蓝牙端口)" />
-                                    <ComboBoxItem Content="COM24(CH340)" />
+                                    <ComboBoxItem Content="COM24(CH340)" />-->
                                 </ComboBox>
                             </AppBarElementContainer>
                             <AppBarSeparator />

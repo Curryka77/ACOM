@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using ACOMPlugin.Core;
+using ACOMv2.Persistence;
 using CustomExtensions.WinUI;
 using DryIoc;
 using DiFactory = ShadowPluginLoader.WinUI.DiFactory;
@@ -34,12 +35,19 @@ public partial class App : Application
     
     public App()
     {
+        LoggerSetup.ConfigureLogger();
         Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzYyMDAwMkAzMjM4MmUzMDJlMzBseXZsekVaVS9pTk9BSTdLTWUxclkrdUwwRXNxVENQcTFmNEdHSlhvYzNZPQ==");
         Services = ConfigureServices();
         this.InitializeComponent();
         ApplicationExtensionHost.Initialize(this);
         DiFactory.Services.Register<ACOMPluginLoader>(reuse: Reuse.Singleton);
- 
+        Debug.WriteLine("LogDirectoryPath is " + Constants.LogDirectoryPath);
+        Debug.WriteLine("RootDirectoryPath is " + Constants.RootDirectoryPath);
+        Debug.WriteLine("AppConfigPath is " + Constants.AppConfigPath);
+        Debug.WriteLine("LogFilePath is " + Constants.LogFilePath);
+
+        LoggerSetup.Logger.Warning("App Start");
+        
     }
 
     private static IServiceProvider ConfigureServices()

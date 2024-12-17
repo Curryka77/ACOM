@@ -16,4 +16,8 @@ public abstract class Singleton<T> where T : class
     }
     private static T instance = null;
     public static T Instance { get { return Nested.instance; } }
+
+ 
+
+    
 }
