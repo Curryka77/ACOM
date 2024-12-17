@@ -140,8 +140,10 @@ public partial class CanvasView : ItemsControl
             // We know that most likely these values have been bound to a data model object of some sort
             // Therefore, we need to use this helper to update the underlying model value of our bound property.
             //cp.WidtControl.MousePositionh = 128;
+            cp.Focus(FocusState.Pointer);
             cp.SetBindingExpressionValue(Canvas.LeftProperty, Canvas.GetLeft(cp) + e.Delta.Translation.X);
             cp.SetBindingExpressionValue(Canvas.TopProperty, Canvas.GetTop(cp) + e.Delta.Translation.Y);
+ 
         }
     }
 

@@ -155,18 +155,64 @@ namespace ACOMv2.Views
             verticalContentSizer.ManipulationDelta += ContentSizer_ManipulationDelta;
 
             elementGrid.Children.Add(verticalContentSizer);
+            element.KeyDown += KeyControl;
              elementGrid.KeyDown += KeyControl;
             // 将Grid添加到页面或其他父容器中
             return elementGrid; // 假设你是在Page中，并且将Grid设置为页面的内容
         }
+
+        public static void RemoveControlAndParentsFromCanvas(FrameworkElement control)
+    {
+        // 找到控件所在的Canvas
+        Canvas canvas = FindParent<Canvas>(control);
+        if (canvas == null) return;
+
+        // 创建一个栈来存储需要移除的控件及其父控件
+        Stack<FrameworkElement> controlsToRemove = new ();
+        controlsToRemove.Push(control);
+
+        // 递归地将控件及其所有父控件加入栈中
+        while ((control = (FrameworkElement)VisualTreeHelper.GetParent(control)) != null && control != canvas)
+        {
+            controlsToRemove.Push(control);
+        }
+
+        // 从栈中弹出控件并从Canvas中移除
+        while (controlsToRemove.Count > 0)
+        {
+            control = controlsToRemove.Pop();
+            if (canvas.Children.Contains(control))
+            {
+                canvas.Children.Remove(control);
+            }
+        }
+    }
+
+        public static T FindParent<T>(FrameworkElement child) where T : FrameworkElement
+        {
+        DependencyObject parentObject = VisualTreeHelper.GetParent(child);
+        if (parentObject == null) return null;
+
+        while (parentObject != null)
+        {
+            if (parentObject is T parent)
+            {
+                return parent;
+            }
+            parentObject = VisualTreeHelper.GetParent(parentObject);
+        }
+        return null;
+    }
 
         private void KeyControl(object sender, KeyRoutedEventArgs e)
         {
             // 检查按下的键是否是Delete键
             if (e.Key == Windows.System.VirtualKey.Delete)
             {
-                CanvasView1.Items.Remove(sender);
+                RemoveControlAndParentsFromCanvas(sender as FrameworkElement);
+                //CanvasView1.Items.Remove(sender);
             }
+            e.Handled = true;
         }
 
         public void CreateWidget(ACOMPluginBase WidgetPlug)
@@ -204,18 +250,9 @@ namespace ACOMv2.Views
 
         private void DeleteOperation(object sender)
         {
-            // 删除操作的具体实现
-            // 获取发送事件的按钮
- 
-            // 检查按钮是否非空，并且它有一个父容器
-            if (sender != null && VisualTreeHelper.GetParent(sender as FrameworkElement) != null)
+            if (sender is FrameworkElement cp)
             {
-                var parent = VisualTreeHelper.GetParent(sender as FrameworkElement) as Grid;
-                if(parent != null)
-                {
-                    CanvasView1.Items.Remove(parent);
-
-                }
+                RemoveControlAndParentsFromCanvas(cp);
             }
         }
 
