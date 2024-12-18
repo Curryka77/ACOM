@@ -67,10 +67,7 @@ public class CannelData : ObservableObject
         get => _DataName;
         set => SetProperty(ref _DataName, value);
     }
-    public string ID
-    {
-        get; private set;
-    }
+  
     private string _Data;
     public string Data
     {

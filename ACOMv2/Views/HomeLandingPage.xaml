@@ -143,7 +143,6 @@
                     <ColumnDefinition Width="48"/>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="36"/>
-
                 </Grid.ColumnDefinitions>
                 <!--<Border Grid.Column="0" Background="LightSkyBlue" CornerRadius="1.4" Width="2.8" Height="16" Margin="-25,0,0,0"/>-->
                 <TextBlock Grid.Column="1" Text="{x:Bind DeviceName, Mode=OneWay}" x:Phase="1" 
@@ -154,10 +153,10 @@
                         <RowDefinition Height="24"/>
                     </Grid.RowDefinitions>
                     <TextBlock  Grid.Row="0" Text="{x:Bind OverView, Mode=OneWay}" x:Phase="1" FontSize="10" Height="12" 
-                   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,8,0,0"  />
+                        HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,8,0,0"  />
 
                     <TextBlock  Grid.Row="1" Text="{x:Bind DeviceDesc, Mode=OneWay}" x:Phase="1" FontSize="8" Height="12"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="0,0,0,0" />
+                        HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="0,0,0,0" />
                 </Grid>
                 <AppBarButton x:Name="LinkButton" IsTabStop="False" HorizontalAlignment="Right" Visibility="Visible"
                     Width="36" Click="LinkButton_Click"  Tag="{x:Bind DeviceName}" Icon="{x:Bind Icon,Mode=TwoWay}"

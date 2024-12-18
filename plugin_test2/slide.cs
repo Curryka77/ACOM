@@ -9,6 +9,7 @@ using ACOMCommmon;
 //using System.Text;
 //using System.Threading.Tasks;
 using ACOMPlugin.Core;
+using DryIoc.ImTools;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using ShadowPluginLoader.MetaAttributes;
@@ -28,7 +29,9 @@ namespace WidgetPlug.Slide
 public partial class Slide : ACOMPluginBase
 {
         IconSourceElement icon = new IconSourceElement();
-        WidgetSlide widget;
+
+        public delegate void updateData(List<CannelData> newData);
+        public updateData update;
         public override string DisplayName => throw new NotImplementedException();
 
         public override IEnumerable<string> ResourceDictionaries => base.ResourceDictionaries;
@@ -40,8 +43,9 @@ public partial class Slide : ACOMPluginBase
         }
         public override FrameworkElement Create()
         {
-            widget = new WidgetSlide();
+            WidgetSlide widget = new WidgetSlide();
             widget.slide = this;
+            update += widget.updateData;
             return widget;
         }
 
@@ -95,7 +99,7 @@ public partial class Slide : ACOMPluginBase
 
         public override void UpdateData(List<CannelData> newData)
         {
-             
+            update?.Invoke(newData);
         }
 
         protected override void Disable()
