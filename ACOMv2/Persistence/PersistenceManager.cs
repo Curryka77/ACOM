@@ -66,7 +66,7 @@ public class PersistenceManager : Singleton<PersistenceManager>
         // 将数据写入所有文件
         using (var fileStream = new FileStream(AllFile, FileMode.Append, FileAccess.Write, FileShare.None, 4096, true))
         {
-            string rec = "[receive<--]:";
+            string rec = "[receive<--]:\r\n";
             encoding ??= Encoding.UTF8; // 默认使用 UTF-8 编码
             byte[] a = encoding.GetBytes(rec);
             await fileStream.WriteAsync(a, 0, a.Length);
@@ -85,7 +85,7 @@ public class PersistenceManager : Singleton<PersistenceManager>
         // 将数据写入所有文件
         using (var fileStream = new FileStream(AllFile, FileMode.Append, FileAccess.Write, FileShare.None, 4096, true))
         {
-            string send = "[send-->]:";
+            string send = "[send-->]:\r\n";
             encoding ??= Encoding.UTF8; // 默认使用 UTF-8 编码
             byte[] a = encoding.GetBytes(send);
             await fileStream.WriteAsync(a, 0, a.Length);

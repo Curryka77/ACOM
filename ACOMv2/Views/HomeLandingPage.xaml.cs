@@ -96,6 +96,8 @@ public sealed partial class HomeLandingPage : Page
             //scrollview1.ScrollTo(scrollview1.ActualHeight + scrollview1.VerticalOffset,0);
 
             dialogTextBox.ScrollLineIntoView(dialogTextBox.NumberOfLines);
+
+            dialogTextBox.ClearUndoRedoHistory();
         });
         
         //GC.Collect();
@@ -506,6 +508,7 @@ public sealed partial class HomeLandingPage : Page
                     {
                         if(dev.DisConnect())
                         {
+                            combox_COM.SelectedValue = dev.DeviceName;
                             ConnectButton.IsChecked = false;
                             ViewModel.SerialPortsFriendlyLinkedSource.Remove(dev.DeviceName);
 
@@ -522,6 +525,7 @@ public sealed partial class HomeLandingPage : Page
                         //TODO BUG 应该有重复的项目导致会有异常
                         if (dev.Connect())
                         {
+                            combox_COM.SelectedValue = dev.DeviceName;
                             ConnectButton.IsChecked = true;
                             ViewModel.SerialPortsFriendlyLinkedSource.Add(dev.DeviceName);
 
