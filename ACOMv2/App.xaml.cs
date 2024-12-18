@@ -58,6 +58,7 @@ public partial class App : Application
         {
             var json = new JsonNavigationViewService();
             json.ConfigDefaultPage(typeof(HomeLandingPage));
+            json.ConfigDefaultPage(typeof(SerialConnect));
             json.ConfigSettingsPage(typeof(SettingsPage));
             return json;
         });

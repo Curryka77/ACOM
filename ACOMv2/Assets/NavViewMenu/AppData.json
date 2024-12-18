@@ -10,14 +10,14 @@
       "IsExpanded": false,
       "Items": [
         {
-          "UniqueId": "ACOMv2.Views.HomeLandingPage",
+          "UniqueId": "ACOMv2.Views.SerialConnect",
           "Title": "ACOMv2",
           "Subtitle": "ACOMv2",
           "ImagePath": "ms-appx:///Assets/icon.png",
           "HideItem": true
         },
         {
-          "UniqueId": "ACOMv2.Views.SettingsPage",
+          "UniqueId": "ACOMv2.Views.SerialConnect",
           "Title": "ACOMv2",
           "Subtitle": "ACOMv2",
           "ImagePath": "ms-appx:///Assets/icon.png",

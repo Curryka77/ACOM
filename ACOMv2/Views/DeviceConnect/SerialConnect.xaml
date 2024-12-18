@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="ACOMv2.Views.SerialConnect"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ACOMv2.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:common1="using:ACOMv2.Common"
+    mc:Ignorable="d" xmlns:view_models="using:ACOMv2.ViewModels"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        
+    </Page.Resources>
+    <Grid x:Name="link_Grid">
+        <Grid.RowDefinitions>
+            <RowDefinition MinHeight="100" Height="120"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="16"/>
+            <RowDefinition Height="320"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="red" Height="100"/>
+        <!--<Border Grid.Row="1" Background="black" Height="Auto"/>-->
+        <!-- To create this sample, add/change the following properties onto the code for the base example above: -->
+        <!--<ListView Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+     SelectionMode="Extended" IsMultiSelectCheckBoxEnabled="False" IsRightTapEnabled="True"
+     x:Name="BaseExample"
+     BorderThickness="1"
+     MinWidth="120"
+     />-->
+        <!--<controls:Segmented Grid.Row="2" Width="li"
+     SelectedIndex="0"
+     SelectionMode="Single">
+     <controls:SegmentedItem 
+             Icon="{ui:FontIcon Glyph=&#xE71B;}" />
+     <controls:SegmentedItem 
+             Icon="{ui:FontIcon Glyph=&#xF22C;}" />
+     <controls:SegmentedItem 
+             Icon="{ui:FontIcon Glyph=&#xE704;}" />
+
+    </controls:Segmented>-->
+
+        <TextBlock Grid.Row="3" Text="USBdevice COM9" FontSize="10" x:Name="TextBlockCOM_Desc">
+
+        </TextBlock>
+        <Grid Grid.Row="4" Margin="0 12 0 0 ">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="84"/>
+                <ColumnDefinition Width="1.2*"/>
+
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="42"/>
+                <RowDefinition Height="42"/>
+                <RowDefinition Height="42"/>
+                <RowDefinition Height="42"/>
+                <RowDefinition Height="42"/>
+                <RowDefinition Height="42"/>
+                <RowDefinition Height="42"/>
+                <RowDefinition Height="42"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="COM端口" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8 0 0 0"/>
+            <TextBlock Grid.Column="0" Grid.Row="1"  Text="波特率" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8 0 0 0"/>
+            <TextBlock Grid.Column="0" Grid.Row="2"  Text="数据位" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8 0 0 0"/>
+            <TextBlock Grid.Column="0" Grid.Row="3"  Text="校验位" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8 0 0 0"/>
+            <TextBlock Grid.Column="0" Grid.Row="4"  Text="停止位" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8 0 0 0"/>
+            <TextBlock Grid.Column="0" Grid.Row="5"  Text="流控"   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8 0 0 0"/>
+
+            <ComboBox x:Name="combox_COM" Grid.Column="1" Grid.Row="0" IsEditable="True"  Width="100" DropDownOpened="ComboBox_DropDownOpened"   
+       HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 8 0" ItemsSource="{x:Bind ViewModel.SerialPortsSource , Mode=TwoWay}"
+               SelectionChanged="combox_COM_SelectionChanged" TextSubmitted="combox_COM_TextSubmitted">
+            </ComboBox>
+
+            <ComboBox x:Name="LinkSerial_Boundrate" Grid.Column="1" Grid.Row="1" SelectionChanged="ConfingSerialDeviceChanged"
+               IsEditable="True"  Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 8 0" SelectedIndex="3">
+                <x:String>2400</x:String>
+                <x:String>4800</x:String>
+                <x:String>9600</x:String>
+                <x:String>115200</x:String>
+                <x:String>203000</x:String>
+                <x:String>921600</x:String>
+                <x:String>1000000</x:String>
+                <x:String>2000000</x:String>
+            </ComboBox>
+            <ComboBox x:Name="LinkSerial_DataLength" Grid.Column="1" Grid.Row="2" SelectionChanged="ConfingSerialDeviceChanged"
+               ItemsSource="{x:Bind common1:SerialDeviceHelper.DataLength}"
+               IsEditable="False"  Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 8 0" SelectedIndex="3">
+
+            </ComboBox>
+            <ComboBox x:Name="LinkSerial_CheckBit" Grid.Column="1" Grid.Row="3" SelectionChanged="ConfingSerialDeviceChanged"
+               ItemsSource="{x:Bind common1:SerialDeviceHelper.CheckBit}"
+               IsEditable="False"  Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 8 0" SelectedIndex="0">
+
+            </ComboBox>
+            <ComboBox x:Name="LinkSerial_StopBit" Grid.Column="1" Grid.Row="4" SelectionChanged="ConfingSerialDeviceChanged"
+               ItemsSource="{x:Bind common1:SerialDeviceHelper.StopBit}"
+               IsEditable="False"  Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 8 0" SelectedIndex="0">
+            </ComboBox>
+            <ComboBox x:Name="LinkSerial_StreamCtrl" Grid.Column="1" Grid.Row="5" SelectionChanged="ConfingSerialDeviceChanged"
+               ItemsSource="{x:Bind common1:SerialDeviceHelper.StreamCtrl}"
+               IsEditable="False"  Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 8 0" SelectedIndex="0">
+            </ComboBox>
+            <ToggleButton x:Name="ConnectButton" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="6" Click="ConnectButton_Click" 
+             VerticalAlignment="Center" Margin="0 0 8 0"  HorizontalAlignment="Stretch" Content="连接">
+            </ToggleButton>
+            <AppBarSeparator Grid.Column="1" Grid.Row="0" Margin="-8 0 0 0" HorizontalAlignment ="Left"/>
+            <AppBarSeparator Grid.Column="1" Grid.Row="1" Margin="-8 0 0 0" HorizontalAlignment ="Left"/>
+            <AppBarSeparator Grid.Column="1" Grid.Row="2" Margin="-8 0 0 0" HorizontalAlignment ="Left"/>
+            <AppBarSeparator Grid.Column="1" Grid.Row="3" Margin="-8 0 0 0" HorizontalAlignment ="Left"/>
+            <AppBarSeparator Grid.Column="1" Grid.Row="4" Margin="-8 0 0 0" HorizontalAlignment ="Left"/>
+            <AppBarSeparator Grid.Column="1" Grid.Row="5" Margin="-8 0 0 0" HorizontalAlignment ="Left"/>
+        </Grid>
+    </Grid>
+ </Page>

@@ -48,6 +48,15 @@
 	  <Generator>TextTemplatingFileGenerator</Generator>
 	  <LastGenOutput>BreadcrumbPageMappings.cs</LastGenOutput>
 	</None>
+	<Page Update="Views\DeviceConnect\UDPConnect.xaml">
+	  <Generator>MSBuild:Compile</Generator>
+	</Page>
+	<Page Update="Views\DeviceConnect\TCPConnect.xaml">
+	  <Generator>MSBuild:Compile</Generator>
+	</Page>
+	<Page Update="Views\SerialConnect.xaml">
+	  <Generator>MSBuild:Compile</Generator>
+	</Page>
 	<Page Update="Views\CanvasPanelPage.xaml">
 	  <Generator>MSBuild:Compile</Generator>
 	</Page>
@@ -66,9 +75,13 @@
 
   <ItemGroup>
     <Compile Remove="Models\新文件夹\**" />
+    <Compile Remove="Views\新文件夹\**" />
     <EmbeddedResource Remove="Models\新文件夹\**" />
+    <EmbeddedResource Remove="Views\新文件夹\**" />
     <None Remove="Models\新文件夹\**" />
+    <None Remove="Views\新文件夹\**" />
     <Page Remove="Models\新文件夹\**" />
+    <Page Remove="Views\新文件夹\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -77,7 +90,10 @@
 
   <ItemGroup>
     <None Remove="Views\CanvasPanelPage.xaml" />
+    <None Remove="Views\DeviceConnect\TCPConnect.xaml" />
+    <None Remove="Views\DeviceConnect\UDPConnect.xaml" />
     <None Remove="Views\MainCanvasPage.xaml" />
+    <None Remove="Views\SerialConnect.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -188,5 +204,9 @@
 
 <ItemGroup>
   <Content Remove="Assets\encode.png" />
+</ItemGroup>
+
+<ItemGroup>
+  <PRIResource Remove="Views\新文件夹\**" />
 </ItemGroup>
 </Project>

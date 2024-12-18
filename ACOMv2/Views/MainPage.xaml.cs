@@ -1,7 +1,12 @@
-﻿namespace ACOMv2.Views;
+﻿using ACOMv2.Views.DeviceConnect;
+using Microsoft.UI.Xaml.Media.Animation;
+
+namespace ACOMv2.Views;
 
 public sealed partial class MainPage : Page
 {
+    private int previousSelectedIndex;
+
     public MainViewModel ViewModel { get; }
     public MainPage()
     {
@@ -17,7 +22,13 @@ public sealed partial class MainPage : Page
             jsonNavigationViewService.ConfigJson("Assets/NavViewMenu/AppData.json");
             jsonNavigationViewService.ConfigBreadcrumbBar(JsonBreadCrumbNavigator, BreadcrumbPageMappings.PageDictionary);
         }
-    }
+
+
+
+
+        NavFrame111.Navigate(typeof(HomeLandingPage), null, new SlideNavigationTransitionInfo() { Effect = SlideNavigationTransitionEffect.FromRight });
+
+     }
 
     private void AppTitleBar_BackRequested(TitleBar sender, object args)
     {
@@ -51,5 +62,42 @@ public sealed partial class MainPage : Page
     {
         AutoSuggestBoxHelper.OnITitleBarAutoSuggestBoxQuerySubmittedEvent(sender, args, NavFrame);
     }
+
+    private void SelectorBar_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
+    {
+        SelectorBarItem selectedItem = sender.SelectedItem;
+        int currentSelectedIndex = sender.Items.IndexOf(selectedItem);
+        System.Type pageType;
+
+        switch (currentSelectedIndex)
+        {
+            case 0:
+                pageType = typeof(SerialConnect);
+                break;
+            case 1:
+                pageType = typeof(TCPConnect);
+                break;
+            case 2:
+                pageType = typeof(UDPConnect);
+                break;
+
+            default:
+                pageType = typeof(SerialConnect);
+                break;
+        }
+
+        var slideNavigationTransitionEffect = currentSelectedIndex - previousSelectedIndex > 0 ? SlideNavigationTransitionEffect.FromRight : SlideNavigationTransitionEffect.FromLeft;
+
+        //DeviceConnectFrame.Navigate(pageType, null, new SlideNavigationTransitionInfo() { Effect = slideNavigationTransitionEffect });
+
+        previousSelectedIndex = currentSelectedIndex;
+
+    }
+
+
+
+
+
+
 }
 

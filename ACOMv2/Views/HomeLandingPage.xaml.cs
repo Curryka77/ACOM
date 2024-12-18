@@ -145,6 +145,7 @@ public sealed partial class HomeLandingPage : Page
 
     private void UpdateCannelViewMsg(List<CannelData> globChannelViewData)
     {
+        if(DispatcherQueue !=null)
         DispatcherQueue.TryEnqueue(() =>
         {
             foreach (CannelData it in globChannelViewData)
