@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Page
-    x:Class="ACOMv2.Views.SerialConnect"
+<Page 
+    x:Class="ACOMv2.Views.DeviceConnect.SerialConnect"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ACOMv2.Views"
@@ -9,7 +9,39 @@
     mc:Ignorable="d" xmlns:view_models="using:ACOMv2.ViewModels"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
-        
+        <DataTemplate x:Key="LinkDeviceListViewTemplate" x:DataType="view_models:SerialDevices" >
+
+            <Grid  ContextRequested="DataList_ContextRequested" ContextCanceled="DataList_ContextCanceled" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4" />
+                    <ColumnDefinition Width="48"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="36"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="1" Text="{x:Bind DeviceName, Mode=OneWay}" x:Phase="1" 
+                    HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,5" Padding="0,9,120,9"/>
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24"/>
+                        <RowDefinition Height="24"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock  Grid.Row="0" Text="{x:Bind OverView, Mode=OneWay}" x:Phase="1" FontSize="10" Height="12" 
+                HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,8,0,0"  />
+
+                    <TextBlock  Grid.Row="1" Text="{x:Bind DeviceDesc, Mode=OneWay}" x:Phase="1" FontSize="8" Height="12"
+                HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="0,0,0,0" />
+                </Grid>
+                <AppBarButton x:Name="LinkButton" IsTabStop="False" HorizontalAlignment="Right" Visibility="Visible"
+                Width="36" Click="LinkButton_Click"  Tag="{x:Bind DeviceName}" Icon="{x:Bind Icon,Mode=TwoWay}"
+                Grid.Column="3" Label="Button"  LabelPosition="Collapsed" Margin="0,0,0,0" >
+                    <!--<AppBarButton.Icon   >
+                <FontIcon Glyph="&#xE718;" />
+            </AppBarButton.Icon  >-->
+                    <!--<FontIcon Glyph="&#xE769;" />-->
+                </AppBarButton >
+
+            </Grid>
+        </DataTemplate>
     </Page.Resources>
     <Grid x:Name="link_Grid">
         <Grid.RowDefinitions>
@@ -19,15 +51,18 @@
             <RowDefinition Height="16"/>
             <RowDefinition Height="320"/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="0" Background="red" Height="100"/>
+        <!--<Border Grid.Row="0" Background="red" Height="100"/>-->
+        <TextBlock Grid.Row="0" Text="串口连接" FontWeight="Bold" FontSize="24" HorizontalAlignment="Center" Margin="0 10 0 0"/>
         <!--<Border Grid.Row="1" Background="black" Height="Auto"/>-->
         <!-- To create this sample, add/change the following properties onto the code for the base example above: -->
-        <!--<ListView Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-     SelectionMode="Extended" IsMultiSelectCheckBoxEnabled="False" IsRightTapEnabled="True"
-     x:Name="BaseExample"
-     BorderThickness="1"
-     MinWidth="120"
-     />-->
+        <ListView Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+    SelectionMode="Extended" IsMultiSelectCheckBoxEnabled="False" IsRightTapEnabled="True"
+    x:Name="BaseExample"
+    ItemTemplate="{StaticResource LinkDeviceListViewTemplate}"
+    ItemsSource="{x:Bind ViewModel.serialDevices}"
+    BorderThickness="1"
+    MinWidth="120"
+    />
         <!--<controls:Segmented Grid.Row="2" Width="li"
      SelectedIndex="0"
      SelectionMode="Single">
@@ -68,7 +103,7 @@
             <TextBlock Grid.Column="0" Grid.Row="4"  Text="停止位" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8 0 0 0"/>
             <TextBlock Grid.Column="0" Grid.Row="5"  Text="流控"   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8 0 0 0"/>
 
-            <ComboBox x:Name="combox_COM" Grid.Column="1" Grid.Row="0" IsEditable="True"  Width="100" DropDownOpened="ComboBox_DropDownOpened"   
+            <ComboBox x:Name="combox_COM" Grid.Column="1" Grid.Row="0" IsEditable="True"  Width="100"   
        HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 8 0" ItemsSource="{x:Bind ViewModel.SerialPortsSource , Mode=TwoWay}"
                SelectionChanged="combox_COM_SelectionChanged" TextSubmitted="combox_COM_TextSubmitted">
             </ComboBox>

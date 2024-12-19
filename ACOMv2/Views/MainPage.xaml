@@ -77,17 +77,27 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="300" />
-                    <ColumnDefinition Width="*" />
+                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <controls:PropertySizer Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Left"
-                            Binding="{x:Bind NavView.OpenPaneLength, Mode=TwoWay}"
-                            Minimum="52" 
-                            Visibility="{x:Bind NavView.IsPaneOpen, Mode=OneWay}" />
-                <Frame x:Name="NavFrame111" Grid.Column="2"  
-                 />
+                <controls:GridSplitter Grid.Column="2"
+                               Width="16"
+                               HorizontalAlignment="Left"
+                               ResizeBehavior="BasedOnAlignment"
+                               ResizeDirection="Auto">
+                    <controls:GridSplitter.RenderTransform>
+                        <TranslateTransform X="-12" />
+                    </controls:GridSplitter.RenderTransform>
+                </controls:GridSplitter>
+
+
                 <Frame x:Name="NavFrame" Grid.Column="1" 
                 Navigated="NavFrame_Navigated" />
+
+
+
+                <Frame x:Name="MainFrame" Grid.Column="2" Margin="4 0 0 0 "/>
+
             </Grid>
         </NavigationView>
 

@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using ACOMPlugin.Core;
 using ACOMv2.Persistence;
+using ACOMv2.Views.DeviceConnect;
 using CustomExtensions.WinUI;
 using DryIoc;
 using DiFactory = ShadowPluginLoader.WinUI.DiFactory;
@@ -24,14 +25,7 @@ public partial class App : Application
 
         return service;
     }
-    public async Task LoadMyExtensionAsync(string assemblyLoadPath)
-    {
-        // save off the handle so we can clean up our registration with the hosting process later if desired.
-        Debug.WriteLine("start load "+ assemblyLoadPath);
 
-        IExtensionAssembly asmHandle = await ApplicationExtensionHost.Current.LoadExtensionAsync(assemblyLoadPath);
-        Debug.WriteLine("loaded plugin "+ asmHandle.GetType().Name + " "+ asmHandle.GetType().FullName);
-    }
     
     public App()
     {
@@ -57,8 +51,10 @@ public partial class App : Application
         services.AddSingleton<IJsonNavigationViewService>(factory =>
         {
             var json = new JsonNavigationViewService();
-            json.ConfigDefaultPage(typeof(HomeLandingPage));
+            //json.ConfigDefaultPage(typeof(HomeLandingPage));
             json.ConfigDefaultPage(typeof(SerialConnect));
+            //json.ConfigDefaultPage(typeof(UDPConnect));
+            //json.ConfigDefaultPage(typeof(TCPConnect));
             json.ConfigSettingsPage(typeof(SettingsPage));
             return json;
         });

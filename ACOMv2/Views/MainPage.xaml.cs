@@ -26,7 +26,7 @@ public sealed partial class MainPage : Page
 
 
 
-        NavFrame111.Navigate(typeof(HomeLandingPage), null, new SlideNavigationTransitionInfo() { Effect = SlideNavigationTransitionEffect.FromRight });
+        MainFrame.Navigate(typeof(HomeLandingPage), null, new SlideNavigationTransitionInfo() { Effect = SlideNavigationTransitionEffect.FromRight });
 
      }
 

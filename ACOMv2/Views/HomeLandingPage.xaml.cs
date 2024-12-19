@@ -106,42 +106,42 @@ public sealed partial class HomeLandingPage : Page
     public HomeLandingViewModel ViewModel { get; }
 
 
-    private void Instance_update(List<SerialDevice> serialDevices)
-    {
-        try
-        {
-            DispatcherQueue.TryEnqueue(() =>
-            {
-                Debug.WriteLine("update serial1");
-                Debug.WriteLine("update serial2");
+    //private void Instance_update(List<SerialDevice> serialDevices)
+    //{
+    //    try
+    //    {
+    //        DispatcherQueue.TryEnqueue(() =>
+    //        {
+    //            Debug.WriteLine("update serial1");
+    //            Debug.WriteLine("update serial2");
 
-                foreach (var device in serialDevices)
-                {
-                    if (!ViewModel.SerialPortsSource.Contains(device.PortName))
-                    {
-                        ViewModel.SerialPortsSource.Add(device.PortName);
-                        ViewModel.serialDevices.Add(new SerialDevices(device.PortName, device.FriendlyName));
-                    }
-                }
+    //            foreach (var device in serialDevices)
+    //            {
+    //                if (!ViewModel.SerialPortsSource.Contains(device.PortName))
+    //                {
+    //                    ViewModel.SerialPortsSource.Add(device.PortName);
+    //                    ViewModel.serialDevices.Add(new SerialDevices(device.PortName, device.FriendlyName));
+    //                }
+    //            }
 
-                // Remove ports that are no longer available
-                for (int i = ViewModel.SerialPortsSource.Count - 1; i >= 0; i--)
-                {
-                    if (!serialDevices.Any(d => d.PortName == ViewModel.SerialPortsSource[i]))
-                    {
-                        ViewModel.SerialPortsSource.RemoveAt(i);
-                        ViewModel.serialDevices.RemoveAt(i);
-                    }
-                }
-            });
+    //            // Remove ports that are no longer available
+    //            for (int i = ViewModel.SerialPortsSource.Count - 1; i >= 0; i--)
+    //            {
+    //                if (!serialDevices.Any(d => d.PortName == ViewModel.SerialPortsSource[i]))
+    //                {
+    //                    ViewModel.SerialPortsSource.RemoveAt(i);
+    //                    ViewModel.serialDevices.RemoveAt(i);
+    //                }
+    //            }
+    //        });
 
-        }
-        catch (Exception e)
-        {
-            Debug.WriteLine("Instance_update DispatcherQueue error " + e.Message);
-        }
+    //    }
+    //    catch (Exception e)
+    //    {
+    //        Debug.WriteLine("Instance_update DispatcherQueue error " + e.Message);
+    //    }
         
-    }
+    //}
 
     private void UpdateCannelViewMsg(List<CannelData> globChannelViewData)
     {
@@ -180,9 +180,9 @@ public sealed partial class HomeLandingPage : Page
         ViewModel.advancedCollectionView.SortDescriptions.Add(new SortDescription("DataName", SortDirection.Descending));
 
         //注册回调函数
-        IO_Manage.updateDevices += Instance_update;
+        //IO_Manage.updateDevices += Instance_update;
         IO_Manage.updateCannelViewMsg += UpdateCannelViewMsg;
-        IO_Manage.Instance.updateSerialDevce();
+        //IO_Manage.Instance.updateSerialDevce();
 
         //ListView_LinkDevice.ItemsSource = ViewModel.advancedCollectionView;
 
@@ -385,230 +385,230 @@ public sealed partial class HomeLandingPage : Page
         //}
     }
 
-    private void combox_COM_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        // 获取发送事件的 ComboBox
-        var comboBox = sender as Microsoft.UI.Xaml.Controls.ComboBox;
+    //private void combox_COM_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    //{
+    //    // 获取发送事件的 ComboBox
+    //    var comboBox = sender as Microsoft.UI.Xaml.Controls.ComboBox;
 
-        if (comboBox != null)
-        {
-            if (comboBox.SelectedItem != null)
-            {
-                foreach (SerialDevices dev in ViewModel.serialDevices)
-                {
-                    if (dev.DeviceName.Equals(comboBox.SelectedItem.ToString()))
-                    {
-                        LinkSerial_Boundrate.SelectedValue = dev.BoundRate.ToString();
-                        LinkSerial_DataLength.SelectedValue = dev.DateBit.ToString();
-                        LinkSerial_StopBit.SelectedValue = dev.StopBit;
-                        LinkSerial_StreamCtrl.SelectedValue = dev.StreamCtrl;
-                        if (dev.ConnectState)
-                        {
-                            ConnectButton.IsChecked = true;
+    //    if (comboBox != null)
+    //    {
+    //        if (comboBox.SelectedItem != null)
+    //        {
+    //            foreach (SerialDevices dev in ViewModel.serialDevices)
+    //            {
+    //                if (dev.DeviceName.Equals(comboBox.SelectedItem.ToString()))
+    //                {
+    //                    LinkSerial_Boundrate.SelectedValue = dev.BoundRate.ToString();
+    //                    LinkSerial_DataLength.SelectedValue = dev.DateBit.ToString();
+    //                    LinkSerial_StopBit.SelectedValue = dev.StopBit;
+    //                    LinkSerial_StreamCtrl.SelectedValue = dev.StreamCtrl;
+    //                    if (dev.ConnectState)
+    //                    {
+    //                        ConnectButton.IsChecked = true;
 
-                        }
-                        else
-                        {
-                            ConnectButton.IsChecked = false;
+    //                    }
+    //                    else
+    //                    {
+    //                        ConnectButton.IsChecked = false;
 
-                        }
-                    }
-                }
-            }
-            // 获取当前选中项
-            var selectedItem = comboBox.SelectedItem;
-            foreach (var port in PortsDesc)
-            {
-                Debug.WriteLine(port);
-                if (selectedItem != null)
-                {
-                    if (port.Contains(selectedItem.ToString()))
-                    {
-                        TextBlockCOM_Desc.Text = port;
-                        Console.WriteLine($"Changed selection to: {selectedItem}");
-                        return;
-                    }
-                }
-            }
-        }
-    }
+    //                    }
+    //                }
+    //            }
+    //        }
+    //        // 获取当前选中项
+    //        var selectedItem = comboBox.SelectedItem;
+    //        foreach (var port in PortsDesc)
+    //        {
+    //            Debug.WriteLine(port);
+    //            if (selectedItem != null)
+    //            {
+    //                if (port.Contains(selectedItem.ToString()))
+    //                {
+    //                    TextBlockCOM_Desc.Text = port;
+    //                    Console.WriteLine($"Changed selection to: {selectedItem}");
+    //                    return;
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
 
-    private void combox_COM_TextSubmitted(ComboBox sender, ComboBoxTextSubmittedEventArgs args)
-    {
-        // 获取发送事件的 ComboBox
-        var comboBox = sender as Microsoft.UI.Xaml.Controls.ComboBox;
+    //private void combox_COM_TextSubmitted(ComboBox sender, ComboBoxTextSubmittedEventArgs args)
+    //{
+    //    // 获取发送事件的 ComboBox
+    //    var comboBox = sender as Microsoft.UI.Xaml.Controls.ComboBox;
 
-        if (comboBox != null)
-        {
-            // 获取当前选中项
-            var selectedItem = comboBox.SelectedItem;
-            TextBlockCOM_Desc.Text = IO_Manage.Instance.GetFriendlyName(selectedItem.ToString());
-        }
-    }
+    //    if (comboBox != null)
+    //    {
+    //        // 获取当前选中项
+    //        var selectedItem = comboBox.SelectedItem;
+    //        TextBlockCOM_Desc.Text = IO_Manage.Instance.GetFriendlyName(selectedItem.ToString());
+    //    }
+    //}
 
-    private void ConfingSerialDeviceChanged(object sender, SelectionChangedEventArgs e)
-    {
+    //private void ConfingSerialDeviceChanged(object sender, SelectionChangedEventArgs e)
+    //{
 
-        if (LinkSerial_Boundrate != null && LinkSerial_DataLength != null &&
-            LinkSerial_StopBit != null && LinkSerial_StreamCtrl != null &&
-            LinkSerial_Boundrate.SelectedValue != null && LinkSerial_DataLength.SelectedValue != null &&
-            LinkSerial_StopBit.SelectedValue != null && LinkSerial_StreamCtrl.SelectedValue != null && combox_COM.SelectedItem != null
-            )
-        {
-            var portName = combox_COM.SelectedItem.ToString();
-            //if()
-            foreach (SerialDevices dev in ViewModel.serialDevices)
-            {
-                if (dev.DeviceName.Equals(portName))
-                {
-                    Debug.WriteLine(LinkSerial_Boundrate.SelectedValue.ToString());
+    //    if (LinkSerial_Boundrate != null && LinkSerial_DataLength != null &&
+    //        LinkSerial_StopBit != null && LinkSerial_StreamCtrl != null &&
+    //        LinkSerial_Boundrate.SelectedValue != null && LinkSerial_DataLength.SelectedValue != null &&
+    //        LinkSerial_StopBit.SelectedValue != null && LinkSerial_StreamCtrl.SelectedValue != null && combox_COM.SelectedItem != null
+    //        )
+    //    {
+    //        var portName = combox_COM.SelectedItem.ToString();
+    //        //if()
+    //        foreach (SerialDevices dev in ViewModel.serialDevices)
+    //        {
+    //            if (dev.DeviceName.Equals(portName))
+    //            {
+    //                Debug.WriteLine(LinkSerial_Boundrate.SelectedValue.ToString());
 
-                    TextBlockCOM_Desc.Text = dev.DeviceDesc;
+    //                TextBlockCOM_Desc.Text = dev.DeviceDesc;
 
-                    dev.BoundRate = Convert.ToInt32(LinkSerial_Boundrate.SelectedValue.ToString());
-                    dev.DateBit = Convert.ToInt32(LinkSerial_DataLength.SelectedValue);
-                    dev.StopBit = (string)LinkSerial_StopBit.SelectedValue;
-                    dev.StreamCtrl = (string)LinkSerial_StreamCtrl.SelectedValue;
-                    if (LinkSerial_CheckBit.SelectedIndex == 0)
-                    {
-                        dev.CheckBit = "N";
-                    }
-                    else if (LinkSerial_CheckBit.SelectedIndex == 1)
-                    {
-                        dev.CheckBit = "O";
-                    }
-                    else if (LinkSerial_CheckBit.SelectedIndex == 2)
-                    {
-                        dev.CheckBit = "D";
-                    }
-                    else
-                    {
-                        dev.CheckBit = " ";
-                    }
-                }
-            }
-        }
+    //                dev.BoundRate = Convert.ToInt32(LinkSerial_Boundrate.SelectedValue.ToString());
+    //                dev.DateBit = Convert.ToInt32(LinkSerial_DataLength.SelectedValue);
+    //                dev.StopBit = (string)LinkSerial_StopBit.SelectedValue;
+    //                dev.StreamCtrl = (string)LinkSerial_StreamCtrl.SelectedValue;
+    //                if (LinkSerial_CheckBit.SelectedIndex == 0)
+    //                {
+    //                    dev.CheckBit = "N";
+    //                }
+    //                else if (LinkSerial_CheckBit.SelectedIndex == 1)
+    //                {
+    //                    dev.CheckBit = "O";
+    //                }
+    //                else if (LinkSerial_CheckBit.SelectedIndex == 2)
+    //                {
+    //                    dev.CheckBit = "D";
+    //                }
+    //                else
+    //                {
+    //                    dev.CheckBit = " ";
+    //                }
+    //            }
+    //        }
+    //    }
 
-    }
+    //}
 
 
 
-    private void LinkButton_Click(object sender, RoutedEventArgs e)
-    {
-        AppBarButton button = sender as AppBarButton;
-        var barbutton = sender as AppBarButton;
+    //private void LinkButton_Click(object sender, RoutedEventArgs e)
+    //{
+    //    AppBarButton button = sender as AppBarButton;
+    //    var barbutton = sender as AppBarButton;
 
-        if (barbutton != null)
-        {
-            string DeviceName = barbutton.Tag as string;
-            foreach (SerialDevices dev in ViewModel.serialDevices)
-            {
-                if (dev.DeviceName.Equals(DeviceName))
-                {
-                    if (dev.ConnectState)
-                    {
-                        if(dev.DisConnect())
-                        {
-                            combox_COM.SelectedValue = dev.DeviceName;
-                            ConnectButton.IsChecked = false;
-                            ViewModel.SerialPortsFriendlyLinkedSource.Remove(dev.DeviceName);
+    //    if (barbutton != null)
+    //    {
+    //        string DeviceName = barbutton.Tag as string;
+    //        foreach (SerialDevices dev in ViewModel.serialDevices)
+    //        {
+    //            if (dev.DeviceName.Equals(DeviceName))
+    //            {
+    //                if (dev.ConnectState)
+    //                {
+    //                    if(dev.DisConnect())
+    //                    {
+    //                        combox_COM.SelectedValue = dev.DeviceName;
+    //                        ConnectButton.IsChecked = false;
+    //                        ViewModel.SerialPortsFriendlyLinkedSource.Remove(dev.DeviceName);
 
-                        }
-                        else
-                        {
-                            Logger.Error("disconnect"+ DeviceName+" error ");
-                        }
+    //                    }
+    //                    else
+    //                    {
+    //                        Logger.Error("disconnect"+ DeviceName+" error ");
+    //                    }
 
-                        return;
-                    }
-                    else
-                    {
-                        //TODO BUG 应该有重复的项目导致会有异常
-                        if (dev.Connect())
-                        {
-                            combox_COM.SelectedValue = dev.DeviceName;
-                            ConnectButton.IsChecked = true;
-                            ViewModel.SerialPortsFriendlyLinkedSource.Add(dev.DeviceName);
+    //                    return;
+    //                }
+    //                else
+    //                {
+    //                    //TODO BUG 应该有重复的项目导致会有异常
+    //                    if (dev.Connect())
+    //                    {
+    //                        combox_COM.SelectedValue = dev.DeviceName;
+    //                        ConnectButton.IsChecked = true;
+    //                        ViewModel.SerialPortsFriendlyLinkedSource.Add(dev.DeviceName);
 
-                        }
-                        else
-                        {
-                            Logger.Error("connect" + DeviceName + " error ");
-                        }
-                         return;
-                    }
-                }
-            }
-        }
-    }
-    private void ConnectButton_Click(object sender, RoutedEventArgs e)
-    {
-        if (LinkSerial_Boundrate != null && LinkSerial_DataLength != null &&
-            LinkSerial_StopBit != null && LinkSerial_StreamCtrl != null &&
-            LinkSerial_Boundrate.SelectedValue != null && LinkSerial_DataLength.SelectedValue != null &&
-            LinkSerial_StopBit.SelectedValue != null && LinkSerial_StreamCtrl.SelectedValue != null)
-        {
-            if (combox_COM.SelectedItem != null)
-            {
-                foreach (SerialDevices dev in ViewModel.serialDevices)
-                {
-                    if (dev.DeviceName.Equals(combox_COM.SelectedItem.ToString()))
-                    {
-                        if (dev.ConnectState)
-                        {
-                            if (dev.DisConnect())
-                            {
-                                ConnectButton.IsChecked = false;
-                                ViewModel.SerialPortsFriendlyLinkedSource.Remove(dev.DeviceName);
+    //                    }
+    //                    else
+    //                    {
+    //                        Logger.Error("connect" + DeviceName + " error ");
+    //                    }
+    //                     return;
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
+    //private void ConnectButton_Click(object sender, RoutedEventArgs e)
+    //{
+    //    if (LinkSerial_Boundrate != null && LinkSerial_DataLength != null &&
+    //        LinkSerial_StopBit != null && LinkSerial_StreamCtrl != null &&
+    //        LinkSerial_Boundrate.SelectedValue != null && LinkSerial_DataLength.SelectedValue != null &&
+    //        LinkSerial_StopBit.SelectedValue != null && LinkSerial_StreamCtrl.SelectedValue != null)
+    //    {
+    //        if (combox_COM.SelectedItem != null)
+    //        {
+    //            foreach (SerialDevices dev in ViewModel.serialDevices)
+    //            {
+    //                if (dev.DeviceName.Equals(combox_COM.SelectedItem.ToString()))
+    //                {
+    //                    if (dev.ConnectState)
+    //                    {
+    //                        if (dev.DisConnect())
+    //                        {
+    //                            ConnectButton.IsChecked = false;
+    //                            ViewModel.SerialPortsFriendlyLinkedSource.Remove(dev.DeviceName);
 
-                            }
-                            else
-                            {
-                                Logger.Error("disconnect" + dev.DeviceName + " error ");
-                            }
+    //                        }
+    //                        else
+    //                        {
+    //                            Logger.Error("disconnect" + dev.DeviceName + " error ");
+    //                        }
 
-                            return;
-                        }
-                        else
-                        {
-                            //TODO BUG 应该有重复的项目导致会有异常
-                            if (dev.Connect())
-                            {
-                                ConnectButton.IsChecked = true;
-                                ViewModel.SerialPortsFriendlyLinkedSource.Add(dev.DeviceName);
-                            }
-                            else
-                            {
-                                Logger.Error("connect" + dev.DeviceName + " error ");
-                            }
-                            return;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                // ConnectButton. = false;  
-            }
+    //                        return;
+    //                    }
+    //                    else
+    //                    {
+    //                        //TODO BUG 应该有重复的项目导致会有异常
+    //                        if (dev.Connect())
+    //                        {
+    //                            ConnectButton.IsChecked = true;
+    //                            ViewModel.SerialPortsFriendlyLinkedSource.Add(dev.DeviceName);
+    //                        }
+    //                        else
+    //                        {
+    //                            Logger.Error("connect" + dev.DeviceName + " error ");
+    //                        }
+    //                        return;
+    //                    }
+    //                }
+    //            }
+    //        }
+    //        else
+    //        {
+    //            // ConnectButton. = false;  
+    //        }
 
-        }
-        else
-        {
-            // ConnectButton.Checked = false;
-        }
+    //    }
+    //    else
+    //    {
+    //        // ConnectButton.Checked = false;
+    //    }
 
-    }
+    //}
 
-    public static byte[] ToByteArray(string str, Encoding encoding = null)
-    {
-        if (str == null)
-        {
-            throw new ArgumentNullException(nameof(str));
-        }
+    //public static byte[] ToByteArray(string str, Encoding encoding = null)
+    //{
+    //    if (str == null)
+    //    {
+    //        throw new ArgumentNullException(nameof(str));
+    //    }
 
-        encoding ??= Encoding.UTF8; // 默认使用 UTF-8 编码
-        return encoding.GetBytes(str);
-    }
+    //    encoding ??= Encoding.UTF8; // 默认使用 UTF-8 编码
+    //    return encoding.GetBytes(str);
+    //}
 
     private void SendButton_Click(object sender, RoutedEventArgs e)
     {
@@ -688,6 +688,16 @@ public sealed partial class HomeLandingPage : Page
           }
     }
 
+    public static byte[] ToByteArray(string str, Encoding encoding = null)
+    {
+        if (str == null)
+        {
+            throw new ArgumentNullException(nameof(str));
+        }
+
+        encoding ??= Encoding.UTF8; // 默认使用 UTF-8 编码
+        return encoding.GetBytes(str);
+    }
     private void TabbedCommandBar_KeyDown(object sender, KeyRoutedEventArgs e)
     {
 

@@ -135,7 +135,7 @@
                 </Expander>
         </DataTemplate>
 
-        <DataTemplate x:Key="LinkDeviceListViewTemplate" x:DataType="view_models:SerialDevices" >
+        <!--<DataTemplate x:Key="LinkDeviceListViewTemplate" x:DataType="view_models:SerialDevices" >
 
             <Grid  ContextRequested="DataList_ContextRequested" ContextCanceled="DataList_ContextCanceled" >
                 <Grid.ColumnDefinitions>
@@ -144,7 +144,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="36"/>
                 </Grid.ColumnDefinitions>
-                <!--<Border Grid.Column="0" Background="LightSkyBlue" CornerRadius="1.4" Width="2.8" Height="16" Margin="-25,0,0,0"/>-->
+                --><!--<Border Grid.Column="0" Background="LightSkyBlue" CornerRadius="1.4" Width="2.8" Height="16" Margin="-25,0,0,0"/>--><!--
                 <TextBlock Grid.Column="1" Text="{x:Bind DeviceName, Mode=OneWay}" x:Phase="1" 
                    HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,5,0,5" Padding="0,9,120,9"/>
                 <Grid Grid.Column="2">
@@ -161,14 +161,14 @@
                 <AppBarButton x:Name="LinkButton" IsTabStop="False" HorizontalAlignment="Right" Visibility="Visible"
                     Width="36" Click="LinkButton_Click"  Tag="{x:Bind DeviceName}" Icon="{x:Bind Icon,Mode=TwoWay}"
                         Grid.Column="3" Label="Button"  LabelPosition="Collapsed" Margin="0,0,0,0" >
-                    <!--<AppBarButton.Icon   >
+                    --><!--<AppBarButton.Icon   >
                         <FontIcon Glyph="&#xE718;" />
                     </AppBarButton.Icon  >-->
-                    <!--<FontIcon Glyph="&#xE769;" />-->
+                    <!--<FontIcon Glyph="&#xE769;" />--><!--
                 </AppBarButton >
 
             </Grid>
-        </DataTemplate>
+        </DataTemplate>-->
 
         <DataTemplate x:Key="SmallPartsListViewTemplate" x:DataType="view_models:SerialDevices" >
 
@@ -262,7 +262,7 @@
 
                 </PivotItem>
 
-                <PivotItem Header="串口" MinWidth="160">
+                <!--<PivotItem Header="串口" MinWidth="160">
                     <Grid x:Name="link_Grid">
                         <Grid.RowDefinitions>
                             <RowDefinition MinHeight="100" Height="120"/>
@@ -272,8 +272,8 @@
                             <RowDefinition Height="320"/>
                         </Grid.RowDefinitions>
                         <Border Grid.Row="0" Background="red" Height="100"/>
-                        <!--<Border Grid.Row="1" Background="black" Height="Auto"/>-->
-                        <!-- To create this sample, add/change the following properties onto the code for the base example above: -->
+                        --><!--<Border Grid.Row="1" Background="black" Height="Auto"/>-->
+                        <!-- To create this sample, add/change the following properties onto the code for the base example above: --><!--
                         <ListView Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                             SelectionMode="Extended" IsMultiSelectCheckBoxEnabled="False" IsRightTapEnabled="True"
                             x:Name="BaseExample"
@@ -282,7 +282,7 @@
                             BorderThickness="1"
                             MinWidth="120"
                             />
-                        <!--<controls:Segmented Grid.Row="2" Width="li"
+                        --><!--<controls:Segmented Grid.Row="2" Width="li"
                             SelectedIndex="0"
                             SelectionMode="Single">
                             <controls:SegmentedItem 
@@ -292,7 +292,7 @@
                             <controls:SegmentedItem 
                                     Icon="{ui:FontIcon Glyph=&#xE704;}" />
 
-                        </controls:Segmented>-->
+                        </controls:Segmented>--><!--
 
                         <TextBlock Grid.Row="3" Text="USBdevice COM9" FontSize="10" x:Name="TextBlockCOM_Desc">
 
@@ -367,7 +367,7 @@
                             <AppBarSeparator Grid.Column="1" Grid.Row="5" Margin="-8 0 0 0" HorizontalAlignment ="Left"/>
                         </Grid>
                     </Grid>
-                </PivotItem>
+                </PivotItem>-->
             </Pivot>
 
             <!--结束右边部分-->

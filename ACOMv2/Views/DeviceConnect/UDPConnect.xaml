@@ -9,7 +9,11 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Background="Bisque">
+    <Grid >
+        <StackPanel>
 
+
+
+        </StackPanel>
     </Grid>
 </Page>

@@ -5,11 +5,50 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ACOMv2.Views.DeviceConnect"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Background="Aqua">
+    <Grid >
+        <StackPanel>
+
+
+            <RadioButtons x:Name="BackgroundRadioButtons" SelectedIndex="1"  MaxColumns="3" Header="TCP通讯" Margin="12 0 0 0"  >
+                <x:String>TCP客户端</x:String>
+                <x:String>TCP服务端</x:String>
+                <x:String>UDP通讯</x:String>
+            </RadioButtons>
+
+            <controls:SwitchPresenter Padding="16"
+                                  Value="{x:Bind BackgroundRadioButtons.SelectedItem,Mode=TwoWay}">
+                <controls:Case Value="TCP客户端">
+                    <StackPanel>
+                        <TextBox Text="127.0.0.1" Header="主机IP"/>
+                        <TextBox Text="8080" Header="主机端口号"/>
+                        <TextBox Text="3000" Header="心跳超时时间(ms)"/>
+                        <ToggleButton Content="请求连接" HorizontalAlignment="Stretch" Margin="0 10 0 0"/>
+                    </StackPanel>
+                </controls:Case>
+                <controls:Case Value="TCP服务端">
+                    <StackPanel>
+                        <TextBox Text="8080" Header="监听端口号"/>
+                        <TextBox Text="3000" Header="心跳超时时间(ms)"/>
+                        <ToggleButton Content="开始监听" HorizontalAlignment="Stretch" Margin="0 10 0 0"/>
+                    </StackPanel>
+                </controls:Case>
+                <controls:Case Value="UDP通讯">
+                    <StackPanel>
+
+                        <TextBox Text="127.0.0.1" Header="远程IP"/>
+                        <TextBox Text="8080" Header="本地端口号"/>
+                        <TextBox Text="8081" Header="远端端口号"/>
+                        <ToggleButton Content="开始通讯" HorizontalAlignment="Stretch" Margin="0 10 0 0"/>
+
+                    </StackPanel>
+                </controls:Case>
+            </controls:SwitchPresenter>
+
+        </StackPanel>
 
     </Grid>
 </Page>

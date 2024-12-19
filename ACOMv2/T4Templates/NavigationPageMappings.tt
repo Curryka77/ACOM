@@ -21,6 +21,8 @@
 
 // Define JSON file path variable for easy adjustment
 <# string JSON_FILE_PATH = "AppData.json"; #>
+using System;
+using System.Collections.Generic;
 
 namespace ACOMv2;
 public partial class NavigationPageMappings
@@ -45,7 +47,7 @@ void ProcessItems(JsonElement items, List<string> xamlPages)
             if (!string.IsNullOrEmpty(xamlClass))
             {
 #>
-        {"<#= uniqueId + parameter #>", typeof(<#= xamlClass #>)},
+        {"<#= uniqueId #>", typeof(<#= xamlClass #>)},
 <#
             }
         }
@@ -57,7 +59,7 @@ void ProcessItems(JsonElement items, List<string> xamlPages)
             if (!string.IsNullOrEmpty(xamlClass))
             {
 #>
-        {"<#= uniqueId + parameter #>", typeof(<#= xamlClass #>)},
+        {"<#= uniqueId #>", typeof(<#= xamlClass #>)},
 <#
             }
         }

@@ -46,6 +46,7 @@ namespace ACOM.Models
     using Amib.Threading;
     using CommunityToolkit.Mvvm.Messaging;
     using CommunityToolkit.Mvvm.Messaging.Messages;
+    using STTech.BytesIO.Tcp;
     using Windows.System;
     using WinUICommunity;
     using static ACOM.Models.IO_Manage;
@@ -538,6 +539,26 @@ namespace ACOM.Models
             }
             return __client;
         }
+
+
+        public TcpClient Connect()
+        {
+            return null;
+        }
+
+        public TcpServer Connect(string a)
+        {
+            return null;
+        }
+
+        public TcpListener Connect(string s,string b)
+        {
+            return null;
+
+        }
+
+
+
 
         public bool DisConnect(SerialClient client)
         {
