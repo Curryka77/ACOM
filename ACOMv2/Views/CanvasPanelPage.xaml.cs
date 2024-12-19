@@ -290,8 +290,14 @@ namespace ACOMv2.Views
                 Symbol.Share
             };
             this.InitializeComponent();
-            CreateWidget(Plugs.WidgetPlugins["ACOMPlug.Widget.Slide"]);
-            CreateWidget(Plugs.WidgetPlugins["ACOMPlug.Widget.Slide"]);
+            ACOMPluginBase var;
+            Plugs.WidgetPlugins.TryGetValue("ACOMPlug.Widget.Slide",out var);
+            if(var !=null)
+            {
+                CreateWidget(var);
+                CreateWidget(Plugs.WidgetPlugins["ACOMPlug.Widget.Slide"]);
+            }
+
 
 
 
