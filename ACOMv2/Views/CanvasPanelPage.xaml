@@ -46,9 +46,9 @@
               VerticalScrollBarVisibility="Auto">
             <Grid  Height="1200" Width="1200" >
 
-                <developerTools:AlignmentGrid HorizontalStep="20"
+                <!--<developerTools:AlignmentGrid HorizontalStep="20"
                               Opacity="0.2"
-                              VerticalStep="20" />
+                              VerticalStep="20" />-->
 
                 
                 <labs:CanvasView MinHeight="400" x:Name="CanvasView1"
