@@ -21,6 +21,10 @@
       <Version>$(Version)</Version>
       <Author>kitUIN</Author>
     </PluginMeta>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>False</Optimize>
   </PropertyGroup> 
   <ItemGroup>
     <None Remove="WidgetSlide.xaml" />

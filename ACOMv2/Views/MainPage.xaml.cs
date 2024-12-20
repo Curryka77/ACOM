@@ -28,7 +28,7 @@ public sealed partial class MainPage : Page
 
         MainFrame.Navigate(typeof(HomeLandingPage), null, new SlideNavigationTransitionInfo() { Effect = SlideNavigationTransitionEffect.FromRight });
 
-     }
+    }
 
     private void AppTitleBar_BackRequested(TitleBar sender, object args)
     {

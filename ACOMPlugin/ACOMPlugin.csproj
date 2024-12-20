@@ -19,6 +19,7 @@
     <Copyright>Copyright 2024</Copyright>
     <PackageTags>Dyyt587;wasdk;plugin-loader;plugin;extension;winui</PackageTags>
     <PackageOutputPath>..\NugetPackages</PackageOutputPath>
+    <PlatformTarget>x64</PlatformTarget>
     <!-- <PackageReadmeFile>README.md</PackageReadmeFile> -->
   </PropertyGroup>
   <ItemGroup>

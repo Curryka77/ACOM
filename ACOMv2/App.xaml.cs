@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using ACOM.Models;
 using ACOMPlugin.Core;
 using ACOMv2.Persistence;
 using ACOMv2.Views.DeviceConnect;
@@ -61,10 +62,11 @@ public partial class App : Application
 
         services.AddTransient<MainViewModel>();
         services.AddSingleton<ContextMenuService>();
+        services.AddSingleton<IO_Manage>();
         services.AddTransient<GeneralSettingViewModel>();
         services.AddTransient<AppUpdateSettingViewModel>();
         services.AddTransient<AboutUsSettingViewModel>();
-        services.AddTransient<BreadCrumbBarViewModel>();
+        //services.AddTransient<BreadCrumbBarViewModel>();
         services.AddTransient<HomeLandingViewModel>();
 
         return services.BuildServiceProvider();

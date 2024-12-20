@@ -38,6 +38,7 @@ namespace ACOM.Models
 {
     using System.Drawing;
     using System.Management;
+    //using System.Management;
     using System.Reflection;
     using System.Timers;
     using ACOMCommmon;
@@ -46,6 +47,7 @@ namespace ACOM.Models
     using Amib.Threading;
     using CommunityToolkit.Mvvm.Messaging;
     using CommunityToolkit.Mvvm.Messaging.Messages;
+    using Microsoft.Extensions.FileSystemGlobbing;
     using STTech.BytesIO.Tcp;
     using Windows.System;
     using WinUICommunity;
@@ -83,7 +85,7 @@ namespace ACOM.Models
         }
 
 
-        public static  void PrintProcessedData(List<ChannelMassage> data)
+        public    void PrintProcessedData(List<ChannelMassage> data)
         {
             if (data == null)
             {
@@ -185,7 +187,7 @@ namespace ACOM.Models
             else return null;
         }
 
-        protected static string IdentifyDataType(byte[] data, string Type = "Auto")
+        protected  string IdentifyDataType(byte[] data, string Type = "Auto")
         {
             if (data == null || data.Length == 0)
             {
@@ -307,13 +309,13 @@ namespace ACOM.Models
         /// <summary>
         /// 测试用的解析代码
         /// </summary>
-        static ChannelProcesser channelProcesser = new();
+          ChannelProcesser channelProcesser = new();
 
         /// <summary>
         /// 全局通道数据和通道显示数据
         /// </summary>
-        static Dictionary<string, ChannelMassage> GlobChannelMassage = new Dictionary<string, ChannelMassage>();
-        static List<CannelData> GlobChannelViewData = new();
+          Dictionary<string, ChannelMassage> GlobChannelMassage = new Dictionary<string, ChannelMassage>();
+          List<CannelData> GlobChannelViewData = new();
 
         /// <summary>
         /// 定义委托定义事件
@@ -323,11 +325,11 @@ namespace ACOM.Models
         public delegate void UpdateDevices(List<SerialDevice> serialDevices);
         public delegate void ConnectLost(object sender, STTech.BytesIO.Core.DisconnectedEventArgs e);
         public delegate void UpdateLoadStats(object sender,double load_s);
-        public static event ReceivedCannelMsg receivedCannelMsg;//当接收到通道原始数据时触发
-        public static event UpdateCannelViewMsg updateCannelViewMsg;//当接收到通道处理显示数据时触发
-        public static event UpdateDevices updateDevices;//当外部设备变化触发
-        public static event ConnectLost connectLost;//当外部设备变化触发
-        public static event UpdateLoadStats updateLoadStats;//当外部设备变化触发
+        public   event ReceivedCannelMsg receivedCannelMsg;//当接收到通道原始数据时触发
+        public   event UpdateCannelViewMsg updateCannelViewMsg;//当接收到通道处理显示数据时触发
+        public   event UpdateDevices updateDevices;//当外部设备变化触发
+        public   event ConnectLost connectLost;//当外部设备变化触发
+        public   event UpdateLoadStats updateLoadStats;//当外部设备变化触发
         
         /**
          * 定义已经连接的设备
@@ -344,10 +346,10 @@ namespace ACOM.Models
         /// </summary>
         Dictionary<object, IPlugProcessBase> channelProcesserMap = new();
 
-        static Dictionary<string, BytesIO.Serial.SerialClient> Dic_Serial = new();
-        static Dictionary<string, BytesIO.Tcp.TcpClient> Dic_Tcp = new();
-        static Dictionary<string, BytesIO.Kcp.KcpClient> Dic_Kcp = new();
-        static Dictionary<string, BytesIO.Udp.UdpClient> Dic_Udp = new();
+          Dictionary<string, BytesIO.Serial.SerialClient> Dic_Serial = new();
+          Dictionary<string, BytesIO.Tcp.TcpClient> Dic_Tcp = new();
+          Dictionary<string, BytesIO.Kcp.KcpClient> Dic_Kcp = new();
+          Dictionary<string, BytesIO.Udp.UdpClient> Dic_Udp = new();
 
         /// <summary>
         /// 已经存在的串口设备
@@ -363,7 +365,7 @@ namespace ACOM.Models
         /// Union the glob channel massage.
         /// </summary>
         /// <param name="Data"></param>
-        private static void UnionGlobChannelMassage(List<ChannelMassage> Data)
+        private   void UnionGlobChannelMassage(List<ChannelMassage> Data)
         {
             if (Data == null) return;
 
@@ -387,7 +389,7 @@ namespace ACOM.Models
         /// Union the glob channel view massage.
         /// </summary>
         /// <param name="Data"></param>
-        private static void UnionGlobChannelViewMassage(List<CannelData> Data)
+        private   void UnionGlobChannelViewMassage(List<CannelData> Data)
         {
             if (Data == null) return;
 
@@ -611,7 +613,7 @@ namespace ACOM.Models
             }
 
             stopwatch.Stop();
-            Debug.WriteLine($"updateSerialDevce execution time: {stopwatch.ElapsedMilliseconds} ms");
+            //Debug.WriteLine($"updateSerialDevce execution time: {stopwatch.ElapsedMilliseconds} ms");
 
             if (updateDevices != null)
                 updateDevices(serialDevices);
@@ -639,7 +641,7 @@ namespace ACOM.Models
         }
 
         private Dictionary<string, string> portFriendlyNameCache = new Dictionary<string, string>();
-
+ 
         public string GetFriendlyName(string portName)
         {
             if (portFriendlyNameCache.ContainsKey(portName))
@@ -649,8 +651,8 @@ namespace ACOM.Models
 
             try
             {
-                using (var searcher = new ManagementObjectSearcher($"SELECT * FROM Win32_PnPEntity WHERE Name LIKE '%({portName})%'"))
-                {
+                var searcher = new ManagementObjectSearcher($"SELECT * FROM Win32_PnPEntity WHERE Name LIKE '%({portName})%'");
+                
                     foreach (var obj in searcher.Get())
                     {
                         var name = obj["Name"]?.ToString();
@@ -660,7 +662,7 @@ namespace ACOM.Models
                             return name;
                         }
                     }
-                }
+                searcher = null;
             }
             catch (Exception ex)
             {
@@ -674,21 +676,30 @@ namespace ACOM.Models
 
         IO_Manage()
         {
-            ManagementEventWatcher watcher;
+            //ManagementEventWatcher watcher;
 
-            //创建ManagmentEventWatcher 对象
-            watcher = new ManagementEventWatcher("SELECT *FROM Win32_DeviceChangeEvent WHERE EventType = 2 or EventType = 3 ");
-            //添加设备变化事件处理程序
-            watcher.EventArrived += Watcher_EventArrived;
+            ////创建ManagmentEventWatcher 对象
+            //watcher = new ManagementEventWatcher("SELECT *FROM Win32_DeviceChangeEvent WHERE EventType = 2 or EventType = 3 ");
+            ////添加设备变化事件处理程序
+            //watcher.EventArrived += Watcher_EventArrived;
+            //开始监听
+            //watcher.Start();
 
+            //System.Timers.Timer timer = new System.Timers.Timer();
+            //timer.Interval = 100; // 设置时间间隔为100毫秒（0.1秒）
+            //timer.Elapsed += new System.Timers.ElapsedEventHandler(((sender, e) => {
+            //    IO_Manage.Instance.doing = 1;
+            //    IO_Manage.Instance.updateSerialDevce();
+            //}));
+            //timer.AutoReset =  true; // 设置定时器在触发一次后不自动重置
+            //timer.Start();
 
             smartThreadPool.MaxQueueLength = 128;
             smartThreadPool.MinThreads = 8;
             smartThreadPool.MaxThreads = 32;
 
 
-            //开始监听
-            watcher.Start();
+   
             _ = Plugs.InitAsync("C:\\Users\\80520\\source\\repos\\ACOM\\ACOMv2\\Assets\\Plugs\\");
         }
 

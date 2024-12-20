@@ -29,16 +29,7 @@ namespace ACOMv2.Views.DeviceConnect
         private MainViewModel ViewModel;
         private string ContentRequestItemName;
         string[] PortsDesc = { "NULL" };
-
-
-
-
-
-
-
-
-
-
+        IO_Manage iomanage = IO_Manage.Instance;
 
         private void Instance_update(List<SerialDevice> serialDevices)
         {
@@ -84,8 +75,8 @@ namespace ACOMv2.Views.DeviceConnect
             this.InitializeComponent();
 
 
-            IO_Manage.updateDevices += Instance_update;
-            IO_Manage.Instance.updateSerialDevce();
+            iomanage.updateDevices += Instance_update;
+            iomanage.updateSerialDevce();
         }
 
 

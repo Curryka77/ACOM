@@ -33,7 +33,7 @@ namespace ACOMv2.Views
 {
     public static class UIElementExtensions
     {
-        private static CoreCursor defaultCursor;
+        //private static CoreCursor defaultCursor;
 
         public static void ChangeCursor(this UIElement uiElement, InputCursor cursor)
         {
@@ -67,7 +67,7 @@ namespace ACOMv2.Views
         public sealed partial class CanvasPanelPage : Page
     {
 
-
+        IO_Manage iomanage = IO_Manage.Instance;
         public FrameworkElement InitializeElementGrid(FrameworkElement element,double initWidth=180,double initHeight=50,double offset=30)
         {
 
@@ -220,7 +220,7 @@ namespace ACOMv2.Views
             if (WidgetPlug == null) return;
             WidgetPlug.UpdateCommand += UpdateWidgetCommend;
             WidgetPlug.SystemCommand += SystemCommand;
-            IO_Manage.updateCannelViewMsg += WidgetPlug.UpdateData;
+            iomanage.updateCannelViewMsg += WidgetPlug.UpdateData;
             CanvasView1.Items.Add(InitializeElementGrid(WidgetPlug.Create()));
         }
 
@@ -294,8 +294,8 @@ namespace ACOMv2.Views
             Plugs.WidgetPlugins.TryGetValue("ACOMPlug.Widget.Slide",out var);
             if(var !=null)
             {
-                CreateWidget(var);
-                CreateWidget(Plugs.WidgetPlugins["ACOMPlug.Widget.Slide"]);
+                //CreateWidget(var);
+                //CreateWidget(Plugs.WidgetPlugins["ACOMPlug.Widget.Slide"]);
             }
 
 

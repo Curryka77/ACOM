@@ -14,7 +14,7 @@ using Windows.System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using WinUICommunity;
-using System.Management;
+//using System.Management;
 using static ACOMv2.ViewModels.HomeLandingViewModel;
 using CommunityToolkit.WinUI.Collections;
 using ACOMPlug;
@@ -55,6 +55,7 @@ public sealed partial class HomeLandingPage : Page
 {
     public string AppInfo { get; set; }
     //public HomeLandingViewModel ViewModel { get; }
+    IO_Manage iomanage = IO_Manage.Instance;
 
     ConsolString total_str = new("none");
 
@@ -167,11 +168,11 @@ public sealed partial class HomeLandingPage : Page
 
     public HomeLandingPage()
     {
-        IO_Manage.Instance.page = this;
+        iomanage.page = this;
         List<SerialDevice> serialDevices = new();
         ViewModel = App.GetService<HomeLandingViewModel>();
- 
-        IO_Manage.updateLoadStats += IO_Manage_updateLoadStats;
+
+        iomanage.updateLoadStats += IO_Manage_updateLoadStats;
 
 
         this.InitializeComponent();
@@ -181,7 +182,7 @@ public sealed partial class HomeLandingPage : Page
 
         //注册回调函数
         //IO_Manage.updateDevices += Instance_update;
-        IO_Manage.updateCannelViewMsg += UpdateCannelViewMsg;
+        iomanage.updateCannelViewMsg += UpdateCannelViewMsg;
         //IO_Manage.Instance.updateSerialDevce();
 
         //ListView_LinkDevice.ItemsSource = ViewModel.advancedCollectionView;
@@ -290,7 +291,7 @@ public sealed partial class HomeLandingPage : Page
 
     private void HoverButton_Click(object sender, RoutedEventArgs e)
     {
-        AppBarButton? button = sender as AppBarButton;
+        AppBarButton button = sender as AppBarButton;
         Grid parent = button.FindParent<Grid>();
         foreach (var item in ViewModel.dateSource)
         {
